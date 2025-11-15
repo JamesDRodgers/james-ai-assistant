@@ -18,18 +18,26 @@
         <h1>James D. Rodgers</h1>
 
         <p>
-          Hi, I’m James. Thank you for taking the time to visit. I built this assistant so you can explore my work in a way that is simple, clear, and genuinely useful. You are welcome to browse my resume, dig into my qualifications, or ask direct questions about my background, instructional design approach, and the kinds of roles where I do my best work. My hope is to give you an honest sense of how I think, what I have built, and the values that shape my practice. I am glad you are here.
+          Hi, I'm James. Thank you for taking the time to visit. I built this assistant so you can explore my work in a way that is simple, clear, and genuinely useful. Ask me about my background, instructional design approach, or the kinds of roles where I do my best work.
         </p>
 
-        <p><strong>Try asking:</strong> “How does James’s interdisciplinary background strengthen his approach to AI, education, and instructional design?”</p>
+        <div class="preset-questions">
+          <button class="preset-btn" onclick="setPresetQuestion(this)">💡 How does James's background strengthen his AI approach?</button>
+          <button class="preset-btn" onclick="setPresetQuestion(this)">🎓 What educational tools has James built?</button>
+          <button class="preset-btn" onclick="setPresetQuestion(this)">🚀 What roles is James best suited for?</button>
+          <button class="preset-btn" onclick="setPresetQuestion(this)">📊 Tell me about James's teaching experience</button>
+        </div>
       </div>
     </header>
 
-    <!-- ⭐ Changed from <main> to <div> -->
+    <div class="chat-utilities">
+      <button class="util-btn" onclick="clearChat()">🗑️ Clear chat</button>
+    </div>
+
     <div id="chatContainer" class="chat-window"></div>
 
     <footer class="chat-input-area">
-      <input id="userInput" type="text" placeholder="Ask a question…" />
+      <input id="userInput" type="text" placeholder="Ask a question about James's work…" />
       <button id="sendBtn">Send</button>
     </footer>
 
