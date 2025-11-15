@@ -66,16 +66,31 @@ export async function handler(event) {
       {
         headers: {
           "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
-          "OpenAI-Beta": "assistants=v2`
+          "OpenAI-Beta": "assistants=v2"
         }
       }
     );
 
     const messages = await messagesRes.json();
 
-    const botReply =
-      messages.data[0]?.content[0]?.text?.value ||
-      "I’m here — but couldn’t fetch the reply.";
+    // ⭐ ROBUST REPLY EXTRACTION (fixes "undefined")
+    let botReply = "I’m here — but I couldn't read the reply.";
+
+    try {
+      const msg =
+        messages.data.find(m => m.role === "assistant") ||
+        messages.data[0];
+
+      if (msg?.content?.[0]?.text?.value) {
+        botReply = msg.content[0].text.value;
+      } else if (msg?.content?.[0]?.text?.[0]?.value) {
+        botReply = msg.content[0].text[0].value;
+      } else if (msg?.content?.[0]?.value) {
+        botReply = msg.content[0].value;
+      }
+    } catch (err) {
+      // fallback stays in place
+    }
 
     return {
       statusCode: 200,
@@ -89,4 +104,3 @@ export async function handler(event) {
     };
   }
 }
-
