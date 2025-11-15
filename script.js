@@ -183,28 +183,27 @@ userInput.addEventListener("keydown", (e) => {
 document.getElementById("contactForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   
-  const formData = new FormData();
-  formData.append('form-name', 'contact');
-  formData.append('name', document.getElementById("contactName").value);
-  formData.append('email', document.getElementById("contactEmail").value);
-  formData.append('subject', document.getElementById("contactSubject").value);
-  formData.append('message', document.getElementById("contactMessage").value);
+  const form = e.target;
+  const formData = new FormData(form);
   
   try {
-    const response = await fetch("/", {
+    const response = await fetch(form.action, {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString()
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
     });
     
     if (response.ok) {
-      document.getElementById("contactForm").style.display = "none";
+      form.style.display = "none";
       document.getElementById("contactSuccess").style.display = "block";
       
       // Close modal after 3 seconds
       setTimeout(() => {
         closeContactForm();
-        document.getElementById("contactForm").style.display = "block";
+        form.style.display = "block";
+        form.reset();
       }, 3000);
     } else {
       alert("There was an error sending your message. Please try emailing jdevin.rodgers@gmail.com directly.");
