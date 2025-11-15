@@ -14,6 +14,11 @@ function clearChat() {
   chatContainer.innerHTML = '';
 }
 
+// Contact James handler
+function contactJames() {
+  window.location.href = 'mailto:jdevin.rodgers@gmail.com?subject=Contact%20from%20jamesdrodgers.ai';
+}
+
 // Display message with avatar for bot messages
 function displayMessage(text, sender) {
   if (sender === "bot") {
