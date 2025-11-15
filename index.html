@@ -44,14 +44,6 @@
 
   </div>
 
-  <!-- Hidden form for Netlify to detect -->
-  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
-    <input type="text" name="name" />
-    <input type="email" name="email" />
-    <input type="text" name="subject" />
-    <textarea name="message"></textarea>
-  </form>
-
   <!-- Contact Form Modal -->
   <div id="contactModal" class="modal">
     <div class="modal-content">
@@ -59,12 +51,7 @@
       <h2>Contact James</h2>
       <p>Send James a message and he'll get back to you soon.</p>
       
-      <form id="contactForm">
-        <!-- Honeypot field for spam protection -->
-        <div style="display: none;">
-          <input name="bot-field">
-        </div>
-        
+      <form id="contactForm" action="https://formspree.io/f/mrbrlydj" method="POST">
         <div class="form-group">
           <label for="contactName">Your Name *</label>
           <input type="text" id="contactName" name="name" required>
@@ -72,18 +59,20 @@
         
         <div class="form-group">
           <label for="contactEmail">Your Email *</label>
-          <input type="email" id="contactEmail" name="email" required>
+          <input type="email" id="contactEmail" name="_replyto" required>
         </div>
         
         <div class="form-group">
           <label for="contactSubject">Subject</label>
-          <input type="text" id="contactSubject" name="subject" placeholder="Optional">
+          <input type="text" id="contactSubject" name="_subject" placeholder="Optional" value="Contact from jamesdrodgers.ai">
         </div>
         
         <div class="form-group">
           <label for="contactMessage">Message *</label>
           <textarea id="contactMessage" name="message" rows="5" required></textarea>
         </div>
+        
+        <input type="hidden" name="_next" value="#success">
         
         <div class="form-actions">
           <button type="button" class="btn-secondary" onclick="closeContactForm()">Cancel</button>
