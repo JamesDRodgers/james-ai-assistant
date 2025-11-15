@@ -32,7 +32,7 @@
 
     <div class="chat-utilities">
       <button class="util-btn" onclick="clearChat()">🗑️ Clear chat</button>
-      <button class="util-btn contact-btn" onclick="showContactForm()">✉️ Contact James</button>
+      <a href="mailto:jdevin.rodgers@gmail.com?subject=Contact from jamesdrodgers.ai" class="util-btn contact-btn" style="text-decoration: none;">✉️ Contact James</a>
     </div>
 
     <div id="chatContainer" class="chat-window"></div>
@@ -42,53 +42,6 @@
       <button id="sendBtn">Send</button>
     </footer>
 
-  </div>
-
-  <!-- Contact Form Modal -->
-  <div id="contactModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeContactForm()">&times;</span>
-      <h2>Contact James</h2>
-      <p>Send James a message and he'll get back to you soon.</p>
-      
-      <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="contact">
-        
-        <!-- Honeypot field for spam protection -->
-        <div style="display: none;">
-          <input name="bot-field">
-        </div>
-        
-        <div class="form-group">
-          <label for="contactName">Your Name *</label>
-          <input type="text" id="contactName" name="name" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="contactEmail">Your Email *</label>
-          <input type="email" id="contactEmail" name="email" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="contactSubject">Subject</label>
-          <input type="text" id="contactSubject" name="subject" placeholder="Optional">
-        </div>
-        
-        <div class="form-group">
-          <label for="contactMessage">Message *</label>
-          <textarea id="contactMessage" name="message" rows="5" required></textarea>
-        </div>
-        
-        <div class="form-actions">
-          <button type="button" class="btn-secondary" onclick="closeContactForm()">Cancel</button>
-          <button type="submit" class="btn-primary">Send Message</button>
-        </div>
-      </form>
-      
-      <div id="contactSuccess" class="success-message" style="display: none;">
-        <p>✅ Message sent! James will get back to you soon.</p>
-      </div>
-    </div>
   </div>
 
   <script src="script.js"></script>
