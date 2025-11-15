@@ -87,7 +87,7 @@ export async function handler(event) {
     if (!messages.data) throw new Error("Messages fetch failed: " + JSON.stringify(messages));
 
     // ⭐ ROBUST REPLY EXTRACTION
-    let botReply = "I’m here — but I couldn't read the reply.";
+    let botReply = "I'm here — but I couldn't read the reply.";
 
     try {
       const assistantMessage =
