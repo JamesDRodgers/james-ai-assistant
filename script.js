@@ -14,9 +14,25 @@ function clearChat() {
   chatContainer.innerHTML = '';
 }
 
-// Contact James handler
-function contactJames() {
-  window.location.href = 'mailto:jdevin.rodgers@gmail.com?subject=Contact%20from%20jamesdrodgers.ai';
+// Contact form functions
+function showContactForm() {
+  document.getElementById("contactModal").style.display = "block";
+  document.body.style.overflow = "hidden";
+}
+
+function closeContactForm() {
+  document.getElementById("contactModal").style.display = "none";
+  document.body.style.overflow = "auto";
+  document.getElementById("contactForm").reset();
+  document.getElementById("contactSuccess").style.display = "none";
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+  const modal = document.getElementById("contactModal");
+  if (event.target === modal) {
+    closeContactForm();
+  }
 }
 
 // Display message with avatar for bot messages
@@ -161,4 +177,39 @@ sendBtn.addEventListener("click", sendMessage);
 // Enter key
 userInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") sendMessage();
+});
+
+// Handle contact form submission
+document.getElementById("contactForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  
+  const formData = new FormData();
+  formData.append('form-name', 'contact');
+  formData.append('name', document.getElementById("contactName").value);
+  formData.append('email', document.getElementById("contactEmail").value);
+  formData.append('subject', document.getElementById("contactSubject").value);
+  formData.append('message', document.getElementById("contactMessage").value);
+  
+  try {
+    const response = await fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString()
+    });
+    
+    if (response.ok) {
+      document.getElementById("contactForm").style.display = "none";
+      document.getElementById("contactSuccess").style.display = "block";
+      
+      // Close modal after 3 seconds
+      setTimeout(() => {
+        closeContactForm();
+        document.getElementById("contactForm").style.display = "block";
+      }, 3000);
+    } else {
+      alert("There was an error sending your message. Please try emailing jdevin.rodgers@gmail.com directly.");
+    }
+  } catch (error) {
+    alert("There was an error sending your message. Please try emailing jdevin.rodgers@gmail.com directly.");
+  }
 });
