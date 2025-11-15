@@ -113,13 +113,12 @@ export async function handler(event) {
     };
 
   } catch (err) {
-    // ⭐ FULL ERROR RETURN (we NEED this for debugging)
     return {
       statusCode: 500,
       body: JSON.stringify({
         error: err.message,
         details: err.stack,
-        note: "This is coming from netlify/functions/chat.js"
+        note: "This error is coming from netlify/functions/chat.js"
       })
     };
   }
