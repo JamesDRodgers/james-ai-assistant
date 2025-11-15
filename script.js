@@ -17,6 +17,12 @@ function clearChat() {
 // Display message with avatar for bot messages
 function displayMessage(text, sender) {
   if (sender === "bot") {
+    // Strip citation markers like 【4:0†source】
+    text = text.replace(/【[^】]+】/g, '');
+    
+    // Format the text with basic markdown-style parsing
+    text = formatBotMessage(text);
+    
     // Create wrapper for bot message with avatar
     const wrapper = document.createElement("div");
     wrapper.classList.add("message-wrapper", "bot");
@@ -49,6 +55,38 @@ function displayMessage(text, sender) {
   }
   
   chatContainer.scrollTop = chatContainer.scrollHeight;
+}
+
+// Format bot messages with better typography
+function formatBotMessage(text) {
+  // Convert **bold** to <strong>
+  text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  
+  // Convert *italic* to <em>
+  text = text.replace(/\*(.+?)\*/g, '<em>$1</em>');
+  
+  // Convert line breaks to paragraphs
+  const paragraphs = text.split('\n\n').filter(p => p.trim());
+  
+  // Wrap each paragraph in <p> tags
+  const formatted = paragraphs.map(p => {
+    p = p.trim();
+    
+    // Check if it's a list (starts with - or *)
+    if (p.match(/^[-*]\s/m)) {
+      const items = p.split('\n')
+        .filter(line => line.trim())
+        .map(line => line.replace(/^[-*]\s/, '').trim())
+        .map(line => `<li>${line}</li>`)
+        .join('');
+      return `<ul>${items}</ul>`;
+    }
+    
+    // Regular paragraph
+    return `<p>${p}</p>`;
+  }).join('');
+  
+  return formatted;
 }
 
 // Add typing indicator with avatar
