@@ -1,8 +1,8 @@
 # James D. Rodgers - AI Portfolio Chatbot
 
-A professional, interactive portfolio website featuring an AI-powered chatbot that answers questions about James's background, experience, and qualifications. Built with a clean, modern UI and deployed on Netlify.
+An interactive portfolio website with an AI chatbot that answers questions about my background and experience. Built with vanilla JavaScript and deployed on Netlify.
 
-![Live Site](https://jamesdrodgers.ai)
+Live at: https://jamesdrodgers.ai
 
 ---
 
@@ -24,45 +24,36 @@ A professional, interactive portfolio website featuring an AI-powered chatbot th
 ## ✨ Features
 
 ### User Interface
-- **Modern, responsive design** - Works beautifully on desktop and mobile
-- **Preset question buttons** - Quick-start conversations with one click
-- **Real-time chat interface** - Smooth animations and typing indicators
-- **Avatar integration** - Professional headshot appears with each bot response
-- **Contact form** - Easy way for visitors to reach out directly
-- **Clean chat functionality** - Clear chat history with one click
+- Responsive design for desktop and mobile
+- Preset question buttons
+- Real-time chat with typing indicators
+- Headshot appears with bot responses
+- Contact form
+- Clear chat history option
 
 ### AI Capabilities
-- **OpenAI Assistant integration** - Powered by GPT-4 with custom instructions
-- **Knowledge base** - Trained on resume, portfolio, and professional background
-- **Context-aware responses** - Understands nuanced questions about experience and skills
-- **Citation removal** - Clean responses without distracting reference markers
-- **Markdown formatting** - Supports bold, italic, lists, and paragraphs
+- OpenAI GPT-4 Assistant integration
+- Custom knowledge base from resume and portfolio
+- Context-aware responses
+- Clean formatting (no citation markers)
+- Markdown support
 
-### Technical Features
-- **Serverless architecture** - Netlify Functions handle API calls securely
-- **Environment variable protection** - API keys never exposed to client
-- **Form backend** - Formspree integration for reliable contact form
-- **Custom domain support** - Easy DNS configuration with any registrar
-- **SSL/HTTPS** - Automatic certificate provisioning
-- **Zero-config deployment** - Works out of the box on Netlify
+### Technical
+- Serverless functions via Netlify
+- Secure API key handling
+- Formspree contact form backend
+- Custom domain support
+- Automatic SSL/HTTPS
 
 ---
 
 ## 🛠 Tech Stack
 
-### Frontend
-- **HTML5** - Semantic markup
-- **CSS3** - Modern styling with gradients, shadows, animations
-- **Vanilla JavaScript** - No frameworks needed, lightweight and fast
-
-### Backend
-- **Netlify Functions** - Serverless functions for API calls
-- **OpenAI API** - GPT-4 powered assistant
-- **Formspree** - Contact form backend
-
-### Hosting & Deployment
-- **Netlify** - Static site hosting, serverless functions, and CI/CD
-- **Custom Domain** - jamesdrodgers.ai (Squarespace Domains)
+- HTML5, CSS3, JavaScript (vanilla)
+- Netlify Functions (serverless)
+- OpenAI GPT-4 API
+- Formspree (contact form)
+- Netlify hosting
 
 ---
 
@@ -556,45 +547,24 @@ Website: [jamesdrodgers.ai](https://jamesdrodgers.ai)
 
 ---
 
-## 🙏 Acknowledgments
 
-- OpenAI for the GPT-4 API and Assistants platform
-- Netlify for serverless functions and hosting
-- Formspree for reliable form backend
-- Claude (Anthropic) for assistance in building this project
+
+Built with OpenAI GPT-4 API, Netlify, Formspree, and assistance from Claude (Anthropic).
 
 ---
 
 ## 📋 Quick Start Checklist
 
-Ready to deploy? Use this checklist:
-
-- [ ] OpenAI account created
-- [ ] OpenAI Assistant configured with knowledge base
-- [ ] Assistant ID copied
-- [ ] Netlify account created
-- [ ] Formspree account created
+- [ ] OpenAI account and assistant created
 - [ ] Formspree form created
-- [ ] Formspree form ID copied
-- [ ] Professional headshot prepared (headshot.png)
-- [ ] `chat.js` updated with assistant ID
-- [ ] `index.html` updated with Formspree ID
-- [ ] All files uploaded to Netlify
-- [ ] OPENAI_API_KEY added to environment variables
-- [ ] Site redeployed after adding env vars
-- [ ] Test chatbot functionality
-- [ ] Test contact form
-- [ ] Domain DNS configured (if using custom domain)
-- [ ] SSL certificate verified
-- [ ] Site tested on mobile and desktop
-- [ ] Analytics set up (optional)
+- [ ] Netlify account created
+- [ ] Headshot image ready (headshot.png)
+- [ ] Files updated with your IDs
+- [ ] Uploaded to Netlify
+- [ ] Environment variables added
+- [ ] Tested chatbot and contact form
+- [ ] DNS configured (if using custom domain)
 
 ---
 
-## 🎉 You're Ready!
-
-Your AI-powered portfolio chatbot is now live and ready to impress visitors!
-
-For questions, issues, or suggestions, feel free to reach out at jdevin.rodgers@gmail.com.
-
-**Happy deploying!** 🚀
+Questions? Email me at jdevin.rodgers@gmail.com
