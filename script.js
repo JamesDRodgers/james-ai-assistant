@@ -1,31 +1,61 @@
-window.onload = function() {
-  const welcomeMessage = `Hi, I’m James. Thank you for taking the time to visit. I built this assistant so you can explore my work in a way that is simple, clear, and genuinely useful. You are welcome to browse my resume, dig into my qualifications, or ask direct questions about my background, instructional design approach, and the kinds of roles where I do my best work. My hope is to give you an honest sense of how I think, what I have built, and the values that shape my practice. If you are evaluating something specific or facing a challenge you would like perspective on, feel free to ask. I am glad you are here.`;
-  addMessage(welcomeMessage, "bot");
-};
+const chatContainer = document.getElementById("chatContainer");
+const userInput = document.getElementById("userInput");
+const sendBtn = document.getElementById("sendBtn");
 
+// Display message in chat bubbles
+function displayMessage(text, sender) {
+  const bubble = document.createElement("div");
+  bubble.classList.add("bubble", sender);
+  bubble.textContent = text;
+
+  chatContainer.appendChild(bubble);
+
+  // Auto-scroll to bottom
+  chatContainer.scrollTop = chatContainer.scrollHeight;
+}
+
+// Send user message
 async function sendMessage() {
-  const input = document.getElementById("userInput");
-  const message = input.value.trim();
+  const message = userInput.value.trim();
   if (!message) return;
 
-  addMessage(message, "user");
-  input.value = "";
+  displayMessage(message, "user");
+  userInput.value = "";
 
-  const res = await fetch("/.netlify/functions/chat", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message })
-  });
+  try {
+    const response = await fetch("/.netlify/functions/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ message })
+    });
 
-  const data = await res.json();
-  addMessage(data.reply, "bot");
+    const data = await response.json();
+
+    // ⭐ SHOW SERVER ERRORS IN CHAT BUBBLE
+    if (data.error) {
+      displayMessage(
+        "⚠️ Server Error: " + data.error +
+        (data.details ? "\n\nDetails: " + data.details : ""),
+        "bot"
+      );
+      return;
+    }
+
+    // Normal assistant reply
+    displayMessage(data.reply, "bot");
+
+  } catch (err) {
+    // ⭐ FRONT-END ERROR HANDLING
+    displayMessage("❌ Frontend Error: " + err.message, "bot");
+  }
 }
 
-function addMessage(text, sender) {
-  const chat = document.getElementById("chat-window");
-  const div = document.createElement("div");
-  div.classList.add("message", sender);
-  div.innerText = text;
-  chat.appendChild(div);
-  chat.scrollTop = chat.scrollHeight;
-}
+// Send on button click
+sendBtn.addEventListener("click", sendMessage);
+
+// Send with Enter key
+userInput.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") sendMessage();
+});
