@@ -7,6 +7,8 @@ function setPresetQuestion(btn) {
   const text = btn.textContent.replace(/^[^\s]+\s/, ''); // Remove emoji
   userInput.value = text;
   userInput.focus();
+  // Optional: Auto-send the message
+  // sendMessage();
 }
 
 // Clear chat handler
