@@ -6,21 +6,23 @@
   <title>James Rodgers — AI Assistant</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
   <div class="container">
-
-    <header class="header">
-      <img src="headshot.png" alt="Headshot of James Rodgers" class="avatar">
-
-      <div class="intro">
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+      <div class="profile">
+        <img src="headshot.png" alt="Headshot of James Rodgers" class="avatar">
         <h1>James D. Rodgers</h1>
-
+        <div class="tagline">AI Interaction Designer</div>
         <p>
           Hi, I'm James. Thank you for taking the time to visit. I built this assistant so you can explore my work in a way that is simple, clear, and genuinely useful. Ask me about my background, instructional design approach, or the kinds of roles where I do my best work.
         </p>
+      </div>
 
+      <div class="divider"></div>
+
+      <div class="preset-section">
+        <h3>Quick Questions</h3>
         <div class="preset-questions">
           <button class="preset-btn" onclick="setPresetQuestion(this)">💡 How does James's background strengthen his AI approach?</button>
           <button class="preset-btn" onclick="setPresetQuestion(this)">🎓 What educational tools has James built?</button>
@@ -28,20 +30,28 @@
           <button class="preset-btn" onclick="setPresetQuestion(this)">📊 Tell me about James's teaching experience</button>
         </div>
       </div>
-    </header>
 
-    <div class="chat-utilities">
-      <button class="util-btn" onclick="clearChat()">🗑️ Clear chat</button>
-      <button class="util-btn contact-btn" onclick="showContactForm()">✉️ Contact James</button>
-    </div>
+      <div class="sidebar-contact">
+        <button class="contact-btn-sidebar" onclick="showContactForm()">✉️ Contact James</button>
+      </div>
+    </aside>
 
-    <div id="chatContainer" class="chat-window"></div>
+    <!-- MAIN CHAT AREA -->
+    <main class="main-chat-area">
+      <div class="chat-header">
+        <h2 class="chat-title">Chat with James's AI Assistant</h2>
+        <div class="chat-utilities">
+          <button class="util-btn" onclick="clearChat()">🗑️ Clear</button>
+        </div>
+      </div>
 
-    <footer class="chat-input-area">
-      <input id="userInput" type="text" placeholder="Ask a question about James's work…" />
-      <button id="sendBtn">Send</button>
-    </footer>
+      <div id="chatContainer" class="chat-window"></div>
 
+      <footer class="chat-input-area">
+        <input id="userInput" type="text" placeholder="Ask a question about James's work…" />
+        <button id="sendBtn">Send</button>
+      </footer>
+    </main>
   </div>
 
   <!-- Contact Form Modal -->
