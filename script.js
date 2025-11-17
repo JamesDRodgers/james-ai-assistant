@@ -2,11 +2,27 @@ const chatContainer = document.getElementById("chatContainer");
 const userInput = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 
-// Preset question handler
+// Mobile sidebar toggle
+function toggleSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  const isCollapsed = sidebar.classList.toggle('collapsed');
+  const toggleBtn = document.querySelector('.mobile-toggle');
+  toggleBtn.textContent = isCollapsed ? '☰ Menu' : '✕ Close';
+}
+
+// Auto-collapse sidebar on mobile when preset is clicked
 function setPresetQuestion(btn) {
   const text = btn.textContent.replace(/^[^\s]+\s/, ''); // Remove emoji
   userInput.value = text;
   userInput.focus();
+  
+  // Auto-collapse sidebar on mobile after selection
+  if (window.innerWidth <= 900) {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.classList.add('collapsed');
+    document.querySelector('.mobile-toggle').textContent = '☰ Menu';
+  }
+  
   // Optional: Auto-send the message
   // sendMessage();
 }
@@ -212,5 +228,20 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
     }
   } catch (error) {
     alert("There was an error sending your message. Please try emailing jdevin.rodgers@gmail.com directly.");
+  }
+});
+
+// Initialize: Check if desktop, expand sidebar
+if (window.innerWidth > 900) {
+  document.querySelector('.sidebar').classList.remove('collapsed');
+}
+
+// Handle window resize
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 900) {
+    document.querySelector('.sidebar').classList.remove('collapsed');
+    document.querySelector('.mobile-toggle').textContent = '☰ Menu';
+  } else {
+    document.querySelector('.sidebar').classList.add('collapsed');
   }
 });
