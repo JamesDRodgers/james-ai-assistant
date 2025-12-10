@@ -6,23 +6,34 @@
   <title>Interactive Resume & Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div class="container">
+
     <!-- LEFT SIDEBAR -->
-    <aside class="sidebar collapsed">
-      <button class="mobile-toggle" onclick="toggleSidebar()">☰ Menu</button>
+    <aside class="sidebar collapsed" aria-label="Primary navigation and profile information">
+      <button class="mobile-toggle" aria-label="Toggle sidebar menu" onclick="toggleSidebar()">☰ Menu</button>
+      
       <div class="profile">
         <img src="headshot.png" alt="Headshot of James Rodgers" class="avatar">
         <h1>James D. Rodgers</h1>
-        <div class="tagline">Instructional Design & Learning Innovation | Generative AI Specialist</div>
-        <p>
-          Hi, I'm James. Thank you for taking the time to visit. I built this assistant so you can explore my work in a way that is simple, clear, and genuinely useful. Ask me about my background, instructional design approach, or the kinds of roles where I do my best work.
-        </p>
+        <p class="tagline">Instructional Design & Learning Innovation | Generative AI Specialist</p>
+
+        <p>Thank you for visiting. I built this assistant to make it easy to understand my work and determine whether my experience aligns with what you need.</p>
+
+        <h2 class="visually-hidden">How to Use This Assistant</h2>
+        <p>How to use this assistant:</p>
+        <ul>
+          <li>Ask about my background or instructional design approach</li>
+          <li>Request examples of projects I’ve built</li>
+          <li>Explore how I use UDL, accessibility, AI, or learning technology</li>
+          <li>Ask about the kinds of roles where I do my best work</li>
+        </ul>
       </div>
 
-      <div class="divider"></div>
+      <hr class="divider" aria-hidden="true">
 
-      <div class="preset-section">
+      <nav class="preset-section" aria-label="Quick question shortcuts">
         <h3>Quick Questions</h3>
         <div class="preset-questions">
           <button class="preset-btn" onclick="setPresetQuestion(this)">📚 How does James apply Universal Design for Learning principles?</button>
@@ -33,83 +44,86 @@
           <button class="preset-btn" onclick="setPresetQuestion(this)">📊 How does James measure learning outcomes and effectiveness?</button>
           <button class="preset-btn" onclick="setPresetQuestion(this)">🧠 How does James make complex technical content accessible?</button>
         </div>
-      </div>
+      </nav>
 
-      <div class="divider"></div>
+      <hr class="divider" aria-hidden="true">
 
-      <div class="resume-section">
-        <h3>Resume</h3>
+      <section class="resume-section" aria-labelledby="resumeHeading">
+        <h3 id="resumeHeading">Resume</h3>
         <div class="resume-downloads">
           <a href="Instructional Designer Resume Rodgers.pdf" download class="resume-link">
-            <span class="resume-icon">📄</span>
-            <span class="resume-text">Instructional Designer</span>
+            <span class="resume-icon" aria-hidden="true">📄</span>
+            <span class="resume-text">Instructional Designer Resume</span>
           </a>
+
           <a href="Rodgers_AI_tutor_Resume.pdf" download class="resume-link">
-            <span class="resume-icon">📄</span>
-            <span class="resume-text">AI Tutor / Data Annotation</span>
+            <span class="resume-icon" aria-hidden="true">📄</span>
+            <span class="resume-text">AI Tutor / Data Annotation Resume</span>
           </a>
         </div>
-      </div>
+      </section>
 
       <div class="sidebar-contact">
-        <button class="contact-btn-sidebar" onclick="showContactForm()">✉️ Contact James</button>
+        <button class="contact-btn-sidebar" onclick="showContactForm()" aria-label="Open contact form">✉️ Contact James</button>
       </div>
     </aside>
 
     <!-- MAIN CHAT AREA -->
-    <main class="main-chat-area">
+    <main class="main-chat-area" aria-label="Chat interface with James's assistant">
       <div class="chat-header">
         <h2 class="chat-title">Chat with James's AI Assistant</h2>
         <div class="chat-utilities">
-          <button class="util-btn" onclick="clearChat()">🗑️ Clear</button>
+          <button class="util-btn" onclick="clearChat()" aria-label="Clear chat history">🗑️ Clear</button>
         </div>
       </div>
 
-      <div id="chatContainer" class="chat-window"></div>
+      <div id="chatContainer" class="chat-window" role="log" aria-live="polite"></div>
 
       <footer class="chat-input-area">
-        <input id="userInput" type="text" placeholder="Ask a question about James's work…" />
-        <button id="sendBtn">Send</button>
+        <label for="userInput" class="visually-hidden">Type your question</label>
+        <input id="userInput" type="text" placeholder="Ask a question about James's work…" aria-label="Message input field">
+        <button id="sendBtn" aria-label="Send message">Send</button>
       </footer>
     </main>
   </div>
 
-  <!-- Contact Form Modal -->
-  <div id="contactModal" class="modal">
+  <!-- CONTACT FORM MODAL -->
+  <div id="contactModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="contactFormTitle">
     <div class="modal-content">
-      <span class="close" onclick="closeContactForm()">&times;</span>
-      <h2>Contact James</h2>
+      <span class="close" onclick="closeContactForm()" aria-label="Close contact form">&times;</span>
+      <h2 id="contactFormTitle">Contact James</h2>
       <p>Send James a message and he'll get back to you soon.</p>
-      
+
       <form id="contactForm" action="https://formspree.io/f/mrbrlydj" method="POST">
+        
         <div class="form-group">
           <label for="contactName">Your Name *</label>
           <input type="text" id="contactName" name="name" required>
         </div>
-        
+
         <div class="form-group">
           <label for="contactEmail">Your Email *</label>
           <input type="email" id="contactEmail" name="_replyto" required>
         </div>
-        
+
         <div class="form-group">
           <label for="contactSubject">Subject</label>
           <input type="text" id="contactSubject" name="_subject" placeholder="Optional" value="Contact from jamesdrodgers.ai">
         </div>
-        
+
         <div class="form-group">
           <label for="contactMessage">Message *</label>
           <textarea id="contactMessage" name="message" rows="5" required></textarea>
         </div>
-        
+
         <input type="hidden" name="_next" value="#success">
-        
+
         <div class="form-actions">
           <button type="button" class="btn-secondary" onclick="closeContactForm()">Cancel</button>
           <button type="submit" class="btn-primary">Send Message</button>
         </div>
       </form>
-      
+
       <div id="contactSuccess" class="success-message" style="display: none;">
         <p>✅ Message sent! James will get back to you soon.</p>
       </div>
