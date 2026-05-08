@@ -2,189 +2,116 @@ const chatContainer = document.getElementById("chatContainer");
 const userInput = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 
-// Mobile sidebar toggle
+// MOBILE SIDEBAR
 function toggleSidebar() {
+
   const sidebar = document.querySelector(".sidebar");
-  const isCollapsed = sidebar.classList.toggle("collapsed");
 
-  const toggleBtn = document.querySelector(".mobile-toggle");
+  const isCollapsed =
+    sidebar.classList.toggle("collapsed");
 
-  toggleBtn.textContent = isCollapsed
-    ? "☰ Menu"
-    : "✕ Close";
+  const toggleBtn =
+    document.querySelector(".mobile-toggle");
+
+  toggleBtn.textContent =
+    isCollapsed ? "☰ Menu" : "✕ Close";
 }
 
-// Set preset question
+// PRESET QUESTIONS
 function setPresetQuestion(btn) {
+
   const text = btn.innerText.trim();
 
   userInput.value = text;
 
   userInput.focus();
 
-  // Force scroll reset AFTER render
   requestAnimationFrame(() => {
+
     userInput.scrollLeft = 0;
+
     userInput.setSelectionRange(0, 0);
   });
 
-  // Auto-collapse sidebar on mobile
   if (window.innerWidth <= 900) {
-    const sidebar = document.querySelector(".sidebar");
+
+    const sidebar =
+      document.querySelector(".sidebar");
 
     sidebar.classList.add("collapsed");
 
-    document.querySelector(".mobile-toggle").textContent = "☰ Menu";
+    document.querySelector(".mobile-toggle")
+      .textContent = "☰ Menu";
   }
 }
 
-// Clear chat
+// CLEAR CHAT
 function clearChat() {
   chatContainer.innerHTML = "";
 }
 
-// Contact modal functions
+// CONTACT MODAL
 function showContactForm() {
-  document.getElementById("contactModal").style.display = "block";
+
+  document.getElementById("contactModal")
+    .style.display = "block";
+
   document.body.style.overflow = "hidden";
 }
 
 function closeContactForm() {
-  document.getElementById("contactModal").style.display = "none";
-  document.body.style.overflow = "auto";
 
-  document.getElementById("contactForm").reset();
-  document.getElementById("contactSuccess").style.display = "none";
+  document.getElementById("contactModal")
+    .style.display = "none";
+
+  document.body.style.overflow = "auto";
 }
 
-// Close modal when clicking outside
+// CLICK OUTSIDE MODAL
 window.onclick = function (event) {
-  const modal = document.getElementById("contactModal");
+
+  const modal =
+    document.getElementById("contactModal");
 
   if (event.target === modal) {
     closeContactForm();
   }
 };
 
-// Display message
+// DISPLAY MESSAGE
 function displayMessage(text, sender) {
 
-  if (sender === "bot") {
+  const wrapper =
+    document.createElement("div");
 
-    text = text.replace(/【[^】]+】/g, "");
+  wrapper.classList.add(
+    "message-wrapper",
+    sender
+  );
 
-    text = formatBotMessage(text);
+  const bubble =
+    document.createElement("div");
 
-    const wrapper = document.createElement("div");
-    wrapper.classList.add("message-wrapper", "bot");
+  bubble.classList.add(
+    "bubble",
+    sender
+  );
 
-    const avatar = document.createElement("img");
-    avatar.src = "headshot.png";
-    avatar.alt = "James";
-    avatar.classList.add("bot-avatar");
+  bubble.textContent = text;
 
-    const bubble = document.createElement("div");
-    bubble.classList.add("bubble", "bot");
-    bubble.innerHTML = text;
-
-    wrapper.appendChild(avatar);
-    wrapper.appendChild(bubble);
-
-    chatContainer.appendChild(wrapper);
-
-  } else {
-
-    const wrapper = document.createElement("div");
-    wrapper.classList.add("message-wrapper", "user");
-
-    const bubble = document.createElement("div");
-    bubble.classList.add("bubble", "user");
-    bubble.textContent = text;
-
-    wrapper.appendChild(bubble);
-
-    chatContainer.appendChild(wrapper);
-  }
-
-  chatContainer.scrollTop = chatContainer.scrollHeight;
-}
-
-// Format bot messages
-function formatBotMessage(text) {
-
-  text = text.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
-
-  text = text.replace(/\*(.+?)\*/g, "<em>$1</em>");
-
-  const paragraphs = text
-    .split("\n\n")
-    .filter((p) => p.trim());
-
-  return paragraphs
-    .map((p) => {
-
-      p = p.trim();
-
-      if (p.match(/^[-*]\s/m)) {
-
-        const items = p
-          .split("\n")
-          .filter((line) => line.trim())
-          .map((line) => line.replace(/^[-*]\s/, "").trim())
-          .map((line) => `<li>${line}</li>`)
-          .join("");
-
-        return `<ul>${items}</ul>`;
-      }
-
-      return `<p>${p}</p>`;
-    })
-    .join("");
-}
-
-// Typing indicator
-function showTyping() {
-
-  const wrapper = document.createElement("div");
-
-  wrapper.classList.add("typing-wrapper");
-
-  wrapper.id = "typingIndicator";
-
-  const avatar = document.createElement("img");
-
-  avatar.src = "headshot.png";
-  avatar.alt = "James";
-  avatar.classList.add("bot-avatar");
-
-  const typing = document.createElement("div");
-
-  typing.classList.add("typing");
-
-  typing.innerHTML =
-    'James is thinking<span class="typing-dots"><span></span><span></span><span></span></span>';
-
-  wrapper.appendChild(avatar);
-  wrapper.appendChild(typing);
+  wrapper.appendChild(bubble);
 
   chatContainer.appendChild(wrapper);
 
-  chatContainer.scrollTop = chatContainer.scrollHeight;
+  chatContainer.scrollTop =
+    chatContainer.scrollHeight;
 }
 
-// Remove typing
-function removeTyping() {
-  const typing = document.getElementById("typingIndicator");
-
-  if (typing) {
-    typing.remove();
-  }
-}
-
-// Send message
+// SEND MESSAGE
 async function sendMessage() {
 
-  const message = userInput.value.trim();
+  const message =
+    userInput.value.trim();
 
   if (!message) return;
 
@@ -192,114 +119,69 @@ async function sendMessage() {
 
   userInput.value = "";
 
-  showTyping();
-
   try {
 
-    const response = await fetch("/.netlify/functions/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ message })
-    });
+    const response = await fetch(
+      "/.netlify/functions/chat",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ message })
+      }
+    );
 
     const data = await response.json();
-
-    removeTyping();
-
-    if (data.error) {
-      displayMessage("⚠️ " + data.error, "bot");
-      return;
-    }
 
     displayMessage(data.reply, "bot");
 
   } catch (err) {
 
-    removeTyping();
-
-    displayMessage("❌ Network Error: " + err.message, "bot");
+    displayMessage(
+      "Network error.",
+      "bot"
+    );
   }
 }
 
-// Event listeners
-sendBtn.addEventListener("click", sendMessage);
+// EVENTS
+sendBtn.addEventListener(
+  "click",
+  sendMessage
+);
 
-userInput.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
-    sendMessage();
-  }
-});
+userInput.addEventListener(
+  "keydown",
+  (e) => {
 
-// Contact form submit
-document
-  .getElementById("contactForm")
-  .addEventListener("submit", async (e) => {
-
-    e.preventDefault();
-
-    const form = e.target;
-
-    const formData = new FormData(form);
-
-    try {
-
-      const response = await fetch(form.action, {
-        method: "POST",
-        body: formData,
-        headers: {
-          Accept: "application/json"
-        }
-      });
-
-      if (response.ok) {
-
-        form.style.display = "none";
-
-        document.getElementById("contactSuccess").style.display = "block";
-
-        setTimeout(() => {
-
-          closeContactForm();
-
-          form.style.display = "block";
-
-          form.reset();
-
-        }, 3000);
-
-      } else {
-
-        alert(
-          "There was an error sending your message. Please try emailing jdevin.rodgers@gmail.com directly."
-        );
-      }
-
-    } catch (error) {
-
-      alert(
-        "There was an error sending your message. Please try emailing jdevin.rodgers@gmail.com directly."
-      );
+    if (e.key === "Enter") {
+      sendMessage();
     }
-  });
+  }
+);
 
-// Desktop behavior
+// DESKTOP SIDEBAR
 if (window.innerWidth > 900) {
-  document.querySelector(".sidebar").classList.remove("collapsed");
+
+  document.querySelector(".sidebar")
+    .classList.remove("collapsed");
 }
 
-// Resize behavior
-window.addEventListener("resize", () => {
+// RESIZE
+window.addEventListener(
+  "resize",
+  () => {
 
-  if (window.innerWidth > 900) {
+    if (window.innerWidth > 900) {
 
-    document.querySelector(".sidebar").classList.remove("collapsed");
+      document.querySelector(".sidebar")
+        .classList.remove("collapsed");
 
-    document.querySelector(".mobile-toggle").textContent = "☰ Menu";
+    } else {
 
-  } else {
-
-    document.querySelector(".sidebar").classList.add("collapsed");
+      document.querySelector(".sidebar")
+        .classList.add("collapsed");
+    }
   }
-});
+);
