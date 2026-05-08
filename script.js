@@ -4,33 +4,46 @@ const sendBtn = document.getElementById("sendBtn");
 
 // Mobile sidebar toggle
 function toggleSidebar() {
-  const sidebar = document.querySelector('.sidebar');
-  const isCollapsed = sidebar.classList.toggle('collapsed');
-  const toggleBtn = document.querySelector('.mobile-toggle');
-  toggleBtn.textContent = isCollapsed ? '☰ Menu' : '✕ Close';
+  const sidebar = document.querySelector(".sidebar");
+  const isCollapsed = sidebar.classList.toggle("collapsed");
+
+  const toggleBtn = document.querySelector(".mobile-toggle");
+
+  toggleBtn.textContent = isCollapsed
+    ? "☰ Menu"
+    : "✕ Close";
 }
 
-// Auto-collapse sidebar on mobile when preset is clicked
+// Set preset question
 function setPresetQuestion(btn) {
-  const text = btn.textContent.trim(); // ← FIXED: was stripping first word
+  const text = btn.innerText.trim();
+
   userInput.value = text;
-  userInput.scrollLeft = 0; // ← FIXED: resets scroll so start of text is visible
+
   userInput.focus();
-  
-  // Auto-collapse sidebar on mobile after selection
+
+  // Force scroll reset AFTER render
+  requestAnimationFrame(() => {
+    userInput.scrollLeft = 0;
+    userInput.setSelectionRange(0, 0);
+  });
+
+  // Auto-collapse sidebar on mobile
   if (window.innerWidth <= 900) {
-    const sidebar = document.querySelector('.sidebar');
-    sidebar.classList.add('collapsed');
-    document.querySelector('.mobile-toggle').textContent = '☰ Menu';
+    const sidebar = document.querySelector(".sidebar");
+
+    sidebar.classList.add("collapsed");
+
+    document.querySelector(".mobile-toggle").textContent = "☰ Menu";
   }
 }
 
-// Clear chat handler
+// Clear chat
 function clearChat() {
-  chatContainer.innerHTML = '';
+  chatContainer.innerHTML = "";
 }
 
-// Contact form functions
+// Contact modal functions
 function showContactForm() {
   document.getElementById("contactModal").style.display = "block";
   document.body.style.overflow = "hidden";
@@ -39,134 +52,155 @@ function showContactForm() {
 function closeContactForm() {
   document.getElementById("contactModal").style.display = "none";
   document.body.style.overflow = "auto";
+
   document.getElementById("contactForm").reset();
   document.getElementById("contactSuccess").style.display = "none";
 }
 
 // Close modal when clicking outside
-window.onclick = function(event) {
+window.onclick = function (event) {
   const modal = document.getElementById("contactModal");
+
   if (event.target === modal) {
     closeContactForm();
   }
-}
+};
 
-// Display message with avatar for bot messages
+// Display message
 function displayMessage(text, sender) {
+
   if (sender === "bot") {
-    // Strip citation markers like 【4:0†source】
-    text = text.replace(/【[^】]+】/g, '');
-    
-    // Format the text with basic markdown-style parsing
+
+    text = text.replace(/【[^】]+】/g, "");
+
     text = formatBotMessage(text);
-    
-    // Create wrapper for bot message with avatar
+
     const wrapper = document.createElement("div");
     wrapper.classList.add("message-wrapper", "bot");
-    
-    // Create avatar
+
     const avatar = document.createElement("img");
     avatar.src = "headshot.png";
     avatar.alt = "James";
     avatar.classList.add("bot-avatar");
-    
-    // Create bubble
+
     const bubble = document.createElement("div");
     bubble.classList.add("bubble", "bot");
     bubble.innerHTML = text;
-    
+
     wrapper.appendChild(avatar);
     wrapper.appendChild(bubble);
+
     chatContainer.appendChild(wrapper);
+
   } else {
-    // User messages don't need avatar
+
     const wrapper = document.createElement("div");
     wrapper.classList.add("message-wrapper", "user");
-    
+
     const bubble = document.createElement("div");
     bubble.classList.add("bubble", "user");
     bubble.textContent = text;
-    
+
     wrapper.appendChild(bubble);
+
     chatContainer.appendChild(wrapper);
   }
-  
+
   chatContainer.scrollTop = chatContainer.scrollHeight;
 }
 
-// Format bot messages with better typography
+// Format bot messages
 function formatBotMessage(text) {
-  // Convert **bold** to <strong>
-  text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-  
-  // Convert *italic* to <em>
-  text = text.replace(/\*(.+?)\*/g, '<em>$1</em>');
-  
-  // Convert line breaks to paragraphs
-  const paragraphs = text.split('\n\n').filter(p => p.trim());
-  
-  // Wrap each paragraph in <p> tags
-  const formatted = paragraphs.map(p => {
-    p = p.trim();
-    
-    // Check if it's a list (starts with - or *)
-    if (p.match(/^[-*]\s/m)) {
-      const items = p.split('\n')
-        .filter(line => line.trim())
-        .map(line => line.replace(/^[-*]\s/, '').trim())
-        .map(line => `<li>${line}</li>`)
-        .join('');
-      return `<ul>${items}</ul>`;
-    }
-    
-    // Regular paragraph
-    return `<p>${p}</p>`;
-  }).join('');
-  
-  return formatted;
+
+  text = text.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+
+  text = text.replace(/\*(.+?)\*/g, "<em>$1</em>");
+
+  const paragraphs = text
+    .split("\n\n")
+    .filter((p) => p.trim());
+
+  return paragraphs
+    .map((p) => {
+
+      p = p.trim();
+
+      if (p.match(/^[-*]\s/m)) {
+
+        const items = p
+          .split("\n")
+          .filter((line) => line.trim())
+          .map((line) => line.replace(/^[-*]\s/, "").trim())
+          .map((line) => `<li>${line}</li>`)
+          .join("");
+
+        return `<ul>${items}</ul>`;
+      }
+
+      return `<p>${p}</p>`;
+    })
+    .join("");
 }
 
-// Add typing indicator with avatar
+// Typing indicator
 function showTyping() {
+
   const wrapper = document.createElement("div");
+
   wrapper.classList.add("typing-wrapper");
+
   wrapper.id = "typingIndicator";
-  
+
   const avatar = document.createElement("img");
+
   avatar.src = "headshot.png";
   avatar.alt = "James";
   avatar.classList.add("bot-avatar");
-  
+
   const typing = document.createElement("div");
+
   typing.classList.add("typing");
-  typing.innerHTML = 'James is thinking<span class="typing-dots"><span></span><span></span><span></span></span>';
-  
+
+  typing.innerHTML =
+    'James is thinking<span class="typing-dots"><span></span><span></span><span></span></span>';
+
   wrapper.appendChild(avatar);
   wrapper.appendChild(typing);
+
   chatContainer.appendChild(wrapper);
+
   chatContainer.scrollTop = chatContainer.scrollHeight;
 }
 
-// Remove typing indicator
+// Remove typing
 function removeTyping() {
   const typing = document.getElementById("typingIndicator");
-  if (typing) typing.remove();
+
+  if (typing) {
+    typing.remove();
+  }
 }
 
-// Send message logic
+// Send message
 async function sendMessage() {
+
   const message = userInput.value.trim();
+
   if (!message) return;
 
   displayMessage(message, "user");
+
   userInput.value = "";
 
   showTyping();
 
   try {
+
     const response = await fetch("/.netlify/functions/chat", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({ message })
     });
 
@@ -182,64 +216,90 @@ async function sendMessage() {
     displayMessage(data.reply, "bot");
 
   } catch (err) {
+
     removeTyping();
+
     displayMessage("❌ Network Error: " + err.message, "bot");
   }
 }
 
-// Send button
+// Event listeners
 sendBtn.addEventListener("click", sendMessage);
 
-// Enter key
 userInput.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") sendMessage();
-});
-
-// Handle contact form submission
-document.getElementById("contactForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  
-  const form = e.target;
-  const formData = new FormData(form);
-  
-  try {
-    const response = await fetch(form.action, {
-      method: "POST",
-      body: formData,
-      headers: {
-        'Accept': 'application/json'
-      }
-    });
-    
-    if (response.ok) {
-      form.style.display = "none";
-      document.getElementById("contactSuccess").style.display = "block";
-      
-      // Close modal after 3 seconds
-      setTimeout(() => {
-        closeContactForm();
-        form.style.display = "block";
-        form.reset();
-      }, 3000);
-    } else {
-      alert("There was an error sending your message. Please try emailing jdevin.rodgers@gmail.com directly.");
-    }
-  } catch (error) {
-    alert("There was an error sending your message. Please try emailing jdevin.rodgers@gmail.com directly.");
+  if (e.key === "Enter") {
+    sendMessage();
   }
 });
 
-// Initialize: Check if desktop, expand sidebar
+// Contact form submit
+document
+  .getElementById("contactForm")
+  .addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const form = e.target;
+
+    const formData = new FormData(form);
+
+    try {
+
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json"
+        }
+      });
+
+      if (response.ok) {
+
+        form.style.display = "none";
+
+        document.getElementById("contactSuccess").style.display = "block";
+
+        setTimeout(() => {
+
+          closeContactForm();
+
+          form.style.display = "block";
+
+          form.reset();
+
+        }, 3000);
+
+      } else {
+
+        alert(
+          "There was an error sending your message. Please try emailing jdevin.rodgers@gmail.com directly."
+        );
+      }
+
+    } catch (error) {
+
+      alert(
+        "There was an error sending your message. Please try emailing jdevin.rodgers@gmail.com directly."
+      );
+    }
+  });
+
+// Desktop behavior
 if (window.innerWidth > 900) {
-  document.querySelector('.sidebar').classList.remove('collapsed');
+  document.querySelector(".sidebar").classList.remove("collapsed");
 }
 
-// Handle window resize
-window.addEventListener('resize', () => {
+// Resize behavior
+window.addEventListener("resize", () => {
+
   if (window.innerWidth > 900) {
-    document.querySelector('.sidebar').classList.remove('collapsed');
-    document.querySelector('.mobile-toggle').textContent = '☰ Menu';
+
+    document.querySelector(".sidebar").classList.remove("collapsed");
+
+    document.querySelector(".mobile-toggle").textContent = "☰ Menu";
+
   } else {
-    document.querySelector('.sidebar').classList.add('collapsed');
+
+    document.querySelector(".sidebar").classList.add("collapsed");
   }
 });
