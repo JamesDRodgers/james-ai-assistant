@@ -12,8 +12,9 @@ function toggleSidebar() {
 
 // Auto-collapse sidebar on mobile when preset is clicked
 function setPresetQuestion(btn) {
-  const text = btn.textContent.replace(/^[^\s]+\s/, ''); // Remove emoji
+  const text = btn.textContent.trim(); // ← FIXED: was stripping first word
   userInput.value = text;
+  userInput.scrollLeft = 0; // ← FIXED: resets scroll so start of text is visible
   userInput.focus();
   
   // Auto-collapse sidebar on mobile after selection
@@ -22,9 +23,6 @@ function setPresetQuestion(btn) {
     sidebar.classList.add('collapsed');
     document.querySelector('.mobile-toggle').textContent = '☰ Menu';
   }
-  
-  // Optional: Auto-send the message
-  // sendMessage();
 }
 
 // Clear chat handler
@@ -75,7 +73,7 @@ function displayMessage(text, sender) {
     // Create bubble
     const bubble = document.createElement("div");
     bubble.classList.add("bubble", "bot");
-    bubble.innerHTML = text; // Use innerHTML to support HTML formatting
+    bubble.innerHTML = text;
     
     wrapper.appendChild(avatar);
     wrapper.appendChild(bubble);
