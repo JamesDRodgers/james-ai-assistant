@@ -62,111 +62,6 @@
       display: block;
       font-weight: 600;
     }
-
-  /* ── MOBILE ENHANCEMENTS ── */
-  @media (max-width: 768px) {
-
-    /* Hide portfolio section when sidebar is collapsed */
-    .sidebar.collapsed .portfolio-section {
-      display: none;
-    }
-
-    /* Sidebar padding tighter on mobile */
-    .sidebar {
-      padding: 20px 16px;
-    }
-
-    /* Avatar slightly smaller */
-    .avatar {
-      width: 80px;
-      height: 80px;
-    }
-
-    /* Profile heading sizes */
-    .profile h1 {
-      font-size: 1.2rem;
-    }
-
-    .tagline {
-      font-size: 0.85rem;
-      margin-bottom: 16px;
-    }
-
-    /* Chat area fills screen better */
-    .main-chat-area {
-      padding: 12px;
-      gap: 10px;
-      min-height: 70vh;
-    }
-
-    /* Chat window scrollable with max height */
-    .chat-window {
-      padding: 16px;
-      max-height: 55vh;
-      overflow-y: auto;
-    }
-
-    /* Input area sticky at bottom */
-    .chat-input-area {
-      position: sticky;
-      bottom: 0;
-      z-index: 10;
-      padding: 12px;
-      gap: 8px;
-      border-radius: 12px;
-      box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
-    }
-
-    /* Input font size 16px prevents iOS zoom on focus */
-    #userInput {
-      font-size: 16px;
-      padding: 12px 14px;
-    }
-
-    /* Send button shorter label on mobile */
-    #sendBtn {
-      padding: 12px 16px;
-      font-size: 14px;
-    }
-
-    /* Chat bubbles full width on small screens */
-    .bubble {
-      max-width: 95%;
-      font-size: 14px;
-    }
-
-    /* Portfolio cards full width, easier tap targets */
-    .portfolio-item {
-      padding: 12px 14px;
-    }
-
-    .portfolio-item-title {
-      font-size: 0.85rem;
-    }
-
-    .portfolio-item-desc {
-      font-size: 0.75rem;
-    }
-
-    /* Modal full screen on mobile */
-    .modal-content {
-      width: 95%;
-      margin: 10px auto;
-      padding: 20px;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-
-    /* Chat header */
-    .chat-title {
-      font-size: 16px;
-    }
-
-    .util-btn {
-      padding: 10px 14px;
-      font-size: 13px;
-    }
-  }
   </style>
 </head>
 
@@ -228,13 +123,13 @@
 
         <div class="preset-questions">
 
-          <button class="preset-btn" onclick="setPresetQuestion(this)">What makes James different from other instructional designers who say they know AI?</button>
+          <button class="preset-btn" onclick="setPresetQuestion(this)">How does James combine instructional design with AI experience?</button>
 
-          <button class="preset-btn" onclick="setPresetQuestion(this)">Walk me through how James would approach building a learning system from scratch.</button>
+          <button class="preset-btn" onclick="setPresetQuestion(this)">What does James's process look like when designing a learning experience?</button>
 
-          <button class="preset-btn" onclick="setPresetQuestion(this)">What kinds of problems is James best at solving — and what does he actually do differently?</button>
+          <button class="preset-btn" onclick="setPresetQuestion(this)">What kinds of organizations or roles would be a good fit for James?</button>
 
-          <button class="preset-btn" onclick="setPresetQuestion(this)">James has an unconventional path. How does that shape the way he approaches learning design?</button>
+          <button class="preset-btn" onclick="setPresetQuestion(this)">James has worked in diverse fields. How does that shape his approach to learning design?</button>
 
         </div>
 
