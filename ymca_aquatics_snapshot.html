@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YMCA Aquatics — Learning Design Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #f9f8f5;
+  color: #1a1a1a;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+a { color: #1a4b8c; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── LAYOUT ── */
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ── NAV ── */
+nav {
+  border-bottom: 1px solid #e0ddd6;
+  padding: 20px 0;
+  background: #f9f8f5;
+}
+
+.nav-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-name {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #1a1a1a;
+}
+
+.nav-link {
+  font-size: 13px;
+  color: #666;
+}
+
+.nav-link:hover { color: #1a1a1a; text-decoration: none; }
+
+/* ── HEADER ── */
+header {
+  padding: 72px 0 56px;
+  border-bottom: 1px solid #e0ddd6;
+}
+
+.breadcrumb {
+  font-size: 12px;
+  color: #999;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+header h1 {
+  font-family: 'Lora', serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+
+.header-sub {
+  font-size: 17px;
+  color: #555;
+  line-height: 1.7;
+  max-width: 600px;
+  margin-bottom: 32px;
+}
+
+/* TAG PILLS */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 5px 13px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  background: #eceae3;
+  color: #444;
+  border: 1px solid #ddd9d0;
+}
+
+.tag-blue { background: #e8f0fb; color: #1a4b8c; border-color: #c5d8f5; }
+.tag-red  { background: #fdecea; color: #a32d2d; border-color: #f5c5c0; }
+.tag-green{ background: #eaf4ec; color: #1f6b2e; border-color: #b8dfc0; }
+
+/* ── META ROW ── */
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  padding: 32px 0;
+  border-bottom: 1px solid #e0ddd6;
+}
+
+.meta-item {}
+.meta-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 4px;
+}
+.meta-value {
+  font-size: 14px;
+  color: #1a1a1a;
+  font-weight: 500;
+}
+
+/* ── SECTIONS ── */
+section {
+  padding: 56px 0;
+  border-bottom: 1px solid #e0ddd6;
+}
+
+section:last-of-type { border-bottom: none; }
+
+h2 {
+  font-family: 'Lora', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 16px;
+}
+
+p {
+  color: #333;
+  margin-bottom: 16px;
+}
+
+p:last-child { margin-bottom: 0; }
+
+/* ── SECTION LABEL ── */
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #1a4b8c;
+  margin-bottom: 12px;
+}
+
+/* ── ARTIFACT IMAGES ── */
+.artifact-image {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #e0ddd6;
+  display: block;
+  margin: 32px 0;
+}
+
+.artifact-caption {
+  font-size: 13px;
+  color: #888;
+  margin-top: -20px;
+  margin-bottom: 32px;
+  font-style: italic;
+}
+
+/* ── CALLOUT ── */
+.callout {
+  background: #fff;
+  border: 1px solid #e0ddd6;
+  border-left: 3px solid #1a4b8c;
+  border-radius: 4px;
+  padding: 20px 24px;
+  margin: 28px 0;
+}
+
+.callout p {
+  font-size: 15px;
+  color: #333;
+  margin: 0;
+  line-height: 1.7;
+}
+
+.callout-red {
+  border-left-color: #c0392b;
+}
+
+/* ── SKILLS GRID ── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.skill-card {
+  background: #fff;
+  border: 1px solid #e0ddd6;
+  border-radius: 6px;
+  padding: 20px;
+}
+
+.skill-card-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1a4b8c;
+  margin-bottom: 10px;
+}
+
+.skill-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.skill-card li {
+  font-size: 14px;
+  color: #444;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.5;
+}
+
+.skill-card li::before {
+  content: '·';
+  color: #aaa;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── IMPACT ROW ── */
+.impact-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.impact-card {
+  background: #fff;
+  border: 1px solid #e0ddd6;
+  border-radius: 6px;
+  padding: 20px;
+  text-align: center;
+}
+
+.impact-num {
+  font-family: 'Lora', serif;
+  font-size: 1.75rem;
+  color: #1a4b8c;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.impact-desc {
+  font-size: 12px;
+  color: #888;
+  line-height: 1.5;
+}
+
+/* ── SCAN SLIDE MOCKUP ── */
+.slide-mockup {
+  background: #fff;
+  border: 1px solid #e0ddd6;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 32px 0;
+}
+
+.slide-header {
+  background: #1a4b8c;
+  color: #fff;
+  padding: 16px 22px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slide-header-right {
+  font-size: 11px;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.slide-body {
+  padding: 20px 22px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.slide-topic {
+  background: #f4f2ee;
+  border-radius: 4px;
+  padding: 14px 16px;
+}
+
+.slide-topic-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1a4b8c;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.slide-topic-desc {
+  font-size: 12px;
+  color: #555;
+  line-height: 1.55;
+}
+
+/* ── LANE DIAGRAM ── */
+.lane-diagram {
+  background: #fff;
+  border: 1px solid #e0ddd6;
+  border-radius: 6px;
+  padding: 24px;
+  margin: 32px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.lane-type {}
+.lane-type-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.lane-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.lane-type-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.lane-visual {
+  background: #dbeeff;
+  border-radius: 4px;
+  height: 60px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+  border: 1px solid #c5d8f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lane-visual svg { width: 100%; height: 100%; }
+.lane-detail {
+  font-size: 12px;
+  color: #555;
+  line-height: 1.55;
+}
+
+/* ── PERFORMANCE TABLE ── */
+.perf-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin: 24px 0;
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #e0ddd6;
+}
+
+.perf-table th {
+  background: #f4f2ee;
+  padding: 10px 16px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #666;
+  border-bottom: 1px solid #e0ddd6;
+}
+
+.perf-table td {
+  padding: 10px 16px;
+  border-bottom: 1px solid #f0ede6;
+  color: #333;
+}
+
+.perf-table tr:last-child td { border-bottom: none; }
+
+.improvement { color: #1f6b2e; font-weight: 600; }
+.concern { color: #a32d2d; font-weight: 600; }
+.stable { color: #665000; font-weight: 600; }
+
+/* ── FOOTER ── */
+footer {
+  padding: 48px 0;
+  border-top: 1px solid #e0ddd6;
+  margin-top: 0;
+}
+
+.footer-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-name {
+  font-family: 'Lora', serif;
+  font-size: 1rem;
+  color: #1a1a1a;
+}
+
+.footer-link {
+  font-size: 13px;
+  color: #888;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .skills-grid { grid-template-columns: 1fr; }
+  .impact-row { grid-template-columns: 1fr; }
+  .slide-body { grid-template-columns: 1fr; }
+  .lane-diagram { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-name">James D. Rodgers</span>
+    <a class="nav-link" href="https://www.jamesdrodgers.ai">← Back to portfolio</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <header>
+    <div class="breadcrumb">Instructional Design Portfolio · Case Study</div>
+    <h1>YMCA Aquatics Safety<br>Learning Design</h1>
+    <p class="header-sub">
+      Multimedia safety training, staff continuing education, and data-informed coaching materials developed for lifeguard staff and competitive swimmers at YMCA San Francisco.
+    </p>
+    <div class="tags">
+      <span class="tag tag-blue">Multimedia Content Creation</span>
+      <span class="tag tag-blue">Visual Communication Design</span>
+      <span class="tag tag-blue">Staff Training</span>
+      <span class="tag tag-blue">Data-Informed Coaching</span>
+      <span class="tag">Slide Design</span>
+      <span class="tag">Infographic Design</span>
+      <span class="tag">Performance Analytics</span>
+    </div>
+  </header>
+
+  <div class="meta-row">
+    <div class="meta-item">
+      <div class="meta-label">Organization</div>
+      <div class="meta-value">YMCA San Francisco</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Role</div>
+      <div class="meta-value">Aquatics Safety & Training</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Audience</div>
+      <div class="meta-value">Aquatics Staff · Competitive Swimmers</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Period</div>
+      <div class="meta-value">April 2025 – Present</div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <section>
+    <div class="section-eyebrow">Project Overview</div>
+    <h2>Designing for safety</h2>
+    <p>
+      At YMCA San Francisco, I design and deliver aquatics safety training that moves beyond compliance formats — building content that is visually clear, scenario-grounded, and worth paying attention to. The work spans slide-based staff in-service training, public-facing safety infographics, and a longitudinal performance analytics system for competitive swimmers. Each artifact reflects a different set of multimedia and design skills, built on one foundation: if learners don't engage with it, it doesn't save lives.
+    </p>
+
+    <div class="impact-row" style="grid-template-columns: repeat(2,1fr);">
+      <div class="impact-card">
+        <div class="impact-num">130+</div>
+        <div class="impact-desc">Swimmers tracked in performance system</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-num">15</div>
+        <div class="impact-desc">Lifeguard staff trained monthly</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTIFACT 1: SCANNING -->
+  <section>
+    <div class="section-eyebrow">Artifact 01 · Staff In-Service Slides</div>
+    <h2>Weekly Skills: Scanning &amp; Surveillance</h2>
+    <p>
+      A modular slide series translating American Red Cross surveillance guidelines into engaging, discussion-ready in-service sessions. Each deck is structured around a clear instructional thread: what to look for, how to look for it, what gets in the way, and how to stay ready to act.
+    </p>
+
+    <img src="https://raw.githubusercontent.com/JamesDRodgers/james-ai-assistant/main/ScanningDeck.png" alt="Weekly Skills: Scanning slide deck screenshot" class="artifact-image"/>
+
+    <a href="https://drive.google.com/file/d/1jH1nw7RBDVCO56oad10MA4gCVg7spD6k/view?usp=drive_link" target="_blank" style="display:inline-flex;align-items:center;gap:8px;margin:0 0 28px;padding:10px 20px;background:#fff;border:1px solid #e0ddd6;border-radius:4px;font-size:13px;font-weight:500;color:#1a4b8c;text-decoration:none;">View Document ↗</a>
+
+    <h3>Skills demonstrated</h3>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-label">Content Design</div>
+        <ul>
+          <li>Standards translation (American Red Cross guidelines → learner-facing content)</li>
+          <li>Scenario-based framing and reflective prompts</li>
+          <li>Backward design from competency outcomes</li>
+          <li>Modular structure for recurring in-service use</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-label">Visual & Multimedia</div>
+        <ul>
+          <li>Slide layout and typography for staff training context</li>
+          <li>Photography selection and editorial cropping</li>
+          <li>Visual hierarchy to guide attention and discussion</li>
+          <li>Consistent design system across a multi-part series</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTIFACT 2: LANE MANAGEMENT -->
+  <section>
+    <div class="section-eyebrow">Artifact 02 · Skill of the Week</div>
+    <h2>Lane Management Techniques</h2>
+    <p>
+      A one-page training reference covering the five key lane management skills every lifeguard needs — framed not as rules, but as a prevention and communication system. Opens with a live scenario that puts staff immediately into a decision-making posture.
+    </p>
+
+    <img src="https://raw.githubusercontent.com/JamesDRodgers/james-ai-assistant/main/LaneMgmt.png" alt="Lane Management Techniques document screenshot" class="artifact-image"/>
+
+    <a href="https://drive.google.com/file/d/1E7li_sSWRwh_dIhf4AIGMAU1tWPP2E-j/view?usp=drive_link" target="_blank" style="display:inline-flex;align-items:center;gap:8px;margin:0 0 28px;padding:10px 20px;background:#fff;border:1px solid #e0ddd6;border-radius:4px;font-size:13px;font-weight:500;color:#1a4b8c;text-decoration:none;">View Document ↗</a>
+
+    <h3>Skills demonstrated</h3>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-label">Instructional Writing</div>
+        <ul>
+          <li>Scenario-first hook designed to activate prior experience</li>
+          <li>Ready-to-use scripts for patron interaction</li>
+          <li>Conflict de-escalation framing with empathy + authority structure</li>
+          <li>American Red Cross citation and sourcing throughout</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-label">Document & Visual Design</div>
+        <ul>
+          <li>Single-page reference format for poolside use</li>
+          <li>Diagram design: split vs. circle lane illustrations</li>
+          <li>Typography and layout hierarchy for quick scan readability</li>
+          <li>Color coding to differentiate lane types at a glance</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTIFACT 3: HYPOXIC BLACKOUT -->
+  <section>
+    <div class="section-eyebrow">Artifact 03 · Safety Infographic</div>
+    <h2>Hypoxic Blackout — Public Safety Communication</h2>
+    <p>
+      A public-facing safety infographic explaining the physiological sequence that leads to hypoxic blackout — a drowning mechanism that is invisible, silent, and widely misunderstood. Designed for display in pool areas and digital safety channels, accessible to patrons and staff alike.
+    </p>
+    <p>
+      The design challenge: translate dense physiology into a four-stage visual sequence that communicates clearly to someone who has never heard the term "hypoxic blackout" — and does so in seconds.
+    </p>
+
+    <img src="https://raw.githubusercontent.com/JamesDRodgers/james-ai-assistant/main/hypoxic.png" alt="Hypoxic Blackout Safety Infographic showing the four stages: hyperventilation, oxygen depletion, blackout, and drowning" class="artifact-image"/>
+    <p class="artifact-caption">Hypoxic Blackout infographic · Designed for YMCA Presidio pool display and digital distribution</p>
+
+    <div class="callout callout-red">
+      <p><strong>Key design decision:</strong> The headline leads with urgency — "It happens fast. There are no warning signs." — before the physiology begins. This respects the reader's cognitive load by anchoring the stakes before introducing mechanism.</p>
+    </div>
+
+    <h3>Skills demonstrated</h3>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-label">Visual Communication</div>
+        <ul>
+          <li>Sequential diagram design with escalating visual urgency</li>
+          <li>Icon and symbol selection for physiological concepts</li>
+          <li>Color progression (blue → red → dark) encoding severity</li>
+          <li>Layout hierarchy: headline → subtitle → process → detail</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-label">Content Strategy</div>
+        <ul>
+          <li>Plain-language translation of cardiorespiratory physiology</li>
+          <li>Zero-jargon writing for mixed public audience</li>
+          <li>Cognitive load management through visual chunking</li>
+          <li>Dual-channel design: icons + text reinforce each other</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTIFACT 4: PERFORMANCE ANALYTICS -->
+  <section>
+    <div class="section-eyebrow">Artifact 04 · Coaching Analytics</div>
+    <h2>Swimmer Performance Analytics &amp; Development Report</h2>
+    <p>
+      A longitudinal performance tracking and reporting system built for the competitive swim program — generating individualized coaching reports that integrate multi-meet data with stroke-by-stroke diagnostic analysis and targeted development plans.
+    </p>
+
+    <img src="https://raw.githubusercontent.com/JamesDRodgers/james-ai-assistant/main/Smith_Stroke_Trends_2026_%20(2).png" alt="Multi-Stroke Performance Overview chart showing season-long trends across Freestyle, Backstroke, Breaststroke, and Butterfly" class="artifact-image"/>
+    <p class="artifact-caption">Multi-Stroke Performance Overview · Season 2025–26 · Age 14 · BB–A performance range</p>
+
+    <h3>Skills demonstrated</h3>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-label">Data & Analytics</div>
+        <ul>
+          <li>Longitudinal performance tracking across 130+ swimmers</li>
+          <li>Benchmarking against group averages and national standards</li>
+          <li>Pattern recognition: technical vs. conditioning gaps</li>
+          <li>Data visualization for coaching and parent communication</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-label">Report & Document Design</div>
+        <ul>
+          <li>Individualized report structure from data to prescription</li>
+          <li>Typography and layout for print and digital use</li>
+          <li>Translating quantitative analysis into actionable coaching language</li>
+          <li>Drill and dryland recommendations mapped to specific data signals</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESIGN APPROACH -->
+  <section>
+    <div class="section-eyebrow">Across All Artifacts</div>
+    <h2>What ties this work together</h2>
+    <p>
+      Each artifact is multimedia content in a different format — slides, infographic, data report — but they share a common design logic: start with the learner's actual situation. A lifeguard at a busy pool. A patron reading a safety poster. A coach preparing for practice. The skills that show up across all four pieces — visual hierarchy, plain-language writing, cognitive load management, scenario grounding, data translation — are the same skills I bring to every learning design context.
+    </p>
+
+    <div class="skills-grid" style="margin-top:24px;">
+      <div class="skill-card">
+        <div class="skill-card-label">Multimedia Production</div>
+        <ul>
+          <li>Slide deck design (Google Slides / PowerPoint)</li>
+          <li>Infographic design and layout</li>
+          <li>Data visualization and performance reporting</li>
+          <li>Photography selection and editorial composition</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-label">Instructional Design</div>
+        <ul>
+          <li>Backward design from safety competency outcomes</li>
+          <li>Scenario-based and reflective learning design</li>
+          <li>Cognitive load management and chunking</li>
+          <li>American Red Cross standards alignment and citation</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-label">Visual Communication</div>
+        <ul>
+          <li>Typography and layout hierarchy</li>
+          <li>Color systems encoding meaning and urgency</li>
+          <li>Icon and diagram design for non-technical audiences</li>
+          <li>Dual-channel design (visual + text reinforcement)</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-label">Content Strategy</div>
+        <ul>
+          <li>Audience analysis and plain-language writing</li>
+          <li>Format selection (slide vs. reference sheet vs. infographic)</li>
+          <li>Data-to-narrative translation for coaches and staff</li>
+          <li>Modular design for repeated and updated use</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /container -->
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-name">James D. Rodgers · AI Learning Experience Designer</span>
+    <a class="footer-link" href="https://www.jamesdrodgers.ai">www.jamesdrodgers.ai</a>
+  </div>
+</footer>
+
+</body>
+</html>
