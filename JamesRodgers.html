@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — James D. Rodgers</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #f9f8f5;
+  color: #1a1a1a;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+a { color: #1a4b8c; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ── NAV ── */
+nav {
+  border-bottom: 1px solid #e0ddd6;
+  padding: 20px 0;
+  background: #f9f8f5;
+}
+
+.nav-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-name {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #1a1a1a;
+}
+
+.nav-link {
+  font-size: 13px;
+  color: #666;
+}
+
+.nav-link:hover { color: #1a1a1a; text-decoration: none; }
+
+/* ── HEADER ── */
+header {
+  padding: 72px 0 56px;
+  border-bottom: 1px solid #e0ddd6;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #1a4b8c;
+  margin-bottom: 16px;
+}
+
+header h1 {
+  font-family: 'Lora', serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 20px;
+}
+
+.header-sub {
+  font-size: 17px;
+  color: #555;
+  line-height: 1.75;
+  max-width: 600px;
+}
+
+/* ── SECTIONS ── */
+section {
+  padding: 52px 0;
+  border-bottom: 1px solid #e0ddd6;
+}
+
+section:last-of-type { border-bottom: none; }
+
+h2 {
+  font-family: 'Lora', serif;
+  font-size: 1.45rem;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 20px;
+}
+
+p {
+  color: #333;
+  margin-bottom: 18px;
+  line-height: 1.8;
+}
+
+p:last-child { margin-bottom: 0; }
+
+/* ── PULL QUOTE ── */
+blockquote {
+  border-left: 3px solid #1a4b8c;
+  padding: 4px 0 4px 24px;
+  margin: 32px 0;
+}
+
+blockquote p {
+  font-family: 'Lora', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: #444;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ── THREAD LIST ── */
+.thread-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 8px;
+}
+
+.thread {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.thread-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1a4b8c;
+  padding-top: 3px;
+}
+
+.thread-text {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.75;
+}
+
+/* ── CREDENTIAL GRID ── */
+.cred-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.cred-card {
+  background: #fff;
+  border: 1px solid #e0ddd6;
+  border-radius: 5px;
+  padding: 18px 20px;
+}
+
+.cred-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.cred-sub {
+  font-size: 12px;
+  color: #888;
+  line-height: 1.5;
+}
+
+/* ── CONTACT ROW ── */
+.contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 8px;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.contact-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #999;
+}
+
+.contact-value {
+  font-size: 14px;
+  color: #1a4b8c;
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 48px 0;
+  border-top: 1px solid #e0ddd6;
+}
+
+.footer-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-name {
+  font-family: 'Lora', serif;
+  font-size: 1rem;
+  color: #1a1a1a;
+}
+
+.footer-link {
+  font-size: 13px;
+  color: #888;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 580px) {
+  .thread { grid-template-columns: 1fr; gap: 4px; }
+  .cred-grid { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-name">James D. Rodgers</span>
+    <a class="nav-link" href="https://www.jamesdrodgers.ai">← Back to portfolio</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <header>
+    <img src="https://raw.githubusercontent.com/JamesDRodgers/james-ai-assistant/main/headshot.png" alt="James D. Rodgers" style="width:96px;height:96px;border-radius:50%;object-fit:cover;border:1px solid #e0ddd6;margin-bottom:28px;display:block;">
+    <div class="eyebrow">About</div>
+    <h1>I don't have a<br>simple job title.</h1>
+    <p class="header-sub">
+      I'm an ordained minister, educator, and generative AI specialist whose work has ranged from teaching third grade through Teach For America to contributing to the development of Grok at xAI.
+    </p>
+  </header>
+
+  <!-- WHO I AM -->
+  <section>
+    <p>
+      I've taught third grade in Jacksonville through Teach For America, rebuilt a band program in an underserved suburb of Cincinnati, led a church community through the pandemic, contributed to the development of Grok at xAI, and built AI-supported learning and coaching tools for competitive swimming.
+    </p>
+    <p>
+      The through-line in my career isn't the industry. It's the way I approach the relationship between learning, learners, and organizational culture.
+    </p>
+
+    <blockquote>
+      <p>I help organizations close the gap between vision and day-to-day practice.</p>
+    </blockquote>
+
+    <p>
+      For the past 15 years, I've designed learning systems that improve performance, strengthen communication, and help people apply what they've learned.
+    </p>
+  </section>
+
+  <!-- HOW I WORK -->
+  <section>
+    <h2>How I approach the work</h2>
+    <p>
+      I tend to start by understanding the environment around the work: the people involved, how communication happens, the constraints teams are working under, and the obstacles getting in the way. Learning design that ignores those conditions rarely lands the way it's intended.
+    </p>
+    <p>
+      I see artificial intelligence as a practical tool that can support human judgment, creativity, and decision-making — rather than replace it. That perspective shapes how I build AI-integrated learning experiences: not as automation, but as augmentation.
+    </p>
+  </section>
+
+  <!-- CREDENTIALS -->
+  <section>
+    <h2>Education &amp; credentials</h2>
+    <div class="cred-grid">
+      <div class="cred-card">
+        <div class="cred-title">Bachelor of Music Education</div>
+        <div class="cred-sub">Miami University · Minor in Special Education · Oxford, OH</div>
+      </div>
+      <div class="cred-card">
+        <div class="cred-title">Master of Divinity</div>
+        <div class="cred-sub">Church Divinity School of the Pacific · Graduate Theological Union · Berkeley, CA</div>
+      </div>
+      <div class="cred-card">
+        <div class="cred-title">Certificate in Generative AI Applications</div>
+        <div class="cred-sub">Purdue University · 2025</div>
+      </div>
+      <div class="cred-card">
+        <div class="cred-title">Data Analytics</div>
+        <div class="cred-sub">City College of San Francisco · Ongoing</div>
+      </div>
+      <div class="cred-card">
+        <div class="cred-title">Professional Scrum Master (PSM I)</div>
+        <div class="cred-sub">Scrum.org · In Progress</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section>
+    <h2>Get in touch</h2>
+    <p>I'm open to conversations about instructional design, AI integration strategy, learning systems architecture, and consulting engagements. The best way to reach me is by email.</p>
+    <div class="contact-row">
+      <div class="contact-item">
+        <span class="contact-label">Email</span>
+        <a class="contact-value" href="mailto:jdevin.rodgers@gmail.com">jdevin.rodgers@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">LinkedIn</span>
+        <a class="contact-value" href="https://linkedin.com/in/jdevinrodgers" target="_blank">linkedin.com/in/jdevinrodgers</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Portfolio</span>
+        <a class="contact-value" href="https://www.jamesdrodgers.ai" target="_blank">jamesdrodgers.ai</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section>
+    <p>If you'd like to learn more about my work, <a href="https://jamesdrodgers.ai/" target="_blank">Talk to my Portfolio</a> — an interactive portfolio and resume powered by AI.</p>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-name">James D. Rodgers</span>
+    <span class="footer-link">San Francisco, CA</span>
+  </div>
+</footer>
+
+</body>
+</html>
