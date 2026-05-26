@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intro to Python — Instructional Design Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B3A6B;
+    --navy-light: #2a4f8f;
+    --accent: #C9A84C;
+    --bg: #F8F7F4;
+    --white: #ffffff;
+    --text: #1a1a1a;
+    --muted: #666666;
+    --border: #e0ddd8;
+    --tag-bg: #EEF2F9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── PAGE WRAPPER ── */
+  .page {
+    max-width: 900px;
+    margin: 48px auto;
+    background: var(--white);
+    box-shadow: 0 4px 40px rgba(0,0,0,0.10);
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--navy);
+    padding: 48px 52px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.12);
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 200px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .header-eyebrow {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-subtitle {
+    font-size: 15px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 28px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .tag {
+    background: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.85);
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  /* ── CONTEXT STRIP ── */
+  .context-strip {
+    background: var(--accent);
+    padding: 14px 52px;
+    display: flex;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .context-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .context-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(26,26,26,0.6);
+  }
+
+  .context-value {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  /* ── BODY ── */
+  .body {
+    padding: 44px 52px;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--navy);
+    display: inline-block;
+  }
+
+  .section p {
+    color: var(--muted);
+    font-size: 14.5px;
+    line-height: 1.75;
+  }
+
+  /* ── TWO COL ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 40px;
+  }
+
+  /* ── OBJECTIVES ── */
+  .objectives-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 6px;
+  }
+
+  .objective {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 10px 14px;
+    background: var(--tag-bg);
+    border-left: 3px solid var(--navy);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .obj-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--navy);
+    font-weight: 700;
+    line-height: 1;
+    min-width: 20px;
+    padding-top: 1px;
+  }
+
+  .obj-text {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  /* ── DELIVERABLES ── */
+  .deliverables-list {
+    list-style: none;
+    margin-top: 6px;
+  }
+
+  .deliverables-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .deliverables-list li:last-child { border-bottom: none; }
+
+  .del-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  /* ── DESIGN HIGHLIGHTS ── */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 6px;
+  }
+
+  .highlight-card {
+    padding: 16px 18px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    position: relative;
+  }
+
+  .highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--navy);
+    border-radius: 6px 6px 0 0;
+  }
+
+  .highlight-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 5px;
+    letter-spacing: 0.3px;
+  }
+
+  .highlight-text {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  /* ── CAPSTONE CALLOUT ── */
+  .capstone {
+    background: var(--navy);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .capstone-icon {
+    font-size: 36px;
+    line-height: 1;
+  }
+
+  .capstone-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .capstone-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .capstone-desc {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 20px 52px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: var(--navy);
+    font-weight: 700;
+  }
+
+  .footer-link a {
+    font-size: 13px;
+    color: var(--navy);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 1px;
+  }
+
+  .footer-link a:hover { color: var(--accent); }
+
+  @media print {
+    body { background: white; }
+    .page { box-shadow: none; margin: 0; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-eyebrow">Instructional Design Portfolio · Case Study</div>
+    <h1>Intro to Python Programming</h1>
+    <div class="header-subtitle">Module 1 — Complete Course Design Package</div>
+    <div class="tag-row">
+      <span class="tag">Backward Design</span>
+      <span class="tag">Universal Design for Learning</span>
+      <span class="tag">DEIJ-Informed</span>
+      <span class="tag">AI-Adaptive Assessment</span>
+      <span class="tag">Canvas LMS</span>
+      <span class="tag">Jupyter Notebook</span>
+    </div>
+  </div>
+
+  <!-- CONTEXT STRIP -->
+  <div class="context-strip">
+    <div class="context-item">
+      <span class="context-label">Audience</span>
+      <span class="context-value">First-Year Undergraduates</span>
+    </div>
+    <div class="context-item">
+      <span class="context-label">Modality</span>
+      <span class="context-value">Fully Asynchronous</span>
+    </div>
+    <div class="context-item">
+      <span class="context-label">Platform</span>
+      <span class="context-value">Canvas LMS + Jupyter</span>
+    </div>
+    <div class="context-item">
+      <span class="context-label">Learning Objectives</span>
+      <span class="context-value">6 Measurable Outcomes</span>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- OVERVIEW -->
+    <div class="section">
+      <div class="section-label">Project Overview</div>
+      <p>A complete instructional design package for Module 1 of an undergraduate Python programming course, built for learners who may be new to Python, new to U.S. academic culture, or learning in multilingual contexts. The module applies backward design, UDL, and DEIJ-aware examples throughout — grounded in learner personas drawn from Bay Area tech workforce demographics and institutional data.</p>
+    </div>
+
+    <!-- OBJECTIVES -->
+    <div class="section">
+      <div class="section-label">Learning Objectives</div>
+      <div class="objectives-grid">
+        <div class="objective">
+          <span class="obj-num">1</span>
+          <span class="obj-text">Define a variable and describe its purpose in a Python program</span>
+        </div>
+        <div class="objective">
+          <span class="obj-num">2</span>
+          <span class="obj-text">Identify and differentiate Python's basic data types: str, int, float, bool</span>
+        </div>
+        <div class="objective">
+          <span class="obj-num">3</span>
+          <span class="obj-text">Collect user input with input() and display output with print()</span>
+        </div>
+        <div class="objective">
+          <span class="obj-num">4</span>
+          <span class="obj-text">Convert values between types using int() and float()</span>
+        </div>
+        <div class="objective">
+          <span class="obj-num">5</span>
+          <span class="obj-text">Write a Python script using variables, type conversion, and I/O</span>
+        </div>
+        <div class="objective">
+          <span class="obj-num">6</span>
+          <span class="obj-text">Reflect on how data is processed by explaining their script in writing</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TWO COL: DELIVERABLES + DESIGN APPROACH -->
+    <div class="two-col">
+      <div class="section" style="margin-bottom:0">
+        <div class="section-label">Deliverables Included</div>
+        <ul class="deliverables-list">
+          <li><span class="del-dot"></span>9 Canvas course pages with UDL elements</li>
+          <li><span class="del-dot"></span>5 structured assignments (scaffolded)</li>
+          <li><span class="del-dot"></span>Jupyter Notebook guided practice (.ipynb)</li>
+          <li><span class="del-dot"></span>125-point rubric aligned to objectives</li>
+          <li><span class="del-dot"></span>3 learner personas + design rationale</li>
+          <li><span class="del-dot"></span>LX/UX evaluation artifact</li>
+          <li><span class="del-dot"></span>AI-adaptive assessment (LTI integration)</li>
+          <li><span class="del-dot"></span>Canvas Commons-ready package</li>
+        </ul>
+      </div>
+
+      <div class="section" style="margin-bottom:0">
+        <div class="section-label">Design Approach</div>
+        <div class="highlights-grid" style="grid-template-columns:1fr; gap:10px;">
+          <div class="highlight-card">
+            <div class="highlight-title">Backward Design</div>
+            <div class="highlight-text">All activities and assessments mapped directly to the six learning objectives before content was developed.</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-title">UDL & Accessibility</div>
+            <div class="highlight-text">Multiple means of representation and engagement — choice-based mini tasks, varied formats, culturally aware examples.</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-title">AI-Enhanced Assessment</div>
+            <div class="highlight-text">LTI-integrated adaptive engine provides personalized feedback aligned to learner performance data.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAPSTONE -->
+    <div class="capstone">
+      <div class="capstone-icon">⚡</div>
+      <div>
+        <div class="capstone-label">Capstone Assessment · 100 Points</div>
+        <div class="capstone-title">AI Model Training Energy Cost Calculator</div>
+        <div class="capstone-desc">An authentic, real-world coding project connecting Python fundamentals to AI systems — students build a working script calculating computational energy cost, demonstrating variable creation, data types, I/O, type conversion, and written reflection. Includes Python starter file, submission guidelines, and a 125-point rubric.</div>
+      </div>
+    </div>
+
+    <!-- DESIGN HIGHLIGHTS -->
+    <div class="section">
+      <div class="section-label">Design Highlights</div>
+      <div class="highlights-grid">
+        <div class="highlight-card">
+          <div class="highlight-title">Learner Personas</div>
+          <div class="highlight-text">Three personas representing linguistic, cultural, and technical diversity — drawn from Bay Area tech workforce demographics and institutional data — shaped pacing, examples, and support structures throughout.</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-title">DEIJ-Aware Content</div>
+          <div class="highlight-text">Scenarios, examples, and discussion prompts were designed to avoid culturally bound assumptions and remain accessible to multilingual and international learners.</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-title">Cognitive Load Management</div>
+          <div class="highlight-text">Scaffolded task sequence — from guided practice to debugging challenges to open-ended capstone — aligns cognitive demand with progressive skill development.</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-title">Seamless Tool Integration</div>
+          <div class="highlight-text">Jupyter Notebook mirrors Canvas page flow exactly, creating a coherent experience across environments without requiring learners to reorient between tools.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /body -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-name">James D. Rodgers · AI Learning Experience Designer</div>
+    <div class="footer-link"><a href="https://www.jamesdrodgers.ai" target="_blank">www.jamesdrodgers.ai</a></div>
+  </div>
+
+</div>
+</body>
+</html>
