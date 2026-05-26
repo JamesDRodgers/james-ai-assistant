@@ -545,7 +545,7 @@ footer {
       A modular slide series translating American Red Cross surveillance guidelines into engaging, discussion-ready in-service sessions. Each deck is structured around a clear instructional thread: what to look for, how to look for it, what gets in the way, and how to stay ready to act.
     </p>
 
-    <img src="scanning_screenshot.png" alt="Weekly Skills: Scanning slide deck screenshot" class="artifact-image"/>
+    <img src="https://raw.githubusercontent.com/JamesDRodgers/james-ai-assistant/main/ScanningDeck.png" alt="Weekly Skills: Scanning slide deck screenshot" class="artifact-image"/>
 
     <a href="https://drive.google.com/file/d/1jH1nw7RBDVCO56oad10MA4gCVg7spD6k/view?usp=drive_link" target="_blank" style="display:inline-flex;align-items:center;gap:8px;margin:0 0 28px;padding:10px 20px;background:#fff;border:1px solid #e0ddd6;border-radius:4px;font-size:13px;font-weight:500;color:#1a4b8c;text-decoration:none;">View Document ↗</a>
 
@@ -580,7 +580,9 @@ footer {
       A one-page training reference covering the five key lane management skills every lifeguard needs — framed not as rules, but as a prevention and communication system. Opens with a live scenario that puts staff immediately into a decision-making posture.
     </p>
 
-    <a href="https://drive.google.com/file/d/1E7li_sSWRwh_dIhf4AIGMAU1tWPP2E-j/view?usp=drive_link" target="_blank" style="display:inline-flex;align-items:center;gap:8px;margin:28px 0 0;padding:10px 20px;background:#fff;border:1px solid #e0ddd6;border-radius:4px;font-size:13px;font-weight:500;color:#1a4b8c;text-decoration:none;">View Document ↗</a>
+    <img src="https://raw.githubusercontent.com/JamesDRodgers/james-ai-assistant/main/LaneMgmt.png" alt="Lane Management Techniques document screenshot" class="artifact-image"/>
+
+    <a href="https://drive.google.com/file/d/1E7li_sSWRwh_dIhf4AIGMAU1tWPP2E-j/view?usp=drive_link" target="_blank" style="display:inline-flex;align-items:center;gap:8px;margin:0 0 28px;padding:10px 20px;background:#fff;border:1px solid #e0ddd6;border-radius:4px;font-size:13px;font-weight:500;color:#1a4b8c;text-decoration:none;">View Document ↗</a>
 
     <h3>Skills demonstrated</h3>
     <div class="skills-grid">
@@ -616,7 +618,7 @@ footer {
       The design challenge: translate dense physiology into a four-stage visual sequence that communicates clearly to someone who has never heard the term "hypoxic blackout" — and does so in seconds.
     </p>
 
-    <img src="Hypoxic_Blackout_Infographic.png" alt="Hypoxic Blackout Safety Infographic showing the four stages: hyperventilation, oxygen depletion, blackout, and drowning" class="artifact-image"/>
+    <img src="https://raw.githubusercontent.com/JamesDRodgers/james-ai-assistant/main/hypoxic.png" alt="Hypoxic Blackout Safety Infographic showing the four stages: hyperventilation, oxygen depletion, blackout, and drowning" class="artifact-image"/>
     <p class="artifact-caption">Hypoxic Blackout infographic · Designed for YMCA Presidio pool display and digital distribution</p>
 
     <div class="callout callout-red">
@@ -654,7 +656,7 @@ footer {
       A longitudinal performance tracking and reporting system built for the competitive swim program — generating individualized coaching reports that integrate multi-meet data with stroke-by-stroke diagnostic analysis and targeted development plans.
     </p>
 
-    <img src="Smith_Stroke_Trends_2026.png" alt="Multi-Stroke Performance Overview chart showing season-long trends across Freestyle, Backstroke, Breaststroke, and Butterfly" class="artifact-image"/>
+    <img src="https://raw.githubusercontent.com/JamesDRodgers/james-ai-assistant/main/Smith_Stroke_Trends_2026_%20(2).png" alt="Multi-Stroke Performance Overview chart showing season-long trends across Freestyle, Backstroke, Breaststroke, and Butterfly" class="artifact-image"/>
     <p class="artifact-caption">Multi-Stroke Performance Overview · Season 2025–26 · Age 14 · BB–A performance range</p>
 
     <h3>Skills demonstrated</h3>
