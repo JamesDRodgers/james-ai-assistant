@@ -5,6 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Interactive Resume & Portfolio</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── PORTFOLIO SECTION ── */
+    .portfolio-section { margin-top: 0; }
+    .portfolio-section h3 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: inherit;
+    }
+    .portfolio-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .portfolio-item {
+      display: block;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 10px 13px;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .portfolio-item:hover {
+      background: rgba(255,255,255,0.11);
+      border-color: rgba(255,255,255,0.2);
+    }
+    .portfolio-item-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 2px;
+      line-height: 1.3;
+    }
+    .portfolio-item-desc {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.4;
+    }
+    .portfolio-item-arrow {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.35);
+      margin-top: 4px;
+      display: block;
+    }
+  </style>
 </head>
 
 <body>
@@ -106,6 +153,43 @@
 
       </section>
 
+      <hr class="divider" />
+
+      <!-- FEATURED WORK -->
+      <section class="portfolio-section">
+
+        <h3>Featured Work</h3>
+
+        <div class="portfolio-grid">
+
+          <a class="portfolio-item" href="Python_Portfolio_Snapshot.html" target="_blank">
+            <div class="portfolio-item-title">Intro to Python Programming</div>
+            <div class="portfolio-item-desc">Canvas module · Backward design · UDL · AI-adaptive assessment</div>
+            <span class="portfolio-item-arrow">View case study →</span>
+          </a>
+
+          <a class="portfolio-item" href="PAC_Portfolio_Snapshot.html" target="_blank">
+            <div class="portfolio-item-title">PAC / Swan-Ganz Clinical Module</div>
+            <div class="portfolio-item-desc">Critical care nursing · Canvas LMS · Custom AI tutor · Waveform interpretation</div>
+            <span class="portfolio-item-arrow">View case study →</span>
+          </a>
+
+          <a class="portfolio-item" href="https://drive.google.com/drive/folders/1sdwzB_7M2VjPaQdTaqIPJPCwsXlfpzr3" target="_blank">
+            <div class="portfolio-item-title">Aquatics Safety & Coaching Analytics</div>
+            <div class="portfolio-item-desc">Multimedia content · Learning analytics · Competency-based coaching</div>
+            <span class="portfolio-item-arrow">View samples →</span>
+          </a>
+
+          <a class="portfolio-item" href="https://share.articulate.com/rIyYmxR4avSUlAhzg5bea" target="_blank">
+            <div class="portfolio-item-title">AI for Math Learning at Home</div>
+            <div class="portfolio-item-desc">Articulate Rise · AI literacy · Parent-facing · Prompt engineering</div>
+            <span class="portfolio-item-arrow">View course →</span>
+          </a>
+
+        </div>
+
+      </section>
+
       <div class="sidebar-contact">
 
         <button
@@ -197,7 +281,6 @@
 
         <div class="form-group">
           <label>Subject</label>
-
           <input
             type="text"
             name="_subject"
