@@ -3,19 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>James D. Rodgers — AI Learning Experience Designer</title>
-  <meta name="description" content="Instructional design, AI learning systems, and human-centered learning strategy." />
-  <meta property="og:title" content="James D. Rodgers — AI Learning Experience Designer" />
-  <meta property="og:description" content="Instructional design, AI learning systems, and human-centered learning strategy." />
+  <title>James D. Rodgers — Instructional Designer & Learning Systems Strategist</title>
+  <meta name="description" content="Instructional designer and learning systems strategist with 15 years of experience across technology, adult education, K-12, and nonprofit organizations." />
+  <meta property="og:title" content="James D. Rodgers — Instructional Designer & Learning Systems Strategist" />
+  <meta property="og:description" content="Instructional designer and learning systems strategist with 15 years of experience across technology, adult education, K-12, and nonprofit organizations." />
   <meta property="og:image" content="https://jamesdrodgers.ai/og-image.png" />
   <meta property="og:url" content="https://jamesdrodgers.ai" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="James D. Rodgers — AI Learning Experience Designer" />
-  <meta name="twitter:description" content="Instructional design, AI learning systems, and human-centered learning strategy." />
+  <meta name="twitter:title" content="James D. Rodgers — Instructional Designer & Learning Systems Strategist" />
+  <meta name="twitter:description" content="Instructional designer and learning systems strategist with 15 years of experience across technology, adult education, K-12, and nonprofit organizations." />
   <meta name="twitter:image" content="https://jamesdrodgers.ai/og-image.png" />
   <link rel="stylesheet" href="style.css" />
   <style>
+
     /* ── PORTFOLIO SECTION ── */
     .portfolio-section { margin-top: 0; }
     .portfolio-section h3 {
@@ -31,17 +32,20 @@
     }
     .portfolio-item {
       display: block;
-      background: rgba(0,0,0,0.04);
-      border: 1px solid rgba(0,0,0,0.1);
+      background: rgba(0,0,0,0.03);
+      border: 1px solid rgba(0,0,0,0.09);
+      border-left: 3px solid transparent;
       border-radius: 8px;
       padding: 10px 13px;
       text-decoration: none;
       color: inherit;
       transition: background 0.15s, border-color 0.15s;
+      min-height: 44px;
     }
     .portfolio-item:hover {
-      background: rgba(0,0,0,0.08);
-      border-color: rgba(0,0,0,0.2);
+      background: rgba(91,127,232,0.06);
+      border-left-color: #5b7fe8;
+      border-color: rgba(91,127,232,0.2);
     }
     .portfolio-item-title {
       font-size: 0.8rem;
@@ -50,6 +54,15 @@
       margin-bottom: 2px;
       line-height: 1.3;
     }
+    .portfolio-item-tag {
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #5b7fe8;
+      margin-bottom: 3px;
+    }
     .portfolio-item-desc {
       font-size: 0.72rem;
       color: #666;
@@ -57,10 +70,88 @@
     }
     .portfolio-item-arrow {
       font-size: 0.7rem;
-      color: #2563eb;
+      color: #5b7fe8;
       margin-top: 4px;
       display: block;
       font-weight: 600;
+    }
+
+    /* ── WELCOME MESSAGE ── */
+    .welcome-message {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 16px 20px;
+      margin: 16px;
+      background: #f7f9ff;
+      border: 1px solid #e0e8f5;
+      border-radius: 10px;
+    }
+    .welcome-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid #5b7fe8;
+    }
+    .welcome-text {
+      font-size: 0.87rem;
+      color: #3a3a4a;
+      line-height: 1.6;
+    }
+
+    /* ── SUGGESTION CHIPS ── */
+    .suggestion-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 0 16px 12px;
+    }
+    .chip {
+      background: #fff;
+      border: 1px solid #d8dfe8;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.75rem;
+      color: #3a3a4a;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+      font-family: inherit;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+    .chip:hover {
+      background: #5b7fe8;
+      border-color: #5b7fe8;
+      color: #fff;
+    }
+
+    /* ── TAGLINE UPDATE ── */
+    .tagline-updated {
+      font-size: 0.78rem;
+      color: #888;
+      text-align: center;
+      line-height: 1.5;
+      margin-bottom: 10px;
+      letter-spacing: 0.1px;
+    }
+
+    /* ── CONTACT BTN POSITION FIX ── */
+    .sidebar-contact-top {
+      margin-bottom: 12px;
+    }
+    .sidebar-contact-top button {
+      width: 100%;
+      min-height: 44px;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 640px) {
+      .chip { font-size: 0.72rem; padding: 5px 12px; }
+      .welcome-message { margin: 10px; padding: 12px 14px; }
+      .suggestion-chips { padding: 0 10px 10px; }
     }
   </style>
 </head>
@@ -80,6 +171,7 @@
         ☰ Menu
       </button>
 
+      <!-- IDENTITY ZONE -->
       <div class="profile">
 
         <img
@@ -90,15 +182,13 @@
 
         <h1>James D. Rodgers</h1>
 
-        <p class="tagline">
-          Instructional Design & Learning Innovation |
-          Generative AI Specialist
+        <p class="tagline-updated">
+          Instructional Designer · Learning Systems Strategist · AI Integration Specialist
         </p>
 
         <p>
-          Thank you for visiting. I built this assistant to make it easy
-          to understand my work and determine whether my experience aligns
-          with what you need.
+          I built this assistant so you can quickly understand my background,
+          explore my work, and decide whether my experience fits what you need.
         </p>
 
         <h2 class="visually-hidden">How to Use This Assistant</h2>
@@ -116,31 +206,12 @@
 
       <hr class="divider" />
 
-      <!-- QUICK QUESTIONS -->
-      <section class="preset-section">
+      <!-- NAVIGATION ZONE -->
 
-        <h3>Quick Questions</h3>
-
-        <div class="preset-questions">
-
-          <button class="preset-btn" onclick="setPresetQuestion(this)">How does James combine instructional design with AI experience?</button>
-
-          <button class="preset-btn" onclick="setPresetQuestion(this)">What does James's process look like when designing a learning experience?</button>
-
-          <button class="preset-btn" onclick="setPresetQuestion(this)">What kinds of organizations or roles would be a good fit for James?</button>
-
-          <button class="preset-btn" onclick="setPresetQuestion(this)">James has worked in diverse fields. How does that shape his approach to learning design?</button>
-
-        </div>
-
-      </section>
-
-      <hr class="divider" />
-
-      <!-- RESUME -->
+      <!-- Resume & About -->
       <section class="resume-section">
 
-        <h3>Resume</h3>
+        <h3>Resume & About</h3>
 
         <div class="resume-downloads">
 
@@ -164,7 +235,7 @@
 
       <hr class="divider" />
 
-      <!-- FEATURED WORK -->
+      <!-- Featured Work -->
       <section class="portfolio-section">
 
         <h3>Featured Work</h3>
@@ -172,24 +243,28 @@
         <div class="portfolio-grid">
 
           <a class="portfolio-item" href="Python_Portfolio_Snapshot.html" target="_blank">
+            <span class="portfolio-item-tag">Higher Ed · AI</span>
             <div class="portfolio-item-title">Intro to Python Programming</div>
             <div class="portfolio-item-desc">Canvas module · Backward design · UDL · AI-adaptive assessment</div>
             <span class="portfolio-item-arrow">View case study →</span>
           </a>
 
           <a class="portfolio-item" href="PAC_Portfolio_Snapshot.html" target="_blank">
+            <span class="portfolio-item-tag">Clinical · Healthcare</span>
             <div class="portfolio-item-title">PAC / Swan-Ganz Clinical Module</div>
             <div class="portfolio-item-desc">Critical care nursing · Canvas LMS · Custom AI tutor · Waveform interpretation</div>
             <span class="portfolio-item-arrow">View case study →</span>
           </a>
 
           <a class="portfolio-item" href="https://www.jamesdrodgers.ai/ymca_aquatics_snapshot.html" target="_blank">
+            <span class="portfolio-item-tag">Nonprofit · Analytics</span>
             <div class="portfolio-item-title">Aquatics Safety & Coaching Analytics</div>
             <div class="portfolio-item-desc">Multimedia content · Learning analytics · Competency-based coaching</div>
             <span class="portfolio-item-arrow">View samples →</span>
           </a>
 
           <a class="portfolio-item" href="https://share.articulate.com/rIyYmxR4avSUlAhzg5bea" target="_blank">
+            <span class="portfolio-item-tag">Adult Ed · AI Literacy</span>
             <div class="portfolio-item-title">AI for Math Learning at Home</div>
             <div class="portfolio-item-desc">Articulate Rise · AI literacy · Parent-facing · Prompt engineering</div>
             <span class="portfolio-item-arrow">View course →</span>
@@ -199,15 +274,17 @@
 
       </section>
 
-      <div class="sidebar-contact">
+      <hr class="divider" />
 
+      <!-- Contact — persistent at bottom of nav zone -->
+      <div class="sidebar-contact">
         <button
           class="contact-btn-sidebar"
           onclick="showContactForm()"
+          style="min-height:44px; width:100%;"
         >
           Contact James
         </button>
-
       </div>
 
     </aside>
@@ -216,38 +293,42 @@
     <main class="main-chat-area">
 
       <div class="chat-header">
-
-        <h2 class="chat-title">
-          Learn about my work.
-        </h2>
-
-        <button
-          class="util-btn"
-          onclick="clearChat()"
-        >
-          Clear
-        </button>
-
+        <h2 class="chat-title">Learn about my work.</h2>
+        <button class="util-btn" onclick="clearChat()">Clear</button>
       </div>
 
-      <div
-        id="chatContainer"
-        class="chat-window"
-      ></div>
+      <!-- Welcome message -->
+      <div class="welcome-message" id="welcomeMsg">
+        <img
+          src="headshot.png"
+          alt="James Rodgers"
+          class="welcome-avatar"
+        />
+        <div class="welcome-text">
+          Hi, I'm James's portfolio assistant. Ask me anything about his background,
+          instructional design projects, AI experience, or the kinds of roles where he
+          does his best work.
+        </div>
+      </div>
+
+      <!-- Suggestion chips above input -->
+      <div class="suggestion-chips" id="chipContainer">
+        <button class="chip" onclick="sendChip(this)">How does James combine ID with AI?</button>
+        <button class="chip" onclick="sendChip(this)">What's his design process?</button>
+        <button class="chip" onclick="sendChip(this)">What roles would be a good fit?</button>
+        <button class="chip" onclick="sendChip(this)">How does his diverse background shape his work?</button>
+      </div>
+
+      <div id="chatContainer" class="chat-window"></div>
 
       <footer class="chat-input-area">
-
         <input
           id="userInput"
           type="text"
           placeholder="Ask a question about James's work…"
           autocomplete="off"
         />
-
-        <button id="sendBtn">
-          Send
-        </button>
-
+        <button id="sendBtn">Send</button>
       </footer>
 
     </main>
@@ -256,78 +337,63 @@
 
   <!-- CONTACT MODAL -->
   <div id="contactModal" class="modal">
-
     <div class="modal-content">
-
-      <span
-        class="close"
-        onclick="closeContactForm()"
-      >
-        &times;
-      </span>
-
+      <span class="close" onclick="closeContactForm()">&times;</span>
       <h2>Contact James</h2>
-
-      <p>
-        Send James a message and he'll get back to you soon.
-      </p>
-
-      <form
-        id="contactForm"
-        action="https://formspree.io/f/mrbrlydj"
-        method="POST"
-      >
-
+      <p>Send James a message and he'll get back to you soon.</p>
+      <form id="contactForm" action="https://formspree.io/f/mrbrlydj" method="POST">
         <div class="form-group">
           <label>Your Name *</label>
           <input type="text" name="name" required />
         </div>
-
         <div class="form-group">
           <label>Your Email *</label>
           <input type="email" name="_replyto" required />
         </div>
-
         <div class="form-group">
           <label>Subject</label>
-          <input
-            type="text"
-            name="_subject"
-            value="Contact from jamesdrodgers.ai"
-          />
+          <input type="text" name="_subject" value="Contact from jamesdrodgers.ai" />
         </div>
-
         <div class="form-group">
           <label>Message *</label>
           <textarea name="message" rows="5" required></textarea>
         </div>
-
         <div class="form-actions">
-
-          <button
-            type="button"
-            class="btn-secondary"
-            onclick="closeContactForm()"
-          >
-            Cancel
-          </button>
-
-          <button
-            type="submit"
-            class="btn-primary"
-          >
-            Send Message
-          </button>
-
+          <button type="button" class="btn-secondary" onclick="closeContactForm()">Cancel</button>
+          <button type="submit" class="btn-primary">Send Message</button>
         </div>
-
       </form>
-
     </div>
-
   </div>
 
   <script src="script.js"></script>
+  <script>
+    // Hide welcome message and chips once chat starts
+    function sendChip(btn) {
+      var text = btn.textContent.trim();
+      document.getElementById('userInput').value = text;
+      document.getElementById('chipContainer').style.display = 'none';
+      document.getElementById('welcomeMsg').style.display = 'none';
+      // Trigger existing send logic if available
+      if (typeof sendMessage === 'function') sendMessage();
+      else if (document.getElementById('sendBtn')) document.getElementById('sendBtn').click();
+    }
+
+    // Also hide on first real message send
+    var origSend = document.getElementById('sendBtn');
+    if (origSend) {
+      origSend.addEventListener('click', function() {
+        document.getElementById('chipContainer').style.display = 'none';
+        document.getElementById('welcomeMsg').style.display = 'none';
+      });
+    }
+    document.getElementById('userInput').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        document.getElementById('chipContainer').style.display = 'none';
+        document.getElementById('welcomeMsg').style.display = 'none';
+      }
+    });
+  </script>
 
 </body>
 </html>
