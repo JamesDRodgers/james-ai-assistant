@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>James D. Rodgers — Instructional Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #f0f2f5;
+    --white:     #ffffff;
+    --sidebar-w: 260px;
+    --accent:    #5b7fe8;
+    --accent-dk: #4a6dd4;
+    --dark:      #1a1d23;
+    --mid:       #4a5568;
+    --light:     #8492a6;
+    --rule:      #e4e8ee;
+    --tag-bg:    #eef1f8;
+    --tag-hover: #5b7fe8;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--dark);
+    font-size: 13px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  /* ── Layout ── */
+  .layout {
+    display: flex;
+    max-width: 1100px;
+    margin: 32px auto;
+    gap: 20px;
+    padding: 0 20px;
+    align-items: flex-start;
+    opacity: 0;
+    animation: fadein 0.5s ease 0.1s forwards;
+  }
+
+  @keyframes fadein { to { opacity: 1; } }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    width: var(--sidebar-w);
+    flex-shrink: 0;
+    background: var(--white);
+    border-radius: 10px;
+    padding: 28px 22px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    position: sticky;
+    top: 32px;
+  }
+
+  .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    margin: 0 auto 14px;
+    overflow: hidden;
+    display: block;
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .sidebar-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--dark);
+    text-align: center;
+    line-height: 1.3;
+    margin-bottom: 5px;
+  }
+
+  .sidebar-title {
+    font-size: 11px;
+    color: var(--light);
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 18px;
+    font-weight: 400;
+  }
+
+  .sidebar-divider {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 16px 0;
+  }
+
+  .sidebar-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 10px;
+  }
+
+  .sidebar-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .sidebar-contact a,
+  .sidebar-contact span {
+    font-size: 11.5px;
+    color: var(--mid);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    transition: color 0.2s;
+  }
+
+  .sidebar-contact a:hover { color: var(--accent); }
+
+  .contact-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    opacity: 0.5;
+  }
+
+  .portfolio-btn {
+    display: block;
+    margin-top: 16px;
+    background: var(--accent);
+    color: var(--white);
+    text-align: center;
+    padding: 9px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .portfolio-btn:hover { background: var(--accent-dk); }
+
+
+
+  /* ── Main ── */
+  .main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* ── Card ── */
+  .card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 24px 28px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  }
+
+  .section-head {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* ── Summary ── */
+  .summary-text {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.8;
+    font-weight: 400;
+  }
+
+  /* ── Skills ── */
+  .skills-group { margin-bottom: 14px; }
+  .skills-group:last-child { margin-bottom: 0; }
+
+  .skills-group-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    background: var(--tag-bg);
+    color: var(--mid);
+    font-size: 11.5px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-weight: 400;
+    cursor: default;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .tag:hover {
+    background: var(--accent);
+    color: var(--white);
+  }
+
+  /* ── Job ── */
+  .job { padding-bottom: 18px; margin-bottom: 18px; border-bottom: 1px solid var(--rule); }
+  .job:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 2px;
+    flex-wrap: wrap;
+  }
+
+  .job-title {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.3;
+  }
+
+  .job-date {
+    font-size: 11px;
+    color: var(--light);
+    font-weight: 400;
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+
+  .job-loc {
+    font-size: 11.5px;
+    color: var(--light);
+    margin-bottom: 10px;
+  }
+
+  .bullets { list-style: none; padding: 0; }
+
+  .bullets li {
+    font-size: 12.5px;
+    color: var(--mid);
+    line-height: 1.65;
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 5px;
+  }
+
+  .bullets li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  /* ── Portfolio ── */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .p-item {
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 14px 16px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .p-item:hover {
+    border-color: var(--accent);
+    box-shadow: 0 2px 12px rgba(91,127,232,0.12);
+  }
+
+  .p-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+
+  .p-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .p-title a:hover { text-decoration: underline; }
+
+  .p-desc {
+    font-size: 11.5px;
+    color: var(--light);
+    line-height: 1.6;
+  }
+
+  /* ── Education ── */
+  .edu-item {
+    font-size: 12.5px;
+    color: var(--mid);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--rule);
+    line-height: 1.5;
+  }
+
+  .edu-item:first-child { padding-top: 0; }
+  .edu-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .edu-item strong {
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 720px) {
+    .layout { flex-direction: column; }
+    .sidebar { width: 100%; position: static; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+  }
+
+  @media print {
+    body { background: white; }
+    .layout { margin: 0; max-width: 100%; }
+    .sidebar { position: static; box-shadow: none; }
+    .card { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="avatar"><img src="https://raw.githubusercontent.com/JamesDRodgers/james-ai-assistant/main/headshot.png" alt="James D. Rodgers"></div>
+    <div class="sidebar-name">James D. Rodgers</div>
+    <div class="sidebar-title">Instructional Designer &amp; Learning Systems Strategist</div>
+
+    <hr class="sidebar-divider">
+    <div class="sidebar-label">Contact</div>
+    <div class="sidebar-contact">
+      <span>
+        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        San Francisco, CA
+      </span>
+      <a href="tel:6143641120">
+        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        614-364-1120
+      </a>
+      <a href="mailto:jdevin.rodgers@gmail.com">
+        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        jdevin.rodgers@gmail.com
+      </a>
+      <a href="https://linkedin.com/in/jdevinrodgers" target="_blank">
+        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        linkedin.com/in/jdevinrodgers
+      </a>
+    </div>
+
+    <a href="https://www.jamesdrodgers.ai" target="_blank" class="portfolio-btn">View Portfolio →</a>
+
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- Summary -->
+    <div class="card">
+      <div class="section-head">Summary</div>
+      <p class="summary-text">Instructional designer and learning systems strategist with 15 years of experience across healthcare, technology, adult education, K-12, and nonprofit organizations. Specializes in AI-augmented learning design, competency-based curriculum architecture, and performance-focused instructional systems. Combines deep classroom teaching experience, organizational leadership, and production-scale AI development, including direct contributions to Grok 2 and 3 at xAI, to build learning experiences that improve performance and scale.</p>
+    </div>
+
+    <!-- Skills -->
+    <div class="card">
+      <div class="section-head">Core Competencies</div>
+
+      <div class="skills-group">
+        <div class="skills-group-label">Learning Design &amp; Strategy</div>
+        <div class="tags">
+          <span class="tag">Learning Experience Design (LXD)</span>
+          <span class="tag">Backward Design</span>
+          <span class="tag">Competency-Based Learning Architecture</span>
+          <span class="tag">Universal Design for Learning (UDL)</span>
+          <span class="tag">Scenario-Based Learning</span>
+          <span class="tag">Microlearning</span>
+          <span class="tag">Performance Consulting</span>
+          <span class="tag">Human-Centered Learning Design</span>
+          <span class="tag">ILT &amp; vILT</span>
+          <span class="tag">Kirkpatrick Model</span>
+          <span class="tag">Needs Analysis</span>
+          <span class="tag">Storyboarding</span>
+        </div>
+      </div>
+
+      <div class="skills-group" style="margin-top:14px">
+        <div class="skills-group-label">AI &amp; Technology</div>
+        <div class="tags">
+          <span class="tag">AI-Augmented Learning Design</span>
+          <span class="tag">Prompt Engineering</span>
+          <span class="tag">AI Tutor Development</span>
+          <span class="tag">AI Evaluation &amp; Testing</span>
+          <span class="tag">LLM Applications</span>
+          <span class="tag">Articulate 360 (Storyline &amp; Rise)</span>
+          <span class="tag">SCORM</span>
+          <span class="tag">xAPI</span>
+          <span class="tag">LMS/LTI</span>
+          <span class="tag">Python</span>
+        </div>
+      </div>
+
+      <div class="skills-group" style="margin-top:14px">
+        <div class="skills-group-label">Strategy &amp; Collaboration</div>
+        <div class="tags">
+          <span class="tag">Change Management for Learning Transformation</span>
+          <span class="tag">Cross-Functional Systems Thinking</span>
+          <span class="tag">Data-Informed Instructional Design</span>
+          <span class="tag">Learning Analytics</span>
+          <span class="tag">SME Collaboration</span>
+          <span class="tag">Instructional Coaching</span>
+          <span class="tag">Agile/Scrum</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="card">
+      <div class="section-head">Work Experience</div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">AI Fellow &amp; Subject Matter Expert — Handshake AI (Contract)</span>
+          <span class="job-date">June 2025 – Present</span>
+        </div>
+        <div class="job-loc">San Francisco, CA</div>
+        <ul class="bullets">
+          <li>Designed original prompt sequences using Bloom's Taxonomy to assess AI model comprehension across multimodal inputs, developing assessment rubrics and alignment criteria to measure and improve model behavior at scale.</li>
+          <li>Designed and applied evaluation frameworks across 4 agentic AI projects, assessing reasoning accuracy, safety alignment, and guardrail compliance.</li>
+          <li>Conducted rubric-based assessment of agentic AI outputs in Python and Linux environments against ethical guardrails across 4 projects, supporting iterative rubric refinement and training dataset development through human-in-the-loop review, maintaining 90%+ QA scores.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Aquatics Instruction and Learning Designer — YMCA San Francisco</span>
+          <span class="job-date">April 2025 – Present · Part-time</span>
+        </div>
+        <div class="job-loc">San Francisco, CA</div>
+        <ul class="bullets">
+          <li>Designed AI-augmented microlearning modules and multimedia continuing education covering water rescue, CPR, and oxygen administration, improving branch safety audit scores from 78% to 92%.</li>
+          <li>Designed and facilitated monthly instructor-led training (ILT) using backward design for 15 aquatics staff, grounding each session in incident data and YMCA safety standards.</li>
+          <li>Developed a continuing education module in Canvas on AED and lifesaving procedures, incorporating simulation activities, gamification, infographics, and rubric-based assessment.</li>
+          <li>Applied Kirkpatrick Level 3 and 4 evaluation to build a longitudinal performance tracking system, identifying skill gaps across 130 swimmers and designing targeted interventions benchmarked against national competency standards.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">AI Human Data Specialist — xAI</span>
+          <span class="job-date">April 2024 – April 2025</span>
+        </div>
+        <div class="job-loc">San Francisco, CA</div>
+        <ul class="bullets">
+          <li>Designed onboarding curriculum and content knowledge training for 200+ annotators and team leads, sustaining 90%+ QA performance scores at scale.</li>
+          <li>Applied AI evaluation and testing methods alongside learning science to assess and refine model outputs across text, audio, and visual modalities, informing performance improvements at scale.</li>
+          <li>Designed and delivered virtual instructor-led training (vILT) in AI literacy for 50+ cross-disciplinary team members; resources adopted organization-wide into the Team Lead Resource Library.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Congregational Leader &amp; Digital Learning Designer — The Episcopal Church</span>
+          <span class="job-date">January 2017 – October 2023</span>
+        </div>
+        <div class="job-loc">Bexley, OH · San Francisco, CA</div>
+        <ul class="bullets">
+          <li>Developed a custom GPT for the Episcopal Diocese of Ohio, transforming data across 85 congregations and 10,000 members into a planning intelligence tool supporting $20M in annual operating decisions.</li>
+          <li>Storyboarded and delivered 6 digital blended learning courses for a 400-member congregation over two years of restricted in-person gathering, resulting in 15% growth in education attendance and a 90% approval rating.</li>
+          <li>Led organizational development, strategic planning, and stakeholder alignment for an Episcopal congregation across a six-year tenure as Congregational Leader.</li>
+          <li>Facilitated a nine-person cross-functional team using an agile framework to co-design organizational vision and strategic plan, driving 5% annual growth in membership and revenue over four years.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Instructional Designer and Music Educator — North College Hill MS/HS</span>
+          <span class="job-date">June 2010 – January 2014</span>
+        </div>
+        <div class="job-loc">Cincinnati, OH</div>
+        <ul class="bullets">
+          <li>Designed and delivered quarterly STEAM professional development workshops for 40 faculty and mentored 3 student teachers through instructional coaching, applying UDL and data-informed design principles.</li>
+          <li>Designed equity-centered curriculum that grew program enrollment from 30 to 75 students, securing instruments for 60% of participants through grants and community partnerships.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Portfolio -->
+    <div class="card">
+      <div class="section-head">Portfolio Projects</div>
+      <div class="portfolio-grid">
+        <div class="p-item">
+          <div class="p-title"><a href="https://jamesdrodgers.ai/pac_portfolio_snapshot" target="_blank">Pulmonary Artery Catheterization | Clinical Instructional Design Sample</a></div>
+          <div class="p-desc">Applied backward design, Bloom's Taxonomy, and scenario-based learning to develop a high-stakes clinical module in Canvas, collaborating with a subject matter expert to build formative and summative case-based assessments and a custom AI tutor in a healthcare LMS environment.</div>
+        </div>
+        <div class="p-item">
+          <div class="p-title"><a href="https://share.articulate.com/rIyYmxR4avSUlAhzg5bea" target="_blank">Empowering Parents: Using AI to Support Math Learning at Home</a></div>
+          <div class="p-desc">Designed a scaffolded Articulate Rise microlearning course for non-technical adult learners, applying performance-based objectives and learner autonomy principles to build confidence using AI for Common Core math support.</div>
+        </div>
+        <div class="p-item">
+          <div class="p-title"><a href="https://jamesdrodgers.ai/python_portfolio_snapshot" target="_blank">Intro to Python Programming | Module 1 Instructional Design Sample</a></div>
+          <div class="p-desc">Developed an asynchronous eLearning module grounded in backward design, UDL, and DEIJ-informed learner personas, integrating AI-adaptive LTI assessment, spaced practice, and a competency-based capstone aligned to six measurable learning objectives.</div>
+        </div>
+        <div class="p-item">
+          <div class="p-title"><a href="https://jamesdrodgers.ai/ymca_aquatics_snapshot" target="_blank">YMCA Aquatics Continuing Education and Coaching Analytics</a></div>
+          <div class="p-desc">Designed a blended continuing education program incorporating job aids, multimedia microlearning, and ILT facilitation guides, supported by longitudinal coaching analytics and individualized progress reports benchmarked against national competency standards.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="card">
+      <div class="section-head">Education &amp; Certifications</div>
+      <div class="edu-item"><strong>Miami University</strong> · Bachelor of Music Education, Minor in Special Education · 2009 · Oxford, OH</div>
+      <div class="edu-item"><strong>Graduate Theological Union</strong> · Church Divinity School of the Pacific · Master of Divinity · 2017 · Berkeley, CA</div>
+      <div class="edu-item"><strong>Purdue University</strong> · Certificate in Generative AI Applications · 2025</div>
+      <div class="edu-item"><strong>City College of San Francisco</strong> · Certificate in Data Analytics · Anticipated Spring 2027</div>
+      <div class="edu-item"><strong>Scrum.org</strong> · Professional Scrum Master I (PSM I) · In Progress · Expected June 2026</div>
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>
