@@ -7,138 +7,133 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f4f6f8;
-    --white: #ffffff;
-    --text: #1a1a1a;
-    --muted: #555555;
-    --light: #888888;
-    --border: #e2e6ea;
-    --tag-bg: #f0f2f5;
-    --accent: #2563eb;
-    --accent-light: #eff6ff;
-    --accent-dark: #1d4ed8;
-    --header-bg: #1e2a3a;
-    --header-stripe: #2d3f54;
+    --bg:        #f0f2f5;
+    --white:     #ffffff;
+    --accent:    #5b7fe8;
+    --accent-dk: #4a6dd4;
+    --dark:      #1a1d23;
+    --mid:       #4a5568;
+    --light:     #8492a6;
+    --rule:      #e4e8ee;
+    --tag-bg:    #eef1f8;
+    --accent-lt: #eef1fb;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Inter", sans-serif;
     background: var(--bg);
-    color: var(--text);
-    font-size: 15px;
+    color: var(--dark);
+    font-size: 13px;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 880px;
+    margin: 32px auto;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    overflow: hidden;
   }
 
   /* HEADER */
   .header {
-    background: var(--header-bg);
-    padding: 48px 52px 40px;
-    position: relative;
-    overflow: hidden;
-  }
-  .header::after {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 40%; height: 100%;
-    background: linear-gradient(135deg, transparent 0%, rgba(37,99,235,0.08) 100%);
-    pointer-events: none;
+    background: var(--white);
+    padding: 44px 52px 36px;
+    border-bottom: 1px solid var(--rule);
   }
   .header-eyebrow {
-    font-size: 10.5px;
-    font-weight: 600;
-    letter-spacing: 2.5px;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 2.2px;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.45);
+    color: var(--accent);
     margin-bottom: 12px;
   }
   .header h1 {
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--dark);
     line-height: 1.2;
     margin-bottom: 10px;
     letter-spacing: -0.3px;
     max-width: 700px;
   }
   .header-desc {
-    font-size: 14px;
-    color: rgba(255,255,255,0.55);
+    font-size: 13px;
+    color: var(--light);
     max-width: 720px;
-    line-height: 1.7;
+    line-height: 1.75;
     margin-bottom: 24px;
+    font-weight: 300;
   }
   .tag-row { display: flex; flex-wrap: wrap; gap: 7px; }
-  .tag {
-    background: rgba(255,255,255,0.08);
-    color: rgba(255,255,255,0.75);
+  .header-tag {
+    background: var(--tag-bg);
+    color: var(--mid);
     font-size: 11px;
     font-weight: 500;
     padding: 4px 11px;
     border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.12);
+    border: 1px solid var(--rule);
   }
 
   /* CONTEXT STRIP */
   .context-strip {
-    background: var(--header-stripe);
+    background: var(--tag-bg);
     padding: 13px 52px;
     display: flex;
     gap: 44px;
-    align-items: center;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid var(--rule);
+    flex-wrap: wrap;
   }
   .context-item { display: flex; flex-direction: column; gap: 2px; }
   .context-label {
-    font-size: 9px;
-    font-weight: 600;
+    font-size: 9.5px;
+    font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
+    color: var(--light);
   }
   .context-value {
     font-size: 12.5px;
     font-weight: 500;
-    color: rgba(255,255,255,0.85);
+    color: var(--dark);
   }
 
   /* BODY */
-  .body {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 44px 52px;
-  }
+  .body { padding: 36px 52px; }
 
-  .section { margin-bottom: 44px; }
+  .section { margin-bottom: 32px; }
 
   .section-label {
+    display: block;
     font-size: 9.5px;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 1.8px;
     text-transform: uppercase;
     color: var(--accent);
     margin-bottom: 14px;
     padding-bottom: 8px;
-    border-bottom: 1.5px solid var(--border);
-    display: block;
+    border-bottom: 1px solid var(--rule);
   }
 
   .section p {
-    color: var(--muted);
-    font-size: 14px;
+    color: var(--mid);
+    font-size: 13px;
     line-height: 1.75;
-    max-width: 860px;
   }
-  .section p + p { margin-top: 12px; }
+  .section p + p { margin-top: 10px; }
 
   /* OBJECTIVES */
   .objectives-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
-    margin-top: 4px;
   }
   .objective {
     display: flex;
@@ -154,32 +149,31 @@
     color: var(--accent);
     font-weight: 700;
     line-height: 1;
-    min-width: 18px;
+    min-width: 16px;
     padding-top: 2px;
   }
-  .obj-text { font-size: 12.5px; color: var(--text); line-height: 1.5; }
+  .obj-text { font-size: 12px; color: var(--dark); line-height: 1.5; }
 
   /* ARTIFACT CARDS */
   .artifact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-top: 4px;
+    gap: 14px;
   }
   .artifact-card {
     background: var(--white);
-    border-radius: 10px;
-    border: 1px solid var(--border);
+    border-radius: 8px;
+    border: 1px solid var(--rule);
     overflow: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: border-color 0.2s, box-shadow 0.2s;
   }
   .artifact-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.09);
+    border-color: var(--accent);
+    box-shadow: 0 2px 12px rgba(91,127,232,0.10);
   }
   .artifact-img {
     width: 100%;
-    height: 200px;
+    height: 180px;
     object-fit: cover;
     object-position: top center;
     display: block;
@@ -188,7 +182,7 @@
   .artifact-img-placeholder {
     width: 100%;
     height: 180px;
-    background: linear-gradient(135deg, var(--tag-bg) 0%, #e2e8f0 100%);
+    background: var(--tag-bg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -197,113 +191,117 @@
     font-weight: 500;
     letter-spacing: 0.5px;
   }
-  .artifact-img-placeholder {
-    width: 100%;
-    height: 180px;
-    background: linear-gradient(135deg, var(--tag-bg) 0%, #e2e8f0 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--light);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-  }
-  .artifact-content { padding: 20px; }
+  .artifact-content { padding: 16px 18px; }
   .artifact-content h3 {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
-    color: var(--text);
-    margin-bottom: 8px;
+    color: var(--dark);
+    margin-bottom: 6px;
   }
   .artifact-content p {
-    font-size: 12.5px;
-    color: var(--muted);
+    font-size: 12px;
+    color: var(--mid);
     line-height: 1.6;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
   .artifact-button {
     display: inline-flex;
     align-items: center;
     background: var(--accent);
     color: #fff;
-    font-size: 12px;
+    font-size: 11.5px;
     font-weight: 600;
-    padding: 7px 16px;
+    padding: 7px 14px;
     border-radius: 6px;
     text-decoration: none;
     transition: background 0.15s;
   }
-  .artifact-button:hover { background: var(--accent-dark); }
-  .artifact-button::after { content: ' →'; }
+  .artifact-button:hover { background: var(--accent-dk); }
+  .artifact-button::after { content: " →"; }
 
-  /* STRATEGY SECTION */
-  .strategy-box {
-    background: var(--header-bg);
-    border-radius: 12px;
-    padding: 32px 36px;
-    margin-bottom: 44px;
-  }
-  .strategy-box .section-label { border-bottom-color: rgba(255,255,255,0.12); color: rgba(147,197,253,0.8); }
+  /* STRATEGY */
   .strategy-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-top: 4px;
+    gap: 10px;
   }
   .strategy-card {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--tag-bg);
+    border: 1px solid var(--rule);
     border-radius: 8px;
-    padding: 16px 18px;
+    padding: 14px 16px;
+    position: relative;
+  }
+  .strategy-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--accent);
+    border-radius: 8px 8px 0 0;
   }
   .strategy-card h4 {
-    font-size: 12.5px;
+    font-size: 11.5px;
     font-weight: 600;
-    color: #fff;
-    margin-bottom: 6px;
+    color: var(--dark);
+    margin-bottom: 5px;
   }
   .strategy-card p {
     font-size: 12px;
-    color: rgba(255,255,255,0.55);
+    color: var(--mid);
     line-height: 1.6;
-    max-width: none;
   }
 
   /* FOOTER */
   .footer {
-    border-top: 1px solid var(--border);
-    padding: 18px 52px;
+    border-top: 1px solid var(--rule);
+    padding: 16px 52px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: var(--tag-bg);
-    max-width: none;
   }
-  .footer-name { font-size: 13px; color: var(--text); font-weight: 600; }
-  .footer-link a { font-size: 12.5px; color: var(--accent); text-decoration: none; font-weight: 500; }
-  .footer-link a:hover { color: var(--accent-dark); text-decoration: underline; }
+  .footer-name { font-size: 13px; color: var(--mid); font-weight: 500; }
+  .footer-link a {
+    font-size: 12.5px;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .footer-link a:hover { color: var(--accent-dk); text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    .header { padding: 32px 24px 28px; }
+    .body { padding: 28px 24px; }
+    .context-strip { padding: 12px 24px; gap: 20px; }
+    .objectives-grid, .artifact-grid, .strategy-grid { grid-template-columns: 1fr; }
+    .footer { padding: 16px 24px; }
+  }
+
+  @media print {
+    body { background: white; }
+    .page { box-shadow: none; margin: 0; border-radius: 0; }
+  }
 </style>
 </head>
 <body>
+<div class="page">
 
-  <!-- HEADER -->
   <div class="header">
     <div class="header-eyebrow">Instructional Design Portfolio · Clinical Education Case Study</div>
     <h1>Pulmonary Artery Catheter (PAC) / Swan-Ganz Basics</h1>
     <div class="header-desc">A self-guided critical care learning experience designed to build foundational competency in pulmonary artery catheter interpretation, waveform analysis, hemodynamic monitoring, and patient safety. Developed in collaboration with a clinical subject matter expert and delivered through Canvas LMS with AI-supported learning tools and interactive review experiences.</div>
     <div class="tag-row">
-      <span class="tag">Clinical Education</span>
-      <span class="tag">Critical Care Nursing</span>
-      <span class="tag">Canvas LMS</span>
-      <span class="tag">AI Learning Assistant</span>
-      <span class="tag">Waveform Interpretation</span>
-      <span class="tag">Interactive Learning</span>
-      <span class="tag">Hemodynamics</span>
+      <span class="header-tag">Clinical Education</span>
+      <span class="header-tag">Critical Care Nursing</span>
+      <span class="header-tag">Canvas LMS</span>
+      <span class="header-tag">AI Learning Assistant</span>
+      <span class="header-tag">Waveform Interpretation</span>
+      <span class="header-tag">Interactive Learning</span>
+      <span class="header-tag">Hemodynamics</span>
     </div>
   </div>
 
-  <!-- CONTEXT STRIP -->
   <div class="context-strip">
     <div class="context-item">
       <span class="context-label">Audience</span>
@@ -323,35 +321,29 @@
     </div>
   </div>
 
-  <!-- BODY -->
   <div class="body">
 
-    <!-- OVERVIEW -->
     <div class="section">
       <span class="section-label">Project Overview</span>
       <p>This instructional design project was developed to support foundational learning related to Pulmonary Artery Catheter (PAC) monitoring in critical care environments. The module introduces learners to pulmonary artery catheter purpose, waveform interpretation, hemodynamic measurements, troubleshooting, and patient safety considerations.</p>
       <p>Designed in collaboration with a clinical subject matter expert, the learning experience translates complex cardiovascular monitoring concepts into approachable and clinically relevant instruction. Materials were organized within Canvas LMS using scaffolded learning progression, visual examples, interactive review activities, and AI-enhanced support tools to reinforce learner understanding.</p>
     </div>
 
-    <!-- OBJECTIVES -->
     <div class="section">
       <span class="section-label">Learning Objectives</span>
       <div class="objectives-grid">
         <div class="objective"><span class="obj-num">1</span><span class="obj-text">Describe the function and clinical purpose of a Pulmonary Artery Catheter</span></div>
         <div class="objective"><span class="obj-num">2</span><span class="obj-text">Identify indications and contraindications for PAC use in critical care settings</span></div>
         <div class="objective"><span class="obj-num">3</span><span class="obj-text">Differentiate between direct and calculated hemodynamic measurements</span></div>
-        <div class="objective"><span class="obj-num">4</span><span class="obj-text">Define and interpret values including CVP, PAP, PAOP, CO, and SvO₂</span></div>
+        <div class="objective"><span class="obj-num">4</span><span class="obj-text">Define and interpret values including CVP, PAP, PAOP, CO, and SvO2</span></div>
         <div class="objective"><span class="obj-num">5</span><span class="obj-text">Recognize complications related to PAC use and apply patient safety principles</span></div>
         <div class="objective"><span class="obj-num">6</span><span class="obj-text">Apply waveform interpretation and troubleshooting strategies in simulated scenarios</span></div>
       </div>
     </div>
 
-    <!-- ARTIFACTS -->
     <div class="section">
       <span class="section-label">Learning Experience & Course Resources</span>
       <div class="artifact-grid">
-
-
 
         <div class="artifact-card">
           <img src="Canvas_Logo.jpg" alt="Canvas LMS" class="artifact-img" style="object-fit: contain; background: #ffffff; padding: 24px;">
@@ -391,8 +383,7 @@
       </div>
     </div>
 
-    <!-- STRATEGY -->
-    <div class="strategy-box">
+    <div class="section">
       <span class="section-label">Instructional Design Strategy</span>
       <div class="strategy-grid">
         <div class="strategy-card">
@@ -416,11 +407,11 @@
 
   </div>
 
-  <!-- FOOTER -->
   <div class="footer">
-    <div class="footer-name">James D. Rodgers · AI Learning Experience Designer</div>
+    <div class="footer-name">James D. Rodgers · Instructional Designer</div>
     <div class="footer-link"><a href="https://www.jamesdrodgers.ai" target="_blank">www.jamesdrodgers.ai</a></div>
   </div>
 
+</div>
 </body>
 </html>
