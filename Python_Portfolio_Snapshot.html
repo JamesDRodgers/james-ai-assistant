@@ -7,199 +7,121 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f4f6f8;
-    --white: #ffffff;
-    --text: #1a1a1a;
-    --muted: #555555;
-    --light: #888888;
-    --border: #e2e6ea;
-    --tag-bg: #f0f2f5;
-    --accent: #2563eb;
-    --accent-light: #eff6ff;
-    --accent-dark: #1d4ed8;
-    --header-bg: #1e2a3a;
-    --header-stripe: #2d3f54;
+    --bg:         #f0f2f5;
+    --white:      #ffffff;
+    --accent:     #5b7fe8;
+    --accent-dk:  #4a6dd4;
+    --dark:       #1a1d23;
+    --mid:        #4a5568;
+    --light:      #8492a6;
+    --rule:       #e4e8ee;
+    --tag-bg:     #eef1f8;
+    --accent-lt:  #eef1fb;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Inter", sans-serif;
     background: var(--bg);
-    color: var(--text);
-    font-size: 15px;
+    color: var(--dark);
+    font-size: 13px;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
   }
 
   .page {
     max-width: 880px;
-    margin: 40px auto;
+    margin: 32px auto;
     background: var(--white);
-    border-radius: 12px;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
     overflow: hidden;
   }
 
   /* HEADER */
   .header {
-    background: var(--header-bg);
+    background: var(--white);
     padding: 44px 52px 36px;
-    position: relative;
-    overflow: hidden;
-  }
-  .header::after {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 40%;
-    height: 100%;
-    background: linear-gradient(135deg, transparent 0%, rgba(37,99,235,0.08) 100%);
-    pointer-events: none;
+    border-bottom: 1px solid var(--rule);
   }
   .header-eyebrow {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2.5px;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 2.2px;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.45);
+    color: var(--accent);
     margin-bottom: 12px;
   }
   .header h1 {
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--dark);
     line-height: 1.2;
     margin-bottom: 6px;
     letter-spacing: -0.3px;
   }
   .header-subtitle {
-    font-size: 14.5px;
-    color: rgba(255,255,255,0.5);
-    font-weight: 400;
+    font-size: 14px;
+    color: var(--light);
+    font-weight: 300;
     margin-bottom: 24px;
   }
-  .tag-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-  }
-  .tag {
-    background: rgba(255,255,255,0.08);
-    color: rgba(255,255,255,0.75);
+  .tag-row { display: flex; flex-wrap: wrap; gap: 7px; }
+  .header-tag {
+    background: var(--tag-bg);
+    color: var(--mid);
     font-size: 11px;
     font-weight: 500;
     padding: 4px 11px;
     border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.12);
-    letter-spacing: 0.2px;
+    border: 1px solid var(--rule);
   }
 
   /* CONTEXT STRIP */
   .context-strip {
-    background: var(--header-stripe);
+    background: var(--tag-bg);
     padding: 13px 52px;
     display: flex;
     gap: 44px;
-    align-items: center;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid var(--rule);
   }
   .context-item { display: flex; flex-direction: column; gap: 2px; }
   .context-label {
-    font-size: 10px;
-    font-weight: 600;
+    font-size: 9.5px;
+    font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
+    color: var(--light);
   }
   .context-value {
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 500;
-    color: rgba(255,255,255,0.85);
+    color: var(--dark);
   }
 
   /* BODY */
-  .body { padding: 40px 52px; }
+  .body { padding: 36px 52px; }
 
-  .section { margin-bottom: 36px; }
+  .section { margin-bottom: 32px; }
 
   .section-label {
-    font-size: 10px;
+    display: block;
+    font-size: 9.5px;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 1.8px;
     text-transform: uppercase;
     color: var(--accent);
     margin-bottom: 14px;
     padding-bottom: 8px;
-    border-bottom: 1.5px solid var(--border);
-    display: block;
+    border-bottom: 1px solid var(--rule);
   }
 
   .section p {
-    color: var(--muted);
-    font-size: 14px;
+    color: var(--mid);
+    font-size: 13px;
     line-height: 1.75;
-  }
-
-  /* NOTEBOOK CALLOUT */
-  .notebook-callout {
-    background: var(--white);
-    border: 2px solid var(--accent);
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 36px;
-    box-shadow: 0 4px 16px rgba(37,99,235,0.12);
-  }
-  .notebook-img-wrap {
-    width: 100%;
-    height: 360px;
-    overflow: hidden;
-    position: relative;
-    border-bottom: 2px solid var(--accent);
-    background: #fff;
-  }
-  .notebook-img {
-    width: 100%;
-    height: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: scale(1.2);
-    transform-origin: top left;
-    display: block;
-  }
-  .notebook-content {
-    padding: 20px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    background: var(--accent-light);
-  }
-  .notebook-text { font-size: 13.5px; color: var(--text); line-height: 1.5; }
-  .notebook-text strong { color: var(--accent-dark); font-weight: 600; }
-  .notebook-button {
-    display: inline-flex;
-    align-items: center;
-    background: var(--accent);
-    color: #fff;
-    font-size: 12.5px;
-    font-weight: 600;
-    padding: 10px 20px;
-    border-radius: 6px;
-    text-decoration: none;
-    white-space: nowrap;
-    transition: background 0.15s;
-    flex-shrink: 0;
-  }
-  .notebook-button:hover { background: var(--accent-dark); }
-  .notebook-button::after { content: ' →'; }
-
-  /* TWO COL */
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
-    margin-bottom: 36px;
   }
 
   /* OBJECTIVES */
@@ -207,7 +129,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
-    margin-top: 4px;
   }
   .objective {
     display: flex;
@@ -219,53 +140,109 @@
     border-radius: 0 6px 6px 0;
   }
   .obj-num {
-    font-size: 16px;
+    font-size: 15px;
     color: var(--accent);
     font-weight: 700;
     line-height: 1;
-    min-width: 18px;
+    min-width: 16px;
     padding-top: 2px;
   }
-  .obj-text {
-    font-size: 12.5px;
-    color: var(--text);
-    line-height: 1.5;
-  }
+  .obj-text { font-size: 12px; color: var(--dark); line-height: 1.5; }
 
   /* INCLUDED GRID */
   .included-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-    margin-top: 4px;
   }
   .included-item {
     padding: 14px 16px;
     background: var(--tag-bg);
     border-radius: 8px;
-    border: 1px solid var(--border);
+    border: 1px solid var(--rule);
   }
   .included-title {
-    font-size: 11.5px;
+    font-size: 11px;
     font-weight: 600;
-    color: var(--text);
+    color: var(--dark);
     margin-bottom: 8px;
     letter-spacing: 0.2px;
   }
-  .included-list { list-style: none; padding: 0; }
+  .included-list { list-style: none; }
   .included-list li {
-    font-size: 12px;
-    color: var(--muted);
-    padding: 2px 0 2px 14px;
+    font-size: 11.5px;
+    color: var(--mid);
+    padding: 2px 0 2px 13px;
     position: relative;
     line-height: 1.5;
   }
   .included-list li::before {
-    content: '·';
+    content: "·";
     position: absolute;
     left: 0;
     color: var(--accent);
     font-weight: 700;
+  }
+
+  /* NOTEBOOK CALLOUT */
+  .notebook-callout {
+    background: var(--white);
+    border: 1.5px solid var(--accent);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(91,127,232,0.10);
+  }
+  .notebook-img-wrap {
+    width: 100%;
+    height: 340px;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1.5px solid var(--accent);
+    background: #fff;
+  }
+  .notebook-img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0; left: 0;
+    transform: scale(1.2);
+    transform-origin: top left;
+    display: block;
+  }
+  .notebook-content {
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background: var(--accent-lt);
+  }
+  .notebook-text { font-size: 13px; color: var(--dark); line-height: 1.55; }
+  .notebook-text strong { color: var(--accent-dk); font-weight: 600; }
+  .notebook-button {
+    display: inline-flex;
+    align-items: center;
+    background: var(--accent);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 9px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s;
+    flex-shrink: 0;
+  }
+  .notebook-button:hover { background: var(--accent-dk); }
+  .notebook-button::after { content: " →"; }
+
+  /* TWO COL */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-bottom: 32px;
   }
 
   /* DELIVERABLES */
@@ -275,16 +252,16 @@
     align-items: flex-start;
     gap: 10px;
     padding: 7px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 13.5px;
-    color: var(--text);
+    border-bottom: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--mid);
   }
   .deliverables-list li:last-child { border-bottom: none; }
   .del-dot {
     width: 6px; height: 6px;
     background: var(--accent);
     border-radius: 50%;
-    margin-top: 7px;
+    margin-top: 6px;
     flex-shrink: 0;
   }
 
@@ -292,18 +269,18 @@
   .highlights-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    gap: 10px;
     margin-top: 4px;
   }
   .highlight-card {
-    padding: 15px 17px;
-    border: 1px solid var(--border);
+    padding: 14px 16px;
+    border: 1px solid var(--rule);
     border-radius: 8px;
     background: var(--white);
     position: relative;
   }
   .highlight-card::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 3px;
@@ -311,125 +288,112 @@
     border-radius: 8px 8px 0 0;
   }
   .highlight-title {
-    font-size: 12px;
+    font-size: 11.5px;
     font-weight: 600;
-    color: var(--text);
+    color: var(--dark);
     margin-bottom: 5px;
   }
-  .highlight-text {
-    font-size: 12.5px;
-    color: var(--muted);
-    line-height: 1.55;
-  }
+  .highlight-text { font-size: 12px; color: var(--mid); line-height: 1.55; }
 
   /* CAPSTONE */
   .capstone {
-    background: var(--header-bg);
-    border-radius: 10px;
+    background: var(--tag-bg);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
     padding: 22px 26px;
-    margin-bottom: 36px;
+    margin-bottom: 32px;
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 18px;
     align-items: start;
   }
-  .capstone-icon { font-size: 32px; line-height: 1; padding-top: 2px; }
+  .capstone-icon { font-size: 28px; line-height: 1; padding-top: 2px; }
   .capstone-label {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 2px;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
+    color: var(--accent);
     margin-bottom: 4px;
   }
   .capstone-title {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
-    color: #ffffff;
+    color: var(--dark);
     margin-bottom: 8px;
-    letter-spacing: -0.2px;
   }
   .capstone-desc {
-    font-size: 13px;
-    color: rgba(255,255,255,0.6);
+    font-size: 12.5px;
+    color: var(--mid);
     line-height: 1.65;
   }
-  .rubric-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 12px;
-  }
+  .rubric-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
   .rubric-tag {
-    background: rgba(37,99,235,0.2);
-    color: rgba(147,197,253,0.9);
+    background: var(--accent-lt);
+    color: var(--accent-dk);
     font-size: 10.5px;
     font-weight: 500;
     padding: 3px 10px;
     border-radius: 20px;
-    border: 1px solid rgba(37,99,235,0.25);
+    border: 1px solid #c5d3f5;
   }
 
   /* ARTIFACTS CALLOUT */
   .artifacts-callout {
-    background: var(--accent-light);
-    border: 1px solid #bfdbfe;
+    background: var(--accent-lt);
+    border: 1px solid #c5d3f5;
     border-radius: 8px;
     padding: 16px 22px;
-    margin-bottom: 36px;
+    margin-bottom: 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
   }
-  .artifacts-text {
-    font-size: 13.5px;
-    color: var(--text);
-    line-height: 1.5;
-  }
-  .artifacts-text strong {
-    color: var(--accent-dark);
-    font-weight: 600;
-  }
+  .artifacts-text { font-size: 13px; color: var(--dark); line-height: 1.5; }
+  .artifacts-text strong { color: var(--accent-dk); font-weight: 600; }
   .artifacts-link {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
     background: var(--accent);
     color: #fff;
-    font-size: 12.5px;
+    font-size: 12px;
     font-weight: 600;
     padding: 8px 18px;
     border-radius: 6px;
     text-decoration: none;
     white-space: nowrap;
-    letter-spacing: 0.2px;
     transition: background 0.15s;
+    flex-shrink: 0;
   }
-  .artifacts-link:hover { background: var(--accent-dark); }
-  .artifacts-link::after { content: ' →'; }
+  .artifacts-link:hover { background: var(--accent-dk); }
+  .artifacts-link::after { content: " →"; }
 
   /* FOOTER */
   .footer {
-    border-top: 1px solid var(--border);
-    padding: 18px 52px;
+    border-top: 1px solid var(--rule);
+    padding: 16px 52px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: var(--tag-bg);
   }
-  .footer-name {
-    font-size: 13.5px;
-    color: var(--text);
-    font-weight: 600;
-  }
+  .footer-name { font-size: 13px; color: var(--mid); font-weight: 500; }
   .footer-link a {
-    font-size: 13px;
+    font-size: 12.5px;
     color: var(--accent);
     text-decoration: none;
     font-weight: 500;
   }
-  .footer-link a:hover { color: var(--accent-dark); text-decoration: underline; }
+  .footer-link a:hover { color: var(--accent-dk); text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    .header { padding: 32px 24px 28px; }
+    .body { padding: 28px 24px; }
+    .context-strip { padding: 12px 24px; gap: 20px; flex-wrap: wrap; }
+    .objectives-grid, .included-grid, .two-col, .highlights-grid { grid-template-columns: 1fr; }
+    .footer { padding: 16px 24px; }
+  }
 
   @media print {
     body { background: white; }
@@ -440,23 +404,21 @@
 <body>
 <div class="page">
 
-  <!-- HEADER -->
   <div class="header">
     <div class="header-eyebrow">Instructional Design Portfolio · Case Study</div>
     <h1>Intro to Python Programming</h1>
     <div class="header-subtitle">Module 1 — Complete Course Design Package</div>
     <div class="tag-row">
-      <span class="tag">Backward Design</span>
-      <span class="tag">Universal Design for Learning</span>
-      <span class="tag">DEIJ-Informed</span>
-      <span class="tag">AI-Adaptive Assessment</span>
-      <span class="tag">Canvas LMS</span>
-      <span class="tag">Jupyter Notebook</span>
-      <span class="tag">Canvas Commons-Ready</span>
+      <span class="header-tag">Backward Design</span>
+      <span class="header-tag">Universal Design for Learning</span>
+      <span class="header-tag">DEIJ-Informed</span>
+      <span class="header-tag">AI-Adaptive Assessment</span>
+      <span class="header-tag">Canvas LMS</span>
+      <span class="header-tag">Jupyter Notebook</span>
+      <span class="header-tag">Canvas Commons-Ready</span>
     </div>
   </div>
 
-  <!-- CONTEXT STRIP -->
   <div class="context-strip">
     <div class="context-item">
       <span class="context-label">Audience</span>
@@ -476,16 +438,13 @@
     </div>
   </div>
 
-  <!-- BODY -->
   <div class="body">
 
-    <!-- OVERVIEW -->
     <div class="section">
       <span class="section-label">Project Overview</span>
       <p>A complete instructional design package for Module 1 of an undergraduate Python programming course, built for learners who may be new to Python, new to U.S. academic culture, or learning in multilingual contexts. The module applies backward design, UDL, and DEIJ-aware examples throughout — grounded in learner personas drawn from Bay Area tech workforce demographics and institutional data. All materials are Canvas-native, evidence-based, and Canvas Commons-ready.</p>
     </div>
 
-    <!-- LEARNING OBJECTIVES -->
     <div class="section">
       <span class="section-label">Learning Objectives</span>
       <div class="objectives-grid">
@@ -498,7 +457,6 @@
       </div>
     </div>
 
-    <!-- WHAT'S INCLUDED -->
     <div class="section">
       <span class="section-label">What's Included</span>
       <div class="included-grid">
@@ -546,7 +504,6 @@
       </div>
     </div>
 
-    <!-- JUPYTER NOTEBOOK -->
     <div class="section">
       <span class="section-label">Guided Practice Jupyter Notebook</span>
       <div class="notebook-callout">
@@ -556,15 +513,14 @@
         <div class="notebook-content">
           <div class="notebook-text">
             <strong>SFBU Python Module 1 — Variables Guided Practice</strong><br>
-            Structured explanations, code demonstrations, debugging challenges, mini tasks, and reflection prompts — mirroring the Canvas page flow for a seamless learning experience.<br><br>
-            <span style="font-size:12px; color: var(--muted);">To view online: open the link and click <strong>Open with Google Colaboratory</strong>. To download: click <strong>File → Download</strong> from the Drive preview.</span>
+            Structured explanations, code demonstrations, debugging challenges, mini tasks, and reflection prompts, mirroring the Canvas page flow for a seamless learning experience.<br><br>
+            <span style="font-size:11.5px; color:var(--mid);">To view online: open the link and click <strong>Open with Google Colaboratory</strong>. To download: click <strong>File → Download</strong> from the Drive preview.</span>
           </div>
           <a class="notebook-button" href="https://drive.google.com/file/d/1MTiEYtot0_kJzDaBdnW-K75Ag6SK4qge/view?usp=sharing" target="_blank">View / Download Notebook</a>
         </div>
       </div>
     </div>
 
-    <!-- TWO COL: DELIVERABLES + DESIGN APPROACH -->
     <div class="two-col">
       <div class="section" style="margin-bottom:0">
         <span class="section-label">Deliverables at a Glance</span>
@@ -581,14 +537,14 @@
       </div>
       <div class="section" style="margin-bottom:0">
         <span class="section-label">Design Approach</span>
-        <div class="highlights-grid" style="grid-template-columns:1fr; gap:10px;">
+        <div style="display:flex; flex-direction:column; gap:10px; margin-top:4px;">
           <div class="highlight-card">
             <div class="highlight-title">Backward Design</div>
             <div class="highlight-text">All activities and assessments mapped directly to the six learning objectives before content was developed.</div>
           </div>
           <div class="highlight-card">
             <div class="highlight-title">UDL & Accessibility</div>
-            <div class="highlight-text">Multiple means of representation and engagement — choice-based mini tasks, varied formats, culturally aware examples.</div>
+            <div class="highlight-text">Multiple means of representation and engagement, choice-based mini tasks, varied formats, and culturally aware examples.</div>
           </div>
           <div class="highlight-card">
             <div class="highlight-title">AI-Enhanced Assessment</div>
@@ -598,13 +554,12 @@
       </div>
     </div>
 
-    <!-- CAPSTONE -->
     <div class="capstone">
       <div class="capstone-icon">⚡</div>
       <div>
         <div class="capstone-label">Capstone Assessment</div>
         <div class="capstone-title">AI Model Training Energy Cost Calculator</div>
-        <div class="capstone-desc">An authentic, real-world coding project connecting Python fundamentals to AI systems — students build a working script calculating computational energy cost, demonstrating variable creation, data types, I/O, type conversion, and written reflection. Includes a Python starter file, submission guidelines, and a rubric aligned to learning objectives.</div>
+        <div class="capstone-desc">An authentic, real-world coding project connecting Python fundamentals to AI systems. Students build a working script calculating computational energy cost, demonstrating variable creation, data types, I/O, type conversion, and written reflection. Includes a Python starter file, submission guidelines, and a rubric aligned to learning objectives.</div>
         <div class="rubric-tags">
           <span class="rubric-tag">Variable creation</span>
           <span class="rubric-tag">Data type differentiation</span>
@@ -616,7 +571,6 @@
       </div>
     </div>
 
-    <!-- ARTIFACTS CALLOUT -->
     <div class="artifacts-callout">
       <div class="artifacts-text">
         <strong>Explore Sample Artifacts</strong><br>
@@ -625,13 +579,12 @@
       <a class="artifacts-link" href="https://drive.google.com/drive/folders/1_rWMqXrvx3-kpmuRzdu3yZVJScTvzMDv?usp=drive_link" target="_blank">View Sample Artifacts</a>
     </div>
 
-    <!-- DESIGN HIGHLIGHTS -->
     <div class="section">
       <span class="section-label">Design Highlights</span>
       <div class="highlights-grid">
         <div class="highlight-card">
           <div class="highlight-title">Learner Personas</div>
-          <div class="highlight-text">Personas representing linguistic, cultural, and technical diversity — drawn from Bay Area tech workforce demographics and institutional data — shaped pacing, examples, and support structures throughout.</div>
+          <div class="highlight-text">Personas representing linguistic, cultural, and technical diversity, drawn from Bay Area tech workforce demographics and institutional data, shaped pacing, examples, and support structures throughout.</div>
         </div>
         <div class="highlight-card">
           <div class="highlight-title">DEIJ-Aware Content</div>
@@ -639,7 +592,7 @@
         </div>
         <div class="highlight-card">
           <div class="highlight-title">Cognitive Load Management</div>
-          <div class="highlight-text">Scaffolded task sequence — from guided practice to debugging challenges to open-ended capstone — aligns cognitive demand with progressive skill development.</div>
+          <div class="highlight-text">Scaffolded task sequence, from guided practice to debugging challenges to open-ended capstone, aligns cognitive demand with progressive skill development.</div>
         </div>
         <div class="highlight-card">
           <div class="highlight-title">Seamless Tool Integration</div>
@@ -650,9 +603,8 @@
 
   </div>
 
-  <!-- FOOTER -->
   <div class="footer">
-    <div class="footer-name">James D. Rodgers · AI Learning Experience Designer</div>
+    <div class="footer-name">James D. Rodgers · Instructional Designer</div>
     <div class="footer-link"><a href="https://www.jamesdrodgers.ai" target="_blank">www.jamesdrodgers.ai</a></div>
   </div>
 
