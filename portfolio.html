@@ -9,19 +9,18 @@
   <meta property="og:description" content="Learning experience design across AI, clinical education, higher education, and nonprofit training." />
   <meta property="og:image" content="https://jamesdrodgers.ai/og-image.png" />
   <meta property="og:url" content="https://jamesdrodgers.ai/portfolio" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg:         #f0f2f5;
-      --white:      #ffffff;
-      --accent:     #5b7fe8;
-      --accent-dk:  #4a6dd4;
-      --dark:       #1a1d23;
-      --mid:        #4a5568;
-      --light:      #8492a6;
-      --rule:       #e4e8ee;
-      --tag-bg:     #eef1f8;
-      --accent-lt:  #eef1fb;
+      --bg:        #f0f2f5;
+      --white:     #ffffff;
+      --accent:    #5b7fe8;
+      --accent-dk: #4a6dd4;
+      --dark:      #1a1d23;
+      --mid:       #4a5568;
+      --light:     #8492a6;
+      --rule:      #d8dce6;
+      --tag-bg:    #eef1f8;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -49,7 +48,7 @@
     }
 
     .nav-inner {
-      max-width: 1080px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 0 32px;
       display: flex;
@@ -93,9 +92,9 @@
 
     /* ── PAGE HEADER ── */
     .page-header {
-      max-width: 1080px;
+      max-width: 900px;
       margin: 0 auto;
-      padding: 52px 32px 40px;
+      padding: 48px 32px 32px;
     }
 
     .page-eyebrow {
@@ -104,63 +103,63 @@
       letter-spacing: 2.2px;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .page-header h1 {
-      font-size: 26px;
-      font-weight: 700;
+      font-size: 24px;
+      font-weight: 800;
       color: var(--dark);
       line-height: 1.2;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       letter-spacing: -0.3px;
     }
 
     .page-header p {
-      font-size: 13.5px;
+      font-size: 13px;
       color: var(--mid);
       line-height: 1.8;
-      max-width: 560px;
+      max-width: 520px;
       font-weight: 300;
     }
 
-    /* ── GRID ── */
-    .portfolio-grid {
-      max-width: 1080px;
+    /* ── CARD LIST ── */
+    .card-list {
+      max-width: 900px;
       margin: 0 auto;
       padding: 8px 32px 72px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
 
     /* ── CARD ── */
     .card {
       background: var(--white);
       border-radius: 10px;
-      border: 1px solid var(--rule);
+      border: 2px solid var(--rule);
       overflow: hidden;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      min-height: 200px;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
 
     .card:hover {
       border-color: var(--accent);
-      box-shadow: 0 2px 16px rgba(91,127,232,0.12);
+      box-shadow: 0 4px 20px rgba(91,127,232,0.13);
     }
 
-    /* ── CARD IMAGE AREA ── */
-    .card-visual {
-      position: relative;
-      width: 100%;
-      height: 220px;
-      overflow: hidden;
-      background: var(--tag-bg);
+    /* ── IMAGE ── */
+    .card-image {
+      width: 280px;
       flex-shrink: 0;
+      overflow: hidden;
+      position: relative;
+      background: var(--tag-bg);
     }
 
-    .card-visual.single img {
+    .card-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -169,30 +168,8 @@
       transition: transform 0.35s ease;
     }
 
-    .card:hover .card-visual.single img { transform: scale(1.03); }
+    .card:hover .card-image img { transform: scale(1.03); }
 
-    /* Collage: tall left + two stacked right */
-    .card-visual.collage {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 2px;
-      background: var(--rule);
-    }
-
-    .card-visual.collage img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
-    }
-
-    .card-visual.collage img:first-child {
-      grid-row: span 2;
-    }
-
-    /* ── DOMAIN BADGE ── */
     .domain-badge {
       position: absolute;
       top: 12px;
@@ -203,45 +180,44 @@
       text-transform: uppercase;
       padding: 3px 9px;
       border-radius: 20px;
-      background: rgba(91,127,232,0.88);
+      background: rgba(91,127,232,0.90);
       color: #fff;
       z-index: 2;
     }
 
-    /* ── CARD BODY ── */
+    /* ── BODY ── */
     .card-body {
-      padding: 20px 22px 22px;
+      padding: 24px 28px;
       flex: 1;
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      border-left: 1px solid var(--rule);
     }
 
     .card-title {
-      font-size: 14px;
-      font-weight: 700;
+      font-size: 17px;
+      font-weight: 800;
       color: var(--dark);
-      line-height: 1.3;
+      line-height: 1.25;
       margin-bottom: 4px;
-      letter-spacing: -0.1px;
+      letter-spacing: -0.2px;
     }
 
     .card-subtitle {
       font-size: 11px;
       font-weight: 500;
       color: var(--light);
-      margin-bottom: 10px;
-      letter-spacing: 0.1px;
+      margin-bottom: 12px;
     }
 
     .card-desc {
       font-size: 12.5px;
       color: var(--mid);
       line-height: 1.75;
-      flex: 1;
       margin-bottom: 14px;
     }
 
-    /* ── TAG STRIP ── */
     .card-tags {
       display: flex;
       flex-wrap: wrap;
@@ -259,7 +235,6 @@
       border-radius: 20px;
     }
 
-    /* ── CTA ── */
     .card-cta {
       display: inline-flex;
       align-items: center;
@@ -272,30 +247,8 @@
     }
 
     .card-cta:hover { color: var(--accent-dk); }
-
     .card-cta svg { transition: transform 0.15s; }
     .card:hover .card-cta svg { transform: translateX(3px); }
-
-    /* ── FEATURE CARD ── */
-    .card.feature {
-      grid-column: span 2;
-      flex-direction: row;
-      min-height: 260px;
-    }
-
-    .card.feature .card-visual {
-      width: 50%;
-      height: auto;
-      flex-shrink: 0;
-    }
-
-    .card.feature .card-body {
-      padding: 28px 32px;
-      justify-content: center;
-    }
-
-    .card.feature .card-title { font-size: 17px; margin-bottom: 6px; }
-    .card.feature .card-desc  { font-size: 13px; }
 
     /* ── FOOTER ── */
     .page-footer {
@@ -304,7 +257,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 1080px;
+      max-width: 900px;
       margin: 0 auto;
     }
 
@@ -319,26 +272,15 @@
     .footer-link a:hover { color: var(--accent-dk); text-decoration: underline; }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 800px) {
-      .portfolio-grid { grid-template-columns: 1fr; padding: 8px 20px 60px; }
-
-      .card.feature {
-        grid-column: span 1;
-        flex-direction: column;
-      }
-
-      .card.feature .card-visual { width: 100%; height: 200px; }
-      .card.feature .card-body   { padding: 20px 20px 22px; }
-      .card.feature .card-title  { font-size: 15px; }
-
-      .nav-links { gap: 14px; }
+    @media (max-width: 700px) {
+      .card { flex-direction: column; }
+      .card-image { width: 100%; height: 180px; }
+      .card-body { border-left: none; border-top: 1px solid var(--rule); padding: 20px; }
+      .card-list { padding: 8px 16px 60px; }
+      .page-header { padding: 32px 16px 24px; }
+      .nav-inner { padding: 0 16px; }
       .nav-links .nav-cta { display: none; }
-      .page-header { padding: 36px 20px 28px; }
-      .page-footer { padding: 16px 20px; }
-    }
-
-    @media (max-width: 480px) {
-      .nav-links a:not(.nav-cta) { font-size: 11.5px; }
+      .page-footer { padding: 16px; }
     }
   </style>
 </head>
@@ -364,12 +306,12 @@
     <p>Learning experiences across clinical education, higher education, workforce development, and AI-native contexts — grounded in backward design, human-centered craft, and measurable outcomes.</p>
   </div>
 
-  <!-- GRID -->
-  <div class="portfolio-grid">
+  <!-- CARD LIST -->
+  <div class="card-list">
 
-    <!-- CARD 1: Python — FEATURE -->
-    <div class="card feature">
-      <div class="card-visual single">
+    <!-- Python -->
+    <div class="card">
+      <div class="card-image">
         <span class="domain-badge">Higher Ed · AI</span>
         <img src="jupyter_GP1.png" alt="Jupyter Notebook guided practice screenshot" />
       </div>
@@ -392,9 +334,9 @@
       </div>
     </div>
 
-    <!-- CARD 2: PAC / Clinical -->
+    <!-- PAC -->
     <div class="card">
-      <div class="card-visual single">
+      <div class="card-image">
         <span class="domain-badge">Clinical · Healthcare</span>
         <img src="PAC_Bot.png" alt="PAC AI Clinical Educator interface" />
       </div>
@@ -416,9 +358,9 @@
       </div>
     </div>
 
-    <!-- CARD 3: YMCA -->
+    <!-- YMCA -->
     <div class="card">
-      <div class="card-visual single">
+      <div class="card-image">
         <span class="domain-badge">Nonprofit · Analytics</span>
         <img src="https://raw.githubusercontent.com/JamesDRodgers/james-ai-assistant/main/hypoxic.png" alt="Hypoxic blackout safety infographic" />
       </div>
@@ -440,9 +382,9 @@
       </div>
     </div>
 
-    <!-- CARD 4: AI for Math -->
+    <!-- AI for Math -->
     <div class="card">
-      <div class="card-visual single">
+      <div class="card-image">
         <span class="domain-badge">Adult Ed · AI Literacy</span>
         <img src="math_homework.jpeg" alt="Math homework worksheet" />
       </div>
