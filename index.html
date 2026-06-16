@@ -76,6 +76,44 @@
       font-weight: 600;
     }
 
+    /* ── NAV LINKS ── */
+    .nav-links-section { margin-top: 0; }
+    .nav-links-section h3 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: inherit;
+    }
+    .nav-link-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .nav-link-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      background: rgba(0,0,0,0.03);
+      border: 1px solid rgba(0,0,0,0.09);
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #1a1a1a;
+      text-decoration: none;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+      min-height: 44px;
+    }
+    .nav-link-item:hover {
+      background: rgba(91,127,232,0.06);
+      border-color: rgba(91,127,232,0.2);
+      color: #5b7fe8;
+    }
+    .nav-link-icon {
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
     /* ── WELCOME MESSAGE ── */
     .welcome-message {
       display: flex;
@@ -128,7 +166,7 @@
       color: #fff;
     }
 
-    /* ── TAGLINE UPDATE ── */
+    /* ── TAGLINE ── */
     .tagline-updated {
       font-size: 0.78rem;
       color: #888;
@@ -136,15 +174,6 @@
       line-height: 1.5;
       margin-bottom: 10px;
       letter-spacing: 0.1px;
-    }
-
-    /* ── CONTACT BTN POSITION FIX ── */
-    .sidebar-contact-top {
-      margin-bottom: 12px;
-    }
-    .sidebar-contact-top button {
-      width: 100%;
-      min-height: 44px;
     }
 
     /* ── MOBILE ── */
@@ -187,7 +216,7 @@
         </p>
 
         <p>
-          Ask me anything about James's work, background, or Learning Design approach.
+          Ask me anything about James's work, background, or learning design approach.
         </p>
 
         <h2 class="visually-hidden">How to Use This Assistant</h2>
@@ -202,77 +231,26 @@
 
       <hr class="divider" />
 
-      <!-- NAVIGATION ZONE -->
-
-      <!-- Resume & About -->
-      <section class="resume-section">
-
-        <h3>Resume & About</h3>
-
-        <div class="resume-downloads">
-
-          <a
-            href="https://jamesdrodgers.ai/resume"
-            class="resume-link"
-          >
-            📄 Instructional Designer Resume
+      <!-- NAVIGATION -->
+      <section class="nav-links-section">
+        <h3>Explore</h3>
+        <div class="nav-link-list">
+          <a href="https://www.jamesdrodgers.ai/portfolio" class="nav-link-item">
+            <span class="nav-link-icon">🗂️</span> Portfolio
           </a>
-
-          <a
-            href="https://jamesdrodgers.ai/jamesrodgers"
-            class="resume-link"
-          >
-            👤 About Me
+          <a href="https://www.jamesdrodgers.ai/resume" class="nav-link-item">
+            <span class="nav-link-icon">📄</span> Resume
           </a>
-
+          <a href="https://www.jamesdrodgers.ai/jamesrodgers" class="nav-link-item">
+            <span class="nav-link-icon">👤</span> About Me
+          </a>
         </div>
-
       </section>
+
 
       <hr class="divider" />
 
-      <!-- Featured Work -->
-      <section class="portfolio-section">
-
-        <h3>Featured Work</h3>
-
-        <div class="portfolio-grid">
-
-          <a class="portfolio-item" href="Python_Portfolio_Snapshot.html" target="_blank">
-            <span class="portfolio-item-tag">Higher Ed · AI</span>
-            <div class="portfolio-item-title">Intro to Python Programming</div>
-            <div class="portfolio-item-desc">Canvas module · Backward design · UDL · AI-adaptive assessment</div>
-            <span class="portfolio-item-arrow">View case study →</span>
-          </a>
-
-          <a class="portfolio-item" href="PAC_Portfolio_Snapshot.html" target="_blank">
-            <span class="portfolio-item-tag">Clinical · Healthcare</span>
-            <div class="portfolio-item-title">PAC / Swan-Ganz Clinical Module</div>
-            <div class="portfolio-item-desc">Critical care nursing · Canvas LMS · Custom AI tutor · Waveform interpretation</div>
-            <span class="portfolio-item-arrow">View case study →</span>
-          </a>
-
-          <a class="portfolio-item" href="https://www.jamesdrodgers.ai/ymca_aquatics_snapshot.html" target="_blank">
-            <span class="portfolio-item-tag">Nonprofit · Analytics</span>
-            <div class="portfolio-item-title">Aquatics Safety & Coaching Analytics</div>
-            <div class="portfolio-item-desc">Multimedia content · Learning analytics · Competency-based coaching</div>
-            <span class="portfolio-item-arrow">View samples →</span>
-          </a>
-
-          <a class="portfolio-item" href="https://share.articulate.com/rIyYmxR4avSUlAhzg5bea" target="_blank">
-            <span class="portfolio-item-tag">Adult Ed · AI Literacy</span>
-            <div class="portfolio-item-title">AI for Math Learning at Home</div>
-            <div class="portfolio-item-desc">Articulate Rise · AI literacy · Parent-facing · Prompt engineering</div>
-            <span class="portfolio-item-arrow">View course →</span>
-          </a>
-
-        </div>
-
-      </section>
-
-      <hr class="divider" />
-
-      <!-- Contact — persistent at bottom of nav zone -->
+      <!-- CONTACT -->
       <div class="sidebar-contact">
         <button
           class="contact-btn-sidebar"
@@ -307,7 +285,7 @@
         </div>
       </div>
 
-      <!-- Suggestion chips above input -->
+      <!-- Suggestion chips -->
       <div class="suggestion-chips" id="chipContainer">
         <button class="chip" onclick="sendChip(this)">How does James combine ID with AI?</button>
         <button class="chip" onclick="sendChip(this)">What's his design process?</button>
@@ -364,18 +342,15 @@
 
   <script src="script.js"></script>
   <script>
-    // Hide welcome message and chips once chat starts
     function sendChip(btn) {
       var text = btn.textContent.trim();
       document.getElementById('userInput').value = text;
       document.getElementById('chipContainer').style.display = 'none';
       document.getElementById('welcomeMsg').style.display = 'none';
-      // Trigger existing send logic if available
       if (typeof sendMessage === 'function') sendMessage();
       else if (document.getElementById('sendBtn')) document.getElementById('sendBtn').click();
     }
 
-    // Also hide on first real message send
     var origSend = document.getElementById('sendBtn');
     if (origSend) {
       origSend.addEventListener('click', function() {
