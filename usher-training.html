@@ -17,12 +17,10 @@
     --teal-50: #E1F5EE;
     --teal-500: #1D9E75;
     --teal-700: #0F6E56;
-    --amber-50: #FAEEDA;
-    --amber-700: #633806;
     --blue-50: #E6F1FB;
-    --blue-700: #0C447C;
     --sj-blue: #1A56A0;
     --gray-50: #F1EFE8;
+    --gray-100: #E8E6E0;
     --gray-200: #B4B2A9;
     --gray-500: #5F5E5A;
     --gray-700: #444441;
@@ -33,10 +31,9 @@
     --border-strong: rgba(0,0,0,0.18);
     --text: #1a1a18;
     --text-muted: #5F5E5A;
-    --text-faint: #999790;
+    --text-faint: #888780;
     --radius: 12px;
     --radius-sm: 7px;
-    --nav-h: 64px;
   }
 
   html { font-size: 16px; }
@@ -51,7 +48,7 @@
   /* ── App header ── */
   .app-header {
     background: var(--surface);
-    border-bottom: 0.5px solid var(--border);
+    border-bottom: 1px solid var(--border);
     padding: 0 1.25rem;
     height: 52px;
     display: flex;
@@ -61,40 +58,22 @@
     top: 0;
     z-index: 200;
   }
-  .app-logo {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
-    letter-spacing: -0.01em;
-  }
+  .app-logo { font-size: 14px; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
   .app-logo span { color: var(--text-muted); font-weight: 400; }
-  .header-progress {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    color: var(--text-muted);
-  }
-  .header-progress-track {
-    width: 72px; height: 3px;
-    background: var(--gray-50);
-    border-radius: 2px; overflow: hidden;
-  }
-  .header-progress-fill {
-    height: 100%; background: var(--purple-500);
-    border-radius: 2px; transition: width 0.4s ease; width: 0%;
-  }
+  .header-progress { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-muted); }
+  .header-progress-track { width: 72px; height: 3px; background: var(--gray-100); border-radius: 2px; overflow: hidden; }
+  .header-progress-fill { height: 100%; background: var(--purple-500); border-radius: 2px; transition: width 0.4s ease; width: 0%; }
 
-  /* ── Top tab bar ── */
+  /* ── Tab bar ── */
   .top-tabs {
     position: sticky;
     top: 52px;
     z-index: 190;
-    background: var(--surface);
+    background: var(--gray-50);
     border-bottom: 1px solid var(--border);
     display: flex;
-    padding: 0 1rem;
-    gap: 4px;
+    padding: 8px 10px;
+    gap: 6px;
   }
   .tab-btn {
     flex: 1;
@@ -103,102 +82,97 @@
     align-items: center;
     justify-content: center;
     gap: 4px;
-    padding: 10px 6px 8px;
-    font-size: 11px;
+    padding: 10px 6px;
+    font-size: 12px;
     font-weight: 500;
-    color: var(--text-faint);
+    color: var(--text-muted);
     cursor: pointer;
     border: none;
     background: none;
-    border-bottom: 2px solid transparent;
-    transition: color 0.15s, border-color 0.15s;
+    border-radius: 10px;
+    transition: background 0.15s, color 0.15s;
     -webkit-tap-highlight-color: transparent;
     position: relative;
     letter-spacing: 0.01em;
   }
-  .tab-btn svg { width: 22px; height: 22px; stroke-width: 1.6; transition: stroke-width 0.15s; }
+  .tab-btn svg { width: 24px; height: 24px; stroke-width: 1.6; }
   .tab-btn.active {
+    background: var(--surface);
     color: var(--purple-500);
-    border-bottom-color: var(--purple-500);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.10), 0 0 0 0.5px rgba(0,0,0,0.06);
   }
   .tab-btn.active svg { stroke-width: 2; }
   .tab-badge {
     position: absolute;
-    top: 8px; right: calc(50% - 18px);
+    top: 6px; right: calc(50% - 20px);
     background: #D83030;
     color: white;
     font-size: 9px;
-    font-weight: 600;
+    font-weight: 700;
     min-width: 16px; height: 16px;
     border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
+    display: none;
+    align-items: center; justify-content: center;
     padding: 0 4px;
     line-height: 1;
-    display: none;
   }
   .tab-badge.visible { display: flex; }
 
   /* ── Main ── */
-  .main {
-    padding: 1rem 1rem 2rem;
-    max-width: 480px;
-    margin: 0 auto;
-  }
+  .main { padding: 0 0 2rem; max-width: 480px; margin: 0 auto; }
 
   /* ── Views ── */
   .view { display: none; }
   .view.active { display: block; }
 
-  /* ── Hero card ── */
-  .home-hero {
-    background: var(--surface);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    margin-bottom: 1rem;
-    border-top: 3px solid var(--sj-blue);
-  }
-  .hero-inner {
+  /* ── Mini hero banner (appears at top of every section) ── */
+  .section-hero {
+    background: var(--sj-blue);
+    padding: 1rem 1.25rem;
     display: flex;
     align-items: center;
-    gap: 1rem;
-    padding: 1.25rem 1.25rem 1rem;
+    gap: 0.875rem;
+    margin-bottom: 0;
   }
-  .hero-door { flex-shrink: 0; width: 72px; }
-  .hero-door img { width: 72px; height: auto; display: block; border-radius: var(--radius-sm); }
-  .hero-text { flex: 1; min-width: 0; }
-  .home-eyebrow {
+  .section-hero-door { flex-shrink: 0; width: 44px; }
+  .section-hero-door img { width: 44px; height: auto; display: block; border-radius: 6px; opacity: 0.92; }
+  .section-hero-door-placeholder {
+    width: 44px; height: 58px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .section-hero-door-placeholder svg { width: 22px; height: 22px; stroke: rgba(255,255,255,0.7); }
+  .section-hero-text {}
+  .section-hero-eyebrow {
     font-size: 10px; font-weight: 600;
     letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--sj-blue); margin-bottom: 4px;
+    color: rgba(255,255,255,0.65); margin-bottom: 2px;
   }
-  .home-title {
+  .section-hero-title {
     font-family: 'Lora', Georgia, serif;
-    font-size: 21px; line-height: 1.2;
-    color: var(--text); margin-bottom: 4px;
+    font-size: 17px; line-height: 1.25;
+    color: #ffffff;
   }
-  .home-sub { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
-  .progress-summary {
-    padding: 0.875rem 1.25rem;
-    border-top: 0.5px solid var(--border);
+  .section-hero-sub { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 2px; }
+
+  /* ── Full hero (Learn tab only) ── */
+  .learn-hero-progress {
+    padding: 0.75rem 1.25rem;
+    background: rgba(255,255,255,0.10);
     display: flex; align-items: center; gap: 12px;
-    background: var(--gray-50);
   }
-  .progress-track {
-    flex: 1; height: 5px;
-    background: var(--border);
-    border-radius: 3px; overflow: hidden;
-  }
-  .progress-fill {
-    height: 100%; background: var(--sj-blue);
-    border-radius: 3px; transition: width 0.4s ease;
-  }
-  .progress-text { font-size: 12px; color: var(--text-muted); white-space: nowrap; font-weight: 500; }
+  .progress-track { flex: 1; height: 5px; background: rgba(255,255,255,0.25); border-radius: 3px; overflow: hidden; }
+  .progress-fill { height: 100%; background: #ffffff; border-radius: 3px; transition: width 0.4s ease; }
+  .progress-text { font-size: 12px; color: rgba(255,255,255,0.8); white-space: nowrap; font-weight: 500; }
+
+  /* ── Content padding wrapper ── */
+  .section-body { padding: 1rem 1rem 0; }
 
   .section-label-sm {
     font-size: 10px; font-weight: 600;
     letter-spacing: 0.07em; text-transform: uppercase;
-    color: var(--text-faint); margin: 1.25rem 0 0.625rem;
+    color: var(--text-faint); margin: 1rem 0 0.5rem;
   }
 
   /* ── Session cards ── */
@@ -215,25 +189,13 @@
   .session-card:active { box-shadow: 0 0 0 2px var(--purple-300); }
   .session-card:hover { border-color: var(--border-strong); }
   .session-card.done { opacity: 0.5; }
-  .session-header-row {
-    display: flex; align-items: center;
-    gap: 12px; padding: 0.875rem 1rem;
-  }
-  .session-icon {
-    width: 40px; height: 40px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
+  .session-header-row { display: flex; align-items: center; gap: 12px; padding: 0.875rem 1rem; }
+  .session-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .session-icon svg { width: 18px; height: 18px; stroke-width: 1.75; }
   .session-info { flex: 1; min-width: 0; }
   .session-name { font-size: 14px; font-weight: 500; line-height: 1.3; }
   .session-week { font-size: 11px; color: var(--text-faint); margin-top: 2px; }
-  .session-construct {
-    display: inline-block;
-    font-size: 10px; padding: 2px 7px;
-    border-radius: 20px; border: 0.5px solid var(--border);
-    color: var(--text-faint); margin-top: 4px;
-  }
+  .session-construct { display: inline-block; font-size: 10px; padding: 2px 7px; border-radius: 20px; border: 0.5px solid var(--border); color: var(--text-faint); margin-top: 4px; }
   .session-status { flex-shrink: 0; }
   .status-done { font-size: 11px; padding: 3px 9px; border-radius: 20px; font-weight: 500; background: #EAF3DE; color: #27500A; }
   .chevron svg { width: 16px; height: 16px; stroke-width: 2; color: var(--text-faint); }
@@ -241,9 +203,9 @@
   /* ── Detail view ── */
   .detail-back {
     display: flex; align-items: center; gap: 6px;
-    font-size: 13px; color: var(--purple-500);
-    cursor: pointer; padding: 0.875rem 0 1rem;
-    font-weight: 500;
+    font-size: 13px; color: rgba(255,255,255,0.85);
+    cursor: pointer; padding: 0.75rem 1.25rem;
+    font-weight: 500; background: var(--sj-blue);
     -webkit-tap-highlight-color: transparent;
   }
   .detail-back svg { width: 16px; height: 16px; stroke-width: 2.5; }
@@ -254,157 +216,52 @@
     padding: 1.25rem; margin-bottom: 10px;
     border-left: 4px solid currentColor;
   }
-  .detail-eyebrow {
-    font-size: 10px; font-weight: 600;
-    letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 6px;
-  }
-  .detail-title {
-    font-family: 'Lora', Georgia, serif;
-    font-size: 22px; line-height: 1.25; margin-bottom: 4px;
-  }
+  .detail-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 6px; }
+  .detail-title { font-family: 'Lora', Georgia, serif; font-size: 22px; line-height: 1.25; margin-bottom: 4px; }
   .detail-sub { font-size: 13px; color: var(--text-muted); }
 
-  .content-block {
-    background: var(--surface);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1rem 1.125rem; margin-bottom: 8px;
-  }
-  .block-label {
-    font-size: 10px; font-weight: 600;
-    letter-spacing: 0.07em; text-transform: uppercase;
-    color: var(--text-faint); margin-bottom: 0.625rem;
-  }
-  .item-row {
-    display: flex; gap: 10px;
-    padding: 8px 0;
-    border-bottom: 0.5px solid var(--border);
-    font-size: 13px; line-height: 1.5; color: var(--text);
-  }
+  .content-block { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1rem 1.125rem; margin-bottom: 8px; }
+  .block-label { font-size: 10px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.625rem; }
+  .item-row { display: flex; gap: 10px; padding: 8px 0; border-bottom: 0.5px solid var(--border); font-size: 13px; line-height: 1.5; color: var(--text); }
   .item-row:last-child { border-bottom: none; padding-bottom: 0; }
   .item-row svg { width: 15px; height: 15px; stroke-width: 1.75; flex-shrink: 0; margin-top: 2px; color: var(--text-faint); }
 
-  .scenario-block {
-    border-left: 3px solid var(--purple-300);
-    padding: 0.875rem 1rem;
-    background: var(--purple-50);
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    margin-bottom: 8px;
-  }
+  .scenario-block { border-left: 3px solid var(--purple-300); padding: 0.875rem 1rem; background: var(--purple-50); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-bottom: 8px; }
   .scenario-block .block-label { color: var(--purple-700); }
   .scenario-block p { font-size: 13px; line-height: 1.6; color: var(--gray-900); }
 
-  .prompt-block {
-    border-left: 3px solid var(--teal-500);
-    padding: 0.875rem 1rem;
-    background: var(--teal-50);
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    margin-bottom: 8px;
-  }
+  .prompt-block { border-left: 3px solid var(--teal-500); padding: 0.875rem 1rem; background: var(--teal-50); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-bottom: 8px; }
   .prompt-block .block-label { color: var(--teal-700); }
-  .prompt-block p {
-    font-family: 'Lora', Georgia, serif;
-    font-style: italic; font-size: 13px;
-    line-height: 1.65; color: var(--gray-900);
-  }
+  .prompt-block p { font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 13px; line-height: 1.65; color: var(--gray-900); }
 
-  .complete-btn {
-    width: 100%; padding: 14px;
-    background: var(--purple-500); color: white;
-    border: none; border-radius: var(--radius);
-    font-size: 15px; font-weight: 500;
-    font-family: 'Inter', sans-serif;
-    cursor: pointer; margin-top: 1rem;
-    transition: background 0.15s;
-    -webkit-tap-highlight-color: transparent;
-    letter-spacing: -0.01em;
-  }
+  .complete-btn { width: 100%; padding: 14px; background: var(--purple-500); color: white; border: none; border-radius: var(--radius); font-size: 15px; font-weight: 500; font-family: 'Inter', sans-serif; cursor: pointer; margin-top: 1rem; transition: background 0.15s; -webkit-tap-highlight-color: transparent; letter-spacing: -0.01em; }
   .complete-btn:hover { background: var(--purple-700); }
   .complete-btn:disabled { background: var(--gray-200); color: var(--gray-500); cursor: default; }
 
-  /* ── About ── */
-  .about-card {
-    background: var(--surface);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.25rem; margin-bottom: 8px;
-  }
+  /* ── About / Parish ── */
+  .about-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 8px; }
   .about-card h3 { font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--text); }
   .about-card p { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
-  .about-title {
-    font-family: 'Lora', Georgia, serif;
-    font-size: 17px; margin-bottom: 0.875rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 0.5px solid var(--border);
-    color: var(--text);
-  }
+  .about-title { font-family: 'Lora', Georgia, serif; font-size: 17px; margin-bottom: 0.875rem; padding-bottom: 0.75rem; border-bottom: 0.5px solid var(--border); color: var(--text); }
   .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-  .tag {
-    font-size: 11px; padding: 3px 9px;
-    border-radius: 20px;
-    border: 0.5px solid var(--border-strong);
-    color: var(--text-muted);
-  }
-  .prayer-block {
-    border-left: 3px solid var(--sj-blue);
-    padding: 0.875rem 1rem;
-    background: var(--blue-50);
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    margin-top: 8px;
-  }
-  .prayer-block p {
-    font-family: 'Lora', Georgia, serif;
-    font-style: italic; font-size: 13px;
-    line-height: 1.75; color: var(--gray-900);
-  }
+  .tag { font-size: 11px; padding: 3px 9px; border-radius: 20px; border: 0.5px solid var(--border-strong); color: var(--text-muted); }
+  .prayer-block { border-left: 3px solid var(--sj-blue); padding: 0.875rem 1rem; background: var(--blue-50); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-top: 8px; }
+  .prayer-block p { font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 13px; line-height: 1.75; color: var(--gray-900); }
 
   /* ── Checklist ── */
-  .checklist-header {
-    display: flex; align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.75rem;
-  }
+  .checklist-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; }
   .checklist-meta { font-size: 12px; color: var(--text-muted); }
-  .reset-btn {
-    font-size: 12px; color: var(--text-faint);
-    background: none; border: 0.5px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 5px 12px; cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    transition: color 0.15s, border-color 0.15s;
-  }
+  .reset-btn { font-size: 12px; color: var(--text-faint); background: none; border: 0.5px solid var(--border); border-radius: var(--radius-sm); padding: 5px 12px; cursor: pointer; font-family: 'Inter', sans-serif; transition: color 0.15s, border-color 0.15s; }
   .reset-btn:hover { color: var(--text-muted); border-color: var(--border-strong); }
-
   .phase-group { margin-bottom: 1.25rem; }
-  .phase-header-label {
-    display: flex; align-items: center;
-    gap: 8px; margin-bottom: 6px;
-    padding: 0 2px;
-  }
+  .phase-header-label { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; padding: 0 2px; }
   .phase-header-label svg { width: 14px; height: 14px; stroke-width: 2; color: var(--text-faint); }
   .phase-title-text { font-size: 11px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.04em; text-transform: uppercase; }
   .phase-count { font-size: 11px; color: var(--text-faint); margin-left: auto; }
-
-  .check-item {
-    display: flex; align-items: flex-start; gap: 12px;
-    padding: 11px 1rem;
-    background: var(--surface);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius-sm);
-    margin-bottom: 5px;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-    transition: opacity 0.2s;
-  }
+  .check-item { display: flex; align-items: flex-start; gap: 12px; padding: 11px 1rem; background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-sm); margin-bottom: 5px; cursor: pointer; -webkit-tap-highlight-color: transparent; transition: opacity 0.2s; }
   .check-item:active { opacity: 0.7; }
   .check-item.checked { opacity: 0.4; }
-  .check-box {
-    width: 22px; height: 22px; border-radius: 5px;
-    border: 1.5px solid var(--border-strong);
-    flex-shrink: 0; margin-top: 0;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.15s;
-  }
+  .check-box { width: 22px; height: 22px; border-radius: 5px; border: 1.5px solid var(--border-strong); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
   .check-item.checked .check-box { background: var(--purple-500); border-color: var(--purple-500); }
   .check-item.checked .check-box svg { display: block; }
   .check-box svg { display: none; width: 13px; height: 13px; stroke: white; stroke-width: 2.5; }
@@ -424,7 +281,6 @@
   </div>
 </header>
 
-<!-- TOP TAB BAR -->
 <nav class="top-tabs" role="tablist">
   <button class="tab-btn active" id="tab-learn" onclick="switchTab('learn')" role="tab" aria-selected="true">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
@@ -445,27 +301,24 @@
 
   <!-- LEARN VIEW -->
   <div class="view active" id="view-learn">
-    <div class="home-hero">
-      <div class="hero-inner">
-        <div class="hero-door">
-          <img src="door.jpeg" alt="St. John's church door">
-        </div>
-        <div class="hero-text">
-          <div class="home-eyebrow">A Ministry of Hospitality</div>
-          <h1 class="home-title">Serving at the threshold</h1>
-          <p class="home-sub">Five sessions. One Sunday at a time.</p>
-        </div>
+    <div class="section-hero">
+      <div class="section-hero-door">
+        <img src="door.jpeg" alt="St. John's church door" onerror="this.parentElement.innerHTML='<div class=\'section-hero-door-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\'><path d=\'M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z\'/></svg></div>'">
       </div>
-      <div class="progress-summary">
-        <div class="progress-track">
-          <div class="progress-fill" id="home-pbar"></div>
-        </div>
-        <span class="progress-text" id="home-plabel">0 of 5 complete</span>
+      <div class="section-hero-text">
+        <div class="section-hero-eyebrow">A Ministry of Hospitality</div>
+        <div class="section-hero-title">Serving at the threshold</div>
+        <div class="section-hero-sub">Five sessions. One Sunday at a time.</div>
       </div>
     </div>
-
-    <div class="section-label-sm">Sessions</div>
-    <div id="session-list"></div>
+    <div class="learn-hero-progress">
+      <div class="progress-track"><div class="progress-fill" id="home-pbar"></div></div>
+      <span class="progress-text" id="home-plabel">0 of 5 complete</span>
+    </div>
+    <div class="section-body">
+      <div class="section-label-sm">Sessions</div>
+      <div id="session-list"></div>
+    </div>
   </div>
 
   <!-- DETAIL VIEW -->
@@ -474,60 +327,80 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M15 18l-6-6 6-6"/></svg>
       All sessions
     </div>
-    <div id="detail-content"></div>
+    <div class="section-body">
+      <div id="detail-content"></div>
+    </div>
   </div>
 
-  <!-- SUNDAY CHECKLIST VIEW -->
+  <!-- SUNDAY VIEW -->
   <div class="view" id="view-sunday">
-    <div class="section-label-sm" style="margin-top:0.25rem">Sunday checklist</div>
-    <div class="checklist-header">
-      <span class="checklist-meta" id="checklist-summary">Tap items as you go</span>
-      <button class="reset-btn" onclick="resetChecklist()">Reset</button>
+    <div class="section-hero">
+      <div class="section-hero-door">
+        <img src="door.jpeg" alt="St. John's church door" onerror="this.parentElement.innerHTML='<div class=\'section-hero-door-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\'><path d=\'M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z\'/></svg></div>'">
+      </div>
+      <div class="section-hero-text">
+        <div class="section-hero-eyebrow">St. John's Episcopal · Youngstown</div>
+        <div class="section-hero-title">Sunday checklist</div>
+        <div class="section-hero-sub" id="checklist-summary">Tap items as you go</div>
+      </div>
     </div>
-    <div id="checklist-content"></div>
+    <div class="section-body">
+      <div class="checklist-header" style="margin-top:0.75rem;">
+        <span></span>
+        <button class="reset-btn" onclick="resetChecklist()">Reset</button>
+      </div>
+      <div id="checklist-content"></div>
+    </div>
   </div>
 
-  <!-- ST. JOHN'S / ABOUT VIEW -->
+  <!-- ST. JOHN'S VIEW -->
   <div class="view" id="view-parish">
-    <div class="section-label-sm" style="margin-top:0.25rem">St. John's Episcopal</div>
-
-    <div class="about-card" style="border-top: 3px solid var(--sj-blue);">
-      <p class="about-title">Mission Statement</p>
-      <p>At St. John's Episcopal Church of Youngstown, we celebrate God and the transforming love of Jesus Christ. Rooted in scripture, practice and reason, we evolve as disciples, build compassionate relationships, and serve others with love. We strive to be a welcoming and caring space for everyone, reflecting the inherent dignity of all, and we nurture unity in the Body of Christ by fostering spiritual growth, hope and renewal as we answer Christ's call to embody His love and grace in our community.</p>
-    </div>
-
-    <div class="about-card">
-      <h3>Who we are</h3>
-      <p>Founded in the 1850s, St. John's has been a faithful presence in downtown Youngstown for over 170 years. Located at 323 Wick Ave on the city's arts corridor, the parish is home to Tiffany stained-glass windows, the annual Boar's Head Festival, the Red Door Food Pantry and Café, and partnerships with Youngstown State University and neighboring faith communities. St. John's affirms and welcomes LGBTQ+ persons and is committed to reflecting the inherent dignity of all.</p>
-    </div>
-
-    <div class="about-card">
-      <h3>Where we are right now</h3>
-      <p>St. John's is in a season of transition, currently without a settled rector. Lay leadership has carried the parish through two years of honest conversation, healing, and renewed hope. Average weekly attendance is around 67, with Christmas and Easter drawing over 170. The parish is actively searching for a priest-in-charge who will honor and strengthen this lay-led momentum.</p>
-    </div>
-
-    <div class="about-card">
-      <h3>A prayer for those who serve at the door</h3>
-      <div class="prayer-block">
-        <p>Heavenly Father, you sent your Son as a model for hospitality. Prepare my heart to welcome all who walk through our doors today. Give me eyes to see the needs of your people, grace to respond with patience, and a joyful spirit that reflects your love. May the stranger feel at home, and the weary find peace. I ask this through Jesus Christ our Lord. Amen.</p>
+    <div class="section-hero">
+      <div class="section-hero-door">
+        <img src="door.jpeg" alt="St. John's church door" onerror="this.parentElement.innerHTML='<div class=\'section-hero-door-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\'><path d=\'M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z\'/></svg></div>'">
+      </div>
+      <div class="section-hero-text">
+        <div class="section-hero-eyebrow">323 Wick Ave · Youngstown, OH</div>
+        <div class="section-hero-title">St. John's Episcopal</div>
+        <div class="section-hero-sub">323 Wick Ave · Diocese of Ohio</div>
       </div>
     </div>
-
-    <div class="about-card">
-      <h3>About this module</h3>
-      <p>Usher training at most parishes is a single orientation and a handshake. This module treats the role as what it actually is — a ministry with real skill, real judgment, and real formation involved. Five sessions, grounded in how adults actually learn, built specifically for St. John's in this moment.</p>
-      <div class="tag-row">
-        <span class="tag">Mystagogical method</span>
-        <span class="tag">Transformative learning</span>
-        <span class="tag">Situated learning</span>
-        <span class="tag">Spaced repetition</span>
-        <span class="tag">Self-determination theory</span>
+    <div class="section-body">
+      <div class="section-label-sm" style="margin-top:0.75rem;">Parish</div>
+      <div class="about-card" style="border-top: 3px solid var(--sj-blue);">
+        <p class="about-title">Mission Statement</p>
+        <p>At St. John's Episcopal Church of Youngstown, we celebrate God and the transforming love of Jesus Christ. Rooted in scripture, practice and reason, we evolve as disciples, build compassionate relationships, and serve others with love. We strive to be a welcoming and caring space for everyone, reflecting the inherent dignity of all, and we nurture unity in the Body of Christ by fostering spiritual growth, hope and renewal as we answer Christ's call to embody His love and grace in our community.</p>
       </div>
-    </div>
-
-    <div class="about-card">
-      <h3>Version</h3>
-      <p style="font-size:12px;">St. John's Episcopal Church · Youngstown, OH · 2025<br>Review annually as a team. Update when the parish changes.</p>
+      <div class="about-card">
+        <h3>Who we are</h3>
+        <p>St. John's has been a faithful presence in downtown Youngstown for over 170 years. Located at 323 Wick Ave on the city's arts corridor, the parish is home to Tiffany stained-glass windows, the annual Boar's Head Festival, the Red Door Food Pantry and Café, and partnerships with Youngstown State University and neighboring faith communities. St. John's affirms and welcomes LGBTQ+ persons and is committed to reflecting the inherent dignity of all.</p>
+      </div>
+      <div class="about-card">
+        <h3>Where we are right now</h3>
+        <p>St. John's is in a season of transition, currently without a settled rector. Lay leadership has carried the parish through two years of honest conversation, healing, and renewed hope. Average weekly attendance is around 67, with Christmas and Easter drawing over 170. The parish is actively searching for a priest-in-charge who will honor and strengthen this lay-led momentum.</p>
+      </div>
+      <div class="section-label-sm">Formation</div>
+      <div class="about-card">
+        <h3>A prayer for those who serve at the door</h3>
+        <div class="prayer-block">
+          <p>Heavenly Father, you sent your Son as a model for hospitality. Prepare my heart to welcome all who walk through our doors today. Give me eyes to see the needs of your people, grace to respond with patience, and a joyful spirit that reflects your love. May the stranger feel at home, and the weary find peace. I ask this through Jesus Christ our Lord. Amen.</p>
+        </div>
+      </div>
+      <div class="about-card">
+        <h3>About this module</h3>
+        <p>Usher training at most parishes is a single orientation and a handshake. This module treats the role as what it actually is — a ministry with real skill, real judgment, and real formation involved. Five sessions, grounded in how adults actually learn, built specifically for St. John's in this moment.</p>
+        <div class="tag-row">
+          <span class="tag">Mystagogical method</span>
+          <span class="tag">Transformative learning</span>
+          <span class="tag">Situated learning</span>
+          <span class="tag">Spaced repetition</span>
+          <span class="tag">Self-determination theory</span>
+        </div>
+      </div>
+      <div class="about-card">
+        <h3>Version</h3>
+        <p style="font-size:12px;">St. John's Episcopal Church · Youngstown, OH · 2025<br>Review annually as a team. Update when the parish changes.</p>
+      </div>
     </div>
   </div>
 
@@ -536,10 +409,7 @@
 <script>
 const sessions = [
   {
-    id: 1,
-    title: 'The Building',
-    week: 'Week 1 · Before your first Sunday',
-    construct: 'Situated learning',
+    id: 1, title: 'The Building', week: 'Week 1 · Before your first Sunday', construct: 'Situated learning',
     iconBg: '#EEEDFE', iconColor: '#3C3489',
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>`,
     content: [
@@ -553,14 +423,11 @@ const sessions = [
         { icon: 'info', text: 'Pattern recognition. Knowing when to move and when to hold still comes from watching before acting. Procedure alone won\'t give you that.' },
       ]},
       { type: 'prompt', label: 'After your observation Sunday', text: 'Write down two things: one moment when the usher\'s presence made a difference, and one moment when you would have done something differently. Keep it. You\'ll revisit it in Session 5.' },
-      { type: 'scenario', label: 'Think it through', text: 'A couple arrives five minutes late with a toddler. The usher seats them in the front pew during the Gospel reading. The child is audible. What would you have done differently, and why?' },
+      { type: 'scenario', label: 'Think it through', text: 'You arrive for your first observation Sunday and notice there\'s no clear place for families with strollers to sit without blocking an aisle. A family with a newborn is standing at the back looking uncertain. There\'s no usher in sight. What do you do — and what does this moment tell you about what to look for when you walk the building on a weekday?' },
     ]
   },
   {
-    id: 2,
-    title: 'Welcome and Connection',
-    week: 'Week 2 · Moving someone from visitor to member',
-    construct: 'Relational skill',
+    id: 2, title: 'Welcome and Connection', week: 'Week 2 · Moving someone from visitor to member', construct: 'Relational skill',
     iconBg: '#FAEEDA', iconColor: '#633806',
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`,
     content: [
@@ -578,18 +445,20 @@ const sessions = [
         { icon: 'speak', text: 'Walk the guest over, say both names, give one concrete connection: "This is David — he also just moved to the west side." Then leave them to it.' },
         { icon: 'x', text: 'Don\'t hover after the introduction. You\'ve done the work.' },
       ]},
-      { type: 'section', label: 'St. John\'s specifically', items: [
-        { icon: 'info', text: 'St. John\'s already practices hospitality in concrete ways — the Red Door Food Pantry, the Soup Kitchen, partnerships with YSU international students, shared meals. The usher is one more expression of the same impulse. You\'re not inventing a culture. You\'re extending one that already exists.' },
+      { type: 'section', label: 'Children and families', items: [
+        { icon: 'users', text: 'Children belong in the liturgy. St. John\'s is a community where families are welcomed, not managed. About 14% of the congregation is under 17. When a family walks in, your first job is to make them feel expected, not tolerated.' },
+        { icon: 'info', text: 'Families with young children often need a specific kind of help: a seat on the aisle so a parent can slip out easily, space for a stroller without blocking others, and a quiet word about where the nursery or children\'s area is — not as a suggestion to leave, but as an orientation.' },
+        { icon: 'accessible', text: 'During the program year, children exit after the children\'s sermon for Sunday School. Know when that happens and position yourself near the doors to help with the transition quietly — don\'t let it become a disruption.' },
+        { icon: 'info', text: 'St. John\'s hosts families from Youngstown State University\'s international student community. Some of these families may be experiencing Episcopal worship for the first time. A warm, clear bulletin hand-off and a brief word about what to expect goes a long way.' },
+        { icon: 'speak', text: 'When greeting a family, acknowledge the child directly — not just the adults. A word or a smile to a child signals that they are a full member of this community, not just a person being carried by an adult member.' },
+        { icon: 'x', text: 'Never, under any circumstances, signal to a parent that a child\'s sounds are a problem. If noise is genuinely disruptive, trust the parent to make that call. Your job is to make them feel welcome enough to come back next week.' },
       ]},
       { type: 'scenario', label: 'Scenario', text: 'After the service, a man in his 60s is standing alone near the exit, bulletin in hand, clearly not sure whether to stay for coffee hour. He came alone. You have about 45 seconds before he decides to leave. What do you say, and what do you not say?' },
       { type: 'scenario', label: 'Harder scenario', text: 'Someone arrives who had a very public falling-out with a current active member two years ago. They haven\'t been here since. They look uncertain at the door. Your instinct is to let someone else handle it. Examine that instinct. What do you actually do?' },
     ]
   },
   {
-    id: 3,
-    title: 'The Liturgy',
-    week: 'Week 3 · What to do and when',
-    construct: 'Procedural fluency',
+    id: 3, title: 'The Liturgy', week: 'Week 3 · What to do and when', construct: 'Procedural fluency',
     iconBg: '#E1F5EE', iconColor: '#085041',
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>`,
     content: [
@@ -621,10 +490,7 @@ const sessions = [
     ]
   },
   {
-    id: 4,
-    title: 'Assisting Clergy',
-    week: 'Week 4 · Supporting clergy in a transitional season',
-    construct: 'Context-specific',
+    id: 4, title: 'Assisting Clergy', week: 'Week 4 · Supporting clergy in a transitional season', construct: 'Context-specific',
     iconBg: '#E6F1FB', iconColor: '#0C447C',
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
     content: [
@@ -639,7 +505,7 @@ const sessions = [
         { icon: 'arrow', text: 'Redirect to what\'s actually happening: coffee hour, a program, a person they should meet. Move the conversation forward.' },
       ]},
       { type: 'section', label: 'Know your numbers', items: [
-        { icon: 'hash', text: 'Average weekly attendance is around 67. Christmas and Easter both drew over 170 last year — nearly three times a normal Sunday. Plan the usher team for high holy days well in advance. Don\'t wait until the week before.' },
+        { icon: 'hash', text: 'Average weekly attendance is around 67. Christmas and Easter both drew over 170 last year — nearly three times a normal Sunday. Plan the usher team for high holy days well in advance.' },
         { icon: 'users', text: 'About 24% of the congregation is 65 or older. Mobility awareness and unhurried seating matter every Sunday, not just occasionally.' },
         { icon: 'plus', text: 'If attendance is climbing on a given Sunday, flag it to the lead usher early. A third usher makes a real difference when the nave is full.' },
       ]},
@@ -651,10 +517,7 @@ const sessions = [
     ]
   },
   {
-    id: 5,
-    title: 'Assisting New Ushers',
-    week: 'Ongoing · Onboarding and mentorship',
-    construct: 'Situated learning: peripheral to central',
+    id: 5, title: 'Assisting New Ushers', week: 'Ongoing · Onboarding and mentorship', construct: 'Situated learning: peripheral to central',
     iconBg: '#F1EFE8', iconColor: '#444441',
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>`,
     content: [
@@ -740,7 +603,7 @@ function updateProgress() {
 }
 
 function updateChecklistBadge() {
-  const total = checklist.reduce((acc, p) => acc + p.items.length, 0);
+  const total = checklist.reduce((a, p) => a + p.items.length, 0);
   const done = Object.values(checkStates).filter(Boolean).length;
   const remaining = total - done;
   const badge = document.getElementById('checklist-badge');
@@ -756,38 +619,38 @@ function updateChecklistBadge() {
 }
 
 const ICONS = {
-  walk: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="5" r="2"/><path d="M5 22l2-8 3 3 2-5 3 8"/><path d="M14 9l-3-3-4 2"/></svg>`,
-  eye: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`,
-  users: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>`,
-  info: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
-  clock: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
-  file: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`,
-  door: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>`,
-  hand: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>`,
-  accessible: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="4" r="2"/><path d="M19 13l-7 2-4-4 3-7"/><path d="M10 17l-2 5"/><path d="M14 17l2 5"/></svg>`,
-  pause: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>`,
-  hash: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>`,
-  'arrow-up': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>`,
-  circle: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/></svg>`,
-  wave: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`,
-  arrow: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`,
-  search: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`,
-  ear: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 8a6 6 0 0112 0c0 7-7 11-7 16H9a6 6 0 01-6-6 6 6 0 001.3-3.7"/><path d="M10 21a4 4 0 004-4"/></svg>`,
-  stop: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>`,
-  speak: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
-  x: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`,
-  trending: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>`,
-  clipboard: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>`,
-  message: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
-  plus: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>`,
-  calendar: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
-  check: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>`,
-  rotate: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>`,
-  edit: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`,
-  refresh: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>`,
-  book: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>`,
+  walk:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="5" r="2"/><path d="M5 22l2-8 3 3 2-5 3 8"/><path d="M14 9l-3-3-4 2"/></svg>`,
+  eye:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`,
+  users:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>`,
+  info:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
+  clock:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+  file:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`,
+  door:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>`,
+  hand:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>`,
+  accessible:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="4" r="2"/><path d="M19 13l-7 2-4-4 3-7"/><path d="M10 17l-2 5"/><path d="M14 17l2 5"/></svg>`,
+  pause:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>`,
+  hash:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>`,
+  'arrow-up':`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>`,
+  circle:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/></svg>`,
+  wave:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`,
+  arrow:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`,
+  search:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`,
+  ear:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 8a6 6 0 0112 0c0 7-7 11-7 16H9a6 6 0 01-6-6 6 6 0 001.3-3.7"/><path d="M10 21a4 4 0 004-4"/></svg>`,
+  stop:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>`,
+  speak:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
+  x:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`,
+  trending:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>`,
+  clipboard:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>`,
+  message:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
+  plus:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>`,
+  calendar:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
+  check:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>`,
+  rotate:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>`,
+  edit:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`,
+  refresh:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>`,
+  book:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>`,
 };
-function gi(name) { return ICONS[name] || ICONS['info']; }
+function gi(n) { return ICONS[n] || ICONS['info']; }
 
 function renderSessionList() {
   document.getElementById('session-list').innerHTML = sessions.map(s => `
@@ -806,49 +669,30 @@ function renderSessionList() {
           }
         </div>
       </div>
-    </div>
-  `).join('');
+    </div>`).join('');
 }
 
 function renderChecklist() {
   document.getElementById('checklist-content').innerHTML = checklist.map((phase, pi) => {
     const doneCount = phase.items.filter((_, ii) => checkStates[`${pi}-${ii}`]).length;
-    return `
-      <div class="phase-group">
-        <div class="phase-header-label">
-          ${gi(phase.icon)}
-          <span class="phase-title-text">${phase.phase}</span>
-          <span class="phase-count">${doneCount}/${phase.items.length}</span>
-        </div>
-        ${phase.items.map((item, ii) => {
-          const key = `${pi}-${ii}`;
-          const checked = !!checkStates[key];
-          return `
-            <div class="check-item ${checked ? 'checked' : ''}" onclick="toggleCheck('${key}')">
-              <div class="check-box">
-                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor"><polyline points="2 6 5 9 10 3"/></svg>
-              </div>
-              <span class="check-text ${checked ? 'done' : ''}">${item}</span>
-            </div>
-          `;
-        }).join('')}
-      </div>
-    `;
+    return `<div class="phase-group">
+      <div class="phase-header-label">${gi(phase.icon)}<span class="phase-title-text">${phase.phase}</span><span class="phase-count">${doneCount}/${phase.items.length}</span></div>
+      ${phase.items.map((item, ii) => {
+        const key = `${pi}-${ii}`;
+        const checked = !!checkStates[key];
+        return `<div class="check-item ${checked ? 'checked' : ''}" onclick="toggleCheck('${key}')">
+          <div class="check-box"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor"><polyline points="2 6 5 9 10 3"/></svg></div>
+          <span class="check-text ${checked ? 'done' : ''}">${item}</span>
+        </div>`;
+      }).join('')}
+    </div>`;
   }).join('');
   updateChecklistBadge();
 }
 
-function toggleCheck(key) {
-  checkStates[key] = !checkStates[key];
-  saveState();
-  renderChecklist();
-}
+function toggleCheck(key) { checkStates[key] = !checkStates[key]; saveState(); renderChecklist(); }
 
-function resetChecklist() {
-  Object.keys(checkStates).forEach(k => delete checkStates[k]);
-  saveState();
-  renderChecklist();
-}
+function resetChecklist() { Object.keys(checkStates).forEach(k => delete checkStates[k]); saveState(); renderChecklist(); }
 
 function openSession(id) {
   const s = sessions.find(x => x.id === id);
@@ -857,7 +701,6 @@ function openSession(id) {
     if (block.type === 'prompt') return `<div class="prompt-block"><div class="block-label">${block.label}</div><p>${block.text}</p></div>`;
     return `<div class="content-block"><div class="block-label">${block.label}</div>${block.items.map(item => `<div class="item-row">${gi(item.icon)}<span>${item.text}</span></div>`).join('')}</div>`;
   }).join('');
-
   document.getElementById('detail-content').innerHTML = `
     <div class="detail-header" style="color:${s.iconColor};">
       <div class="detail-eyebrow">Session ${s.id} · ${s.construct}</div>
@@ -867,37 +710,29 @@ function openSession(id) {
     ${html}
     <button class="complete-btn" id="complete-btn" onclick="markComplete(${s.id})" ${completed.has(s.id) ? 'disabled' : ''}>
       ${completed.has(s.id) ? '✓ Session complete' : 'Mark complete'}
-    </button>
-  `;
+    </button>`;
   switchTab('detail');
 }
 
 function markComplete(id) {
-  completed.add(id);
-  saveState();
+  completed.add(id); saveState();
   document.getElementById('complete-btn').disabled = true;
   document.getElementById('complete-btn').textContent = '✓ Session complete';
-  updateProgress();
-  renderSessionList();
+  updateProgress(); renderSessionList();
 }
 
 function goLearn() { switchTab('learn'); }
 
-let currentTab = 'learn';
 function switchTab(tab) {
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+  document.querySelectorAll('.tab-btn').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
   document.getElementById('view-' + tab).classList.add('active');
   const btn = document.getElementById('tab-' + tab);
-  if (btn) { btn.classList.add('active'); btn.setAttribute('aria-selected', 'true'); }
-  currentTab = tab;
+  if (btn) { btn.classList.add('active'); btn.setAttribute('aria-selected','true'); }
   window.scrollTo(0, 0);
 }
 
-renderSessionList();
-renderChecklist();
-updateProgress();
-updateChecklistBadge();
+renderSessionList(); renderChecklist(); updateProgress(); updateChecklistBadge();
 </script>
 </body>
 </html>
