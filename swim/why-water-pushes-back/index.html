@@ -11,35 +11,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg:         #f0f2f5;
-    --white:      #ffffff;
-    --accent:     #5b7fe8;
-    --accent-dk:  #4a6dd4;
-    --accent-lt:  #eef1fb;
-    --dark:       #1a1a1a;
-    --mid:        #4a5568;
-    --light:      #8492a6;
-    --rule:       #e4e8ee;
-    --tag-bg:     #eef1f8;
-    --tag-border: #c5d3f5;
+    --navy:       #0A2540;
+    --mid:        #1C3F60;
+    --accent:     #00B4D8;
+    --accent-dk:  #0090AE;
+    --gold:       #F4A261;
+    --near-white: #F0F8FF;
+    --muted:      rgba(240,248,255,0.5);
+    --rule:       rgba(255,255,255,0.08);
+    --card:       rgba(255,255,255,0.04);
+    --site-blue:  #5b7fe8;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
     font-family: "Inter", -apple-system, sans-serif;
-    background: var(--bg);
-    color: var(--dark);
+    background: var(--navy);
+    color: var(--near-white);
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
-    font-size: 13px;
-    line-height: 1.6;
   }
 
   /* ── SITE NAV ── */
   .site-nav {
-    background: var(--white);
-    border-bottom: 1px solid var(--rule);
+    background: #ffffff;
+    border-bottom: 1px solid #e6e6e6;
     padding: 14px 24px;
     display: flex;
     align-items: center;
@@ -52,7 +49,7 @@
   .site-nav-name {
     font-size: 14px;
     font-weight: 700;
-    color: var(--dark);
+    color: #1a1a1a;
     text-decoration: none;
   }
   .site-nav-links {
@@ -62,124 +59,104 @@
   .site-nav-links a {
     font-size: 13px;
     font-weight: 500;
-    color: var(--mid);
+    color: #4a5568;
     text-decoration: none;
     padding: 6px 12px;
     border-radius: 8px;
     transition: background 0.15s, color 0.15s;
   }
   .site-nav-links a:hover {
-    background: var(--accent-lt);
-    color: var(--accent);
+    background: #eef1fb;
+    color: var(--site-blue);
   }
 
   /* ── PAGE WRAPPER ── */
   .page {
-    max-width: 880px;
-    margin: 32px auto;
-    padding: 0 20px 60px;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
   }
 
-  /* ── HEADER CARD ── */
-  .header-card {
-    background: var(--white);
-    border-radius: 10px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-    overflow: hidden;
-    margin-bottom: 16px;
-  }
-  .header-inner {
-    padding: 40px 48px 32px;
+  /* ── HERO ── */
+  .hero {
+    padding: 40px 0 28px;
     border-bottom: 1px solid var(--rule);
   }
-  .header-eyebrow {
-    font-size: 9.5px;
+  .hero-eyebrow {
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: 2.2px;
+    letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--accent);
     margin-bottom: 12px;
   }
-  .header-inner h1 {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--dark);
-    line-height: 1.15;
-    letter-spacing: -0.3px;
-    margin-bottom: 10px;
+  .hero h1 {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    margin-bottom: 14px;
   }
-  .header-inner h1 span { color: var(--accent); }
-  .header-sub {
-    font-size: 14px;
-    color: var(--light);
-    font-weight: 300;
+  .hero h1 span { color: var(--accent); }
+  .hero-sub {
+    font-size: 15px;
+    color: var(--muted);
     line-height: 1.65;
-    max-width: 560px;
-    margin-bottom: 20px;
-  }
-  .tag-row { display: flex; flex-wrap: wrap; gap: 7px; }
-  .header-tag {
-    background: var(--tag-bg);
-    color: var(--mid);
-    font-size: 11px;
-    font-weight: 500;
-    padding: 4px 11px;
-    border-radius: 20px;
-    border: 1px solid var(--rule);
+    max-width: 520px;
   }
 
-  /* ── TORPEDO STRIP ── */
-  .torpedo-strip {
-    background: var(--tag-bg);
-    padding: 20px 48px;
-    border-bottom: 1px solid var(--rule);
+  /* ── TORPEDO ANIMATION ── */
+  .torpedo-wrap {
+    padding: 28px 0 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
-  .torpedo-mode-label {
-    font-size: 9.5px;
+  .torpedo-label {
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    transition: color 0.5s;
+    transition: color 0.6s;
   }
-  .torpedo-mode-sub {
-    font-size: 11.5px;
+  .torpedo-sub {
+    font-size: 12px;
     text-align: center;
-    transition: color 0.5s;
+    max-width: 240px;
+    line-height: 1.5;
+    transition: color 0.6s;
   }
 
   /* ── ZONE NAV ── */
-  .zone-nav-wrap {
-    background: var(--white);
-    border-bottom: 1px solid var(--rule);
-  }
   .zone-hint {
-    font-size: 9.5px;
+    font-size: 10px;
     text-align: center;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--light);
-    padding: 10px 0 2px;
-    font-weight: 600;
+    color: var(--muted);
+    padding: 14px 0 4px;
   }
   .zone-nav {
     display: flex;
+    border-bottom: 1px solid var(--rule);
+    position: sticky;
+    top: 53px;
+    background: var(--navy);
+    z-index: 90;
   }
   .zone-btn {
     flex: 1;
-    padding: 10px 8px 14px;
+    padding: 12px 8px 14px;
     background: none;
     border: none;
     border-bottom: 3px solid transparent;
     cursor: pointer;
     font-family: inherit;
-    font-size: 11.5px;
+    font-size: 12px;
     font-weight: 700;
-    letter-spacing: 0.3px;
-    color: var(--light);
+    letter-spacing: 0.4px;
+    color: var(--muted);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -189,94 +166,93 @@
   .zone-btn.active {
     color: var(--accent);
     border-bottom-color: var(--accent);
-    background: var(--accent-lt);
+    background: rgba(0,180,216,0.06);
   }
   .zone-btn:hover:not(.active) {
-    color: var(--mid);
-    background: var(--tag-bg);
+    color: rgba(240,248,255,0.7);
   }
   .zone-icon { font-size: 18px; }
 
   /* ── ZONE PANELS ── */
-  .zone-panel { display: none; padding-top: 20px; }
+  .zone-panel { display: none; padding-top: 24px; }
   .zone-panel.active { display: block; }
 
-  /* ── SECTION LABEL ── */
-  .section-label {
-    display: block;
-    font-size: 9.5px;
-    font-weight: 700;
-    letter-spacing: 1.8px;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 14px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--rule);
-  }
-
-  /* ── STAT GRID ── */
+  /* ── STAT CARDS ── */
   .stat-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
   .stat-card {
-    background: var(--tag-bg);
+    background: var(--card);
     border: 1px solid var(--rule);
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 16px 14px;
   }
   .stat-num {
-    font-size: 28px;
-    font-weight: 800;
+    font-size: 30px;
+    font-weight: 900;
     color: var(--accent);
     line-height: 1;
-    letter-spacing: -0.5px;
   }
-  .stat-lbl {
-    font-size: 9.5px;
-    color: var(--accent);
-    letter-spacing: 1.5px;
+  .stat-label {
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 2px;
     text-transform: uppercase;
     font-weight: 700;
     margin-top: 4px;
   }
   .stat-desc {
     font-size: 12px;
-    color: var(--mid);
+    color: var(--muted);
     margin-top: 6px;
     line-height: 1.5;
   }
 
-  /* ── PRINCIPLE BOX ── */
-  .principle-box {
-    background: var(--accent-lt);
-    border: 1px solid var(--tag-border);
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin-bottom: 16px;
+  /* ── PRINCIPLE CARD ── */
+  .principle-card {
+    background: rgba(0,180,216,0.06);
+    border: 1px solid rgba(0,180,216,0.2);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 20px;
   }
-  .principle-box .section-label { margin-bottom: 10px; padding-bottom: 0; border-bottom: none; }
-  .principle-box p {
-    font-size: 13px;
-    color: var(--mid);
+  .principle-card .label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .principle-card p {
+    font-size: 15px;
     line-height: 1.7;
+    color: var(--near-white);
   }
+  .principle-card strong { color: var(--accent); font-weight: 700; }
 
-  /* ── TORPEDO RULE BOX ── */
-  .torpedo-rule-box {
-    background: var(--tag-bg);
-    border: 1px solid var(--rule);
-    border-radius: 8px;
+  /* ── TORPEDO RULE ── */
+  .torpedo-rule {
+    background: linear-gradient(135deg, rgba(10,37,64,0.9), rgba(28,63,96,0.9));
+    border: 1px solid rgba(0,180,216,0.15);
+    border-radius: 12px;
     padding: 18px 20px;
   }
-  .torpedo-rule-box .section-label { margin-bottom: 12px; padding-bottom: 0; border-bottom: none; }
+  .torpedo-rule .label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
   .torpedo-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-    margin-bottom: 14px;
   }
   .torpedo-item {
     display: flex;
@@ -291,86 +267,69 @@
     margin-top: 5px;
     flex-shrink: 0;
   }
-  .torpedo-head { font-size: 12.5px; font-weight: 600; color: var(--dark); }
-  .torpedo-sub-text { font-size: 11px; color: var(--light); }
+  .torpedo-item-head { font-size: 13px; font-weight: 600; color: var(--near-white); }
+  .torpedo-item-sub { font-size: 11px; color: var(--muted); }
   .torpedo-quote {
-    padding-top: 12px;
+    margin-top: 14px;
+    padding-top: 14px;
     border-top: 1px solid var(--rule);
-    font-size: 12.5px;
-    color: var(--mid);
+    font-size: 13px;
+    color: var(--muted);
     font-style: italic;
   }
 
   /* ── CONCEPT CARDS ── */
   .concept-card {
-    background: var(--white);
+    background: var(--card);
     border: 1px solid var(--rule);
-    border-radius: 8px;
-    margin-bottom: 8px;
+    border-radius: 10px;
+    margin-bottom: 10px;
     overflow: hidden;
     cursor: pointer;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: border-color 0.2s;
   }
-  .concept-card:hover {
-    box-shadow: 0 2px 8px rgba(91,127,232,0.08);
-    border-color: #c5d3f5;
-  }
-  .concept-card.open {
-    border-color: var(--accent);
-    box-shadow: 0 2px 12px rgba(91,127,232,0.12);
-  }
+  .concept-card:hover { border-color: rgba(255,255,255,0.15); }
+  .concept-card.open { border-color: var(--concept-color, var(--accent)); }
   .concept-header {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 13px 16px;
+    padding: 14px 16px;
   }
   .concept-icon-box {
-    width: 34px;
-    height: 34px;
-    border-radius: 7px;
-    background: var(--tag-bg);
-    border: 1px solid var(--rule);
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    font-size: 18px;
     flex-shrink: 0;
-  }
-  .concept-card.open .concept-icon-box {
-    background: var(--accent-lt);
-    border-color: var(--tag-border);
   }
   .concept-titles { flex: 1; }
   .concept-label {
-    font-size: 12.5px;
+    font-size: 13px;
     font-weight: 700;
-    color: var(--dark);
-    letter-spacing: 0.2px;
+    letter-spacing: 0.3px;
   }
-  .concept-card.open .concept-label { color: var(--accent); }
-  .concept-tag {
-    font-size: 11px;
-    color: var(--light);
-    margin-top: 1px;
-  }
+  .concept-tag { font-size: 11px; color: var(--muted); margin-top: 1px; }
   .concept-chevron {
-    font-size: 14px;
-    color: var(--light);
+    font-size: 16px;
+    color: var(--muted);
     transition: transform 0.25s;
     flex-shrink: 0;
   }
-  .concept-card.open .concept-chevron { transform: rotate(180deg); color: var(--accent); }
+  .concept-card.open .concept-chevron { transform: rotate(180deg); }
   .concept-body {
     display: none;
     padding: 0 16px 16px;
-    border-top: 1px solid var(--rule);
+    border-top: 1px solid rgba(255,255,255,0.06);
   }
   .concept-card.open .concept-body { display: block; }
   .concept-desc {
-    font-size: 13px;
-    color: var(--mid);
-    line-height: 1.7;
+    font-size: 14px;
+    color: var(--near-white);
+    line-height: 1.65;
     margin: 12px 0;
   }
   .concept-row {
@@ -379,77 +338,71 @@
     gap: 10px;
   }
   .concept-feel, .concept-fix {
-    background: var(--tag-bg);
-    border-radius: 7px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 8px;
     padding: 10px 12px;
-    border: 1px solid var(--rule);
   }
   .cf-label {
-    font-size: 9.5px;
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     margin-bottom: 4px;
   }
-  .concept-feel .cf-label { color: #e07b3a; }
+  .concept-feel .cf-label { color: var(--gold); }
   .concept-fix .cf-label { color: var(--accent); }
-  .cf-text { font-size: 12px; color: var(--dark); line-height: 1.5; }
+  .cf-text { font-size: 13px; color: var(--near-white); line-height: 1.5; }
 
   /* ── CONNECT CARD ── */
   .connect-card {
-    margin-top: 12px;
+    margin-top: 16px;
     padding: 14px 16px;
-    background: var(--accent-lt);
-    border-radius: 8px;
-    border: 1px solid var(--tag-border);
+    background: rgba(0,180,216,0.06);
+    border-radius: 10px;
+    border: 1px solid rgba(0,180,216,0.15);
   }
-  .connect-card .clabel {
-    font-size: 11px;
+  .connect-card .label { font-size: 11px; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
+  .connect-card p { font-size: 13px; color: rgba(240,248,255,0.65); line-height: 1.65; }
+
+  /* ── SILENCE CARD ── */
+  .silence-card {
+    background: linear-gradient(135deg, rgba(244,162,97,0.1), rgba(244,162,97,0.04));
+    border: 1px solid rgba(244,162,97,0.3);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+  }
+  .silence-card .label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .silence-card .main-line { font-size: 15px; color: var(--near-white); line-height: 1.65; margin-bottom: 10px; }
+  .silence-card .sub-line { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* ── DIAGNOSTIC ── */
+  .diag-section { margin-bottom: 20px; }
+  .diag-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
     color: var(--accent);
     font-weight: 700;
     margin-bottom: 6px;
   }
-  .connect-card p {
-    font-size: 12.5px;
-    color: var(--mid);
-    line-height: 1.65;
-  }
-
-  /* ── SILENCE CARD ── */
-  .silence-card {
-    background: var(--white);
-    border: 1.5px solid var(--accent);
-    border-radius: 8px;
-    padding: 18px 20px;
-    margin-bottom: 16px;
-    box-shadow: 0 2px 12px rgba(91,127,232,0.08);
-  }
-  .silence-card .section-label { margin-bottom: 10px; padding-bottom: 0; border-bottom: none; }
-  .silence-card .main-line {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--dark);
-    margin-bottom: 8px;
-    line-height: 1.5;
-  }
-  .silence-card .sub-line {
-    font-size: 12.5px;
-    color: var(--mid);
-    line-height: 1.65;
-  }
-
-  /* ── DIAGNOSTIC ── */
-  .diag-section { margin-bottom: 16px; }
-  .diag-hint { font-size: 12px; color: var(--light); margin-bottom: 10px; }
+  .diag-hint { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
   .diag-col-heads {
     display: grid;
     grid-template-columns: 22px 1fr 1fr 1fr;
     gap: 10px;
-    padding: 0 12px 6px;
+    padding: 0 14px 6px;
   }
   .diag-col-head {
-    font-size: 9.5px;
-    color: var(--light);
+    font-size: 10px;
+    color: var(--muted);
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -458,25 +411,22 @@
     display: grid;
     grid-template-columns: 22px 1fr 1fr 1fr;
     gap: 10px;
-    padding: 11px 12px;
-    background: var(--white);
-    border-radius: 7px;
-    margin-bottom: 5px;
+    padding: 12px 14px;
+    background: var(--card);
+    border-radius: 8px;
+    margin-bottom: 6px;
     border: 1px solid var(--rule);
     cursor: pointer;
     transition: background 0.2s, border-color 0.2s;
     align-items: center;
   }
-  .diag-row:hover { background: var(--tag-bg); border-color: #c5d3f5; }
-  .diag-row.checked {
-    background: #fff8f3;
-    border-color: #f4c09a;
-  }
+  .diag-row:hover { background: rgba(255,255,255,0.07); }
+  .diag-row.checked { background: rgba(244,162,97,0.08); border-color: rgba(244,162,97,0.3); }
   .diag-check {
     width: 18px;
     height: 18px;
     border-radius: 4px;
-    border: 2px solid var(--rule);
+    border: 2px solid rgba(255,255,255,0.2);
     background: transparent;
     display: flex;
     align-items: center;
@@ -484,94 +434,85 @@
     transition: all 0.2s;
     flex-shrink: 0;
   }
-  .diag-row.checked .diag-check {
-    background: #e07b3a;
-    border-color: #e07b3a;
-  }
-  .diag-check-mark { display: none; color: white; font-size: 11px; font-weight: 900; }
+  .diag-row.checked .diag-check { background: var(--gold); border-color: var(--gold); }
+  .diag-check-mark { display: none; color: var(--navy); font-size: 11px; font-weight: 900; }
   .diag-row.checked .diag-check-mark { display: block; }
-  .diag-cue { font-size: 12.5px; color: var(--dark); transition: all 0.2s; }
-  .diag-row.checked .diag-cue { color: var(--light); text-decoration: line-through; }
-  .diag-means { font-size: 12px; color: var(--mid); }
-  .diag-fix { font-size: 12px; color: var(--accent-dk); font-weight: 500; }
+  .diag-cue { font-size: 13px; color: var(--near-white); transition: all 0.2s; }
+  .diag-row.checked .diag-cue { color: var(--muted); text-decoration: line-through; }
+  .diag-means { font-size: 12px; color: var(--muted); }
+  .diag-fix { font-size: 12px; color: var(--accent); }
 
   /* ── QUOTE CARD ── */
   .quote-card {
     text-align: center;
     padding: 18px 20px;
-    background: var(--accent-lt);
-    border-radius: 8px;
-    border: 1px solid var(--tag-border);
-    margin-bottom: 16px;
+    background: var(--card);
+    border-radius: 10px;
+    border: 1px solid var(--rule);
+    margin-bottom: 20px;
   }
-  .quote-line1 { font-size: 15px; font-weight: 600; color: var(--dark); }
-  .quote-line2 { font-size: 15px; font-weight: 700; color: var(--accent); margin-top: 2px; }
+  .quote-line1 { font-size: 16px; font-weight: 700; color: var(--near-white); }
+  .quote-line2 { font-size: 16px; font-weight: 700; color: var(--accent); margin-top: 2px; }
 
   /* ── VIDEO LINKS ── */
+  .video-section .label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
   .video-link {
     display: flex;
     align-items: center;
     gap: 12px;
     padding: 12px 14px;
-    background: var(--white);
+    background: var(--card);
     border: 1px solid var(--rule);
-    border-radius: 8px;
-    margin-bottom: 7px;
+    border-radius: 9px;
+    margin-bottom: 8px;
     text-decoration: none;
-    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    transition: border-color 0.2s, background 0.2s;
   }
-  .video-link:hover {
-    border-color: #c5d3f5;
-    background: var(--accent-lt);
-    box-shadow: 0 2px 8px rgba(91,127,232,0.08);
-  }
+  .video-link:hover { border-color: rgba(0,180,216,0.3); background: rgba(0,180,216,0.06); }
   .video-play {
     width: 34px;
     height: 34px;
-    border-radius: 7px;
-    background: var(--accent-lt);
-    border: 1px solid var(--tag-border);
+    border-radius: 8px;
+    background: rgba(0,180,216,0.1);
+    border: 1px solid rgba(0,180,216,0.2);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 13px;
+    font-size: 14px;
     color: var(--accent);
     flex-shrink: 0;
   }
-  .video-title { font-size: 12.5px; font-weight: 600; color: var(--dark); }
-  .video-desc { font-size: 11.5px; color: var(--light); margin-top: 2px; }
+  .video-title { font-size: 13px; font-weight: 600; color: var(--near-white); }
+  .video-desc { font-size: 11px; color: var(--muted); margin-top: 2px; }
 
   /* ── FOOTER ── */
   .page-footer {
     border-top: 1px solid var(--rule);
-    padding: 16px 48px;
+    padding: 20px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--tag-bg);
-    border-radius: 0 0 10px 10px;
+    margin-top: 40px;
   }
-  .footer-name { font-size: 13px; color: var(--mid); font-weight: 500; }
-  .footer-link a {
-    font-size: 12.5px;
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 500;
-  }
-  .footer-link a:hover { color: var(--accent-dk); text-decoration: underline; }
+  .page-footer-name { font-size: 13px; color: var(--muted); font-weight: 500; }
+  .page-footer-link a { font-size: 12px; color: var(--accent); text-decoration: none; font-weight: 500; }
+  .page-footer-link a:hover { color: var(--accent-dk); text-decoration: underline; }
 
   /* ── MOBILE ── */
-  @media (max-width: 640px) {
-    .page { padding: 0 12px 40px; margin: 16px auto; }
-    .header-inner { padding: 28px 24px 24px; }
-    .torpedo-strip { padding: 16px 24px; }
-    .stat-grid { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 560px) {
+    .hero h1 { font-size: 26px; }
     .concept-row { grid-template-columns: 1fr; }
     .torpedo-grid { grid-template-columns: 1fr; }
     .diag-col-heads { display: none; }
     .diag-row { grid-template-columns: 22px 1fr; }
     .diag-means, .diag-fix { display: none; }
-    .page-footer { padding: 14px 20px; }
     .site-nav-links a { padding: 6px 8px; font-size: 12px; }
   }
 </style>
@@ -589,265 +530,227 @@
 </nav>
 
 <div class="page">
-<div class="header-card">
 
-  <!-- HEADER -->
-  <div class="header-inner">
-    <div class="header-eyebrow">Instructional Design · Swim Science</div>
-    <h1>Why the Water <span>Pushes Back</span></h1>
-    <p class="header-sub">Every splash is energy you paid for and got nothing from. Water is 800x denser than air, which means every inefficiency costs you more than you think.</p>
-
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Swim Science</div>
+    <h1>Why the Water<br><span>Pushes Back</span></h1>
+    <p class="hero-sub">Every splash is energy you paid for and got nothing from. Water is 800x denser than air, which means every inefficiency costs you more than you think.</p>
   </div>
 
-  <!-- TORPEDO ANIMATION STRIP -->
-  <div class="torpedo-strip">
-    <div class="torpedo-mode-label" id="torpedoLabel" style="color:#5b7fe8">Torpedo</div>
-    <svg id="torpedoSvg" width="280" height="60" viewBox="0 0 280 60" xmlns="http://www.w3.org/2000/svg"></svg>
-    <div class="torpedo-mode-sub" id="torpedoSub" style="color:#4a5568">Narrow · Smooth · Horizontal · Deep</div>
+  <!-- TORPEDO ANIMATION -->
+  <div class="torpedo-wrap">
+    <div class="torpedo-label" id="torpedoLabel" style="color:#00B4D8">Torpedo</div>
+    <svg id="torpedoSvg" width="280" height="64" viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="torpedo-sub" id="torpedoSub" style="color:#00B4D8">Narrow · Smooth · Horizontal · Deep</div>
   </div>
 
   <!-- ZONE HINT + NAV -->
-  <div class="zone-nav-wrap">
-    <div class="zone-hint">Tap a section to explore</div>
-    <div class="zone-nav">
-      <button class="zone-btn active" onclick="switchZone('idea', this)">
-        <span class="zone-icon">💡</span>The Big Idea
-      </button>
-      <button class="zone-btn" onclick="switchZone('forces', this)">
-        <span class="zone-icon">🌊</span>The Four Forces
-      </button>
-      <button class="zone-btn" onclick="switchZone('tools', this)">
-        <span class="zone-icon">🏊</span>Deck Tools
-      </button>
-    </div>
+  <div class="zone-hint">Tap a section to explore</div>
+  <div class="zone-nav">
+    <button class="zone-btn active" onclick="switchZone('idea', this)">
+      <span class="zone-icon">💡</span>The Big Idea
+    </button>
+    <button class="zone-btn" onclick="switchZone('forces', this)">
+      <span class="zone-icon">🌊</span>The Four Forces
+    </button>
+    <button class="zone-btn" onclick="switchZone('tools', this)">
+      <span class="zone-icon">🏊</span>Deck Tools
+    </button>
   </div>
 
-  <!-- ZONE CONTENT -->
-  <div style="padding: 0 48px 36px;">
+  <!-- ZONE 1: THE BIG IDEA -->
+  <div class="zone-panel active" id="zone-idea">
 
-    <!-- ZONE 1: THE BIG IDEA -->
-    <div class="zone-panel active" id="zone-idea">
-
-      <div style="height:20px"></div>
-      <span class="section-label">The Numbers</span>
-      <div class="stat-grid">
-        <div class="stat-card">
-          <div class="stat-num">800x</div>
-          <div class="stat-lbl">Denser than air</div>
-          <div class="stat-desc">Water is the medium. Everything is harder here than on land.</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">80-90%</div>
-          <div class="stat-lbl">Of your energy</div>
-          <div class="stat-desc">Goes toward overcoming drag, not moving you forward.</div>
-        </div>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-num">800x</div>
+        <div class="stat-label">Denser than air</div>
+        <div class="stat-desc">Water is the medium. Everything is harder here than on land.</div>
       </div>
-
-      <div class="principle-box">
-        <span class="section-label">The Core Principle</span>
-        <p>Drag is not one thing. It is four forces working against you simultaneously and they are all connected: <strong>Form Drag</strong>, <strong>Boundary Layer Separation</strong>, <strong>Active Drag</strong>, and <strong>Wave Drag</strong>. Fix your body position and you address all four at once.</p>
+      <div class="stat-card">
+        <div class="stat-num">80-90%</div>
+        <div class="stat-label">Of your energy</div>
+        <div class="stat-desc">Goes toward overcoming drag, not moving you forward.</div>
       </div>
-
-      <div class="torpedo-rule-box">
-        <span class="section-label">The Torpedo Rule</span>
-        <div class="torpedo-grid">
-          <div class="torpedo-item">
-            <div class="torpedo-dot"></div>
-            <div><div class="torpedo-head">Narrow front</div><div class="torpedo-sub-text">Low form drag</div></div>
-          </div>
-          <div class="torpedo-item">
-            <div class="torpedo-dot"></div>
-            <div><div class="torpedo-head">Smooth sides</div><div class="torpedo-sub-text">Flow stays attached</div></div>
-          </div>
-          <div class="torpedo-item">
-            <div class="torpedo-dot"></div>
-            <div><div class="torpedo-head">Tapered back</div><div class="torpedo-sub-text">Clean wake</div></div>
-          </div>
-          <div class="torpedo-item">
-            <div class="torpedo-dot"></div>
-            <div><div class="torpedo-head">Stay deep</div><div class="torpedo-sub-text">No wave drag</div></div>
-          </div>
-        </div>
-        <div class="torpedo-quote">"Does your body look like a torpedo or a shopping cart?"</div>
-      </div>
-
     </div>
 
-    <!-- ZONE 2: THE FOUR FORCES -->
-    <div class="zone-panel" id="zone-forces">
-
-      <div style="height:20px"></div>
-      <span class="section-label">The Four Forces</span>
-      <p style="font-size:12.5px; color:var(--light); margin-bottom:14px;">Tap each force to see what it feels like and how to fix it.</p>
-
-      <div class="concept-card" onclick="toggleConcept(this)">
-        <div class="concept-header">
-          <div class="concept-icon-box">⬛</div>
-          <div class="concept-titles">
-            <div class="concept-label">Form Drag</div>
-            <div class="concept-tag">The Wall You Build</div>
-          </div>
-          <div class="concept-chevron">▾</div>
-        </div>
-        <div class="concept-body">
-          <p class="concept-desc">Your body casts a shadow in the water. The bigger that shadow, the harder water pushes back. A dropped hip or raised head doubles that shadow instantly and you feel it as pure resistance.</p>
-          <div class="concept-row">
-            <div class="concept-feel">
-              <div class="cf-label">Feel It</div>
-              <div class="cf-text">Swimming uphill. Legs heavy from the first stroke.</div>
-            </div>
-            <div class="concept-fix">
-              <div class="cf-label">Fix It</div>
-              <div class="cf-text">Horizontal body. Hips at the surface. Head neutral.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="concept-card" onclick="toggleConcept(this)">
-        <div class="concept-header">
-          <div class="concept-icon-box">🌊</div>
-          <div class="concept-titles">
-            <div class="concept-label">Boundary Layer</div>
-            <div class="concept-tag">Losing the Water's Cooperation</div>
-          </div>
-          <div class="concept-chevron">▾</div>
-        </div>
-        <div class="concept-body">
-          <p class="concept-desc">Water wants to flow smoothly along your body. When something disrupts that - a jutting elbow, a collapsing core, a wide kick - the flow detaches and creates turbulent pockets of resistance behind you.</p>
-          <div class="concept-row">
-            <div class="concept-feel">
-              <div class="cf-label">Feel It</div>
-              <div class="cf-text">Sudden heaviness mid-length. Like the water grabs you.</div>
-            </div>
-            <div class="concept-fix">
-              <div class="cf-label">Fix It</div>
-              <div class="cf-text">Tight core. Narrow kick. Clean elbow path.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="concept-card" onclick="toggleConcept(this)">
-        <div class="concept-header">
-          <div class="concept-icon-box">💪</div>
-          <div class="concept-titles">
-            <div class="concept-label">Active Drag</div>
-            <div class="concept-tag">The Real Number</div>
-          </div>
-          <div class="concept-chevron">▾</div>
-        </div>
-        <div class="concept-body">
-          <p class="concept-desc">Passive drag is measured towing a rigid body. The moment you start stroking and breathing, the drag picture changes completely. Every arm recovery, every breath, every kick cycle compounds the resistance.</p>
-          <div class="concept-row">
-            <div class="concept-feel">
-              <div class="cf-label">Feel It</div>
-              <div class="cf-text">Working hard, going slow. Effort and speed do not match.</div>
-            </div>
-            <div class="concept-fix">
-              <div class="cf-label">Fix It</div>
-              <div class="cf-text">Technique over strength. Every. Single. Time.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="concept-card" onclick="toggleConcept(this)">
-        <div class="concept-header">
-          <div class="concept-icon-box">〰️</div>
-          <div class="concept-titles">
-            <div class="concept-label">Wave Drag</div>
-            <div class="concept-tag">Energy Spent Going Nowhere</div>
-          </div>
-          <div class="concept-chevron">▾</div>
-        </div>
-        <div class="concept-body">
-          <p class="concept-desc">Every wave your body makes at the surface costs energy that never comes back as forward motion. Head position is the primary culprit - looking forward creates a bow wave that lifts your front and sinks your hips.</p>
-          <div class="concept-row">
-            <div class="concept-feel">
-              <div class="cf-label">Feel It</div>
-              <div class="cf-text">A wall of water in front of you. Breathing feels like climbing.</div>
-            </div>
-            <div class="concept-fix">
-              <div class="cf-label">Fix It</div>
-              <div class="cf-text">Eyes down. Head neutral. Get deep off every wall.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="connect-card">
-        <div class="clabel">How They Connect</div>
-        <p>Poor position creates a bigger frontal shadow, which causes flow to separate earlier, which creates more waves at the surface, all of which compounds as active drag. These are not four problems. They are one system.</p>
-      </div>
-
+    <div class="principle-card">
+      <div class="label">The Core Principle</div>
+      <p>Drag is not one thing. It is four forces working against you simultaneously and they are all connected: <strong>Form Drag</strong>, <strong>Boundary Layer Separation</strong>, <strong>Active Drag</strong>, and <strong>Wave Drag</strong>. Fix your body position and you address all four at once.</p>
     </div>
 
-    <!-- ZONE 3: DECK TOOLS -->
-    <div class="zone-panel" id="zone-tools">
-
-      <div style="height:20px"></div>
-      <span class="section-label">Deck Tools</span>
-
-      <div class="silence-card">
-        <span class="section-label">The Silence Drill</span>
-        <p class="main-line">Swim one length making as little noise and splash as possible.</p>
-        <p class="sub-line">Your body will instinctively lower the head, tighten the kick, clean up the entry, and engage the core. Then you will understand why it worked - because you already felt it.</p>
-      </div>
-
-      <div class="diag-section">
-        <span class="section-label">Splash Diagnostic</span>
-        <p class="diag-hint">Tap what you are seeing or hearing to check it off.</p>
-        <div class="diag-col-heads">
-          <div></div>
-          <div class="diag-col-head">You see / hear</div>
-          <div class="diag-col-head">It means</div>
-          <div class="diag-col-head">Fix</div>
+    <div class="torpedo-rule">
+      <div class="label">The Torpedo Rule</div>
+      <div class="torpedo-grid">
+        <div class="torpedo-item">
+          <div class="torpedo-dot"></div>
+          <div><div class="torpedo-item-head">Narrow front</div><div class="torpedo-item-sub">Low form drag</div></div>
         </div>
-        <div class="diag-row" onclick="toggleDiag(this)">
-          <div class="diag-check"><span class="diag-check-mark">✓</span></div>
-          <div class="diag-cue">Splash on hand entry</div>
-          <div class="diag-means">Pushing water, not catching it</div>
-          <div class="diag-fix">Fingertips first, quiet angled entry</div>
+        <div class="torpedo-item">
+          <div class="torpedo-dot"></div>
+          <div><div class="torpedo-item-head">Smooth sides</div><div class="torpedo-item-sub">Flow stays attached</div></div>
         </div>
-        <div class="diag-row" onclick="toggleDiag(this)">
-          <div class="diag-check"><span class="diag-check-mark">✓</span></div>
-          <div class="diag-cue">Loud kick</div>
-          <div class="diag-means">Feet breaking surface or too wide</div>
-          <div class="diag-fix">Tighten and deepen. Kick from the hip</div>
+        <div class="torpedo-item">
+          <div class="torpedo-dot"></div>
+          <div><div class="torpedo-item-head">Tapered back</div><div class="torpedo-item-sub">Clean wake</div></div>
         </div>
-        <div class="diag-row" onclick="toggleDiag(this)">
-          <div class="diag-check"><span class="diag-check-mark">✓</span></div>
-          <div class="diag-cue">Hip splash</div>
-          <div class="diag-means">Core collapse or over-rotation</div>
-          <div class="diag-fix">Engage core, control the rotation</div>
-        </div>
-        <div class="diag-row" onclick="toggleDiag(this)">
-          <div class="diag-check"><span class="diag-check-mark">✓</span></div>
-          <div class="diag-cue">Bow wave at your head</div>
-          <div class="diag-means">Head too high, wave drag spiking</div>
-          <div class="diag-fix">Neutral neck. Eyes toward the bottom</div>
-        </div>
-        <div class="diag-row" onclick="toggleDiag(this)">
-          <div class="diag-check"><span class="diag-check-mark">✓</span></div>
-          <div class="diag-cue">Churning wake behind you</div>
-          <div class="diag-means">Boundary layer separated</div>
-          <div class="diag-fix">Slow down, find the glide, rebuild</div>
-        </div>
-        <div class="diag-row" onclick="toggleDiag(this)">
-          <div class="diag-check"><span class="diag-check-mark">✓</span></div>
-          <div class="diag-cue">Noise off the wall</div>
-          <div class="diag-means">Streamline broke too early</div>
-          <div class="diag-fix">Lock arms, squeeze ears, stay long</div>
+        <div class="torpedo-item">
+          <div class="torpedo-dot"></div>
+          <div><div class="torpedo-item-head">Stay deep</div><div class="torpedo-item-sub">No wave drag</div></div>
         </div>
       </div>
+      <div class="torpedo-quote">"Does your body look like a torpedo or a shopping cart?"</div>
+    </div>
 
-      <div class="quote-card">
-        <div class="quote-line1">"The water does not lie.</div>
-        <div class="quote-line2">Learn to listen to it."</div>
+  </div>
+
+  <!-- ZONE 2: THE FOUR FORCES -->
+  <div class="zone-panel" id="zone-forces">
+    <p style="font-size:13px; color:var(--muted); margin-bottom:16px;">Tap each force to see what it feels like and how to fix it.</p>
+
+    <div class="concept-card" onclick="toggleConcept(this)" style="--concept-color:#00B4D8">
+      <div class="concept-header">
+        <div class="concept-icon-box" style="background:rgba(0,180,216,0.12); border:1px solid rgba(0,180,216,0.25);">⬛</div>
+        <div class="concept-titles">
+          <div class="concept-label" style="color:#00B4D8">Form Drag</div>
+          <div class="concept-tag">The Wall You Build</div>
+        </div>
+        <div class="concept-chevron">▾</div>
       </div>
+      <div class="concept-body">
+        <p class="concept-desc">Your body casts a shadow in the water. The bigger that shadow, the harder water pushes back. A dropped hip or raised head doubles that shadow instantly and you feel it as pure resistance.</p>
+        <div class="concept-row">
+          <div class="concept-feel"><div class="cf-label">Feel It</div><div class="cf-text">Swimming uphill. Legs heavy from the first stroke.</div></div>
+          <div class="concept-fix"><div class="cf-label">Fix It</div><div class="cf-text">Horizontal body. Hips at the surface. Head neutral.</div></div>
+        </div>
+      </div>
+    </div>
 
-      <span class="section-label">Go Deeper</span>
+    <div class="concept-card" onclick="toggleConcept(this)" style="--concept-color:#4CC9F0">
+      <div class="concept-header">
+        <div class="concept-icon-box" style="background:rgba(76,201,240,0.12); border:1px solid rgba(76,201,240,0.25);">🌊</div>
+        <div class="concept-titles">
+          <div class="concept-label" style="color:#4CC9F0">Boundary Layer</div>
+          <div class="concept-tag">Losing the Water's Cooperation</div>
+        </div>
+        <div class="concept-chevron">▾</div>
+      </div>
+      <div class="concept-body">
+        <p class="concept-desc">Water wants to flow smoothly along your body. When something disrupts that - a jutting elbow, a collapsing core, a wide kick - the flow detaches and creates turbulent pockets of resistance behind you.</p>
+        <div class="concept-row">
+          <div class="concept-feel"><div class="cf-label">Feel It</div><div class="cf-text">Sudden heaviness mid-length. Like the water grabs you.</div></div>
+          <div class="concept-fix"><div class="cf-label">Fix It</div><div class="cf-text">Tight core. Narrow kick. Clean elbow path.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)" style="--concept-color:#9B72CF">
+      <div class="concept-header">
+        <div class="concept-icon-box" style="background:rgba(155,114,207,0.12); border:1px solid rgba(155,114,207,0.25);">💪</div>
+        <div class="concept-titles">
+          <div class="concept-label" style="color:#9B72CF">Active Drag</div>
+          <div class="concept-tag">The Real Number</div>
+        </div>
+        <div class="concept-chevron">▾</div>
+      </div>
+      <div class="concept-body">
+        <p class="concept-desc">Passive drag is measured towing a rigid body. The moment you start stroking and breathing, the drag picture changes completely. Every arm recovery, every breath, every kick cycle compounds the resistance.</p>
+        <div class="concept-row">
+          <div class="concept-feel"><div class="cf-label">Feel It</div><div class="cf-text">Working hard, going slow. Effort and speed do not match.</div></div>
+          <div class="concept-fix"><div class="cf-label">Fix It</div><div class="cf-text">Technique over strength. Every. Single. Time.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)" style="--concept-color:#F4A261">
+      <div class="concept-header">
+        <div class="concept-icon-box" style="background:rgba(244,162,97,0.12); border:1px solid rgba(244,162,97,0.25);">〰️</div>
+        <div class="concept-titles">
+          <div class="concept-label" style="color:#F4A261">Wave Drag</div>
+          <div class="concept-tag">Energy Spent Going Nowhere</div>
+        </div>
+        <div class="concept-chevron">▾</div>
+      </div>
+      <div class="concept-body">
+        <p class="concept-desc">Every wave your body makes at the surface costs energy that never comes back as forward motion. Head position is the primary culprit - looking forward creates a bow wave that lifts your front and sinks your hips.</p>
+        <div class="concept-row">
+          <div class="concept-feel"><div class="cf-label">Feel It</div><div class="cf-text">A wall of water in front of you. Breathing feels like climbing.</div></div>
+          <div class="concept-fix"><div class="cf-label">Fix It</div><div class="cf-text">Eyes down. Head neutral. Get deep off every wall.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connect-card">
+      <div class="label">How They Connect</div>
+      <p>Poor position creates a bigger frontal shadow, which causes flow to separate earlier, which creates more waves at the surface, all of which compounds as active drag. These are not four problems. They are one system.</p>
+    </div>
+
+  </div>
+
+  <!-- ZONE 3: DECK TOOLS -->
+  <div class="zone-panel" id="zone-tools">
+
+    <div class="silence-card">
+      <div class="label">The Silence Drill</div>
+      <p class="main-line">Swim one length making as little noise and splash as possible.</p>
+      <p class="sub-line">Your body will instinctively lower the head, tighten the kick, clean up the entry, and engage the core. Then you will understand why it worked - because you already felt it.</p>
+    </div>
+
+    <div class="diag-section">
+      <div class="diag-label">Splash Diagnostic</div>
+      <p class="diag-hint">Tap what you are seeing or hearing to check it off.</p>
+      <div class="diag-col-heads">
+        <div></div>
+        <div class="diag-col-head">You see / hear</div>
+        <div class="diag-col-head">It means</div>
+        <div class="diag-col-head">Fix</div>
+      </div>
+      <div class="diag-row" onclick="toggleDiag(this)">
+        <div class="diag-check"><span class="diag-check-mark">✓</span></div>
+        <div class="diag-cue">Splash on hand entry</div>
+        <div class="diag-means">Pushing water, not catching it</div>
+        <div class="diag-fix">Fingertips first, quiet angled entry</div>
+      </div>
+      <div class="diag-row" onclick="toggleDiag(this)">
+        <div class="diag-check"><span class="diag-check-mark">✓</span></div>
+        <div class="diag-cue">Loud kick</div>
+        <div class="diag-means">Feet breaking surface or too wide</div>
+        <div class="diag-fix">Tighten and deepen. Kick from the hip</div>
+      </div>
+      <div class="diag-row" onclick="toggleDiag(this)">
+        <div class="diag-check"><span class="diag-check-mark">✓</span></div>
+        <div class="diag-cue">Hip splash</div>
+        <div class="diag-means">Core collapse or over-rotation</div>
+        <div class="diag-fix">Engage core, control the rotation</div>
+      </div>
+      <div class="diag-row" onclick="toggleDiag(this)">
+        <div class="diag-check"><span class="diag-check-mark">✓</span></div>
+        <div class="diag-cue">Bow wave at your head</div>
+        <div class="diag-means">Head too high, wave drag spiking</div>
+        <div class="diag-fix">Neutral neck. Eyes toward the bottom</div>
+      </div>
+      <div class="diag-row" onclick="toggleDiag(this)">
+        <div class="diag-check"><span class="diag-check-mark">✓</span></div>
+        <div class="diag-cue">Churning wake behind you</div>
+        <div class="diag-means">Boundary layer separated</div>
+        <div class="diag-fix">Slow down, find the glide, rebuild</div>
+      </div>
+      <div class="diag-row" onclick="toggleDiag(this)">
+        <div class="diag-check"><span class="diag-check-mark">✓</span></div>
+        <div class="diag-cue">Noise off the wall</div>
+        <div class="diag-means">Streamline broke too early</div>
+        <div class="diag-fix">Lock arms, squeeze ears, stay long</div>
+      </div>
+    </div>
+
+    <div class="quote-card">
+      <div class="quote-line1">"The water does not lie.</div>
+      <div class="quote-line2">Learn to listen to it."</div>
+    </div>
+
+    <div class="video-section">
+      <div class="label">Go Deeper</div>
       <a class="video-link" href="https://www.youtube.com/watch?v=uwq1mtChDKs" target="_blank" rel="noopener noreferrer">
         <div class="video-play">▶</div>
         <div><div class="video-title">Forces in Swimming</div><div class="video-desc">Drag, resistance, propulsion - the full picture</div></div>
@@ -860,19 +763,17 @@
         <div class="video-play">▶</div>
         <div><div class="video-title">Physics of Swimming</div><div class="video-desc">The science beneath what you already feel</div></div>
       </a>
-
     </div>
 
-  </div><!-- end zone content -->
+  </div>
 
   <!-- FOOTER -->
   <div class="page-footer">
-    <div class="footer-name">James D. Rodgers · Swim Coach</div>
-    <div class="footer-link"><a href="https://www.jamesdrodgers.ai" target="_blank">www.jamesdrodgers.ai</a></div>
+    <div class="page-footer-name">James D. Rodgers · Swim Coach</div>
+    <div class="page-footer-link"><a href="https://www.jamesdrodgers.ai" target="_blank">www.jamesdrodgers.ai</a></div>
   </div>
 
-</div><!-- end header-card -->
-</div><!-- end page -->
+</div>
 
 <script>
   function switchZone(id, btn) {
@@ -882,13 +783,8 @@
     btn.classList.add('active');
   }
 
-  function toggleConcept(card) {
-    card.classList.toggle('open');
-  }
-
-  function toggleDiag(row) {
-    row.classList.toggle('checked');
-  }
+  function toggleConcept(card) { card.classList.toggle('open'); }
+  function toggleDiag(row) { row.classList.toggle('checked'); }
 
   // TORPEDO ANIMATION
   const svg = document.getElementById('torpedoSvg');
@@ -898,34 +794,34 @@
 
   function drawTorpedo() {
     svg.innerHTML = `
-      <ellipse cx="140" cy="30" rx="118" ry="14" fill="rgba(91,127,232,0.08)" stroke="#5b7fe8" stroke-width="1.5"/>
-      <ellipse cx="42" cy="30" rx="16" ry="13" fill="#3a5fc8"/>
-      <rect x="42" y="21" width="172" height="18" fill="#3a5fc8" rx="4"/>
-      <polygon points="214,21 244,30 214,39" fill="#3a5fc8"/>
-      <line x1="250" y1="19" x2="268" y2="19" stroke="#5b7fe8" stroke-width="1.2" opacity="0.5"/>
-      <line x1="250" y1="26" x2="272" y2="26" stroke="#5b7fe8" stroke-width="1.2" opacity="0.4"/>
-      <line x1="250" y1="34" x2="272" y2="34" stroke="#5b7fe8" stroke-width="1.2" opacity="0.4"/>
-      <line x1="250" y1="41" x2="268" y2="41" stroke="#5b7fe8" stroke-width="1.2" opacity="0.5"/>
+      <ellipse cx="140" cy="32" rx="118" ry="15" fill="rgba(0,180,216,0.1)" stroke="#00B4D8" stroke-width="1.5"/>
+      <ellipse cx="42" cy="32" rx="17" ry="15" fill="#1C3F60"/>
+      <rect x="42" y="23" width="175" height="18" fill="#1C3F60" rx="4"/>
+      <polygon points="217,23 248,32 217,41" fill="#1C3F60"/>
+      <line x1="254" y1="20" x2="272" y2="20" stroke="#00B4D8" stroke-width="1.2" opacity="0.5"/>
+      <line x1="254" y1="27" x2="275" y2="27" stroke="#00B4D8" stroke-width="1.2" opacity="0.4"/>
+      <line x1="254" y1="37" x2="275" y2="37" stroke="#00B4D8" stroke-width="1.2" opacity="0.4"/>
+      <line x1="254" y1="44" x2="272" y2="44" stroke="#00B4D8" stroke-width="1.2" opacity="0.5"/>
     `;
-    label.style.color = '#5b7fe8';
-    sub.style.color = '#4a5568';
+    label.style.color = '#00B4D8';
+    sub.style.color = '#00B4D8';
     label.textContent = 'Torpedo';
     sub.textContent = 'Narrow · Smooth · Horizontal · Deep';
   }
 
   function drawCart() {
     svg.innerHTML = `
-      <rect x="26" y="17" width="62" height="26" fill="rgba(224,123,58,0.12)" stroke="#e07b3a" stroke-width="1.5" rx="2"/>
-      <rect x="84" y="13" width="100" height="34" fill="#3a5fc8" rx="3"/>
-      <rect x="180" y="25" width="52" height="24" fill="#3a5fc8" rx="3" transform="rotate(13 180 37)"/>
-      <ellipse cx="44" cy="20" rx="19" ry="16" fill="#3a5fc8"/>
-      <path d="M 236 12 Q 248 8 260 12 Q 248 16 236 12" fill="none" stroke="#e07b3a" stroke-width="1.2" opacity="0.6"/>
-      <path d="M 236 22 Q 250 17 263 22 Q 250 27 236 22" fill="none" stroke="#e07b3a" stroke-width="1.2" opacity="0.5"/>
-      <path d="M 236 33 Q 250 28 263 33 Q 250 38 236 33" fill="none" stroke="#e07b3a" stroke-width="1.2" opacity="0.5"/>
-      <path d="M 236 44 Q 248 40 260 44 Q 248 48 236 44" fill="none" stroke="#e07b3a" stroke-width="1.2" opacity="0.35"/>
+      <rect x="30" y="18" width="60" height="24" fill="rgba(244,162,97,0.2)" stroke="#F4A261" stroke-width="1.5" rx="2"/>
+      <rect x="85" y="14" width="100" height="32" fill="#1C3F60" rx="3"/>
+      <rect x="180" y="28" width="50" height="22" fill="#1C3F60" rx="3" transform="rotate(12 180 39)"/>
+      <ellipse cx="45" cy="22" rx="18" ry="16" fill="#1C3F60"/>
+      <path d="M 238 12 Q 250 8 262 12 Q 250 16 238 12" fill="none" stroke="#F4A261" stroke-width="1.2" opacity="0.6"/>
+      <path d="M 238 22 Q 252 17 265 22 Q 252 27 238 22" fill="none" stroke="#F4A261" stroke-width="1.2" opacity="0.5"/>
+      <path d="M 238 34 Q 252 29 265 34 Q 252 39 238 34" fill="none" stroke="#F4A261" stroke-width="1.2" opacity="0.5"/>
+      <path d="M 238 46 Q 250 42 262 46 Q 250 50 238 46" fill="none" stroke="#F4A261" stroke-width="1.2" opacity="0.4"/>
     `;
-    label.style.color = '#e07b3a';
-    sub.style.color = '#4a5568';
+    label.style.color = '#F4A261';
+    sub.style.color = '#F4A261';
     label.textContent = 'Shopping Cart';
     sub.textContent = 'Wide shadow · Flow separates · Waves form · Energy leaks';
   }
