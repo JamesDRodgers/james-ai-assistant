@@ -1,523 +1,606 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio — James D. Rodgers</title>
-  <meta name="description" content="Instructional design portfolio of James D. Rodgers — AI-augmented learning experiences, clinical education, higher education, and nonprofit training." />
-  <meta property="og:title" content="Portfolio — James D. Rodgers" />
-  <meta property="og:description" content="Designing for performance, not just completion, across healthcare, higher education, and AI-enabled learning." />
-  <meta property="og:image" content="https://jamesdrodgers.ai/og-image.png" />
-  <meta property="og:url" content="https://jamesdrodgers.ai/portfolio" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg:        #f0f2f5;
-      --white:     #ffffff;
-      --accent:    #5b7fe8;
-      --accent-dk: #4a6dd4;
-      --dark:      #1a1d23;
-      --mid:       #4a5568;
-      --light:     #8492a6;
-      --rule:      #d8dce6;
-      --tag-bg:    #eef1f8;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swim Science: Why Water Pushes Back — Instructional Design Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:         #f0f2f5;
+    --white:      #ffffff;
+    --accent:     #5b7fe8;
+    --accent-dk:  #4a6dd4;
+    --dark:       #1a1d23;
+    --mid:        #4a5568;
+    --light:      #8492a6;
+    --rule:       #e4e8ee;
+    --tag-bg:     #eef1f8;
+    --accent-lt:  #eef1fb;
+  }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      font-family: "Inter", sans-serif;
-      background: var(--bg);
-      color: var(--dark);
-      font-size: 13px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      min-height: 100vh;
-    }
+  body {
+    font-family: "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--dark);
+    font-size: 13px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
 
-    a { text-decoration: none; color: inherit; }
+  .page {
+    max-width: 880px;
+    margin: 32px auto;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    overflow: hidden;
+  }
 
-    /* ── NAV ── */
-    nav {
-      background: var(--white);
-      border-bottom: 1px solid var(--rule);
-      padding: 16px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+  /* HEADER */
+  .header {
+    background: var(--white);
+    padding: 44px 52px 36px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .header-eyebrow {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.2;
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
+  }
+  .header-subtitle {
+    font-size: 14px;
+    color: var(--light);
+    font-weight: 300;
+    margin-bottom: 24px;
+  }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 7px; }
+  .header-tag {
+    background: var(--tag-bg);
+    color: var(--mid);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 20px;
+    border: 1px solid var(--rule);
+  }
 
-    .nav-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 32px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  /* CONTEXT STRIP */
+  .context-strip {
+    background: var(--tag-bg);
+    padding: 13px 52px;
+    display: flex;
+    gap: 44px;
+    border-bottom: 1px solid var(--rule);
+    flex-wrap: wrap;
+  }
+  .context-item { display: flex; flex-direction: column; gap: 2px; }
+  .context-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--light);
+  }
+  .context-value {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--dark);
+  }
 
-    .nav-name {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--dark);
-    }
+  /* BODY */
+  .body { padding: 36px 52px; }
 
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      align-items: center;
-    }
+  .section { margin-bottom: 32px; }
 
-    .nav-links a {
-      font-size: 12.5px;
-      font-weight: 500;
-      color: var(--light);
-      transition: color 0.15s;
-    }
+  .section-label {
+    display: block;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
 
-    .nav-links a:hover { color: var(--dark); }
-    .nav-links a.active { color: var(--accent); font-weight: 600; }
+  .section p {
+    color: var(--mid);
+    font-size: 13px;
+    line-height: 1.75;
+  }
 
-    .nav-cta {
-      background: var(--accent);
-      color: var(--white) !important;
-      padding: 7px 14px;
-      border-radius: 6px;
-      font-size: 12px !important;
-      font-weight: 600 !important;
-      transition: background 0.15s !important;
-    }
+  /* LIVE TOOL CALLOUT */
+  .tool-callout {
+    background: var(--white);
+    border: 1.5px solid var(--accent);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(91,127,232,0.10);
+  }
+  .tool-preview {
+    width: 100%;
+    background: #0A2540;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-bottom: 1.5px solid var(--accent);
+    position: relative;
+    overflow: hidden;
+  }
+  .tool-preview-eyebrow {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #00B4D8;
+  }
+  .tool-preview-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #F0F8FF;
+    line-height: 1.15;
+    letter-spacing: -0.3px;
+  }
+  .tool-preview-title span { color: #00B4D8; }
+  .tool-preview-tabs {
+    display: flex;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .tool-preview-tab {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(240,248,255,0.6);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .tool-preview-tab.active {
+    background: rgba(0,180,216,0.12);
+    border-color: rgba(0,180,216,0.3);
+    color: #00B4D8;
+  }
+  .tool-preview-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .tool-preview-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 7px;
+    padding: 10px 12px;
+  }
+  .tool-preview-card-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #00B4D8;
+    margin-bottom: 3px;
+  }
+  .tool-preview-card-tag {
+    font-size: 10px;
+    color: rgba(240,248,255,0.4);
+  }
+  .tool-content {
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background: var(--accent-lt);
+  }
+  .tool-text { font-size: 13px; color: var(--dark); line-height: 1.55; }
+  .tool-text strong { color: var(--accent-dk); font-weight: 600; }
+  .tool-button {
+    display: inline-flex;
+    align-items: center;
+    background: var(--accent);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 9px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s;
+    flex-shrink: 0;
+  }
+  .tool-button:hover { background: var(--accent-dk); }
+  .tool-button::after { content: " →"; }
 
-    .nav-cta:hover { background: var(--accent-dk) !important; }
+  /* TWO COL */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-bottom: 32px;
+  }
 
-    /* ── PAGE HEADER ── */
-    .page-header {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 48px 32px 32px;
-    }
+  /* HIGHLIGHT CARDS */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 4px;
+  }
+  .highlight-card {
+    padding: 14px 16px;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    background: var(--white);
+    position: relative;
+  }
+  .highlight-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--accent);
+    border-radius: 8px 8px 0 0;
+  }
+  .highlight-title {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 5px;
+  }
+  .highlight-text { font-size: 12px; color: var(--mid); line-height: 1.55; }
 
-    .page-eyebrow {
-      font-size: 9.5px;
-      font-weight: 700;
-      letter-spacing: 2.2px;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 10px;
-    }
+  /* PRINCIPLE CARDS */
+  .principle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+  }
+  .principle-card {
+    padding: 16px;
+    background: var(--tag-bg);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    border-top: 3px solid var(--accent);
+  }
+  .principle-num {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .principle-name {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 5px;
+  }
+  .principle-desc {
+    font-size: 11.5px;
+    color: var(--mid);
+    line-height: 1.55;
+  }
 
-    .page-header h1 {
-      font-size: 24px;
-      font-weight: 800;
-      color: var(--dark);
-      line-height: 1.2;
-      margin-bottom: 8px;
-      letter-spacing: -0.3px;
-    }
+  /* DECISION LIST */
+  .decision-list { list-style: none; margin-top: 4px; }
+  .decision-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 12.5px;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+  .decision-list li:last-child { border-bottom: none; }
+  .del-dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
 
-    .page-header p {
-      font-size: 13px;
-      color: var(--mid);
-      line-height: 1.8;
-      max-width: 520px;
-      font-weight: 300;
-    }
+  /* ARTIFACTS CALLOUT */
+  .artifacts-callout {
+    background: var(--accent-lt);
+    border: 1px solid #c5d3f5;
+    border-radius: 8px;
+    padding: 16px 22px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .artifacts-text { font-size: 13px; color: var(--dark); line-height: 1.5; }
+  .artifacts-text strong { color: var(--accent-dk); font-weight: 600; }
+  .artifacts-link {
+    display: inline-flex;
+    align-items: center;
+    background: var(--accent);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s;
+    flex-shrink: 0;
+  }
+  .artifacts-link:hover { background: var(--accent-dk); }
+  .artifacts-link::after { content: " →"; }
 
-    /* ── CARD LIST ── */
-    .card-list {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 8px 32px 72px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
+  /* FOOTER */
+  .footer {
+    border-top: 1px solid var(--rule);
+    padding: 16px 52px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--tag-bg);
+  }
+  .footer-name { font-size: 13px; color: var(--mid); font-weight: 500; }
+  .footer-link a {
+    font-size: 12.5px;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .footer-link a:hover { color: var(--accent-dk); text-decoration: underline; }
 
-    /* ── CARD ── */
-    .card {
-      background: var(--white);
-      border-radius: 10px;
-      border: 2px solid var(--rule);
-      overflow: hidden;
-      display: flex;
-      flex-direction: row;
-      min-height: 200px;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
+  /* NAV */
+  .site-nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--rule);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .site-nav-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    text-decoration: none;
+  }
+  .site-nav-links { display: flex; gap: 4px; }
+  .site-nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--mid);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: background 0.15s, color 0.15s;
+  }
+  .site-nav-links a:hover { background: var(--accent-lt); color: var(--accent); }
 
-    .card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 4px 20px rgba(91,127,232,0.13);
-    }
+  @media (max-width: 640px) {
+    .header { padding: 32px 24px 28px; }
+    .body { padding: 28px 24px; }
+    .context-strip { padding: 12px 24px; gap: 20px; }
+    .two-col, .highlights-grid, .principle-grid { grid-template-columns: 1fr; }
+    .tool-preview-cards { grid-template-columns: 1fr; }
+    .footer { padding: 16px 24px; }
+    .site-nav-links a { padding: 6px 8px; font-size: 12px; }
+  }
 
-    /* ── IMAGE ── */
-    .card-image {
-      width: 280px;
-      flex-shrink: 0;
-      overflow: hidden;
-      position: relative;
-      background: var(--tag-bg);
-    }
-
-    .card-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
-      transition: transform 0.35s ease;
-    }
-
-    .card:hover .card-image img { transform: scale(1.03); }
-
-    /* ── DARK PREVIEW PANEL (swim card) ── */
-    .card-image-dark {
-      width: 280px;
-      flex-shrink: 0;
-      overflow: hidden;
-      position: relative;
-      background: #0A2540;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 20px 18px;
-      gap: 10px;
-    }
-
-    .swim-preview-eyebrow {
-      font-size: 8px;
-      font-weight: 700;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: #00B4D8;
-    }
-
-    .swim-preview-title {
-      font-size: 16px;
-      font-weight: 800;
-      color: #F0F8FF;
-      line-height: 1.2;
-      letter-spacing: -0.2px;
-    }
-
-    .swim-preview-title span { color: #00B4D8; }
-
-    .swim-preview-tabs {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      margin-top: 2px;
-    }
-
-    .swim-preview-tab {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 5px;
-      padding: 5px 8px;
-      font-size: 9.5px;
-      font-weight: 600;
-      color: rgba(240,248,255,0.5);
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .swim-preview-tab.active {
-      background: rgba(0,180,216,0.12);
-      border-color: rgba(0,180,216,0.3);
-      color: #00B4D8;
-    }
-
-    .domain-badge {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      padding: 3px 9px;
-      border-radius: 20px;
-      background: rgba(91,127,232,0.90);
-      color: #fff;
-      z-index: 2;
-    }
-
-    .domain-badge-dark {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      padding: 3px 9px;
-      border-radius: 20px;
-      background: rgba(0,180,216,0.85);
-      color: #fff;
-      z-index: 2;
-    }
-
-    /* ── BODY ── */
-    .card-body {
-      padding: 24px 28px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border-left: 1px solid var(--rule);
-    }
-
-    .card-title {
-      font-size: 17px;
-      font-weight: 800;
-      color: var(--dark);
-      line-height: 1.25;
-      margin-bottom: 4px;
-      letter-spacing: -0.2px;
-    }
-
-    .card-subtitle {
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--light);
-      margin-bottom: 12px;
-    }
-
-    .card-desc {
-      font-size: 12.5px;
-      color: var(--mid);
-      line-height: 1.75;
-      margin-bottom: 14px;
-    }
-
-    .card-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-      margin-bottom: 16px;
-    }
-
-    .card-tag {
-      font-size: 10px;
-      font-weight: 500;
-      color: var(--mid);
-      background: var(--tag-bg);
-      border: 1px solid var(--rule);
-      padding: 2px 8px;
-      border-radius: 20px;
-    }
-
-    .card-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--accent);
-      transition: color 0.15s;
-      align-self: flex-start;
-    }
-
-    .card-cta:hover { color: var(--accent-dk); }
-    .card-cta svg { transition: transform 0.15s; }
-    .card:hover .card-cta svg { transform: translateX(3px); }
-
-    /* ── FOOTER ── */
-    .page-footer {
-      border-top: 1px solid var(--rule);
-      padding: 18px 32px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .footer-name { font-size: 13px; color: var(--mid); font-weight: 500; }
-
-    .footer-link a {
-      font-size: 12.5px;
-      color: var(--accent);
-      font-weight: 500;
-    }
-
-    .footer-link a:hover { color: var(--accent-dk); text-decoration: underline; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 700px) {
-      .card { flex-direction: column; }
-      .card-image { width: 100%; height: 180px; }
-      .card-image-dark { width: 100%; height: auto; padding: 24px 20px; }
-      .card-body { border-left: none; border-top: 1px solid var(--rule); padding: 20px; }
-      .card-list { padding: 8px 16px 60px; }
-      .page-header { padding: 32px 16px 24px; }
-      .nav-inner { padding: 0 16px; }
-      .nav-links .nav-cta { display: none; }
-      .page-footer { padding: 16px; }
-    }
-  </style>
+  @media print {
+    body { background: white; }
+    .page { box-shadow: none; margin: 0; border-radius: 0; }
+    .site-nav { display: none; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-inner">
-      <a href="https://www.jamesdrodgers.ai/" class="nav-name">James D. Rodgers</a>
-      <div class="nav-links">
-        <a href="https://www.jamesdrodgers.ai/portfolio" class="active">Portfolio</a>
-        <a href="https://www.jamesdrodgers.ai/resume">Resume</a>
-        <a href="https://www.jamesdrodgers.ai/jamesrodgers">About</a>
-        <a href="https://www.jamesdrodgers.ai/" class="nav-cta">Talk to My Portfolio →</a>
-      </div>
-    </div>
-  </nav>
+<nav class="site-nav">
+  <a class="site-nav-name" href="https://www.jamesdrodgers.ai">James D. Rodgers</a>
+  <div class="site-nav-links">
+    <a href="https://www.jamesdrodgers.ai/portfolio">Portfolio</a>
+    <a href="https://www.jamesdrodgers.ai/resume">Resume</a>
+    <a href="https://www.jamesdrodgers.ai/jamesrodgers">About</a>
+  </div>
+</nav>
 
-  <!-- PAGE HEADER -->
-  <div class="page-header">
-    <div class="page-eyebrow">Instructional Design · Learning Systems · AI Integration</div>
-    <h1>Featured Work</h1>
-    <p>Learning experiences across clinical education, higher education, workforce development, and AI-native contexts — grounded in backward design, human-centered craft, and measurable outcomes.</p>
+<div class="page">
+
+  <div class="header">
+    <div class="header-eyebrow">Instructional Design Portfolio · Case Study</div>
+    <h1>Swim Science: Why Water Pushes Back</h1>
+    <div class="header-subtitle">Interactive Learning Tool · Poolside Reference for Masters Swimmers and Coaches</div>
+    <div class="tag-row">
+      <span class="header-tag">Backward Design</span>
+      <span class="header-tag">Dual Coding Theory</span>
+      <span class="header-tag">Cognitive Load Theory</span>
+      <span class="header-tag">Anchored Instruction</span>
+      <span class="header-tag">HTML / CSS / JS</span>
+      <span class="header-tag">Self-Directed Learning</span>
+    </div>
   </div>
 
-  <!-- CARD LIST -->
-  <div class="card-list">
+  <div class="context-strip">
+    <div class="context-item">
+      <span class="context-label">Audience</span>
+      <span class="context-value">Masters Swimmers · Coaches</span>
+    </div>
+    <div class="context-item">
+      <span class="context-label">Modality</span>
+      <span class="context-value">Interactive Web Tool</span>
+    </div>
+    <div class="context-item">
+      <span class="context-label">Format</span>
+      <span class="context-value">Standalone HTML · Mobile-Ready</span>
+    </div>
+    <div class="context-item">
+      <span class="context-label">Transfer Context</span>
+      <span class="context-value">Pool Deck · Self-Directed Use</span>
+    </div>
+  </div>
 
-    <!-- SWIM SCIENCE — NEW, FIRST -->
-    <div class="card">
-      <div class="card-image-dark">
-        <span class="domain-badge-dark">Swim Science · Interactive</span>
-        <div class="swim-preview-eyebrow">Swim Science</div>
-        <div class="swim-preview-title">Why the Water<br><span>Pushes Back</span></div>
-        <div class="swim-preview-tabs">
-          <div class="swim-preview-tab active">💡 The Big Idea</div>
-          <div class="swim-preview-tab">🌊 The Four Forces</div>
-          <div class="swim-preview-tab">🏊 Deck Tools</div>
+  <div class="body">
+
+    <div class="section">
+      <span class="section-label">Project Overview</span>
+      <p>A standalone interactive learning tool translating hydrodynamic drag theory into poolside-ready knowledge for adult swimmers and coaches. Built around one transfer goal: a swimmer who can self-diagnose and correct in real time, without an instructor present. The tool covers four interconnected drag concepts — Form Drag, Boundary Layer Separation, Active Drag, and Wave Drag — delivered through a tabbed progressive disclosure architecture, an animated body-position visualizer, and a tappable splash diagnostic checklist.</p>
+    </div>
+
+    <div class="section">
+      <span class="section-label">Live Tool</span>
+      <div class="tool-callout">
+        <div class="tool-preview">
+          <div class="tool-preview-eyebrow">Swim Science</div>
+          <div class="tool-preview-title">Why the Water<br><span>Pushes Back</span></div>
+          <div class="tool-preview-tabs">
+            <div class="tool-preview-tab active">💡 The Big Idea</div>
+            <div class="tool-preview-tab">🌊 The Four Forces</div>
+            <div class="tool-preview-tab">🏊 Deck Tools</div>
+          </div>
+          <div class="tool-preview-cards">
+            <div class="tool-preview-card">
+              <div class="tool-preview-card-label">Form Drag</div>
+              <div class="tool-preview-card-tag">The Wall You Build</div>
+            </div>
+            <div class="tool-preview-card">
+              <div class="tool-preview-card-label">Boundary Layer</div>
+              <div class="tool-preview-card-tag">Losing the Water's Cooperation</div>
+            </div>
+            <div class="tool-preview-card">
+              <div class="tool-preview-card-label">Active Drag</div>
+              <div class="tool-preview-card-tag">The Real Number</div>
+            </div>
+            <div class="tool-preview-card">
+              <div class="tool-preview-card-label">Wave Drag</div>
+              <div class="tool-preview-card-tag">Energy Spent Going Nowhere</div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="card-body">
-        <div class="card-title">Swim Science: Why Water Pushes Back</div>
-        <div class="card-subtitle">Interactive Learning Tool · Masters Swimmers &amp; Coaches · Poolside Reference</div>
-        <p class="card-desc">A standalone interactive web tool translating hydrodynamic drag theory into poolside-ready knowledge. Built around a single transfer goal: a swimmer who can self-diagnose and self-correct in real time. Covers Form Drag, Boundary Layer Separation, Active Drag, and Wave Drag through a tabbed progressive disclosure architecture, animated body-position visualizer, and tappable splash diagnostic.</p>
-        <div class="card-tags">
-          <span class="card-tag">Backward Design</span>
-          <span class="card-tag">Dual Coding Theory</span>
-          <span class="card-tag">Cognitive Load Theory</span>
-          <span class="card-tag">Anchored Instruction</span>
-          <span class="card-tag">HTML / CSS / JS</span>
-          <span class="card-tag">Self-Directed Learning</span>
+        <div class="tool-content">
+          <div class="tool-text">
+            <strong>Interactive Swim Science Reference</strong><br>
+            Three-zone tabbed tool with animated body-position visualizer, expandable concept cards, tappable splash diagnostic, and poolside drill. Designed for use on a phone between sets.
+          </div>
+          <a class="tool-button" href="https://jamesdrodgers.ai/swim/why-water-pushes-back" target="_blank">View Live Tool</a>
         </div>
-        <a href="https://www.jamesdrodgers.ai/swim_science_snapshot" class="card-cta" target="_blank">
-          View case study
-          <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
       </div>
     </div>
 
-    <!-- Python -->
-    <div class="card">
-      <div class="card-image">
-        <span class="domain-badge">Higher Ed · AI</span>
-        <img src="jupyter_GP1.png" alt="Jupyter Notebook guided practice screenshot" />
-      </div>
-      <div class="card-body">
-        <div class="card-title">Intro to Python Programming</div>
-        <div class="card-subtitle">Module 1 · Complete Course Design Package · First-Year Undergraduates</div>
-        <p class="card-desc">A full instructional design package built for learners new to Python, U.S. academic culture, or multilingual contexts. Applies backward design, UDL, and DEIJ-aware examples throughout — grounded in learner personas drawn from Bay Area tech workforce data. Includes 9 Canvas pages, 5 scaffolded assignments, a Jupyter Notebook, and an AI-adaptive LTI assessment.</p>
-        <div class="card-tags">
-          <span class="card-tag">Backward Design</span>
-          <span class="card-tag">UDL</span>
-          <span class="card-tag">DEIJ-Informed</span>
-          <span class="card-tag">Canvas LMS</span>
-          <span class="card-tag">Jupyter Notebook</span>
-          <span class="card-tag">AI-Adaptive Assessment</span>
+    <div class="section">
+      <span class="section-label">Pedagogical Framework</span>
+      <div class="principle-grid">
+        <div class="principle-card">
+          <div class="principle-num">01</div>
+          <div class="principle-name">Dual Coding Theory</div>
+          <div class="principle-desc">An animated torpedo/shopping cart visualizer encodes body position spatially before any verbal explanation appears. Every concept card pairs physics language with proprioceptive sensation. Visual and verbal channels fire simultaneously throughout.</div>
         </div>
-        <a href="Python_Portfolio_Snapshot.html" class="card-cta" target="_blank">
-          View case study
-          <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+        <div class="principle-card">
+          <div class="principle-num">02</div>
+          <div class="principle-name">Cognitive Load Theory</div>
+          <div class="principle-desc">Three progressive tabs prevent competing concepts from loading simultaneously. Zone 1 builds the mental model. Zone 2 goes deeper. Zone 3 transfers to action. Accordion cards apply the same logic at concept level — label visible, depth on demand.</div>
+        </div>
+        <div class="principle-card">
+          <div class="principle-num">03</div>
+          <div class="principle-name">Anchored Instruction</div>
+          <div class="principle-desc">Every concept is tethered to a physical sensation the swimmer has already experienced. "Swimming uphill." "The water grabs you." The physics arrives as the name for a known experience, not as unfamiliar information to memorize.</div>
+        </div>
       </div>
     </div>
 
-    <!-- PAC -->
-    <div class="card">
-      <div class="card-image">
-        <span class="domain-badge">Clinical · Healthcare</span>
-        <img src="PAC_Bot.png" alt="PAC AI Clinical Educator interface" />
+    <div class="two-col">
+      <div class="section" style="margin-bottom:0">
+        <span class="section-label">Design Decisions</span>
+        <ul class="decision-list">
+          <li><span class="del-dot"></span>Backward design from single transfer goal: poolside self-correction without instructor</li>
+          <li><span class="del-dot"></span>Sensation language ("Feel It") used as primary retrieval anchor, not definition</li>
+          <li><span class="del-dot"></span>Silence Drill placed before concept explanation — experience precedes taxonomy</li>
+          <li><span class="del-dot"></span>Diagnostic is tappable and checkable for active mid-practice use</li>
+          <li><span class="del-dot"></span>Coach-to-athlete register throughout — no academic hedging, no jargon</li>
+          <li><span class="del-dot"></span>Four forces framed as one system, not an inventory</li>
+        </ul>
       </div>
-      <div class="card-body">
-        <div class="card-title">PAC / Swan-Ganz Basics</div>
-        <div class="card-subtitle">Clinical Education · ICU &amp; Critical Care Learners</div>
-        <p class="card-desc">A self-guided critical care module covering pulmonary artery catheter interpretation, waveform analysis, and hemodynamic monitoring. Developed with a clinical subject matter expert. Includes a custom AI tutor, interactive review game, and waveform slide deck — all delivered through Canvas LMS.</p>
-        <div class="card-tags">
-          <span class="card-tag">Clinical SME Collaboration</span>
-          <span class="card-tag">Canvas LMS</span>
-          <span class="card-tag">Custom AI Tutor</span>
-          <span class="card-tag">Scenario-Based Learning</span>
-          <span class="card-tag">Genially</span>
+      <div class="section" style="margin-bottom:0">
+        <span class="section-label">Design Approach</span>
+        <div style="display:flex; flex-direction:column; gap:10px; margin-top:4px;">
+          <div class="highlight-card">
+            <div class="highlight-title">Transfer-Appropriate Processing</div>
+            <div class="highlight-text">Every tool is formatted for the context where learning must activate — a phone on a pool deck between sets, not a desk.</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-title">Learner Autonomy</div>
+            <div class="highlight-text">The diagnostic is self-administered. Video resources support independent exploration. No instructor required to use the tool effectively.</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-title">4MAT Sequencing</div>
+            <div class="highlight-text">Zones move through Why, What, How, and What If — ensuring every learner type finds their entry point and is pulled forward.</div>
+          </div>
         </div>
-        <a href="PAC_Portfolio_Snapshot.html" class="card-cta" target="_blank">
-          View case study
-          <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
       </div>
     </div>
 
-    <!-- YMCA -->
-    <div class="card">
-      <div class="card-image">
-        <span class="domain-badge">Nonprofit · Analytics</span>
-        <img src="https://raw.githubusercontent.com/JamesDRodgers/james-ai-assistant/main/hypoxic.png" alt="Hypoxic blackout safety infographic" />
+    <div class="artifacts-callout">
+      <div class="artifacts-text">
+        <strong>View the Live Tool</strong><br>
+        The full interactive reference — torpedo animation, concept cards, splash diagnostic, and poolside drill — is deployed at jamesdrodgers.ai.
       </div>
-      <div class="card-body">
-        <div class="card-title">Aquatics Safety &amp; Coaching Analytics</div>
-        <div class="card-subtitle">YMCA San Francisco · Staff Training · Competitive Swimmers</div>
-        <p class="card-desc">Multimedia safety training and data-informed coaching materials built for lifeguard staff and 130+ competitive swimmers. Spans in-service slide decks, public safety infographics, and a longitudinal performance analytics system generating individualized development reports benchmarked against national standards.</p>
-        <div class="card-tags">
-          <span class="card-tag">Multimedia Design</span>
-          <span class="card-tag">Learning Analytics</span>
-          <span class="card-tag">Kirkpatrick L3-L4</span>
-          <span class="card-tag">Data Visualization</span>
-          <span class="card-tag">Competency-Based</span>
-        </div>
-        <a href="https://www.jamesdrodgers.ai/ymca_aquatics_snapshot.html" class="card-cta" target="_blank">
-          View samples
-          <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
+      <a class="artifacts-link" href="https://jamesdrodgers.ai/swim/why-water-pushes-back" target="_blank">Open Live Tool</a>
     </div>
 
-    <!-- AI for Math -->
-    <div class="card">
-      <div class="card-image">
-        <span class="domain-badge">Adult Ed · AI Literacy</span>
-        <img src="math_homework.jpeg" alt="Math homework worksheet" />
-      </div>
-      <div class="card-body">
-        <div class="card-title">AI for Math Learning at Home</div>
-        <div class="card-subtitle">Articulate Rise · Parent-Facing Microlearning</div>
-        <p class="card-desc">A scaffolded microlearning course helping non-technical parents use AI tools to support Common Core math at home. Built in Articulate Rise with performance-based objectives and learner autonomy principles — designed to build genuine confidence, not just surface-level awareness.</p>
-        <div class="card-tags">
-          <span class="card-tag">Articulate Rise</span>
-          <span class="card-tag">AI Literacy</span>
-          <span class="card-tag">Prompt Engineering</span>
-          <span class="card-tag">Adult Ed</span>
-          <span class="card-tag">Microlearning</span>
+    <div class="section">
+      <span class="section-label">Design Highlights</span>
+      <div class="highlights-grid">
+        <div class="highlight-card">
+          <div class="highlight-title">Animated Body-Position Visualizer</div>
+          <div class="highlight-text">An SVG animation alternates between torpedo and shopping cart body positions every 2.8 seconds, encoding the core concept visually before any text is read. Labels and sub-text shift with the animation to reinforce dual coding.</div>
         </div>
-        <a href="https://share.articulate.com/rIyYmxR4avSUlAhzg5bea" class="card-cta" target="_blank">
-          Open course
-          <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+        <div class="highlight-card">
+          <div class="highlight-title">Progressive Disclosure Architecture</div>
+          <div class="highlight-text">Three sticky tabs manage cognitive load at the zone level. Accordion cards manage it at the concept level. Learners control depth — scanning is fast, going deep is one tap.</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-title">Tappable Splash Diagnostic</div>
+          <div class="highlight-text">Six checkable rows map visual/auditory cues to drag causes and fixes. Designed to be used during practice — not read after it. Tap a splash pattern, get the diagnosis and the correction immediately.</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-title">Context-Calibrated Language</div>
+          <div class="highlight-text">Every sentence is written for a swimmer standing on a pool deck with 90 seconds between sets. Short sentences. Active verbs. No hedging. Tone is coach-to-athlete, not textbook-to-student.</div>
+        </div>
       </div>
     </div>
 
   </div>
 
-  <!-- FOOTER -->
-  <div class="page-footer">
+  <div class="footer">
     <div class="footer-name">James D. Rodgers · Instructional Designer</div>
-    <div class="footer-link"><a href="https://www.jamesdrodgers.ai/">www.jamesdrodgers.ai</a></div>
+    <div class="footer-link"><a href="https://www.jamesdrodgers.ai" target="_blank">www.jamesdrodgers.ai</a></div>
   </div>
 
+</div>
 </body>
 </html>
