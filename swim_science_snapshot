@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swim Science: Why Water Pushes Back — Instructional Design Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:         #f0f2f5;
+    --white:      #ffffff;
+    --accent:     #5b7fe8;
+    --accent-dk:  #4a6dd4;
+    --dark:       #1a1d23;
+    --mid:        #4a5568;
+    --light:      #8492a6;
+    --rule:       #e4e8ee;
+    --tag-bg:     #eef1f8;
+    --accent-lt:  #eef1fb;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--dark);
+    font-size: 13px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 880px;
+    margin: 32px auto;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    overflow: hidden;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--white);
+    padding: 44px 52px 36px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .header-eyebrow {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.2;
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
+  }
+  .header-subtitle {
+    font-size: 14px;
+    color: var(--light);
+    font-weight: 300;
+    margin-bottom: 24px;
+  }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 7px; }
+  .header-tag {
+    background: var(--tag-bg);
+    color: var(--mid);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 20px;
+    border: 1px solid var(--rule);
+  }
+
+  /* CONTEXT STRIP */
+  .context-strip {
+    background: var(--tag-bg);
+    padding: 13px 52px;
+    display: flex;
+    gap: 44px;
+    border-bottom: 1px solid var(--rule);
+    flex-wrap: wrap;
+  }
+  .context-item { display: flex; flex-direction: column; gap: 2px; }
+  .context-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--light);
+  }
+  .context-value {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--dark);
+  }
+
+  /* BODY */
+  .body { padding: 36px 52px; }
+
+  .section { margin-bottom: 32px; }
+
+  .section-label {
+    display: block;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section p {
+    color: var(--mid);
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  /* LIVE TOOL CALLOUT */
+  .tool-callout {
+    background: var(--white);
+    border: 1.5px solid var(--accent);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(91,127,232,0.10);
+  }
+  .tool-preview {
+    width: 100%;
+    background: #0A2540;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-bottom: 1.5px solid var(--accent);
+    position: relative;
+    overflow: hidden;
+  }
+  .tool-preview-eyebrow {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #00B4D8;
+  }
+  .tool-preview-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #F0F8FF;
+    line-height: 1.15;
+    letter-spacing: -0.3px;
+  }
+  .tool-preview-title span { color: #00B4D8; }
+  .tool-preview-tabs {
+    display: flex;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .tool-preview-tab {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(240,248,255,0.6);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .tool-preview-tab.active {
+    background: rgba(0,180,216,0.12);
+    border-color: rgba(0,180,216,0.3);
+    color: #00B4D8;
+  }
+  .tool-preview-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .tool-preview-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 7px;
+    padding: 10px 12px;
+  }
+  .tool-preview-card-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #00B4D8;
+    margin-bottom: 3px;
+  }
+  .tool-preview-card-tag {
+    font-size: 10px;
+    color: rgba(240,248,255,0.4);
+  }
+  .tool-content {
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background: var(--accent-lt);
+  }
+  .tool-text { font-size: 13px; color: var(--dark); line-height: 1.55; }
+  .tool-text strong { color: var(--accent-dk); font-weight: 600; }
+  .tool-button {
+    display: inline-flex;
+    align-items: center;
+    background: var(--accent);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 9px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s;
+    flex-shrink: 0;
+  }
+  .tool-button:hover { background: var(--accent-dk); }
+  .tool-button::after { content: " →"; }
+
+  /* TWO COL */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-bottom: 32px;
+  }
+
+  /* HIGHLIGHT CARDS */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 4px;
+  }
+  .highlight-card {
+    padding: 14px 16px;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    background: var(--white);
+    position: relative;
+  }
+  .highlight-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--accent);
+    border-radius: 8px 8px 0 0;
+  }
+  .highlight-title {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 5px;
+  }
+  .highlight-text { font-size: 12px; color: var(--mid); line-height: 1.55; }
+
+  /* PRINCIPLE CARDS */
+  .principle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+  }
+  .principle-card {
+    padding: 16px;
+    background: var(--tag-bg);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    border-top: 3px solid var(--accent);
+  }
+  .principle-num {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .principle-name {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 5px;
+  }
+  .principle-desc {
+    font-size: 11.5px;
+    color: var(--mid);
+    line-height: 1.55;
+  }
+
+  /* DECISION LIST */
+  .decision-list { list-style: none; margin-top: 4px; }
+  .decision-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 12.5px;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+  .decision-list li:last-child { border-bottom: none; }
+  .del-dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  /* ARTIFACTS CALLOUT */
+  .artifacts-callout {
+    background: var(--accent-lt);
+    border: 1px solid #c5d3f5;
+    border-radius: 8px;
+    padding: 16px 22px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .artifacts-text { font-size: 13px; color: var(--dark); line-height: 1.5; }
+  .artifacts-text strong { color: var(--accent-dk); font-weight: 600; }
+  .artifacts-link {
+    display: inline-flex;
+    align-items: center;
+    background: var(--accent);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s;
+    flex-shrink: 0;
+  }
+  .artifacts-link:hover { background: var(--accent-dk); }
+  .artifacts-link::after { content: " →"; }
+
+  /* FOOTER */
+  .footer {
+    border-top: 1px solid var(--rule);
+    padding: 16px 52px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--tag-bg);
+  }
+  .footer-name { font-size: 13px; color: var(--mid); font-weight: 500; }
+  .footer-link a {
+    font-size: 12.5px;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .footer-link a:hover { color: var(--accent-dk); text-decoration: underline; }
+
+  /* NAV */
+  .site-nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--rule);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .site-nav-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    text-decoration: none;
+  }
+  .site-nav-links { display: flex; gap: 4px; }
+  .site-nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--mid);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: background 0.15s, color 0.15s;
+  }
+  .site-nav-links a:hover { background: var(--accent-lt); color: var(--accent); }
+
+  @media (max-width: 640px) {
+    .header { padding: 32px 24px 28px; }
+    .body { padding: 28px 24px; }
+    .context-strip { padding: 12px 24px; gap: 20px; }
+    .two-col, .highlights-grid, .principle-grid { grid-template-columns: 1fr; }
+    .tool-preview-cards { grid-template-columns: 1fr; }
+    .footer { padding: 16px 24px; }
+    .site-nav-links a { padding: 6px 8px; font-size: 12px; }
+  }
+
+  @media print {
+    body { background: white; }
+    .page { box-shadow: none; margin: 0; border-radius: 0; }
+    .site-nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="site-nav-name" href="https://www.jamesdrodgers.ai">James D. Rodgers</a>
+  <div class="site-nav-links">
+    <a href="https://www.jamesdrodgers.ai/portfolio">Portfolio</a>
+    <a href="https://www.jamesdrodgers.ai/resume">Resume</a>
+    <a href="https://www.jamesdrodgers.ai/jamesrodgers">About</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <div class="header">
+    <div class="header-eyebrow">Instructional Design Portfolio · Case Study</div>
+    <h1>Swim Science: Why Water Pushes Back</h1>
+    <div class="header-subtitle">Interactive Learning Tool · Poolside Reference for Masters Swimmers and Coaches</div>
+    <div class="tag-row">
+      <span class="header-tag">Backward Design</span>
+      <span class="header-tag">Dual Coding Theory</span>
+      <span class="header-tag">Cognitive Load Theory</span>
+      <span class="header-tag">Anchored Instruction</span>
+      <span class="header-tag">HTML / CSS / JS</span>
+      <span class="header-tag">Self-Directed Learning</span>
+    </div>
+  </div>
+
+  <div class="context-strip">
+    <div class="context-item">
+      <span class="context-label">Audience</span>
+      <span class="context-value">Masters Swimmers · Coaches</span>
+    </div>
+    <div class="context-item">
+      <span class="context-label">Modality</span>
+      <span class="context-value">Interactive Web Tool</span>
+    </div>
+    <div class="context-item">
+      <span class="context-label">Format</span>
+      <span class="context-value">Standalone HTML · Mobile-Ready</span>
+    </div>
+    <div class="context-item">
+      <span class="context-label">Transfer Context</span>
+      <span class="context-value">Pool Deck · Self-Directed Use</span>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="section">
+      <span class="section-label">Project Overview</span>
+      <p>A standalone interactive learning tool translating hydrodynamic drag theory into poolside-ready knowledge for adult swimmers and coaches. Built around one transfer goal: a swimmer who can self-diagnose and correct in real time, without an instructor present. The tool covers four interconnected drag concepts — Form Drag, Boundary Layer Separation, Active Drag, and Wave Drag — delivered through a tabbed progressive disclosure architecture, an animated body-position visualizer, and a tappable splash diagnostic checklist.</p>
+    </div>
+
+    <div class="section">
+      <span class="section-label">Live Tool</span>
+      <div class="tool-callout">
+        <div class="tool-preview">
+          <div class="tool-preview-eyebrow">Swim Science</div>
+          <div class="tool-preview-title">Why the Water<br><span>Pushes Back</span></div>
+          <div class="tool-preview-tabs">
+            <div class="tool-preview-tab active">💡 The Big Idea</div>
+            <div class="tool-preview-tab">🌊 The Four Forces</div>
+            <div class="tool-preview-tab">🏊 Deck Tools</div>
+          </div>
+          <div class="tool-preview-cards">
+            <div class="tool-preview-card">
+              <div class="tool-preview-card-label">Form Drag</div>
+              <div class="tool-preview-card-tag">The Wall You Build</div>
+            </div>
+            <div class="tool-preview-card">
+              <div class="tool-preview-card-label">Boundary Layer</div>
+              <div class="tool-preview-card-tag">Losing the Water's Cooperation</div>
+            </div>
+            <div class="tool-preview-card">
+              <div class="tool-preview-card-label">Active Drag</div>
+              <div class="tool-preview-card-tag">The Real Number</div>
+            </div>
+            <div class="tool-preview-card">
+              <div class="tool-preview-card-label">Wave Drag</div>
+              <div class="tool-preview-card-tag">Energy Spent Going Nowhere</div>
+            </div>
+          </div>
+        </div>
+        <div class="tool-content">
+          <div class="tool-text">
+            <strong>Interactive Swim Science Reference</strong><br>
+            Three-zone tabbed tool with animated body-position visualizer, expandable concept cards, tappable splash diagnostic, and poolside drill. Designed for use on a phone between sets.
+          </div>
+          <a class="tool-button" href="https://jamesdrodgers.ai/swim/why-water-pushes-back" target="_blank">View Live Tool</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <span class="section-label">Pedagogical Framework</span>
+      <div class="principle-grid">
+        <div class="principle-card">
+          <div class="principle-num">01</div>
+          <div class="principle-name">Dual Coding Theory</div>
+          <div class="principle-desc">An animated torpedo/shopping cart visualizer encodes body position spatially before any verbal explanation appears. Every concept card pairs physics language with proprioceptive sensation. Visual and verbal channels fire simultaneously throughout.</div>
+        </div>
+        <div class="principle-card">
+          <div class="principle-num">02</div>
+          <div class="principle-name">Cognitive Load Theory</div>
+          <div class="principle-desc">Three progressive tabs prevent competing concepts from loading simultaneously. Zone 1 builds the mental model. Zone 2 goes deeper. Zone 3 transfers to action. Accordion cards apply the same logic at concept level — label visible, depth on demand.</div>
+        </div>
+        <div class="principle-card">
+          <div class="principle-num">03</div>
+          <div class="principle-name">Anchored Instruction</div>
+          <div class="principle-desc">Every concept is tethered to a physical sensation the swimmer has already experienced. "Swimming uphill." "The water grabs you." The physics arrives as the name for a known experience, not as unfamiliar information to memorize.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="section" style="margin-bottom:0">
+        <span class="section-label">Design Decisions</span>
+        <ul class="decision-list">
+          <li><span class="del-dot"></span>Backward design from single transfer goal: poolside self-correction without instructor</li>
+          <li><span class="del-dot"></span>Sensation language ("Feel It") used as primary retrieval anchor, not definition</li>
+          <li><span class="del-dot"></span>Silence Drill placed before concept explanation — experience precedes taxonomy</li>
+          <li><span class="del-dot"></span>Diagnostic is tappable and checkable for active mid-practice use</li>
+          <li><span class="del-dot"></span>Coach-to-athlete register throughout — no academic hedging, no jargon</li>
+          <li><span class="del-dot"></span>Four forces framed as one system, not an inventory</li>
+        </ul>
+      </div>
+      <div class="section" style="margin-bottom:0">
+        <span class="section-label">Design Approach</span>
+        <div style="display:flex; flex-direction:column; gap:10px; margin-top:4px;">
+          <div class="highlight-card">
+            <div class="highlight-title">Transfer-Appropriate Processing</div>
+            <div class="highlight-text">Every tool is formatted for the context where learning must activate — a phone on a pool deck between sets, not a desk.</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-title">Learner Autonomy</div>
+            <div class="highlight-text">The diagnostic is self-administered. Video resources support independent exploration. No instructor required to use the tool effectively.</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-title">4MAT Sequencing</div>
+            <div class="highlight-text">Zones move through Why, What, How, and What If — ensuring every learner type finds their entry point and is pulled forward.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="artifacts-callout">
+      <div class="artifacts-text">
+        <strong>View the Live Tool</strong><br>
+        The full interactive reference — torpedo animation, concept cards, splash diagnostic, and poolside drill — is deployed at jamesdrodgers.ai.
+      </div>
+      <a class="artifacts-link" href="https://jamesdrodgers.ai/swim/why-water-pushes-back" target="_blank">Open Live Tool</a>
+    </div>
+
+    <div class="section">
+      <span class="section-label">Design Highlights</span>
+      <div class="highlights-grid">
+        <div class="highlight-card">
+          <div class="highlight-title">Animated Body-Position Visualizer</div>
+          <div class="highlight-text">An SVG animation alternates between torpedo and shopping cart body positions every 2.8 seconds, encoding the core concept visually before any text is read. Labels and sub-text shift with the animation to reinforce dual coding.</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-title">Progressive Disclosure Architecture</div>
+          <div class="highlight-text">Three sticky tabs manage cognitive load at the zone level. Accordion cards manage it at the concept level. Learners control depth — scanning is fast, going deep is one tap.</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-title">Tappable Splash Diagnostic</div>
+          <div class="highlight-text">Six checkable rows map visual/auditory cues to drag causes and fixes. Designed to be used during practice — not read after it. Tap a splash pattern, get the diagnosis and the correction immediately.</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-title">Context-Calibrated Language</div>
+          <div class="highlight-text">Every sentence is written for a swimmer standing on a pool deck with 90 seconds between sets. Short sentences. Active verbs. No hedging. Tone is coach-to-athlete, not textbook-to-student.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-name">James D. Rodgers · Instructional Designer</div>
+    <div class="footer-link"><a href="https://www.jamesdrodgers.ai" target="_blank">www.jamesdrodgers.ai</a></div>
+  </div>
+
+</div>
+</body>
+</html>s
