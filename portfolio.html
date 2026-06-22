@@ -170,6 +170,64 @@
 
     .card:hover .card-image img { transform: scale(1.03); }
 
+    /* ── DARK PREVIEW PANEL (swim card) ── */
+    .card-image-dark {
+      width: 280px;
+      flex-shrink: 0;
+      overflow: hidden;
+      position: relative;
+      background: #0A2540;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px 18px;
+      gap: 10px;
+    }
+
+    .swim-preview-eyebrow {
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #00B4D8;
+    }
+
+    .swim-preview-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #F0F8FF;
+      line-height: 1.2;
+      letter-spacing: -0.2px;
+    }
+
+    .swim-preview-title span { color: #00B4D8; }
+
+    .swim-preview-tabs {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-top: 2px;
+    }
+
+    .swim-preview-tab {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 5px;
+      padding: 5px 8px;
+      font-size: 9.5px;
+      font-weight: 600;
+      color: rgba(240,248,255,0.5);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .swim-preview-tab.active {
+      background: rgba(0,180,216,0.12);
+      border-color: rgba(0,180,216,0.3);
+      color: #00B4D8;
+    }
+
     .domain-badge {
       position: absolute;
       top: 12px;
@@ -181,6 +239,21 @@
       padding: 3px 9px;
       border-radius: 20px;
       background: rgba(91,127,232,0.90);
+      color: #fff;
+      z-index: 2;
+    }
+
+    .domain-badge-dark {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 20px;
+      background: rgba(0,180,216,0.85);
       color: #fff;
       z-index: 2;
     }
@@ -275,6 +348,7 @@
     @media (max-width: 700px) {
       .card { flex-direction: column; }
       .card-image { width: 100%; height: 180px; }
+      .card-image-dark { width: 100%; height: auto; padding: 24px 20px; }
       .card-body { border-left: none; border-top: 1px solid var(--rule); padding: 20px; }
       .card-list { padding: 8px 16px 60px; }
       .page-header { padding: 32px 16px 24px; }
@@ -308,6 +382,37 @@
 
   <!-- CARD LIST -->
   <div class="card-list">
+
+    <!-- SWIM SCIENCE — NEW, FIRST -->
+    <div class="card">
+      <div class="card-image-dark">
+        <span class="domain-badge-dark">Swim Science · Interactive</span>
+        <div class="swim-preview-eyebrow">Swim Science</div>
+        <div class="swim-preview-title">Why the Water<br><span>Pushes Back</span></div>
+        <div class="swim-preview-tabs">
+          <div class="swim-preview-tab active">💡 The Big Idea</div>
+          <div class="swim-preview-tab">🌊 The Four Forces</div>
+          <div class="swim-preview-tab">🏊 Deck Tools</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Swim Science: Why Water Pushes Back</div>
+        <div class="card-subtitle">Interactive Learning Tool · Masters Swimmers &amp; Coaches · Poolside Reference</div>
+        <p class="card-desc">A standalone interactive web tool translating hydrodynamic drag theory into poolside-ready knowledge. Built around a single transfer goal: a swimmer who can self-diagnose and self-correct in real time. Covers Form Drag, Boundary Layer Separation, Active Drag, and Wave Drag through a tabbed progressive disclosure architecture, animated body-position visualizer, and tappable splash diagnostic.</p>
+        <div class="card-tags">
+          <span class="card-tag">Backward Design</span>
+          <span class="card-tag">Dual Coding Theory</span>
+          <span class="card-tag">Cognitive Load Theory</span>
+          <span class="card-tag">Anchored Instruction</span>
+          <span class="card-tag">HTML / CSS / JS</span>
+          <span class="card-tag">Self-Directed Learning</span>
+        </div>
+        <a href="swim_drag_portfolio_snapshot.html" class="card-cta">
+          View case study
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
 
     <!-- Python -->
     <div class="card">
@@ -371,7 +476,7 @@
         <div class="card-tags">
           <span class="card-tag">Multimedia Design</span>
           <span class="card-tag">Learning Analytics</span>
-          <span class="card-tag">Kirkpatrick L3–L4</span>
+          <span class="card-tag">Kirkpatrick L3-L4</span>
           <span class="card-tag">Data Visualization</span>
           <span class="card-tag">Competency-Based</span>
         </div>
