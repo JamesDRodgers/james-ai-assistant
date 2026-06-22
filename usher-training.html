@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Usher Training — St. John's Episcopal, Youngstown</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lora:ital@0;1&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --purple-50: #EEEDFE;
+    --purple-300: #AFA9EC;
+    --purple-500: #534AB7;
+    --purple-700: #3C3489;
+    --purple-900: #26215C;
+    --teal-50: #E1F5EE;
+    --teal-500: #1D9E75;
+    --teal-700: #0F6E56;
+    --amber-50: #FAEEDA;
+    --amber-500: #BA7517;
+    --amber-700: #633806;
+    --blue-50: #E6F1FB;
+    --blue-500: #185FA5;
+    --blue-700: #0C447C;
+    --gray-50: #F1EFE8;
+    --gray-200: #B4B2A9;
+    --gray-500: #5F5E5A;
+    --gray-700: #444441;
+    --gray-900: #1a1a18;
+    --bg: #f8f7f4;
+    --surface: #ffffff;
+    --border: rgba(0,0,0,0.1);
+    --border-strong: rgba(0,0,0,0.18);
+    --text: #1a1a18;
+    --text-muted: #5F5E5A;
+    --text-faint: #888780;
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+
+  html { font-size: 16px; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* App shell */
+  .app-header {
+    background: var(--surface);
+    border-bottom: 0.5px solid var(--border);
+    padding: 0 1.25rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .app-logo {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .app-logo span {
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+  .header-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .header-progress-track {
+    width: 80px;
+    height: 3px;
+    background: var(--gray-50);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .header-progress-fill {
+    height: 100%;
+    background: var(--purple-500);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+
+  /* Nav */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--surface);
+    border-top: 0.5px solid var(--border);
+    display: flex;
+    z-index: 100;
+  }
+  .nav-tab {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 4px 14px;
+    gap: 3px;
+    font-size: 10px;
+    color: var(--text-faint);
+    cursor: pointer;
+    border: none;
+    background: none;
+    transition: color 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .nav-tab.active { color: var(--purple-500); }
+  .nav-tab svg { width: 22px; height: 22px; stroke-width: 1.5; }
+
+  /* Main content */
+  .main {
+    padding: 1rem 1rem 90px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* Views */
+  .view { display: none; }
+  .view.active { display: block; }
+
+  /* Home view */
+  .home-hero {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .home-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--purple-500);
+    margin-bottom: 6px;
+  }
+  .home-title {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 22px;
+    line-height: 1.3;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .home-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .progress-summary {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .progress-track {
+    flex: 1;
+    height: 4px;
+    background: var(--gray-50);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--purple-500);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+  .progress-text {
+    font-size: 12px;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .section-label-sm {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin: 1.25rem 0 0.5rem;
+  }
+
+  /* Session cards */
+  .session-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: border-color 0.15s;
+  }
+  .session-card:hover { border-color: var(--border-strong); }
+  .session-card.done { opacity: 0.55; }
+  .session-header-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0.875rem 1rem;
+  }
+  .session-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .session-icon svg { width: 18px; height: 18px; stroke-width: 1.75; }
+  .session-info { flex: 1; min-width: 0; }
+  .session-name { font-size: 14px; font-weight: 500; line-height: 1.3; }
+  .session-meta-row { display: flex; align-items: center; gap: 6px; margin-top: 3px; }
+  .session-week { font-size: 11px; color: var(--text-faint); }
+  .session-construct {
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 20px;
+    border: 0.5px solid var(--border);
+    color: var(--text-faint);
+  }
+  .session-status { flex-shrink: 0; }
+  .status-badge {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .status-done { background: #EAF3DE; color: #27500A; }
+  .chevron-icon {
+    transition: transform 0.2s;
+    color: var(--text-faint);
+  }
+  .chevron-icon svg { width: 16px; height: 16px; stroke-width: 2; }
+
+  /* Session detail view */
+  .detail-back {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0.75rem 0 1rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .detail-back svg { width: 16px; height: 16px; stroke-width: 2; }
+  .detail-header {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .detail-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .detail-title {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 20px;
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+  .detail-sub { font-size: 13px; color: var(--text-muted); }
+
+  .content-block {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.125rem;
+    margin-bottom: 8px;
+  }
+  .block-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.625rem;
+  }
+  .item-row {
+    display: flex;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 0.5px solid var(--border);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .item-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .item-row svg { width: 15px; height: 15px; stroke-width: 1.75; flex-shrink: 0; margin-top: 2px; color: var(--text-faint); }
+
+  .scenario-block {
+    border-left: 2px solid var(--purple-300);
+    padding: 0.75rem 1rem;
+    background: var(--purple-50);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    margin-bottom: 8px;
+  }
+  .scenario-block .block-label { color: var(--purple-700); }
+  .scenario-block p { font-size: 13px; line-height: 1.55; color: var(--gray-900); }
+
+  .prompt-block {
+    border-left: 2px solid var(--teal-500);
+    padding: 0.75rem 1rem;
+    background: var(--teal-50);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    margin-bottom: 8px;
+  }
+  .prompt-block .block-label { color: var(--teal-700); }
+  .prompt-block p {
+    font-family: 'Lora', Georgia, serif;
+    font-style: italic;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--gray-900);
+  }
+
+  .complete-btn {
+    width: 100%;
+    padding: 13px;
+    background: var(--purple-500);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .complete-btn:hover { background: var(--purple-700); }
+  .complete-btn:disabled { background: var(--gray-200); color: var(--gray-500); cursor: default; }
+
+  /* About view */
+  .about-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    margin-bottom: 8px;
+  }
+  .about-card h3 { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+  .about-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+  .about-card + .about-card { margin-top: 0; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .tag {
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    border: 0.5px solid var(--border-strong);
+    color: var(--text-muted);
+  }
+  .about-title {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 18px;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 0.5px solid var(--border);
+    color: var(--text);
+  }
+
+  /* Checklist view */
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 11px 1rem;
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    margin-bottom: 6px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: opacity 0.2s;
+  }
+  .check-item.checked { opacity: 0.45; }
+  .check-box {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 1.5px solid var(--border-strong);
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+  .check-item.checked .check-box {
+    background: var(--purple-500);
+    border-color: var(--purple-500);
+  }
+  .check-item.checked .check-box svg { display: block; }
+  .check-box svg { display: none; width: 12px; height: 12px; stroke: white; stroke-width: 3; }
+  .check-text { font-size: 13px; line-height: 1.45; }
+  .check-text.strikethrough { text-decoration: line-through; }
+  .phase-group { margin-bottom: 1.25rem; }
+  .phase-header-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .phase-header-label svg { width: 15px; height: 15px; stroke-width: 1.75; color: var(--text-faint); }
+  .phase-title-text { font-size: 12px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.03em; }
+  .phase-count { font-size: 11px; color: var(--text-faint); margin-left: auto; }
+
+  .reset-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.75rem;
+  }
+  .reset-btn {
+    font-size: 12px;
+    color: var(--text-faint);
+    background: none;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+  }
+  .reset-btn:hover { color: var(--text-muted); border-color: var(--border-strong); }
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="app-logo">St. John's <span>· Usher Training</span></div>
+  <div class="header-progress">
+    <div class="header-progress-track">
+      <div class="header-progress-fill" id="header-pbar"></div>
+    </div>
+    <span id="header-plabel">0/5</span>
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- HOME VIEW -->
+  <div class="view active" id="view-home">
+    <div class="home-hero">
+      <div class="home-eyebrow">Usher Formation</div>
+      <h1 class="home-title">Serving at the threshold</h1>
+      <p class="home-sub">Five sessions. Work through them at your own pace, one Sunday at a time.</p>
+      <div class="progress-summary">
+        <div class="progress-track">
+          <div class="progress-fill" id="home-pbar"></div>
+        </div>
+        <span class="progress-text" id="home-plabel">0 of 5 complete</span>
+      </div>
+    </div>
+
+    <div class="section-label-sm">Sessions</div>
+    <div id="session-list"></div>
+  </div>
+
+  <!-- DETAIL VIEW -->
+  <div class="view" id="view-detail">
+    <div class="detail-back" onclick="goHome()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M15 18l-6-6 6-6"/></svg>
+      All sessions
+    </div>
+    <div id="detail-content"></div>
+  </div>
+
+  <!-- CHECKLIST VIEW -->
+  <div class="view" id="view-checklist">
+    <div class="section-label-sm" style="margin-top:0.5rem">Sunday checklist</div>
+    <div class="reset-row">
+      <button class="reset-btn" onclick="resetChecklist()">Reset</button>
+    </div>
+    <div id="checklist-content"></div>
+  </div>
+
+  <!-- ABOUT VIEW -->
+  <div class="view" id="view-about">
+    <div class="section-label-sm" style="margin-top:0.5rem">About this module</div>
+    <div class="about-card">
+      <p class="about-title">Why this exists</p>
+      <p>Usher training at most parishes is a single orientation and a handshake. This module treats the role as what it actually is — a ministry with real skill, real judgment, and real formation involved. Five sessions, grounded in how adults actually learn.</p>
+    </div>
+    <div class="about-card">
+      <h3>St. John's context</h3>
+      <p>St. John's is a growing parish in transition, currently without a settled rector. That means lay ministry carries more than usual right now. Ushers are often the first and last face a guest sees. This module was built with that specific moment in mind.</p>
+    </div>
+    <div class="about-card">
+      <h3>How to use it</h3>
+      <p>Work through one session per week alongside your actual service. Read before Sunday. Reflect after. The scenarios don't have single correct answers — that's intentional.</p>
+    </div>
+    <div class="about-card">
+      <h3>Pedagogical approach</h3>
+      <div class="tag-row">
+        <span class="tag">Mystagogical method</span>
+        <span class="tag">Transformative learning</span>
+        <span class="tag">Situated learning</span>
+        <span class="tag">Spaced repetition</span>
+        <span class="tag">Self-determination theory</span>
+      </div>
+    </div>
+    <div class="about-card">
+      <h3>Version</h3>
+      <p style="font-size:12px;">St. John's Episcopal Church · Youngstown, OH · 2025<br>Review annually as a team. Update when the parish changes.</p>
+    </div>
+  </div>
+
+</main>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <button class="nav-tab active" id="tab-home" onclick="switchTab('home')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Sessions
+  </button>
+  <button class="nav-tab" id="tab-checklist" onclick="switchTab('checklist')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+    Checklist
+  </button>
+  <button class="nav-tab" id="tab-about" onclick="switchTab('about')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    About
+  </button>
+</nav>
+
+<script>
+const sessions = [
+  {
+    id: 1,
+    title: 'Learn the space before you work it',
+    week: 'Week 1 · Before your first Sunday',
+    construct: 'Situated learning',
+    iconBg: '#EEEDFE', iconColor: '#3C3489',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>`,
+    content: [
+      { type: 'section', label: 'Before anything else', items: [
+        { icon: 'walk', text: 'Walk the building alone on a weekday. Nave, narthex, side aisles, both exits. Locate: offering plates, communion elements table, hearing loop switch, accessible seating, restrooms.' },
+        { icon: 'eye', text: 'Attend one Sunday as a pure observer — no tasks, just a seat at the back. Watch how people enter, where they hesitate, how flow breaks down and recovers.' },
+        { icon: 'users', text: 'Shadow an experienced usher for one full service. Don\'t take notes during. Debrief afterward with one question: what did you notice that I missed?' },
+      ]},
+      { type: 'section', label: 'What you\'re building in week 1', items: [
+        { icon: 'info', text: 'Spatial fluency. You can\'t direct someone to a seat or exit if you\'re still orienting yourself. Know this building the way you know your own house.' },
+        { icon: 'info', text: 'Pattern recognition. Knowing when to move and when to hold still comes from watching before acting. Procedure alone won\'t give you that.' },
+      ]},
+      { type: 'prompt', label: 'After your observation Sunday', text: 'Write down two things: one moment when the usher\'s presence made a difference, and one moment when you would have done something differently. Keep it. You\'ll revisit it in Session 5.' },
+      { type: 'scenario', label: 'Think it through', text: 'A couple arrives five minutes late with a toddler. The usher seats them in the front pew during the Gospel reading. The child is audible. What would you have done differently, and why?' },
+    ]
+  },
+  {
+    id: 2,
+    title: 'The mechanics',
+    week: 'Week 2 · What to do and when',
+    construct: 'Procedural fluency',
+    iconBg: '#E1F5EE', iconColor: '#085041',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>`,
+    content: [
+      { type: 'section', label: 'Arriving', items: [
+        { icon: 'clock', text: '25 minutes before the service. Not 20. The extra five minutes is when you catch problems — a missing presenter, an accessibility need you weren\'t told about, bulletins that didn\'t arrive.' },
+        { icon: 'users', text: 'Find your co-usher first. Divide roles clearly: door, center aisle, elements. Don\'t assume.' },
+        { icon: 'file', text: 'Count bulletins. Check for inserts. Read the bulletin yourself — know what\'s happening that Sunday before anyone asks.' },
+      ]},
+      { type: 'section', label: 'Greeting', items: [
+        { icon: 'door', text: 'Stand at the door, not inside the narthex. Outside means you see people before they\'re already past you.' },
+        { icon: 'hand', text: 'A bulletin, eye contact, and a brief word is sufficient. Match the guest\'s energy — some people want a conversation, most don\'t.' },
+        { icon: 'accessible', text: 'Identify mobility needs immediately. Don\'t wait for someone to ask. If someone is moving slowly or scanning for a seat, go to them.' },
+      ]},
+      { type: 'section', label: 'Late arrivals', items: [
+        { icon: 'pause', text: 'Hold during: the collect, any reading, the confession, the Gospel. Seat during: hymns, the sermon (quietly), the Peace.' },
+        { icon: 'info', text: 'This isn\'t about rules. It\'s about not disrupting 80 people who are trying to pray. Use your judgment.' },
+      ]},
+      { type: 'section', label: 'The offertory', items: [
+        { icon: 'hash', text: 'Count attendance before the offertory. Include everyone — children, choir, clergy, yourself. Confirm with your co-usher.' },
+        { icon: 'arrow-up', text: 'When the music starts, process forward with the bread and wine. Walk steadily. Hand elements to the Lay Eucharistic Minister and report your count.' },
+        { icon: 'circle', text: 'Pass offering plates immediately after. Front to back, outside aisles first. Return plates after the hymn.' },
+      ]},
+      { type: 'section', label: 'Communion', items: [
+        { icon: 'wave', text: 'You and your co-usher pace the rows. Signal each pew when it\'s time. Your goal: no idle ministers, no long line. It takes a few Sundays to calibrate.' },
+        { icon: 'arrow', text: 'You go last. Every Sunday.' },
+      ]},
+      { type: 'scenario', label: 'Scenario', text: 'You\'re passing the offering plate and a man shakes his head — he gives annually and isn\'t contributing today. The person next to him holds the plate awkwardly. What do you do?' },
+      { type: 'prompt', label: 'After your first active Sunday', text: 'What felt automatic? What required more thought than you expected? Name one specific moment — not a general impression.' },
+    ]
+  },
+  {
+    id: 3,
+    title: 'Guests and connection',
+    week: 'Week 3 · Moving someone from visitor to member',
+    construct: 'Relational skill',
+    iconBg: '#FAEEDA', iconColor: '#633806',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`,
+    content: [
+      { type: 'section', label: 'Two different skills', items: [
+        { icon: 'info', text: 'Welcome gets someone through the door. Connection is what brings them back. They happen at different moments — don\'t confuse them.' },
+        { icon: 'clock', text: 'The pre-service greeting is too rushed for real connection. The post-service exit is your best window — people are relaxed and deciding whether to return.' },
+      ]},
+      { type: 'section', label: 'Reading a first-time guest', items: [
+        { icon: 'search', text: 'Signs someone is new: they pause before entering, they read the bulletin like a map, they sit somewhere awkward, they don\'t know when to stand.' },
+        { icon: 'ear', text: 'Listen for one real detail in the first thirty seconds — a neighborhood, a profession, a kid\'s name. That\'s your thread.' },
+        { icon: 'stop', text: 'Don\'t interrogate. One or two questions maximum. "Is this your first time here?" is enough. Let them lead.' },
+      ]},
+      { type: 'section', label: 'Making an introduction', items: [
+        { icon: 'users', text: 'Know two or three parishioners who are good with strangers. Brief them before the service if you spotted someone new.' },
+        { icon: 'speak', text: 'Walk the guest over, say both names, give one concrete connection: "This is David — he also just moved to the west side." Then leave them to it.' },
+        { icon: 'x', text: 'Don\'t hover after the introduction. You\'ve done the work.' },
+      ]},
+      { type: 'scenario', label: 'Scenario', text: 'After the service, a man in his 60s is standing alone near the exit, bulletin in hand, clearly not sure whether to stay for coffee hour. He came alone. You have about 45 seconds before he decides to leave. What do you say, and what do you not say?' },
+      { type: 'scenario', label: 'Harder scenario', text: 'Someone arrives who had a very public falling-out with a current active member two years ago. They haven\'t been here since. They look uncertain at the door. Your instinct is to let someone else handle it. Examine that instinct. What do you actually do?' },
+    ]
+  },
+  {
+    id: 4,
+    title: 'Ushering without a settled priest',
+    week: 'Week 4 · What\'s different right now at St. John\'s',
+    construct: 'Context-specific',
+    iconBg: '#E6F1FB', iconColor: '#0C447C',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
+    content: [
+      { type: 'section', label: 'What\'s different in an interim season', items: [
+        { icon: 'info', text: 'Supply clergy don\'t know the building or congregation. Brief them before the service — two minutes, essentials only: mobility needs, anyone in acute grief, anything unusual about the day.' },
+        { icon: 'trending', text: 'New people are watching to see whether this community functions without a rector. A calm, prepared usher answers that question without a word.' },
+        { icon: 'clipboard', text: 'Keep an informal log after each service: new faces, any detail shared, anything for pastoral follow-up. Pass it to the senior warden. Useful information, not paperwork.' },
+      ]},
+      { type: 'section', label: 'When guests ask about the priest search', items: [
+        { icon: 'message', text: 'You will be asked. Have a short honest answer ready: "We\'re in a search process — it\'s going well and the community is strong." That\'s it. Don\'t speculate.' },
+        { icon: 'arrow', text: 'Redirect to what\'s actually happening: coffee hour, a program, a person they should meet. Move the conversation forward.' },
+      ]},
+      { type: 'section', label: 'Practical adjustments for a growing parish', items: [
+        { icon: 'users', text: 'More new faces means more people who don\'t know the liturgy. Keep bulletin-pointing subtle — a quiet gesture to the right page is enough. Nobody needs to feel singled out.' },
+        { icon: 'plus', text: 'If attendance is climbing, talk to the lead usher about adding a third usher on high-attendance Sundays. Don\'t wait until it\'s already a problem.' },
+        { icon: 'calendar', text: 'Holy Week, Easter, Christmas Eve — plan the usher team early. These are the Sundays when first-time guests are most likely to show up, and most likely to return or not.' },
+      ]},
+      { type: 'scenario', label: 'Scenario', text: 'A supply priest arrives ten minutes before the service. She\'s never been to St. John\'s. You have three minutes with her before the procession. What do you tell her?' },
+      { type: 'prompt', label: 'Reflection', text: 'What is one thing about this season at St. John\'s that a new usher should know that isn\'t written down anywhere?' },
+    ]
+  },
+  {
+    id: 5,
+    title: 'Bringing someone else in',
+    week: 'Ongoing · Onboarding and mentorship',
+    construct: 'Situated learning: peripheral to central',
+    iconBg: '#F1EFE8', iconColor: '#444441',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>`,
+    content: [
+      { type: 'section', label: 'What changes when you\'re the experienced one', items: [
+        { icon: 'info', text: 'Your job is not to tell a new usher everything you know. It\'s to stand beside them and let them discover the important things, then talk about it afterward.' },
+        { icon: 'walk', text: 'Walk the building with them before their first Sunday. Don\'t narrate — ask questions. "What would you do if someone arrived in a wheelchair?" Make them think through it.' },
+        { icon: 'message', text: 'After their first two Sundays, ask one specific question: "What\'s still feeling uncertain?" Not "how did it go?" — that\'s about your reassurance, not their development.' },
+      ]},
+      { type: 'section', label: 'What good mentorship looks like here', items: [
+        { icon: 'x', text: 'Don\'t shadow them so closely they feel watched. Give them a role, let them work it, debrief after.' },
+        { icon: 'check', text: 'Share one thing that went wrong for you early on and what you learned. Concrete and specific. Not a lesson — a story.' },
+        { icon: 'rotate', text: 'After three months, ask what they noticed that you didn\'t mention in training. New ushers see things experienced ones have stopped seeing.' },
+      ]},
+      { type: 'section', label: 'Keeping this module current', items: [
+        { icon: 'edit', text: 'Add a scenario from your own experience to the parish scenario bank. Something real that tested your judgment. Anonymous is fine.' },
+        { icon: 'refresh', text: 'Review this module as a team once a year. What\'s outdated? What\'s missing? What has the parish\'s growth revealed that wasn\'t here when you started?' },
+      ]},
+      { type: 'section', label: 'Closing', items: [
+        { icon: 'file', text: 'Pull out what you wrote in Session 1 — the moment you noticed and the thing you\'d have done differently. Read it. Write one sentence about how your thinking has changed.' },
+      ]},
+      { type: 'scenario', label: 'Final scenario', text: 'A new usher you\'ve been mentoring handles a difficult Sunday well — a late arrival with a mobility need, a disruptive child, and a supply priest who needed briefing, all in one morning. Afterward they say "I just did what felt right." What do you say to them?' },
+    ]
+  }
+];
+
+const checklist = [
+  { phase: 'Arriving', icon: 'clock', items: [
+    'Arrive 25 minutes before the service',
+    'Connect with co-usher and divide roles',
+    'Count and organize bulletins, check for inserts',
+    'Prepare offering plates or baskets',
+    'Set out communion elements on the back table if assigned',
+    'Check narthex — clear, clean, accessible',
+    'Confirm presenters are present and briefed',
+    'Open center doors; position communion kneeler',
+    'Note any mobility or accessibility needs for today',
+  ]},
+  { phase: 'Liturgy of the word', icon: 'book', items: [
+    'Greet arriving worshipers at the door with bulletin',
+    'Hold late arrivals during prayers, readings, collect, Gospel',
+    'Seat late arrivals during hymns or sermon as appropriate',
+    'Assist anyone with special seating or accessibility needs',
+    'Count all persons in attendance (everyone, including children)',
+    'Confirm count with co-usher before the offertory',
+  ]},
+  { phase: 'The eucharist', icon: 'circle', items: [
+    'Take position at back with communion elements during the Peace',
+    'Confirm headcount matches co-usher',
+    'Process forward with elements when music begins',
+    'Report attendance count to Lay Eucharistic Minister',
+    'Pass offering plates immediately — front to back',
+    'Return plates to altar area after offertory hymn',
+    'Guide communion front to back, signaling each pew',
+    'Receive communion last',
+    'Remove kneeler center section after receiving',
+  ]},
+  { phase: 'After worship', icon: 'door', items: [
+    'Hold doors open for the recessional',
+    'Watch for guests to connect with before they leave',
+    'Collect left-behind bulletins and personal items',
+    'Return offering plates and elements to proper locations',
+    'Record attendance in the logbook or to senior warden',
+    'Note any pastoral concerns for follow-up',
+    'Tidy the narthex',
+    'Brief debrief with co-usher on anything to adjust',
+  ]},
+];
+
+const completed = new Set(JSON.parse(localStorage.getItem('sj_completed') || '[]'));
+const checkStates = JSON.parse(localStorage.getItem('sj_checks') || '{}');
+
+function saveState() {
+  localStorage.setItem('sj_completed', JSON.stringify([...completed]));
+  localStorage.setItem('sj_checks', JSON.stringify(checkStates));
+}
+
+function updateProgress() {
+  const pct = Math.round(completed.size / sessions.length * 100);
+  document.getElementById('home-pbar').style.width = pct + '%';
+  document.getElementById('home-plabel').textContent = completed.size + ' of ' + sessions.length + ' complete';
+  document.getElementById('header-pbar').style.width = pct + '%';
+  document.getElementById('header-plabel').textContent = completed.size + '/5';
+}
+
+function getIcon(name) {
+  const icons = {
+    walk: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="5" r="2"/><path d="M5 22l2-8 3 3 2-5 3 8"/><path d="M14 9l-3-3-4 2"/></svg>`,
+    eye: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`,
+    users: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>`,
+    info: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
+    clock: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+    file: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`,
+    door: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>`,
+    hand: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>`,
+    accessible: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="4" r="2"/><path d="M19 13l-7 2-4-4 3-7"/><path d="M10 17l-2 5"/><path d="M14 17l2 5"/></svg>`,
+    pause: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>`,
+    hash: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>`,
+    'arrow-up': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>`,
+    circle: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/></svg>`,
+    wave: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`,
+    arrow: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`,
+    search: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`,
+    ear: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 8a6 6 0 0112 0c0 7-7 11-7 16H9a6 6 0 01-6-6 6 6 0 001.3-3.7"/><path d="M10 21a4 4 0 004-4"/></svg>`,
+    stop: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>`,
+    speak: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
+    x: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`,
+    trending: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>`,
+    clipboard: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>`,
+    message: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
+    plus: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>`,
+    calendar: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
+    check: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>`,
+    rotate: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>`,
+    edit: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`,
+    refresh: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>`,
+    book: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>`,
+  };
+  return icons[name] || icons['info'];
+}
+
+function renderSessionList() {
+  document.getElementById('session-list').innerHTML = sessions.map(s => `
+    <div class="session-card ${completed.has(s.id) ? 'done' : ''}" onclick="openSession(${s.id})">
+      <div class="session-header-row">
+        <div class="session-icon" style="background:${s.iconBg}; color:${s.iconColor};">${s.icon}</div>
+        <div class="session-info">
+          <div class="session-name">${s.title}</div>
+          <div class="session-meta-row">
+            <span class="session-week">${s.week}</span>
+          </div>
+          <div class="session-meta-row" style="margin-top:3px;">
+            <span class="session-construct">${s.construct}</span>
+          </div>
+        </div>
+        <div class="session-status">
+          ${completed.has(s.id)
+            ? '<span class="status-badge status-done">Done</span>'
+            : `<span class="chevron-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg></span>`
+          }
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderChecklist() {
+  document.getElementById('checklist-content').innerHTML = checklist.map((phase, pi) => {
+    const doneCount = phase.items.filter((_, ii) => checkStates[`${pi}-${ii}`]).length;
+    return `
+      <div class="phase-group">
+        <div class="phase-header-label">
+          ${getIcon(phase.icon)}
+          <span class="phase-title-text">${phase.phase}</span>
+          <span class="phase-count">${doneCount}/${phase.items.length}</span>
+        </div>
+        ${phase.items.map((item, ii) => {
+          const key = `${pi}-${ii}`;
+          const checked = !!checkStates[key];
+          return `
+            <div class="check-item ${checked ? 'checked' : ''}" onclick="toggleCheck('${key}')">
+              <div class="check-box">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor"><polyline points="2 6 5 9 10 3"/></svg>
+              </div>
+              <span class="check-text ${checked ? 'strikethrough' : ''}">${item}</span>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
+  }).join('');
+}
+
+function toggleCheck(key) {
+  checkStates[key] = !checkStates[key];
+  saveState();
+  renderChecklist();
+}
+
+function resetChecklist() {
+  Object.keys(checkStates).forEach(k => delete checkStates[k]);
+  saveState();
+  renderChecklist();
+}
+
+function openSession(id) {
+  const s = sessions.find(x => x.id === id);
+  const contentHTML = s.content.map(block => {
+    if (block.type === 'scenario') {
+      return `<div class="scenario-block"><div class="block-label">Scenario</div><p>${block.text}</p></div>`;
+    }
+    if (block.type === 'prompt') {
+      return `<div class="prompt-block"><div class="block-label">${block.label}</div><p>${block.text}</p></div>`;
+    }
+    return `
+      <div class="content-block">
+        <div class="block-label">${block.label}</div>
+        ${block.items.map(item => `
+          <div class="item-row">
+            ${getIcon(item.icon)}
+            <span>${item.text}</span>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }).join('');
+
+  document.getElementById('detail-content').innerHTML = `
+    <div class="detail-header" style="border-left: 3px solid ${s.iconColor};">
+      <div class="detail-eyebrow" style="color:${s.iconColor};">Session ${s.id} · ${s.construct}</div>
+      <div class="detail-title">${s.title}</div>
+      <div class="detail-sub">${s.week}</div>
+    </div>
+    ${contentHTML}
+    <button class="complete-btn" id="complete-btn" onclick="markComplete(${s.id})" ${completed.has(s.id) ? 'disabled' : ''}>
+      ${completed.has(s.id) ? 'Session complete' : 'Mark complete'}
+    </button>
+  `;
+
+  switchTab('detail');
+}
+
+function markComplete(id) {
+  completed.add(id);
+  saveState();
+  document.getElementById('complete-btn').disabled = true;
+  document.getElementById('complete-btn').textContent = 'Session complete';
+  updateProgress();
+  renderSessionList();
+}
+
+function goHome() {
+  switchTab('home');
+}
+
+function switchTab(tab) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('view-' + tab).classList.add('active');
+  const navTab = document.getElementById('tab-' + tab);
+  if (navTab) navTab.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+renderSessionList();
+renderChecklist();
+updateProgress();
+</script>
+</body>
+</html>
