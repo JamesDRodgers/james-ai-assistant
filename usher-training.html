@@ -143,23 +143,33 @@
     padding: 1.25rem;
     margin-bottom: 1rem;
   }
+  .hero-inner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hero-door {
+    flex-shrink: 0;
+    width: 72px;
+  }
+  .hero-text { flex: 1; min-width: 0; }
   .home-eyebrow {
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--purple-500);
-    margin-bottom: 6px;
+    margin-bottom: 5px;
   }
   .home-title {
     font-family: 'Lora', Georgia, serif;
-    font-size: 22px;
-    line-height: 1.3;
+    font-size: 20px;
+    line-height: 1.25;
     color: var(--text);
-    margin-bottom: 6px;
+    margin-bottom: 5px;
   }
   .home-sub {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--text-muted);
     line-height: 1.5;
   }
@@ -467,9 +477,16 @@
   <!-- HOME VIEW -->
   <div class="view active" id="view-home">
     <div class="home-hero">
-      <div class="home-eyebrow">Usher Formation</div>
-      <h1 class="home-title">Serving at the threshold</h1>
-      <p class="home-sub">Five sessions. Work through them at your own pace, one Sunday at a time.</p>
+      <div class="hero-inner">
+        <div class="hero-door">
+          <img src="door.jpeg" alt="St. John's church door" style="width:72px; height:108px; object-fit:contain; display:block;">
+        </div>
+        <div class="hero-text">
+          <div class="home-eyebrow">Usher Formation</div>
+          <h1 class="home-title">Serving at the threshold</h1>
+          <p class="home-sub">Five sessions. One Sunday at a time.</p>
+        </div>
+      </div>
       <div class="progress-summary">
         <div class="progress-track">
           <div class="progress-fill" id="home-pbar"></div>
@@ -504,12 +521,21 @@
   <div class="view" id="view-about">
     <div class="section-label-sm" style="margin-top:0.5rem">About this module</div>
     <div class="about-card">
-      <p class="about-title">Why this exists</p>
-      <p>Usher training at most parishes is a single orientation and a handshake. This module treats the role as what it actually is — a ministry with real skill, real judgment, and real formation involved. Five sessions, grounded in how adults actually learn.</p>
+      <p class="about-title">St. John's Episcopal Church</p>
+      <p style="font-style:italic; color:var(--text-muted); font-size:13px; margin-bottom:10px;">Mission Statement</p>
+      <p>At St. John's Episcopal Church of Youngstown, we celebrate God and the transforming love of Jesus Christ. Rooted in scripture, practice and reason, we evolve as disciples, build compassionate relationships, and serve others with love. We strive to be a welcoming and caring space for everyone, reflecting the inherent dignity of all, and we nurture unity in the Body of Christ by fostering spiritual growth, hope and renewal as we answer Christ's call to embody His love and grace in our community.</p>
     </div>
     <div class="about-card">
-      <h3>St. John's context</h3>
-      <p>St. John's is a growing parish in transition, currently without a settled rector. That means lay ministry carries more than usual right now. Ushers are often the first and last face a guest sees. This module was built with that specific moment in mind.</p>
+      <h3>Who we are</h3>
+      <p>Founded in the 1850s, St. John's has been a faithful presence in downtown Youngstown for over 170 years. Located at 323 Wick Ave on the city's arts corridor, the parish is home to Tiffany stained-glass windows, the annual Boar's Head Festival, the Red Door Food Pantry and Café, and partnerships with Youngstown State University and neighboring faith communities. St. John's affirms and welcomes LGBTQ+ persons and is committed to reflecting the inherent dignity of all.</p>
+    </div>
+    <div class="about-card">
+      <h3>Where we are right now</h3>
+      <p>St. John's is in a season of transition, currently without a settled rector. Lay leadership has carried the parish through two years of honest conversation, healing, and renewed hope. Average weekly attendance is around 67, with Christmas and Easter drawing over 170. The parish is actively searching for a priest-in-charge who will honor and strengthen this lay-led momentum.</p>
+    </div>
+    <div class="about-card">
+      <h3>Why this module exists</h3>
+      <p>Usher training at most parishes is a single orientation and a handshake. This module treats the role as what it actually is — a ministry with real skill, real judgment, and real formation involved. Five sessions, grounded in how adults actually learn, built specifically for St. John's in this moment.</p>
     </div>
     <div class="about-card">
       <h3>How to use it</h3>
@@ -524,6 +550,10 @@
         <span class="tag">Spaced repetition</span>
         <span class="tag">Self-determination theory</span>
       </div>
+    </div>
+    <div class="about-card">
+      <h3>A Ministry of Hospitality</h3>
+      <p style="font-style:italic; font-size:13px; line-height:1.7; color:var(--text-muted);">Heavenly Father, you sent your Son as a model for hospitality. Prepare my heart to welcome all who walk through our doors today. Give me eyes to see the needs of your people, grace to respond with patience, and a joyful spirit that reflects your love. May the stranger feel at home, and the weary find peace. I ask this through Jesus Christ our Lord. Amen.</p>
     </div>
     <div class="about-card">
       <h3>Version</h3>
@@ -553,7 +583,7 @@
 const sessions = [
   {
     id: 1,
-    title: 'Learn the space before you work it',
+    title: 'The Building',
     week: 'Week 1 · Before your first Sunday',
     construct: 'Situated learning',
     iconBg: '#EEEDFE', iconColor: '#3C3489',
@@ -574,8 +604,37 @@ const sessions = [
   },
   {
     id: 2,
-    title: 'The mechanics',
-    week: 'Week 2 · What to do and when',
+    title: 'Welcome and Connection',
+    week: 'Week 2 · Moving someone from visitor to member',
+    construct: 'Relational skill',
+    iconBg: '#FAEEDA', iconColor: '#633806',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`,
+    content: [
+      { type: 'section', label: 'Two different skills', items: [
+        { icon: 'info', text: 'Welcome gets someone through the door. Connection is what brings them back. They happen at different moments — don\'t confuse them.' },
+        { icon: 'clock', text: 'The pre-service greeting is too rushed for real connection. The post-service exit is your best window — people are relaxed and deciding whether to return.' },
+      ]},
+      { type: 'section', label: 'Reading a first-time guest', items: [
+        { icon: 'search', text: 'Signs someone is new: they pause before entering, they read the bulletin like a map, they sit somewhere awkward, they don\'t know when to stand.' },
+        { icon: 'ear', text: 'Listen for one real detail in the first thirty seconds — a neighborhood, a profession, a kid\'s name. That\'s your thread.' },
+        { icon: 'stop', text: 'Don\'t interrogate. One or two questions maximum. "Is this your first time here?" is enough. Let them lead.' },
+      ]},
+      { type: 'section', label: 'Making an introduction', items: [
+        { icon: 'users', text: 'Know two or three parishioners who are good with strangers. Brief them before the service if you spotted someone new.' },
+        { icon: 'speak', text: 'Walk the guest over, say both names, give one concrete connection: "This is David — he also just moved to the west side." Then leave them to it.' },
+        { icon: 'x', text: 'Don\'t hover after the introduction. You\'ve done the work.' },
+      ]},
+      { type: 'section', label: 'St. John\'s specifically', items: [
+        { icon: 'info', text: 'St. John\'s already practices hospitality in concrete ways — the Red Door Food Pantry, the Soup Kitchen, partnerships with YSU international students, shared meals. The usher is one more expression of the same impulse. You\'re not inventing a culture. You\'re extending one that already exists.' },
+      ]},
+      { type: 'scenario', label: 'Scenario', text: 'After the service, a man in his 60s is standing alone near the exit, bulletin in hand, clearly not sure whether to stay for coffee hour. He came alone. You have about 45 seconds before he decides to leave. What do you say, and what do you not say?' },
+      { type: 'scenario', label: 'Harder scenario', text: 'Someone arrives who had a very public falling-out with a current active member two years ago. They haven\'t been here since. They look uncertain at the door. Your instinct is to let someone else handle it. Examine that instinct. What do you actually do?' },
+    ]
+  },
+  {
+    id: 3,
+    title: 'The Liturgy',
+    week: 'Week 3 · What to do and when',
     construct: 'Procedural fluency',
     iconBg: '#E1F5EE', iconColor: '#085041',
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>`,
@@ -608,60 +667,38 @@ const sessions = [
     ]
   },
   {
-    id: 3,
-    title: 'Guests and connection',
-    week: 'Week 3 · Moving someone from visitor to member',
-    construct: 'Relational skill',
-    iconBg: '#FAEEDA', iconColor: '#633806',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`,
-    content: [
-      { type: 'section', label: 'Two different skills', items: [
-        { icon: 'info', text: 'Welcome gets someone through the door. Connection is what brings them back. They happen at different moments — don\'t confuse them.' },
-        { icon: 'clock', text: 'The pre-service greeting is too rushed for real connection. The post-service exit is your best window — people are relaxed and deciding whether to return.' },
-      ]},
-      { type: 'section', label: 'Reading a first-time guest', items: [
-        { icon: 'search', text: 'Signs someone is new: they pause before entering, they read the bulletin like a map, they sit somewhere awkward, they don\'t know when to stand.' },
-        { icon: 'ear', text: 'Listen for one real detail in the first thirty seconds — a neighborhood, a profession, a kid\'s name. That\'s your thread.' },
-        { icon: 'stop', text: 'Don\'t interrogate. One or two questions maximum. "Is this your first time here?" is enough. Let them lead.' },
-      ]},
-      { type: 'section', label: 'Making an introduction', items: [
-        { icon: 'users', text: 'Know two or three parishioners who are good with strangers. Brief them before the service if you spotted someone new.' },
-        { icon: 'speak', text: 'Walk the guest over, say both names, give one concrete connection: "This is David — he also just moved to the west side." Then leave them to it.' },
-        { icon: 'x', text: 'Don\'t hover after the introduction. You\'ve done the work.' },
-      ]},
-      { type: 'scenario', label: 'Scenario', text: 'After the service, a man in his 60s is standing alone near the exit, bulletin in hand, clearly not sure whether to stay for coffee hour. He came alone. You have about 45 seconds before he decides to leave. What do you say, and what do you not say?' },
-      { type: 'scenario', label: 'Harder scenario', text: 'Someone arrives who had a very public falling-out with a current active member two years ago. They haven\'t been here since. They look uncertain at the door. Your instinct is to let someone else handle it. Examine that instinct. What do you actually do?' },
-    ]
-  },
-  {
     id: 4,
-    title: 'Ushering without a settled priest',
-    week: 'Week 4 · What\'s different right now at St. John\'s',
+    title: 'Assisting Clergy',
+    week: 'Week 4 · Supporting clergy in a transitional season',
     construct: 'Context-specific',
     iconBg: '#E6F1FB', iconColor: '#0C447C',
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
     content: [
       { type: 'section', label: 'What\'s different in an interim season', items: [
+        { icon: 'info', text: 'St. John\'s has been in transition for two years. Lay leadership has carried more than usual — and it has worked. The Vestry led small-group healing conversations, relationships have been strengthened, and the parish has renewed its sense of shared purpose. You are part of that momentum.' },
         { icon: 'info', text: 'Supply clergy don\'t know the building or congregation. Brief them before the service — two minutes, essentials only: mobility needs, anyone in acute grief, anything unusual about the day.' },
-        { icon: 'trending', text: 'New people are watching to see whether this community functions without a rector. A calm, prepared usher answers that question without a word.' },
+        { icon: 'trending', text: 'New people are watching to see whether this community holds together without a rector. A calm, prepared usher answers that question before anyone says a word.' },
         { icon: 'clipboard', text: 'Keep an informal log after each service: new faces, any detail shared, anything for pastoral follow-up. Pass it to the senior warden. Useful information, not paperwork.' },
       ]},
       { type: 'section', label: 'When guests ask about the priest search', items: [
         { icon: 'message', text: 'You will be asked. Have a short honest answer ready: "We\'re in a search process — it\'s going well and the community is strong." That\'s it. Don\'t speculate.' },
         { icon: 'arrow', text: 'Redirect to what\'s actually happening: coffee hour, a program, a person they should meet. Move the conversation forward.' },
       ]},
-      { type: 'section', label: 'Practical adjustments for a growing parish', items: [
-        { icon: 'users', text: 'More new faces means more people who don\'t know the liturgy. Keep bulletin-pointing subtle — a quiet gesture to the right page is enough. Nobody needs to feel singled out.' },
-        { icon: 'plus', text: 'If attendance is climbing, talk to the lead usher about adding a third usher on high-attendance Sundays. Don\'t wait until it\'s already a problem.' },
-        { icon: 'calendar', text: 'Holy Week, Easter, Christmas Eve — plan the usher team early. These are the Sundays when first-time guests are most likely to show up, and most likely to return or not.' },
+      { type: 'section', label: 'Know your numbers', items: [
+        { icon: 'hash', text: 'Average weekly attendance is around 67. Christmas and Easter both drew over 170 last year — nearly three times a normal Sunday. Plan the usher team for high holy days well in advance. Don\'t wait until the week before.' },
+        { icon: 'users', text: 'About 24% of the congregation is 65 or older. Mobility awareness and unhurried seating matter every Sunday, not just occasionally.' },
+        { icon: 'plus', text: 'If attendance is climbing on a given Sunday, flag it to the lead usher early. A third usher makes a real difference when the nave is full.' },
       ]},
-      { type: 'scenario', label: 'Scenario', text: 'A supply priest arrives ten minutes before the service. She\'s never been to St. John\'s. You have three minutes with her before the procession. What do you tell her?' },
+      { type: 'section', label: 'What the parish is looking for in its next priest', items: [
+        { icon: 'info', text: 'St. John\'s is seeking someone who leads with listening, empowers lay leadership, and values shared ministry. When you brief a supply priest, you\'re not just handing off logistics — you\'re modeling the culture the parish is trying to build.' },
+      ]},
+      { type: 'scenario', label: 'Scenario', text: 'A supply priest arrives ten minutes before the service. She\'s never been to St. John\'s. You have three minutes with her before the procession. What do you tell her, and in what order?' },
       { type: 'prompt', label: 'Reflection', text: 'What is one thing about this season at St. John\'s that a new usher should know that isn\'t written down anywhere?' },
     ]
   },
   {
     id: 5,
-    title: 'Bringing someone else in',
+    title: 'Assisting New Ushers',
     week: 'Ongoing · Onboarding and mentorship',
     construct: 'Situated learning: peripheral to central',
     iconBg: '#F1EFE8', iconColor: '#444441',
