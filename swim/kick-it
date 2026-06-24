@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kick It</title>
+<style>
+  :root {
+    --primary: #6f93ff;
+    --primary-hover: #5a7cdb;
+    --navy: #0f1f3d;
+    --bg: #f0f2f5;
+    --surface: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #5a5a6a;
+    --text-muted: #8a8a9a;
+    --border: #e2e4e8;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --orange: #f0a050;
+    --orange-bg: #fff8f0;
+    --orange-text: #b06010;
+    --blue-bg: #edf3ff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  header {
+    background: var(--navy);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  .header-left { display: flex; align-items: baseline; gap: 12px; }
+
+  header h1 {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: -0.3px;
+  }
+
+  .header-tag {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .header-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+
+  .nav-wrap {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  nav { display: flex; max-width: 800px; margin: 0 auto; }
+
+  nav button {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 16px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.15s, border-color 0.15s;
+    font-family: inherit;
+  }
+
+  nav button:hover { color: var(--text-primary); }
+  nav button.active { color: var(--primary); border-bottom-color: var(--primary); font-weight: 600; }
+
+  main { max-width: 800px; margin: 0 auto; padding: 40px 40px; }
+
+  .page { display: none; }
+  .page.active { display: block; }
+
+  .stroke-tag {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 10px;
+  }
+
+  .stroke-intro {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 32px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .point {
+    margin-bottom: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 22px 26px;
+  }
+
+  .point-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+  }
+
+  .point p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+
+  .error-block {
+    background: var(--orange-bg);
+    border-left: 3px solid var(--orange);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 18px 22px;
+    margin: 24px 0;
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+
+  .error-block .label {
+    color: var(--orange-text);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .cue-block {
+    background: var(--navy);
+    border-radius: var(--radius-lg);
+    padding: 22px 26px;
+    margin-top: 8px;
+  }
+
+  .cue-block .label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 10px;
+  }
+
+  .cue-block p {
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    line-height: 1.5;
+  }
+
+  .in-water {
+    background: var(--blue-bg);
+    border-radius: var(--radius-md);
+    padding: 18px 22px;
+    margin: 20px 0;
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+
+  .in-water .label {
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .section-divider { height: 1px; background: var(--border); margin: 40px 0; }
+
+  .section-heading {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+
+  .beat-row {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px 22px;
+    margin-bottom: 12px;
+  }
+
+  .beat-pill {
+    background: var(--primary);
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: var(--radius-sm);
+    padding: 8px 14px;
+    min-width: 52px;
+    text-align: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .beat-pill.muted { background: #c8cad0; color: #555; }
+  .beat-title { font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 6px; }
+  .beat-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+
+  .img-placeholder {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    border: 1.5px dashed var(--border);
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 36px 24px;
+    margin: 20px 0;
+  }
+
+  .img-placeholder svg { opacity: 0.35; }
+
+  .img-placeholder-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  .img-placeholder-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.5;
+    max-width: 280px;
+  }
+
+  /* VIDEO EMBED */
+  .video-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin: 24px 0;
+    background: #000;
+  }
+
+  .video-wrap iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .video-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 640px) {
+    header { padding: 0 20px; }
+    header h1 { font-size: 18px; }
+    .nav-wrap { padding: 0 16px; }
+    nav button { padding: 14px 12px; font-size: 13px; }
+    main { padding: 24px 16px; }
+    .point { padding: 18px 20px; }
+    .cue-block { padding: 18px 20px; }
+    .cue-block p { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <h1>Kick It</h1>
+    <span class="header-tag">A swimming technique resource</span>
+  </div>
+  <span class="header-eyebrow">Swim Science</span>
+</header>
+
+<div class="nav-wrap">
+  <nav>
+    <button class="active" onclick="show('freestyle', this)">Freestyle</button>
+    <button onclick="show('backstroke', this)">Backstroke</button>
+    <button onclick="show('breaststroke', this)">Breaststroke</button>
+    <button onclick="show('butterfly', this)">Butterfly</button>
+    <button onclick="show('diagonal', this)">Diagonal tension</button>
+    <button onclick="show('beat', this)">Beat Patterns</button>
+  </nav>
+</div>
+
+<main>
+
+  <!-- FREESTYLE -->
+  <div id="freestyle" class="page active">
+    <div class="stroke-tag">Freestyle</div>
+    <p class="stroke-intro">Freestyle kick stabilizes more than it propels. Its job is keeping the body long, the hips high, and the stroke connected. Swimmers who focus on kicking harder almost always slow down. The ones who focus on kicking smarter find that less effort produces more speed.</p>
+
+    <div class="point">
+      <div class="point-title">Loose ankles act like fins.</div>
+      <p>A relaxed foot moves with the water rather than against it. The natural softness in the ankle allows the foot to flex and recoil with each kick cycle, creating a fin-like surface that generates propulsion. A stiff, rigid foot does the opposite. It presents a flat surface that pushes water down instead of back, wasting energy and creating drag. Ankle flexibility is not something most swimmers think to train, but it may be the single most underrated variable in kick efficiency.</p>
+    </div>
+
+    <div class="img-placeholder">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="4" width="40" height="40" rx="6" stroke="#8a8a9a" stroke-width="1.5"/>
+        <circle cx="18" cy="20" r="5" stroke="#8a8a9a" stroke-width="1.5"/>
+        <path d="M4 34 L14 24 L22 30 L30 20 L44 34" stroke="#8a8a9a" stroke-width="1.5" stroke-linejoin="round"/>
+      </svg>
+      <div class="img-placeholder-label">Image: Ankle position comparison</div>
+      <div class="img-placeholder-sub">Relaxed plantar-flexed foot vs rigid foot — showing how each interacts with water flow</div>
+    </div>
+
+    <div class="video-label">Watch: Freestyle kick technique</div>
+    <div class="video-wrap">
+      <iframe src="https://www.youtube.com/embed/KK563K_DZP0?si=2DgqC8cv2dtkLeO6"
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="point">
+      <div class="point-title">Drive from the hip.</div>
+      <p>The kick originates at the hip and travels down through the thigh, knee, and ankle in a sequential chain. The knee bends naturally as part of that transfer. It is a result of the movement, not the source of it. When the knee leads instead, the swimmer falls into a pedaling motion that increases frontal drag, disrupts rhythm, and pulls the hips down. A hip-driven kick feels smaller and quieter than a knee-driven one, which is why many swimmers resist it at first. The water feedback is different. Faster, but less obvious.</p>
+    </div>
+
+    <div class="point">
+      <div class="point-title">Narrow and steady wins.</div>
+      <p>The kick should stay within the shadow of the body, no wider than the hips, ideally tighter. A wide kick sends energy sideways and disrupts the streamline the rest of the stroke depends on. At distance pace, research suggests the kick contributes as little as 6% of total forward propulsion. Its real value is not generating speed. It is preventing the body position from collapsing in a way that costs far more than 6%. A small, consistent kick is almost always more effective than a large, irregular one.</p>
+    </div>
+
+    <div class="img-placeholder">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="4" width="40" height="40" rx="6" stroke="#8a8a9a" stroke-width="1.5"/>
+        <circle cx="18" cy="20" r="5" stroke="#8a8a9a" stroke-width="1.5"/>
+        <path d="M4 34 L14 24 L22 30 L30 20 L44 34" stroke="#8a8a9a" stroke-width="1.5" stroke-linejoin="round"/>
+      </svg>
+      <div class="img-placeholder-label">Image: Kick width overhead view</div>
+      <div class="img-placeholder-sub">Top-down comparison of narrow kick within body shadow vs wide kick losing streamline</div>
+    </div>
+
+    <div class="error-block">
+      <div class="label">Common error</div>
+      Kicking from the knee. It feels powerful. It is not. It creates drag, breaks rhythm, and pulls the hips out of alignment.
+    </div>
+
+    <div class="cue-block">
+      <div class="label">Deck cue</div>
+      <p>"Hip, not knee. Kick looser, not harder."</p>
+    </div>
+  </div>
+
+  <!-- BACKSTROKE -->
+  <div id="backstroke" class="page">
+    <div class="stroke-tag">Backstroke</div>
+    <p class="stroke-intro">Backstroke kick is the mirror of freestyle, which means everything most swimmers instinctively do with it is backwards. Understanding the mechanics, specifically which phase of the kick actually generates propulsion, changes how the stroke feels immediately.</p>
+
+    <div class="point">
+      <div class="point-title">The upkick propels.</div>
+      <p>In backstroke, the propulsive phase is the upward movement of the foot, not the downward one. This is the direct mirror of freestyle, where the downbeat carries the power. The upkick engages the quadriceps and hip flexors to drive the foot toward the surface, and it is this motion that generates the most forward thrust. The downbeat is recovery. Swimmers who treat both phases as equally powerful are wasting half their effort.</p>
+    </div>
+
+    <div class="video-label">Watch: Backstroke kick technique</div>
+    <div class="video-wrap">
+      <iframe src="https://www.youtube.com/embed/O6dHlliO9Jw?si=8zh_MQNbqqDpSMgO"
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="point">
+      <div class="point-title">The kick holds the stroke together.</div>
+      <p>The backstroke kick contributes less direct propulsion than most swimmers expect. What it actually does is hold everything else in place. Hip height, body rotation, and stroke timing all depend on a consistent, rhythmic kick. When the kick breaks down, the hips sink, the rotation becomes unstable, and the pull loses its leverage. A swimmer can get away with a weak kick for a while. Eventually the whole stroke reveals it.</p>
+    </div>
+
+    <div class="point">
+      <div class="point-title">Quiet knees.</div>
+      <p>A bent knee on the downstroke is one of the most effective ways to slow yourself down while feeling like you are working hard. When the knee bends too much during the recovery phase, the shin moves directly against the flow of water, effectively acting as a brake. The leg should recover with the knee relatively extended, staying close to the body's line, before the upkick fires. The bend should be slight and controlled, not a full cycling motion.</p>
+    </div>
+
+    <div class="error-block">
+      <div class="label">Common error</div>
+      Kicking like freestyle. The swimmer applies the same instincts, the phases are reversed, and the result is a lot of effort going in the wrong direction.
+    </div>
+
+    <div class="cue-block">
+      <div class="label">Deck cue</div>
+      <p>"Up is power. Kick looser, not harder."</p>
+    </div>
+  </div>
+
+  <!-- BREASTSTROKE -->
+  <div id="breaststroke" class="page">
+    <div class="stroke-tag">Breaststroke</div>
+    <p class="stroke-intro">Breaststroke kick is a sequencing problem more than a strength problem. The mechanics of the kick itself are not complicated. What is complicated is firing each part of the sequence in the right order, at the right moment, with the rest of the stroke. When that sequencing is off, a powerful kick actively slows the swimmer down.</p>
+
+    <div class="point">
+      <div class="point-title">Heels to glutes.</div>
+      <p>The recovery phase of the breaststroke kick sets up everything that follows. Heels should travel directly toward the glutes in a tight, compact path, not swinging wide, not dropping low. This compact recovery does two things. It reduces frontal drag during the most vulnerable part of the stroke cycle, and it loads the legs into the position they need to be in for the whip to generate maximum force. A wide, lazy recovery feels like it is giving the swimmer more range. What it is actually doing is increasing resistance before the kick even begins.</p>
+    </div>
+
+    <div class="video-label">Watch: Breaststroke kick technique</div>
+    <div class="video-wrap">
+      <iframe src="https://www.youtube.com/embed/BJj9z4n0STk?si=PP9a07HCLkBmVSwY"
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="point">
+      <div class="point-title">Feet turn out to catch the water.</div>
+      <p>As the heels reach the glutes and the kick begins, the feet rotate outward into the outsweep position. This rotation is what creates the propulsive surface area. Without it, the feet are just moving backward through water with nothing to grip. The outsweep is not a separate movement. It happens as part of the transition from recovery to drive, and it needs to be deliberate. Swimmers who skip it or rush through it lose most of their propulsion before the whip even fires.</p>
+    </div>
+
+    <div class="point">
+      <div class="point-title">A kick fired at the wrong moment creates deceleration, not propulsion.</div>
+      <p>The breaststroke stroke cycle has two distinct propulsive phases, the pull and the kick, and they need to be sequenced so that each one begins as the other ends. A kick that fires while the arms are still in recovery, or while the body is already decelerating from the pull, does not add to the swimmer's speed. It creates resistance at the worst possible moment. Sequence is everything.</p>
+    </div>
+
+
+
+    <div class="error-block">
+      <div class="label">Common error</div>
+      Heels drifting wide on recovery. It feels like range. It is drag.
+    </div>
+
+    <div class="cue-block">
+      <div class="label">Deck cue</div>
+      <p>"Heels to glutes, then whip."</p>
+    </div>
+  </div>
+
+  <!-- BUTTERFLY -->
+  <div id="butterfly" class="page">
+    <div class="stroke-tag">Butterfly</div>
+    <p class="stroke-intro">Butterfly kick is a wave, not a snap. The distinction matters because it changes where the movement originates, how it travels through the body, and what the swimmer is trying to feel. Swimmers who think of butterfly kick as a leg movement produce a choppy, effortful stroke. Swimmers who think of it as a wave they are sending through their body find that it flows, and that the effort required drops significantly.</p>
+
+    <div class="point">
+      <div class="point-title">The chest leads.</div>
+      <p>The wave begins with a downward press of the chest. That press causes the hips to rise, which causes the legs to follow. The sequence is chest, hips, legs, and it matters that each part of that chain initiates the next. Swimmers who try to kick from the knees have broken the chain before the wave even starts. The kick looks like a kick, but there is no wave behind it. The result is a lot of vertical movement and very little forward propulsion.</p>
+    </div>
+
+    <div class="video-label">Watch: Butterfly kick technique</div>
+    <div class="video-wrap">
+      <iframe src="https://www.youtube.com/embed/hn7hD_xuPpY?si=REig1BEUGwNphu7r"
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="point">
+      <div class="point-title">Two kicks, different jobs.</div>
+      <p>There are two dolphin kicks per arm cycle, and they are not interchangeable. The first kick fires as the hands enter the water and serves primarily to lift the hips and initiate the undulation that carries through the stroke. The second kick fires as the hands finish the pull and drives the body through the finish and into recovery. Swimmers who skip the second kick lose the timing that makes butterfly feel connected. Recovery becomes a struggle instead of a continuation of the wave.</p>
+    </div>
+
+    <div class="point">
+      <div class="point-title">The legs never fully stop.</div>
+      <p>Butterfly is a rhythm stroke. The kick is the metronome. When the kick pauses, even briefly between the first and second beat, the rhythm breaks, the recovery stalls, and the effort required to restart the stroke doubles. Keeping the legs in continuous motion, even when the kick is small, is what allows the wave to keep moving through the body. The moment the legs stop, the wave stops with them.</p>
+    </div>
+
+    <div class="error-block">
+      <div class="label">Common error</div>
+      The second kick disappears under fatigue. When butterfly gets hard, the natural instinct is to rest between strokes. The second kick is where that rest gets stolen. The problem is that the second kick is not optional recovery time. It is what generates the momentum that gets the arms over the water. Skip it and recovery becomes a fight against gravity instead of a continuation of the wave. The stroke does not just get slower. It gets harder.
+    </div>
+
+    <div class="cue-block">
+      <div class="label">Deck cue</div>
+      <p>"Chest down, hips up. Let the wave do the work."</p>
+    </div>
+  </div>
+
+  <!-- DIAGONAL TENSION -->
+  <div id="diagonal" class="page">
+    <div class="stroke-tag">Diagonal tension</div>
+    <p class="stroke-intro">Before counting kicks, feel the line. One arm reaches, the opposite leg answers. That tension running through the body is the foundation everything else is built on.</p>
+
+    <div class="section-heading">Backstroke</div>
+
+    <div class="point">
+      <div class="point-title">Think of backstroke as a single diagonal line of force.</div>
+      <p>When the right arm enters the water behind you, the left leg drives upward. That is not a coincidence or a coaching cue. It is the natural mechanics of how rotation and kick work together. The arm entering the water initiates a rotation of the torso. The opposite hip and leg respond to that rotation, counterbalancing it and completing the diagonal line from fingertip to heel.</p>
+    </div>
+
+
+
+    <div class="point">
+      <div class="point-title">When one arm enters, the opposite leg responds.</div>
+      <p>Not as a separate action, but as a counterbalance to the rotation already in motion. The hand entering the water tips the body onto its side. The opposite hip and leg follow that tipping to keep the swimmer stable, continuous, and moving forward. Swimmers who think of the kick and the rotation as two separate things tend to do them sequentially, rotate then kick. When they happen simultaneously, as a single connected movement, the stroke changes.</p>
+    </div>
+
+    <div class="in-water">
+      <div class="label">In the water</div>
+      As one shoulder rotates down into the water, feel the opposite hip stay active and guide the roll rather than letting it collapse. The rotation and the kick are not two things happening at the same time. They are one thing expressed at both ends of the body simultaneously.
+    </div>
+
+    <div class="cue-block">
+      <div class="label">Deck cue</div>
+      <p>"Opposite side responds."</p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="section-heading">Freestyle</div>
+
+    <div class="point">
+      <div class="point-title">Same feeling. Face down now.</div>
+      <p>Right arm extends forward into the catch. Left leg drives the downbeat. The line of tension runs from the fingertips of the reaching arm through the core and down to the heel of the opposite leg. That diagonal is what keeps the hips up, the body long, and the stroke connected. Swimmers who lose it, usually under fatigue, feel the hips drop and the stroke fragment. What they are actually losing is the tension between opposing ends of the body that was holding everything together.</p>
+    </div>
+
+    <img src="https://raw.githubusercontent.com/JamesDRodgers/james-ai-assistant/main/swim/diagonal.png" alt="Freestyle diagonal tension — right arm extended forward, left leg driving back" style="width: 100%; border-radius: var(--radius-lg); margin: 20px 0; display: block;">
+
+    <div class="point">
+      <div class="point-title">The diagonal feeling is more durable than the beat count.</div>
+      <p>Swimmers who learn the six-beat kick as a number tend to lose it when they are tired because they are monitoring a count rather than feeling a physical relationship. Swimmers who learn it as a diagonal, right arm long with the left leg answering, have something physical to find again when the stroke starts to fall apart. The count follows the feeling. When the feeling goes, the count goes with it.</p>
+    </div>
+
+    <div class="in-water">
+      <div class="label">In the water</div>
+      Focus on one arm at a time. Feel the opposite leg answer as that arm enters. Then switch. The goal is not to think about both sides at once but to feel the relationship so clearly on one side that it becomes automatic on the other.
+    </div>
+
+    <div class="cue-block">
+      <div class="label">Deck cue</div>
+      <p>"Long arm, opposite leg."</p>
+    </div>
+
+    <a href="https://www.usms.org/fitness-and-training/articles-and-videos/articles/kick-timing-101?Oldid=3061" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; font-size: 14px; font-weight: 600; color: var(--primary); text-decoration: none;">
+      Read more: Kick Timing 101 — U.S. Masters Swimming
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- THE BEAT -->
+  <div id="beat" class="page">
+    <div class="stroke-tag">Beat Patterns</div>
+    <p class="stroke-intro">Two beat. Four beat. Six beat. The same diagonal tension expressed at different frequencies. The beat pattern is not about how hard the swimmer is kicking. It is about how often the diagonal fires within each stroke cycle. Freestyle and backstroke share the same structure.</p>
+
+    <div class="video-label">Watch: Kick beat patterns explained</div>
+    <div class="video-wrap">
+      <iframe src="https://www.youtube.com/embed/1wAUdVJiJEs?si=drBphlsOloHaA6gs"
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="beat-row">
+      <div class="beat-pill">2x</div>
+      <div>
+        <div class="beat-title">One kick per arm pull — distance pace</div>
+        <div class="beat-desc">Low energy cost. The diagonal is still present, firing once per arm cycle rather than three times. A two-beat kick requires strong body rotation to maintain hip position with minimal leg support. Swimmers who try to use a two-beat kick without sufficient rotation usually find their hips sinking and their stroke losing efficiency. The kick is smaller, but the rotation has to compensate for it.</div>
+      </div>
+    </div>
+
+    <div class="beat-row">
+      <div class="beat-pill muted">4x</div>
+      <div>
+        <div class="beat-title">Two kicks per arm pull — rarely deliberate</div>
+        <div class="beat-desc">More often a sign that a six-beat pattern is breaking down under fatigue, or that the swimmer has never clearly established which pattern they are using. Some swimmers live here permanently without knowing it. It is worth identifying because a conscious two-beat is usually more efficient than an accidental four-beat.</div>
+      </div>
+    </div>
+
+    <div class="beat-row">
+      <div class="beat-pill">6x</div>
+      <div>
+        <div class="beat-title">Three kicks per arm pull — sprint standard</div>
+        <div class="beat-desc">Full diagonal engagement on every pull. Higher propulsion, higher energy cost. The six-beat is sustainable for short distances and is the pattern most competitive swimmers use for events under 400 meters. It requires consistent ankle flexibility and hip drive to maintain without accumulating fatigue.</div>
+      </div>
+    </div>
+
+    <div class="error-block">
+      <div class="label">Common error</div>
+      Beat pattern drifting under fatigue without the swimmer noticing. The diagonal shortens first. The count collapses second. Knowing which pattern you are supposed to be swimming is the first step to keeping it.
+    </div>
+
+    <div class="cue-block">
+      <div class="label">Deck cue</div>
+      <p>"Know your beat. Keep your beat. Kick looser, not harder."</p>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  function show(id, btn) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo(0, 0);
+  }
+</script>
+
+</body>
+</html>
