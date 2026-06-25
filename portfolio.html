@@ -37,7 +37,6 @@
 
     a { text-decoration: none; color: inherit; }
 
-    /* ── NAV ── */
     nav {
       background: var(--white);
       border-bottom: 1px solid var(--rule);
@@ -56,17 +55,9 @@
       align-items: center;
     }
 
-    .nav-name {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--dark);
-    }
+    .nav-name { font-size: 14px; font-weight: 700; color: var(--dark); }
 
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      align-items: center;
-    }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
 
     .nav-links a {
       font-size: 12.5px;
@@ -90,7 +81,6 @@
 
     .nav-cta:hover { background: var(--accent-dk) !important; }
 
-    /* ── PAGE HEADER ── */
     .page-header {
       max-width: 900px;
       margin: 0 auto;
@@ -123,7 +113,6 @@
       font-weight: 300;
     }
 
-    /* ── CARD LIST ── */
     .card-list {
       max-width: 900px;
       margin: 0 auto;
@@ -133,7 +122,6 @@
       gap: 16px;
     }
 
-    /* ── CARD ── */
     .card {
       background: var(--white);
       border-radius: 10px;
@@ -150,7 +138,6 @@
       box-shadow: 0 4px 20px rgba(91,127,232,0.13);
     }
 
-    /* ── IMAGE ── */
     .card-image {
       width: 280px;
       flex-shrink: 0;
@@ -170,7 +157,6 @@
 
     .card:hover .card-image img { transform: scale(1.03); }
 
-    /* ── DARK PREVIEW PANEL (swim card) ── */
     .card-image-dark {
       width: 280px;
       flex-shrink: 0;
@@ -258,7 +244,6 @@
       z-index: 2;
     }
 
-    /* ── BODY ── */
     .card-body {
       padding: 24px 28px;
       flex: 1;
@@ -323,7 +308,6 @@
     .card-cta svg { transition: transform 0.15s; }
     .card:hover .card-cta svg { transform: translateX(3px); }
 
-    /* ── FOOTER ── */
     .page-footer {
       border-top: 1px solid var(--rule);
       padding: 18px 32px;
@@ -344,7 +328,6 @@
 
     .footer-link a:hover { color: var(--accent-dk); text-decoration: underline; }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 700px) {
       .card { flex-direction: column; }
       .card-image { width: 100%; height: 180px; }
@@ -360,7 +343,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <div class="nav-inner">
       <a href="https://www.jamesdrodgers.ai/" class="nav-name">James D. Rodgers</a>
@@ -373,30 +355,27 @@
     </div>
   </nav>
 
-  <!-- PAGE HEADER -->
   <div class="page-header">
     <div class="page-eyebrow">Instructional Design · Learning Systems · AI Integration</div>
     <h1>Featured Work</h1>
     <p>Learning experiences across clinical education, higher education, workforce development, and AI-native contexts — grounded in backward design, human-centered craft, and measurable outcomes.</p>
   </div>
 
-  <!-- CARD LIST -->
   <div class="card-list">
 
-    <!-- SWIM SCIENCE — NEW, FIRST -->
     <div class="card">
       <div class="card-image-dark">
         <span class="domain-badge-dark">Swim Science · Interactive</span>
         <div class="swim-preview-eyebrow">Swim Science</div>
         <div class="swim-preview-title">Why the Water<br><span>Pushes Back</span></div>
         <div class="swim-preview-tabs">
-          <div class="swim-preview-tab active">💡 The Big Idea</div>
-          <div class="swim-preview-tab">🌊 The Four Forces</div>
-          <div class="swim-preview-tab">🏊 Deck Tools</div>
+          <div class="swim-preview-tab active">The Big Idea</div>
+          <div class="swim-preview-tab">The Four Forces</div>
+          <div class="swim-preview-tab">Deck Tools</div>
         </div>
       </div>
       <div class="card-body">
-        <div class="card-title">Swim Science: Why Water Pushes Back</div>
+        <div class="card-title">Interactive Performance Support for Swimming Technique</div>
         <div class="card-subtitle">Interactive Learning Tool · Masters Swimmers &amp; Coaches · Poolside Reference</div>
         <p class="card-desc">A standalone interactive web tool translating hydrodynamic drag theory into poolside-ready knowledge. Built around a single transfer goal: a swimmer who can self-diagnose and self-correct in real time. Covers Form Drag, Boundary Layer Separation, Active Drag, and Wave Drag through a tabbed progressive disclosure architecture, animated body-position visualizer, and tappable splash diagnostic.</p>
         <div class="card-tags">
@@ -414,7 +393,6 @@
       </div>
     </div>
 
-    <!-- Python -->
     <div class="card">
       <div class="card-image">
         <span class="domain-badge">Higher Ed · AI</span>
@@ -439,7 +417,6 @@
       </div>
     </div>
 
-    <!-- PAC -->
     <div class="card">
       <div class="card-image">
         <span class="domain-badge">Clinical · Healthcare</span>
@@ -463,7 +440,6 @@
       </div>
     </div>
 
-    <!-- YMCA -->
     <div class="card">
       <div class="card-image">
         <span class="domain-badge">Nonprofit · Analytics</span>
@@ -487,7 +463,6 @@
       </div>
     </div>
 
-    <!-- AI for Math -->
     <div class="card">
       <div class="card-image">
         <span class="domain-badge">Adult Ed · AI Literacy</span>
@@ -513,7 +488,6 @@
 
   </div>
 
-  <!-- FOOTER -->
   <div class="page-footer">
     <div class="footer-name">James D. Rodgers · Instructional Designer</div>
     <div class="footer-link"><a href="https://www.jamesdrodgers.ai/">www.jamesdrodgers.ai</a></div>
