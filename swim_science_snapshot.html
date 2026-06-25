@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Swim Science: Why Water Pushes Back — Instructional Design Portfolio</title>
+<title>Swim Science: Why Water Pushes Back, Instructional Design Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -125,6 +125,28 @@
     line-height: 1.75;
   }
 
+  /* PROJECT DIVIDER */
+  .project-divider {
+    border: none;
+    border-top: 2px solid var(--rule);
+    margin: 40px 0;
+    position: relative;
+  }
+
+  .project-divider-label {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--white);
+    padding: 0 14px;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--light);
+  }
+
   /* LIVE TOOL CALLOUT */
   .tool-callout {
     background: var(--white);
@@ -164,6 +186,7 @@
     display: flex;
     gap: 6px;
     margin-top: 4px;
+    flex-wrap: wrap;
   }
   .tool-preview-tab {
     background: rgba(255,255,255,0.07);
@@ -433,9 +456,9 @@
 <div class="page">
 
   <div class="header">
-    <div class="header-eyebrow">Instructional Design Portfolio · Case Study</div>
-    <h1>Swim Science: Why Water Pushes Back</h1>
-    <div class="header-subtitle">Interactive Learning Tool · Poolside Reference for Masters Swimmers and Coaches</div>
+    <div class="header-eyebrow">Instructional Design Portfolio · Case Study · Swimming Technique and Coaching</div>
+    <h1>Swim Science: Interactive Coaching Resources</h1>
+    <div class="header-subtitle">Poolside Learning Tools for Masters Swimmers and Coaches</div>
     <div class="tag-row">
       <span class="header-tag">Backward Design</span>
       <span class="header-tag">Dual Coding Theory</span>
@@ -469,19 +492,19 @@
 
     <div class="section">
       <span class="section-label">Project Overview</span>
-      <p>A standalone interactive learning tool translating hydrodynamic drag theory into poolside-ready knowledge for adult swimmers and coaches. Built around one transfer goal: a swimmer who can self-diagnose and correct in real time, without an instructor present. The tool covers four interconnected drag concepts — Form Drag, Boundary Layer Separation, Active Drag, and Wave Drag — delivered through a tabbed progressive disclosure architecture, an animated body-position visualizer, and a tappable splash diagnostic checklist.</p>
+      <p>Two standalone interactive learning tools built for masters swimmers and coaches who need accurate, immediately usable content at the pool. The first, Why Water Pushes Back, translates hydrodynamic drag theory into poolside-ready knowledge built around a single transfer goal: a swimmer who can self-diagnose and self-correct in real time without an instructor present. The second, Kick It, is a seven-tab stroke technique reference covering kick mechanics across all four strokes, plus diagonal tension and beat patterns. Both tools are grounded in biomechanics research, reviewed for accuracy before publication, and designed for use on a phone between sets.</p>
     </div>
 
     <div class="section">
-      <span class="section-label">Live Tool</span>
+      <span class="section-label">Content</span>
       <div class="tool-callout">
         <div class="tool-preview">
           <div class="tool-preview-eyebrow">Swim Science</div>
           <div class="tool-preview-title">Why the Water<br><span>Pushes Back</span></div>
           <div class="tool-preview-tabs">
-            <div class="tool-preview-tab active">💡 The Big Idea</div>
-            <div class="tool-preview-tab">🌊 The Four Forces</div>
-            <div class="tool-preview-tab">🏊 Deck Tools</div>
+            <div class="tool-preview-tab active">The Big Idea</div>
+            <div class="tool-preview-tab">The Four Forces</div>
+            <div class="tool-preview-tab">Deck Tools</div>
           </div>
           <div class="tool-preview-cards">
             <div class="tool-preview-card">
@@ -507,7 +530,7 @@
             <strong>Interactive Swim Science Reference</strong><br>
             Three-zone tabbed tool with animated body-position visualizer, expandable concept cards, tappable splash diagnostic, and poolside drill. Designed for use on a phone between sets.
           </div>
-          <a class="tool-button" href="https://jamesdrodgers.ai/swim/why-water-pushes-back" target="_blank">View Live Tool</a>
+          <a class="tool-button" href="https://jamesdrodgers.ai/swim/why-water-pushes-back" target="_blank">View Content</a>
         </div>
       </div>
     </div>
@@ -523,7 +546,7 @@
         <div class="principle-card">
           <div class="principle-num">02</div>
           <div class="principle-name">Cognitive Load Theory</div>
-          <div class="principle-desc">Three progressive tabs prevent competing concepts from loading simultaneously. Zone 1 builds the mental model. Zone 2 goes deeper. Zone 3 transfers to action. Accordion cards apply the same logic at concept level — label visible, depth on demand.</div>
+          <div class="principle-desc">Three progressive tabs prevent competing concepts from loading simultaneously. Zone 1 builds the mental model. Zone 2 goes deeper. Zone 3 transfers to action. Accordion cards apply the same logic at concept level: label visible, depth on demand.</div>
         </div>
         <div class="principle-card">
           <div class="principle-num">03</div>
@@ -539,9 +562,9 @@
         <ul class="decision-list">
           <li><span class="del-dot"></span>Backward design from single transfer goal: poolside self-correction without instructor</li>
           <li><span class="del-dot"></span>Sensation language ("Feel It") used as primary retrieval anchor, not definition</li>
-          <li><span class="del-dot"></span>Silence Drill placed before concept explanation — experience precedes taxonomy</li>
+          <li><span class="del-dot"></span>Silence Drill placed before concept explanation: experience precedes taxonomy</li>
           <li><span class="del-dot"></span>Diagnostic is tappable and checkable for active mid-practice use</li>
-          <li><span class="del-dot"></span>Coach-to-athlete register throughout — no academic hedging, no jargon</li>
+          <li><span class="del-dot"></span>Coach-to-athlete register throughout: no academic hedging, no jargon</li>
           <li><span class="del-dot"></span>Four forces framed as one system, not an inventory</li>
         </ul>
       </div>
@@ -550,7 +573,7 @@
         <div style="display:flex; flex-direction:column; gap:10px; margin-top:4px;">
           <div class="highlight-card">
             <div class="highlight-title">Transfer-Appropriate Processing</div>
-            <div class="highlight-text">Every tool is formatted for the context where learning must activate — a phone on a pool deck between sets, not a desk.</div>
+            <div class="highlight-text">Every tool is formatted for the context where learning must activate: a phone on on a pool deck between sets, not a desk.</div>
           </div>
           <div class="highlight-card">
             <div class="highlight-title">Learner Autonomy</div>
@@ -558,7 +581,7 @@
           </div>
           <div class="highlight-card">
             <div class="highlight-title">4MAT Sequencing</div>
-            <div class="highlight-text">Zones move through Why, What, How, and What If — ensuring every learner type finds their entry point and is pulled forward.</div>
+            <div class="highlight-text">Zones move through Why, What, How, and What If, ensuring every learner type finds their entry point and is pulled forward.</div>
           </div>
         </div>
       </div>
@@ -566,10 +589,10 @@
 
     <div class="artifacts-callout">
       <div class="artifacts-text">
-        <strong>View the Live Tool</strong><br>
-        The full interactive reference — torpedo animation, concept cards, splash diagnostic, and poolside drill — is deployed at jamesdrodgers.ai.
+        <strong>View the Content</strong><br>
+        The full interactive reference: torpedo animation, concept cards, splash diagnostic, and poolside drill, deployed at jamesdrodgers.ai.
       </div>
-      <a class="artifacts-link" href="https://jamesdrodgers.ai/swim/why-water-pushes-back" target="_blank">Open Live Tool</a>
+      <a class="artifacts-link" href="https://jamesdrodgers.ai/swim/why-water-pushes-back" target="_blank">Open Content</a>
     </div>
 
     <div class="section">
@@ -577,19 +600,149 @@
       <div class="highlights-grid">
         <div class="highlight-card">
           <div class="highlight-title">Animated Body-Position Visualizer</div>
-          <div class="highlight-text">An SVG animation alternates between torpedo and shopping cart body positions every 2.8 seconds, encoding the core concept visually before any text is read. Labels and sub-text shift with the animation to reinforce dual coding.</div>
+          <div class="highlight-text">An SVG animation alternates between torpedo and shopping cart body positions, encoding the core concept visually before any text is read. Labels and sub-text shift with the animation to reinforce dual coding.</div>
         </div>
         <div class="highlight-card">
           <div class="highlight-title">Progressive Disclosure Architecture</div>
-          <div class="highlight-text">Three sticky tabs manage cognitive load at the zone level. Accordion cards manage it at the concept level. Learners control depth — scanning is fast, going deep is one tap.</div>
+          <div class="highlight-text">Three sticky tabs manage cognitive load at the zone level. Accordion cards manage it at the concept level. Learners control depth: scanning is fast, going deep is one tap.</div>
         </div>
         <div class="highlight-card">
           <div class="highlight-title">Tappable Splash Diagnostic</div>
-          <div class="highlight-text">Six checkable rows map visual/auditory cues to drag causes and fixes. Designed to be used during practice — not read after it. Tap a splash pattern, get the diagnosis and the correction immediately.</div>
+          <div class="highlight-text">Six checkable rows map visual/auditory cues to drag causes and fixes. Designed to be used during practice, not read after it. Tap a splash pattern, get the diagnosis and the correction immediately.</div>
         </div>
         <div class="highlight-card">
           <div class="highlight-title">Context-Calibrated Language</div>
           <div class="highlight-text">Every sentence is written for a swimmer standing on a pool deck with 90 seconds between sets. Short sentences. Active verbs. No hedging. Tone is coach-to-athlete, not textbook-to-student.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT DIVIDER -->
+    <hr class="project-divider"><span class="project-divider-label">Second Project</span>
+
+    <!-- KICK IT SECTION -->
+
+    <div class="section">
+      <span class="section-label">Content</span>
+      <div class="tool-callout">
+        <div class="tool-preview">
+          <div class="tool-preview-eyebrow">Swim Science</div>
+          <div class="tool-preview-title">Kick It<br><span>Stroke Kick Technique</span></div>
+          <div class="tool-preview-tabs">
+            <div class="tool-preview-tab active">Freestyle</div>
+            <div class="tool-preview-tab">Backstroke</div>
+            <div class="tool-preview-tab">Breaststroke</div>
+            <div class="tool-preview-tab">Butterfly</div>
+            <div class="tool-preview-tab">Diagonal Tension</div>
+            <div class="tool-preview-tab">Beat Patterns</div>
+          </div>
+          <div class="tool-preview-cards">
+            <div class="tool-preview-card">
+              <div class="tool-preview-card-label">Drive from the hip.</div>
+              <div class="tool-preview-card-tag">The knee bends as a result, not a driver.</div>
+            </div>
+            <div class="tool-preview-card">
+              <div class="tool-preview-card-label">Loose ankles act like fins.</div>
+              <div class="tool-preview-card-tag">Tension kills propulsion.</div>
+            </div>
+            <div class="tool-preview-card">
+              <div class="tool-preview-card-label">Diagonal Tension</div>
+              <div class="tool-preview-card-tag">One arm reaches. The opposite leg answers.</div>
+            </div>
+            <div class="tool-preview-card">
+              <div class="tool-preview-card-label">Beat Patterns</div>
+              <div class="tool-preview-card-tag">2-beat. 4-beat. 6-beat. Know yours.</div>
+            </div>
+          </div>
+        </div>
+        <div class="tool-content">
+          <div class="tool-text">
+            <strong>Kick Technique Reference for Masters Swimmers</strong><br>
+            Seven-tab resource covering all four strokes plus diagonal tension and beat patterns. Each tab includes embedded video, a guided watch prompt, quick reference table, and a poolside cue. Fact-checked against biomechanics research.
+          </div>
+          <a class="tool-button" href="https://jamesdrodgers.ai/swim/kick-it" target="_blank">View Content</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <span class="section-label">Pedagogical Framework</span>
+      <div class="principle-grid">
+        <div class="principle-card">
+          <div class="principle-num">01</div>
+          <div class="principle-name">Progressive Disclosure</div>
+          <div class="principle-desc">Each tab reveals content in a deliberate sequence: intention prompt, concept to nuance, video, error, summary, cue. The learner is never asked to hold more than one concept at a time before it is reinforced.</div>
+        </div>
+        <div class="principle-card">
+          <div class="principle-num">02</div>
+          <div class="principle-name">Embodied Cognition</div>
+          <div class="principle-desc">Intention prompts before each tab prime the swimmer to notice a specific sensation in the water. The "In the water" prompts on the Diagonal Tension page bridge cognitive instruction and physical practice at exactly the right moment.</div>
+        </div>
+        <div class="principle-card">
+          <div class="principle-num">03</div>
+          <div class="principle-name">Desirable Difficulty</div>
+          <div class="principle-desc">Content is written to create a small amount of effortful processing rather than frictionless reading. Counterintuitive framing: the kick's job is not to propel" creates cognitive surprise that improves retention over smooth, expected prose.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="section" style="margin-bottom:0">
+        <span class="section-label">Design Decisions</span>
+        <ul class="decision-list">
+          <li><span class="del-dot"></span>Content fact-checked against biomechanics research before publication: accuracy flagged before polish</li>
+          <li><span class="del-dot"></span>Diagonal tension named and framed as a coaching concept distinct from clinical terminology</li>
+          <li><span class="del-dot"></span>Three points per stroke ordered big concept to nuanced detail, not sequential or arbitrary</li>
+          <li><span class="del-dot"></span>Deck cue removed from Beat Patterns: the page teaches pattern awareness, not in-water sensation</li>
+          <li><span class="del-dot"></span>Video embeds paired with "what to watch for" checklists to direct attention before viewing</li>
+          <li><span class="del-dot"></span>Quick reference tables added at the bottom of each stroke for poolside scanning</li>
+        </ul>
+      </div>
+      <div class="section" style="margin-bottom:0">
+        <span class="section-label">Design Approach</span>
+        <div style="display:flex; flex-direction:column; gap:10px; margin-top:4px;">
+          <div class="highlight-card">
+            <div class="highlight-title">Sensation Before Mechanics</div>
+            <div class="highlight-text">Content leads with what the movement feels like, not what it looks like. Mechanical description follows once the felt experience is established.</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-title">Accuracy Over Accessibility</div>
+            <div class="highlight-text">Where coaching literature and biomechanics research diverge, the resource flags the tension rather than simplifying it away. Masters swimmers can handle nuance.</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-title">Consistent Page Structure</div>
+            <div class="highlight-text">Every tab follows the same architecture so the swimmer learns the pattern once and can navigate any stroke without reorienting.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="artifacts-callout">
+      <div class="artifacts-text">
+        <strong>View the Content</strong><br>
+        The full seven-tab kick technique reference covering all four strokes, diagonal tension, beat patterns, embedded video, and quick reference tables, deployed at jamesdrodgers.ai.
+      </div>
+      <a class="artifacts-link" href="https://jamesdrodgers.ai/swim/kick-it" target="_blank">Open Content</a>
+    </div>
+
+    <div class="section">
+      <span class="section-label">Design Highlights</span>
+      <div class="highlights-grid">
+        <div class="highlight-card">
+          <div class="highlight-title">Intention Prompts</div>
+          <div class="highlight-text">Each tab opens with a single priming sentence that directs the swimmer's attention before they enter the water. Grounded in embodied cognition research: reading immediately before attempting movement improves motor learning.</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-title">Diagonal Tension Framework</div>
+          <div class="highlight-text">A named coaching concept for contralateral coordination in freestyle and backstroke. Taught as a felt sensation first in backstroke where rotation is visible, then transferred to freestyle face-down. The count follows the feeling.</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-title">Guided Video Viewing</div>
+          <div class="highlight-text">Every embedded video is followed by a "what to watch for" checklist that gives the swimmer three specific perceptual targets before they watch. Transforms passive viewing into active observation.</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-title">Quick Reference Tables</div>
+          <div class="highlight-text">Each stroke ends with a do this / not this table giving swimmers a 15-second scan before getting in the pool. Reduces cognitive load at the moment of use without removing depth from the main content.</div>
         </div>
       </div>
     </div>
