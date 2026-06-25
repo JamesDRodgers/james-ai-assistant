@@ -42,7 +42,6 @@
     min-height: 100vh;
   }
 
-  /* ── Layout ── */
   .layout {
     display: flex;
     max-width: 1100px;
@@ -56,7 +55,6 @@
 
   @keyframes fadein { to { opacity: 1; } }
 
-  /* ── Sidebar ── */
   .sidebar {
     width: var(--sidebar-w);
     flex-shrink: 0;
@@ -160,9 +158,6 @@
 
   .portfolio-btn:hover { background: var(--accent-dk); }
 
-
-
-  /* ── Main ── */
   .main {
     flex: 1;
     min-width: 0;
@@ -171,7 +166,6 @@
     gap: 16px;
   }
 
-  /* ── Card ── */
   .card {
     background: var(--white);
     border-radius: 10px;
@@ -190,7 +184,6 @@
     border-bottom: 1px solid var(--rule);
   }
 
-  /* ── Summary ── */
   .summary-text {
     font-size: 13px;
     color: var(--mid);
@@ -198,7 +191,6 @@
     font-weight: 400;
   }
 
-  /* ── Skills ── */
   .skills-group { margin-bottom: 14px; }
   .skills-group:last-child { margin-bottom: 0; }
 
@@ -209,11 +201,7 @@
     margin-bottom: 8px;
   }
 
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 
   .tag {
     background: var(--tag-bg);
@@ -226,12 +214,8 @@
     transition: background 0.15s, color 0.15s;
   }
 
-  .tag:hover {
-    background: var(--accent);
-    color: var(--white);
-  }
+  .tag:hover { background: var(--accent); color: var(--white); }
 
-  /* ── Job ── */
   .job { padding-bottom: 18px; margin-bottom: 18px; border-bottom: 1px solid var(--rule); }
   .job:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
 
@@ -244,26 +228,9 @@
     flex-wrap: wrap;
   }
 
-  .job-title {
-    font-size: 13.5px;
-    font-weight: 600;
-    color: var(--dark);
-    line-height: 1.3;
-  }
-
-  .job-date {
-    font-size: 11px;
-    color: var(--light);
-    font-weight: 400;
-    white-space: nowrap;
-    padding-top: 2px;
-  }
-
-  .job-loc {
-    font-size: 11.5px;
-    color: var(--light);
-    margin-bottom: 10px;
-  }
+  .job-title { font-size: 13.5px; font-weight: 600; color: var(--dark); line-height: 1.3; }
+  .job-date { font-size: 11px; color: var(--light); font-weight: 400; white-space: nowrap; padding-top: 2px; }
+  .job-loc { font-size: 11.5px; color: var(--light); margin-bottom: 10px; }
 
   .bullets { list-style: none; padding: 0; }
 
@@ -286,7 +253,6 @@
     line-height: 1.3;
   }
 
-  /* ── Portfolio ── */
   .portfolio-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -313,20 +279,11 @@
     line-height: 1.4;
   }
 
-  .p-title a {
-    color: inherit;
-    text-decoration: none;
-  }
-
+  .p-title a { color: inherit; text-decoration: none; }
   .p-title a:hover { text-decoration: underline; }
 
-  .p-desc {
-    font-size: 11.5px;
-    color: var(--light);
-    line-height: 1.6;
-  }
+  .p-desc { font-size: 11.5px; color: var(--light); line-height: 1.6; }
 
-  /* ── Education ── */
   .edu-item {
     font-size: 12.5px;
     color: var(--mid);
@@ -337,13 +294,8 @@
 
   .edu-item:first-child { padding-top: 0; }
   .edu-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .edu-item strong { font-weight: 600; color: var(--dark); }
 
-  .edu-item strong {
-    font-weight: 600;
-    color: var(--dark);
-  }
-
-  /* ── Responsive ── */
   @media (max-width: 720px) {
     .layout { flex-direction: column; }
     .sidebar { width: 100%; position: static; }
@@ -362,7 +314,6 @@
 
 <div class="layout">
 
-  <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="avatar"><img src="https://raw.githubusercontent.com/JamesDRodgers/james-ai-assistant/main/headshot.png" alt="James D. Rodgers"></div>
     <div class="sidebar-name">James D. Rodgers</div>
@@ -392,23 +343,17 @@
 
     <a href="https://www.jamesdrodgers.ai" target="_blank" class="portfolio-btn">Talk to My Portfolio →</a>
     <p style="font-size:10.5px; color:var(--light); text-align:center; margin-top:8px; line-height:1.5;">An interactive portfolio powered by AI. Ask it anything about my work.</p>
-
-
   </aside>
 
-  <!-- MAIN -->
   <main class="main">
 
-    <!-- Summary -->
     <div class="card">
       <div class="section-head">Summary</div>
       <p class="summary-text">Instructional designer and learning systems strategist with 15 years of experience across healthcare, technology, adult education, K-12, and nonprofit organizations. Specializes in AI-augmented learning design, competency-based curriculum architecture, and performance-focused instructional systems. Combines deep classroom teaching experience, organizational leadership, and production-scale AI development, including direct contributions to Grok 2 and 3 at xAI, to build learning experiences that improve performance and scale.</p>
     </div>
 
-    <!-- Skills -->
     <div class="card">
       <div class="section-head">Core Competencies</div>
-
       <div class="skills-group">
         <div class="skills-group-label">Learning Design &amp; Strategy</div>
         <div class="tags">
@@ -422,7 +367,6 @@
           <span class="tag">Kirkpatrick Model</span>
         </div>
       </div>
-
       <div class="skills-group" style="margin-top:14px">
         <div class="skills-group-label">AI &amp; Technology</div>
         <div class="tags">
@@ -434,7 +378,6 @@
           <span class="tag">LMS/LTI</span>
         </div>
       </div>
-
       <div class="skills-group" style="margin-top:14px">
         <div class="skills-group-label">Strategy &amp; Collaboration</div>
         <div class="tags">
@@ -447,7 +390,6 @@
       </div>
     </div>
 
-    <!-- Experience -->
     <div class="card">
       <div class="section-head">Work Experience</div>
 
@@ -518,7 +460,6 @@
       </div>
     </div>
 
-    <!-- Portfolio -->
     <div class="card">
       <div class="section-head">Portfolio Projects</div>
       <div class="portfolio-grid">
@@ -527,8 +468,8 @@
           <div class="p-desc">Applied backward design, Bloom's Taxonomy, and scenario-based learning to develop a high-stakes clinical module in Canvas, collaborating with a subject matter expert to build formative and summative case-based assessments and a custom AI tutor in a healthcare LMS environment.</div>
         </div>
         <div class="p-item">
-          <div class="p-title"><a href="https://share.articulate.com/rIyYmxR4avSUlAhzg5bea" target="_blank">Empowering Parents: Using AI to Support Math Learning at Home</a></div>
-          <div class="p-desc">Designed a scaffolded Articulate Rise microlearning course for non-technical adult learners, applying performance-based objectives and learner autonomy principles to build confidence using AI for Common Core math support.</div>
+          <div class="p-title"><a href="https://jamesdrodgers.ai/swim_science_snapshot" target="_blank">Swim Science: Interactive Coaching Resources for Masters Swimmers</a></div>
+          <div class="p-desc">Designed two standalone poolside learning tools for masters swimmers and coaches: Why Water Pushes Back, translating hydrodynamic drag theory into self-directed poolside diagnostics, and Kick It, a seven-tab stroke technique reference grounded in biomechanics research. Both apply progressive disclosure, embodied cognition, and dual coding principles in mobile-ready HTML.</div>
         </div>
         <div class="p-item">
           <div class="p-title"><a href="https://jamesdrodgers.ai/python_portfolio_snapshot" target="_blank">Intro to Python Programming | Module 1 Instructional Design Sample</a></div>
@@ -541,7 +482,6 @@
       </div>
     </div>
 
-    <!-- Education -->
     <div class="card">
       <div class="section-head">Education &amp; Certifications</div>
       <div class="edu-item"><strong>Miami University</strong> · Bachelor of Music Education, Minor in Special Education · 2009 · Oxford, OH</div>
