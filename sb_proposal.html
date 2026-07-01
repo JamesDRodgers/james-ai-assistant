@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SpringboardAI Concept Briefs</title>
+<title>Springboard AI Learning Hub — Six Concept Briefs</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -22,12 +22,14 @@
     --gray-800:   #343A40;
     --charcoal:   #1A1A2E;
 
+    --ground:     #8B5E34;
     --amplify:    #C85C3A;
     --core:       #4A7C59;
     --illuminate: #2B7A7A;
     --coach:      #C4860A;
     --leap:       #3D5A8A;
 
+    --ground-bg:     #F7F0E8;
     --amplify-bg:    #FDF1ED;
     --core-bg:       #EEF4F0;
     --illuminate-bg: #EBF4F4;
@@ -121,9 +123,30 @@
     border-top: 1px solid rgba(255,255,255,.1);
     padding-top: 1.2rem; margin-top: .5rem;
   }
-  .hero-disclaimer {
-    font-size: .78rem; line-height: 1.6; color: rgba(255,255,255,.4);
-    max-width: 62ch; margin-top: 1rem; font-style: italic;
+
+  /* ── DISCLOSURE ── */
+  .disclosure {
+    max-width: 900px; margin: 2rem auto 0;
+    padding: 1.1rem 1.4rem;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: var(--radius-md);
+  }
+  .disclosure p {
+    font-size: .78rem; line-height: 1.65;
+    color: rgba(255,255,255,.45);
+    max-width: 66ch;
+  }
+  .disclosure-footer {
+    max-width: 860px; margin: 0 auto 2.5rem;
+    padding: 1.1rem 1.4rem;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    background: var(--off-white);
+  }
+  .disclosure-footer p {
+    font-size: .8rem; line-height: 1.65;
+    color: var(--gray-600);
   }
 
   /* ── CONCEPT PILLS ── */
@@ -152,15 +175,11 @@
   .journey-label {
     text-align: center; font-size: .7rem; font-weight: 600;
     letter-spacing: .12em; text-transform: uppercase;
-    color: rgba(255,255,255,.3); margin-bottom: .5rem;
-  }
-  .journey-sublabel {
-    text-align: center; font-size: .75rem; font-weight: 400;
-    color: rgba(255,255,255,.28); margin-bottom: 2rem;
+    color: rgba(255,255,255,.3); margin-bottom: 2rem;
   }
   .journey-track {
     display: flex; align-items: center; justify-content: center;
-    flex-wrap: wrap; gap: 0; max-width: 900px; margin: 0 auto;
+    flex-wrap: wrap; gap: 0; max-width: 980px; margin: 0 auto;
   }
   .journey-step {
     display: flex; flex-direction: column; align-items: center;
@@ -176,20 +195,14 @@
     border: 2px solid rgba(255,255,255,.15);
     color: rgba(255,255,255,.7);
     background: rgba(255,255,255,.04);
-    position: relative;
   }
   .journey-node.colored { border-color: transparent; color: var(--white); }
   .journey-node-label {
     font-size: .65rem; font-weight: 500; color: rgba(255,255,255,.4);
     text-align: center; max-width: 64px; line-height: 1.3;
   }
-  .journey-node-tag {
-    font-size: .55rem; font-weight: 600; letter-spacing: .04em;
-    text-transform: uppercase; color: rgba(255,255,255,.28);
-    text-align: center; max-width: 70px; line-height: 1.3;
-  }
   .journey-arrow {
-    width: 28px; height: 2px; background: rgba(255,255,255,.1);
+    width: 24px; height: 2px; background: rgba(255,255,255,.1);
     margin-bottom: 18px; flex-shrink: 0;
     position: relative;
   }
@@ -208,7 +221,7 @@
     border-bottom: 1px solid var(--gray-200);
   }
   .section-wrap:last-of-type { border-bottom: none; }
-  .section-inner { max-width: 860px; margin: 0 auto; }
+  .section-inner { max-width: 900px; margin: 0 auto; }
 
   /* ── CONCEPT CARD ── */
   .concept-section { padding: 80px 2rem; }
@@ -363,12 +376,31 @@
   /* ── SKILLS PROGRESSION ── */
   .progression-track {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 1px;
     background: var(--gray-200);
     border: 1px solid var(--gray-200);
     border-radius: var(--radius-md);
-    overflow: hidden;
+    overflow: visible;
+    position: relative;
+    margin-top: 2.75rem;
+  }
+  .progression-loop {
+    position: absolute;
+    left: 83.333%;
+    top: -2.6rem;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .progression-loop-label {
+    font-size: .62rem;
+    font-weight: 600;
+    letter-spacing: .02em;
+    color: var(--gray-600);
+    white-space: nowrap;
   }
   .progression-col {
     background: var(--white);
@@ -385,10 +417,6 @@
   }
   .prog-skills li {
     font-size: .72rem; color: var(--gray-600); line-height: 1.4;
-  }
-  .prog-arrow {
-    text-align: center; font-size: .8rem; color: var(--gray-400);
-    padding: .6rem 0; font-weight: 300;
   }
 
   /* ── COMPETENCY CARDS ── */
@@ -434,17 +462,6 @@
     font-size: .88rem; line-height: 1.6; color: var(--gray-800);
   }
 
-  /* ── DISCLAIMER ── */
-  .disclaimer-box {
-    background: var(--gray-100);
-    border: 1px solid var(--gray-200);
-    border-left: 3px solid var(--gray-400);
-    border-radius: var(--radius-sm);
-    padding: 1.1rem 1.3rem;
-    font-size: .85rem; line-height: 1.65; color: var(--gray-800);
-    font-style: italic;
-  }
-
   /* ── FOOTER ── */
   footer {
     background: var(--navy);
@@ -472,6 +489,10 @@
   }
 
   /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .progression-track { grid-template-columns: repeat(3, 1fr); }
+    .progression-loop { display: none; }
+  }
   @media (max-width: 640px) {
     nav { padding: 0 1rem; }
     .nav-brand { display: none; }
@@ -486,80 +507,60 @@
   }
 
   /* ── PASSWORD GATE ── */
-  #gate {
+  body.locked { overflow: hidden; }
+  .password-gate {
     position: fixed; inset: 0; z-index: 1000;
     background: var(--navy);
     display: flex; align-items: center; justify-content: center;
-    padding: 2rem;
+    flex-direction: column; gap: 1rem; padding: 2rem;
   }
-  .gate-box {
-    max-width: 380px; width: 100%; text-align: center;
+  .password-gate.hidden { display: none; }
+  .password-gate h2 {
+    color: var(--white); font-size: 1.3rem; font-weight: 700;
+    letter-spacing: -.01em;
   }
-  .gate-eyebrow {
-    font-size: .72rem; font-weight: 600; letter-spacing: .12em;
-    text-transform: uppercase; color: rgba(255,255,255,.4);
-    margin-bottom: .9rem;
+  .password-gate p.gate-desc {
+    color: rgba(255,255,255,.5); font-size: .85rem; text-align: center;
+    max-width: 40ch; line-height: 1.5; margin-bottom: .5rem;
   }
-  .gate-title {
-    font-size: 1.5rem; font-weight: 700; color: var(--white);
-    margin-bottom: .6rem; line-height: 1.2;
-  }
-  .gate-desc {
-    font-size: .88rem; color: rgba(255,255,255,.5);
-    line-height: 1.6; margin-bottom: 1.8rem;
-  }
-  .gate-input {
-    width: 100%; padding: .75rem 1rem;
-    border-radius: var(--radius-sm);
+  .password-gate input {
+    padding: .75rem 1rem; border-radius: 8px;
     border: 1px solid rgba(255,255,255,.18);
-    background: rgba(255,255,255,.06);
-    color: var(--white);
-    font-family: var(--font); font-size: .95rem;
-    margin-bottom: .9rem;
-    outline: none;
-    transition: border-color .2s, background .2s;
+    background: rgba(255,255,255,.05); color: var(--white);
+    font-size: .95rem; width: 260px; text-align: center;
+    font-family: var(--font);
   }
-  .gate-input:focus { border-color: rgba(255,255,255,.4); background: rgba(255,255,255,.09); }
-  .gate-input::placeholder { color: rgba(255,255,255,.3); }
-  .gate-btn {
-    width: 100%; padding: .75rem 1rem;
-    border-radius: var(--radius-sm);
-    border: none;
-    background: var(--white); color: var(--navy);
-    font-family: var(--font); font-size: .9rem; font-weight: 600;
-    cursor: pointer;
+  .password-gate input::placeholder { color: rgba(255,255,255,.3); }
+  .password-gate input:focus { outline: none; border-color: var(--leap); }
+  .password-gate button {
+    padding: .75rem 1.8rem; border-radius: 8px; border: none;
+    background: var(--leap); color: var(--white); font-weight: 600;
+    cursor: pointer; font-size: .9rem; font-family: var(--font);
     transition: opacity .2s;
   }
-  .gate-btn:hover { opacity: .88; }
-  .gate-error {
-    font-size: .8rem; color: #E8A0A0; margin-top: .8rem;
-    min-height: 1.2em;
+  .password-gate button:hover { opacity: .88; }
+  .password-gate .gate-error {
+    color: #e8867a; font-size: .78rem; min-height: 1.1em;
   }
-  #content { display: none; }
-  #content.unlocked { display: block; }
 </style>
 </head>
 <body>
 
-<!-- PASSWORD GATE -->
-<div id="gate">
-  <div class="gate-box">
-    <p class="gate-eyebrow">SpringboardAI Concept Briefs</p>
-    <h1 class="gate-title">This page is private</h1>
-    <p class="gate-desc">Enter the password shared with you to continue.</p>
-    <input type="password" id="gate-password" class="gate-input" placeholder="Password" autocomplete="off">
-    <button class="gate-btn" onclick="checkPassword()">Enter</button>
-    <p class="gate-error" id="gate-error"></p>
-  </div>
+<div class="password-gate" id="passwordGate">
+  <h2>Springboard AI Learning Hub</h2>
+  <p class="gate-desc">This concept brief is password protected. Enter the password to continue.</p>
+  <input type="password" id="pwInput" placeholder="Password" autocomplete="off">
+  <button id="pwSubmit" type="button">Enter</button>
+  <p class="gate-error" id="pwError"></p>
 </div>
 
-<div id="content">
 
 <!-- NAV -->
 <nav aria-label="Section navigation">
-  <span class="nav-brand">SpringboardAI</span>
+  <span class="nav-brand">Springboard AI</span>
   <ul class="nav-links">
     <li><a href="#hero">Overview</a></li>
+    <li><a href="#groundwork"><span class="nav-dot" style="background:var(--ground)"></span>Groundwork</a></li>
     <li><a href="#amplify"><span class="nav-dot" style="background:var(--amplify)"></span>Amplify</a></li>
     <li><a href="#core"><span class="nav-dot" style="background:var(--core)"></span>Core</a></li>
     <li><a href="#illuminate"><span class="nav-dot" style="background:var(--illuminate)"></span>Illuminate</a></li>
@@ -572,11 +573,12 @@
 <!-- HERO -->
 <section id="hero" aria-label="Introduction">
   <div class="hero-inner">
-    <p class="hero-eyebrow">SpringboardAI Concept Briefs</p>
-    <h1 class="hero-title">Five Concepts for<br>Nonprofit AI Practice</h1>
-    <p class="hero-subtitle">Extending live AI training into ongoing workplace practice, giving nonprofit leaders a reason to return, a task to complete, and an AI skill to carry forward.</p>
+    <p class="hero-eyebrow">Springboard AI Learning Hub</p>
+    <h1 class="hero-title">Six Learning Hub<br>Concept Briefs</h1>
+    <p class="hero-subtitle">Extending live AI training into ongoing workplace practice — giving nonprofit leaders a reason to return, a task to complete, and an AI skill to carry forward.</p>
 
     <div class="concept-pills">
+      <a href="#groundwork" class="pill"><span class="pill-dot" style="background:var(--ground)"></span>Groundwork</a>
       <a href="#amplify" class="pill"><span class="pill-dot" style="background:var(--amplify)"></span>Amplify</a>
       <a href="#core" class="pill"><span class="pill-dot" style="background:var(--core)"></span>Core</a>
       <a href="#illuminate" class="pill"><span class="pill-dot" style="background:var(--illuminate)"></span>Illuminate</a>
@@ -585,20 +587,28 @@
     </div>
 
     <p class="hero-meta">James D. Rodgers &nbsp;·&nbsp; Instructional Designer &amp; AI Learning Experience Designer &nbsp;·&nbsp; <a href="https://jamesdrodgers.ai" style="color:rgba(255,255,255,.4)">jamesdrodgers.ai</a></p>
+  </div>
 
-    <p class="hero-disclaimer">In keeping with the responsible AI principles reflected throughout these concepts, I used Claude as a collaborative thought partner for brainstorming, critique, and iterative design. Established instructional design principles and learning science provided the foundation for the instructional approach. AI helped accelerate exploration and refinement, but the concepts, learning architecture, and final editorial decisions are my own. I used AI as a tool for thinking with, not a substitute for professional judgment.</p>
+  <div class="disclosure">
+    <p>In keeping with the responsible AI principles reflected throughout these concepts, I used Claude as a collaborative thought partner for brainstorming, critique, and iterative design. Established instructional design principles and learning science provided the foundation for the instructional approach. AI helped accelerate exploration and refinement, but the concepts, learning architecture, and final editorial decisions are my own.</p>
   </div>
 
   <!-- LEARNING JOURNEY -->
   <div class="journey-section" style="margin-top:3rem; margin-left:-2rem; margin-right:-2rem; padding-left:2rem; padding-right:2rem;">
     <p class="journey-label">The Learning Journey</p>
-    <p class="journey-sublabel">Amplify, Core, Illuminate, Coach, and Leap are original concepts developed by James D. Rodgers</p>
     <div class="journey-track" role="list">
       <div class="journey-step" role="listitem">
         <div class="journey-node" style="border-color:rgba(255,255,255,.25); color:rgba(255,255,255,.6)">
-          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/></svg>
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M2 3h20M21 3v11a2 2 0 01-2 2H5a2 2 0 01-2-2V3"/><path d="M7 21l5-5 5 5M12 16v5"/></svg>
         </div>
         <span class="journey-node-label">Live Training</span>
+      </div>
+      <div class="journey-arrow"></div>
+      <div class="journey-step" role="listitem">
+        <div class="journey-node colored" style="background:var(--ground)">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><path d="M9 14l2 2 4-4"/></svg>
+        </div>
+        <span class="journey-node-label">Groundwork</span>
       </div>
       <div class="journey-arrow"></div>
       <div class="journey-step" role="listitem">
@@ -606,39 +616,34 @@
           <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>
         </div>
         <span class="journey-node-label">Amplify</span>
-        <span class="journey-node-tag">Concept 01</span>
       </div>
       <div class="journey-arrow"></div>
       <div class="journey-step" role="listitem">
         <div class="journey-node colored" style="background:var(--core)">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/></svg>
         </div>
         <span class="journey-node-label">Core</span>
-        <span class="journey-node-tag">Concept 02</span>
       </div>
       <div class="journey-arrow"></div>
       <div class="journey-step" role="listitem">
         <div class="journey-node colored" style="background:var(--illuminate)">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 00-6 6c0 2.4 1.4 3.7 2.4 4.7.6.6 1.1 1.2 1.1 1.8v.5h5v-.5c0-.6.5-1.2 1.1-1.8C17.6 12.7 19 11.4 19 9a6 6 0 00-6-6z"/></svg>
         </div>
         <span class="journey-node-label">Illuminate</span>
-        <span class="journey-node-tag">Concept 03</span>
       </div>
       <div class="journey-arrow"></div>
       <div class="journey-step" role="listitem">
         <div class="journey-node colored" style="background:var(--coach)">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 9h8M8 13h6m-5 8l-4-4H4a2 2 0 01-2-2V6a2 2 0 012-2h16a2 2 0 012 2v9a2 2 0 01-2 2h-1l-4 4z"/></svg>
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 3 2 6 2s6-1 6-2v-5"/></svg>
         </div>
         <span class="journey-node-label">Coach</span>
-        <span class="journey-node-tag">Concept 04</span>
       </div>
       <div class="journey-arrow"></div>
       <div class="journey-step" role="listitem">
         <div class="journey-node colored" style="background:var(--leap)">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
         </div>
         <span class="journey-node-label">Leap</span>
-        <span class="journey-node-tag">Concept 05</span>
       </div>
       <div class="journey-arrow"></div>
       <div class="journey-step" role="listitem">
@@ -653,8 +658,94 @@
 
 <main>
 
+<!-- ── GROUNDWORK ── -->
+<section id="groundwork" class="concept-section" aria-label="Groundwork concept">
+  <article class="concept-card">
+    <header class="card-header" style="border-left: 4px solid var(--ground)">
+      <p class="card-num" style="color:var(--ground)">Concept 00</p>
+      <h2 class="card-title">Groundwork</h2>
+      <p class="card-tagline">Practice to protect real data.</p>
+    </header>
+    <div class="card-body">
+      <div class="workflow-wrap">
+        <p class="workflow-label">Workflow</p>
+        <div class="workflow" role="list">
+          <span class="wf-step" role="listitem">Calibration</span>
+          <span class="wf-arrow">→</span>
+          <span class="wf-step accent" style="background:var(--ground)" role="listitem">Synthetic Document</span>
+          <span class="wf-arrow">→</span>
+          <span class="wf-step" role="listitem">Leader Flags Issues</span>
+          <span class="wf-arrow">→</span>
+          <span class="wf-step" role="listitem">Guided Fix</span>
+          <span class="wf-arrow">→</span>
+          <span class="wf-step accent" style="background:var(--ground)" role="listitem">Personal Checklist</span>
+        </div>
+      </div>
+
+      <div class="card-section">
+        <p class="card-section-label">Overview</p>
+        <p>Groundwork is a rehearsal space, not a redaction tool. It generates synthetic messy documents. The leader, not the bot, catches what's wrong and proposes the fix. No real organizational data enters the chat.</p>
+      </div>
+
+      <div class="card-section">
+        <p class="card-section-label">Opportunity</p>
+        <p>Nonprofit data is often messy and inconsistently handled, and confidentiality mistakes are easy to make by accident. This is one of the sector's most invisible skill gaps, and staff experience ranges from never having cleaned a spreadsheet to formal data training.</p>
+      </div>
+
+      <div class="card-section">
+        <p class="card-section-label">How It Works</p>
+        <ul class="card-list">
+          <li>A short calibration sets starting difficulty based on prior experience</li>
+          <li>Leader selects a document type: intake form, donor spreadsheet, board memo, case notes</li>
+          <li>Groundwork Bot fabricates a synthetic version seeded with structural issues (duplicates, missing fields, misaligned columns) and confidentiality issues (names, dates of birth, financial or case details)</li>
+          <li>Leader flags what they'd catch before it reaches an AI tool; the bot nudges toward anything missed, without naming it outright for advanced users</li>
+          <li>Leader proposes the fix and sees the corrected version beside the original</li>
+          <li>Session ends with a checklist built from what the leader actually caught</li>
+        </ul>
+      </div>
+
+      <div class="card-section" style="background:var(--ground-bg)">
+        <p class="card-section-label">AI Skills Developed</p>
+        <p class="skills-note">Foundational — sets the baseline for every concept that follows</p>
+        <div class="skills-list">
+          <span class="skill-tag colored" style="background:var(--ground)">Confidentiality judgment</span>
+          <span class="skill-tag">Structural vs. unstructured data</span>
+          <span class="skill-tag">Garbage-in/garbage-out reasoning</span>
+          <span class="skill-tag">Human-in-the-loop verification</span>
+        </div>
+      </div>
+
+      <div class="card-section">
+        <p class="card-section-label">Why It Encourages Return Visits</p>
+        <p>Leaders return to build proficiency across structured and unstructured data. Confidentiality is one of the leading reasons nonprofit leaders hesitate to use AI, and Groundwork is the practice ground for that concern.</p>
+      </div>
+
+      <div class="card-section">
+        <p class="card-section-label">Value to Springboard AI</p>
+        <p>Groundwork is a credibility layer. It keeps bad data from being blamed on AI, and gives leaders at any skill level a confident starting point.</p>
+      </div>
+
+      <div class="card-section">
+        <p class="card-section-label">Considerations</p>
+        <div class="consideration">
+          <svg class="consideration-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+          <p>Effectiveness depends on how well synthetic documents mirror real data. Groundwork is rehearsal, not verification: it does not check real documents, and that responsibility stays with the leader.</p>
+        </div>
+      </div>
+
+      <div class="card-section">
+        <p class="card-section-label">Optional Future Expansion</p>
+        <div class="expansion-list">
+          <span class="expansion-item">Organization-specific templates reflecting a leader's actual data types</span>
+          <span class="expansion-item">Periodic recertification with new scenarios</span>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
 <!-- ── AMPLIFY ── -->
-<section id="amplify" class="concept-section" aria-label="Amplify concept">
+<section id="amplify" class="concept-section" style="background:var(--off-white)" aria-label="Amplify concept">
   <article class="concept-card">
     <header class="card-header" style="border-left: 4px solid var(--amplify)">
       <p class="card-num" style="color:var(--amplify)">Concept 01</p>
@@ -673,13 +764,13 @@
           <span class="wf-arrow">→</span>
           <span class="wf-step" role="listitem">Audience Planning</span>
           <span class="wf-arrow">→</span>
-          <span class="wf-step accent" style="background:var(--amplify)" role="listitem">7-Day Campaign</span>
+          <span class="wf-step accent" style="background:var(--amplify)" role="listitem">7-Day Communication Plan</span>
         </div>
       </div>
 
       <div class="card-section">
         <p class="card-section-label">Overview</p>
-        <p>Amplify transforms a board report or impact document into a full week of audience-ready communications in under thirty minutes, without requiring any communications staff.</p>
+        <p>Amplify produces a communication plan, not a single campaign. It transforms a board report or impact document into a full week of audience-ready content in under thirty minutes, without requiring any communications staff.</p>
       </div>
 
       <div class="card-section">
@@ -694,14 +785,13 @@
           <li>Amplify surfaces what it found: numbers, stories, milestones, challenges</li>
           <li>Leader confirms, corrects, or prioritizes the extracted content</li>
           <li>Answer three questions: audience, desired outcome, anything timely to build around</li>
-          <li>Amplify generates a seven-day plan with drafted content for each slot</li>
-          <li>Review, edit inline, and export or schedule</li>
+          <li>Amplify generates a seven-day communication plan with drafted content for each slot</li>
         </ul>
       </div>
 
       <div class="card-section" style="background:var(--amplify-bg)">
         <p class="card-section-label">AI Skills Developed</p>
-        <p class="skills-note">Foundational concepts, introduced here for the first time</p>
+        <p class="skills-note">Foundational concepts — introduced here for the first time</p>
         <div class="skills-list">
           <span class="skill-tag colored" style="background:var(--amplify)">Prompt grounding</span>
           <span class="skill-tag">Audience-specific prompt construction</span>
@@ -717,8 +807,8 @@
       </div>
 
       <div class="card-section">
-        <p class="card-section-label">Value to SpringboardAI</p>
-        <p>Amplify turns a recurring organizational task, communicating impact, into a repeatable, low-friction workflow grounded in what the organization already produces. It builds a communications habit without requiring new behavior to adopt it. For staff who worry AI will depersonalize their voice, Amplify demonstrates the opposite.</p>
+        <p class="card-section-label">Value to Springboard AI</p>
+        <p>Amplify turns communicating impact into a repeatable, low-friction workflow grounded in what the organization already produces. It shows that AI-assisted communication does not have to sound generic.</p>
       </div>
 
       <div class="card-section">
@@ -733,7 +823,6 @@
         <p class="card-section-label">Optional Future Expansion</p>
         <div class="expansion-list">
           <span class="expansion-item">Saved organization voice profile for consistent tone across sessions</span>
-          <span class="expansion-item">Multi-platform scheduling integration</span>
           <span class="expansion-item">Shared team access for communications staff or volunteers</span>
         </div>
       </div>
@@ -742,7 +831,7 @@
 </section>
 
 <!-- ── CORE ── -->
-<section id="core" class="concept-section" style="background:var(--off-white)" aria-label="Core concept">
+<section id="core" class="concept-section" aria-label="Core concept">
   <article class="concept-card">
     <header class="card-header" style="border-left: 4px solid var(--core)">
       <p class="card-num" style="color:var(--core)">Concept 02</p>
@@ -765,13 +854,12 @@
 
       <div class="card-section">
         <p class="card-section-label">Overview</p>
-        <p>Core lets a leader upload their mission, vision, and strategic plan once, so subsequent output, grant narratives, board reports, funder letters, reflects who the organization actually is rather than what a generic chatbot produces.</p>
+        <p>Core lets a leader upload their mission, vision, and strategic plan once. These documents feed a retrieval-augmented generation (RAG) system: relevant context is pulled from them for each request, then used to generate a response, so output like grant narratives, board reports, and funder letters draws on the organization's own language instead of a generic response.</p>
       </div>
 
       <div class="card-section">
         <p class="card-section-label">Opportunity</p>
-        <p>Generic AI output sounds competent and hollow: it has no organizational context. Under funding pressure, that gap compounds quietly. Mission language drifts, voice becomes generic, and output that could have represented the organization ends up representing no one in particular.</p>
-        <p>Nonprofits are better positioned to solve this than most organizations realize. A mission that means something, a vision that predates any funding cycle, values that do not shift when the market does, these are exactly what AI needs to produce output that is specific rather than hollow. Core makes that foundation the basis for every interaction on the platform. As boards extend governance expectations to include AI, it also gives organizations a structural answer to what their AI is authorized to know.</p>
+        <p>Generic AI output has no organizational context, so it reads as competent but hollow. It doesn't reflect the organization's mission, voice, or priorities, and staff can't easily verify what the AI knows about the organization when generating that output.</p>
       </div>
 
       <div class="card-section">
@@ -780,13 +868,12 @@
           <li>Upload mission statement, vision, and strategic plan</li>
           <li>Issue any prompt: grant narrative, board update, funder letter</li>
           <li>Compare grounded output against a generic response to see the difference directly</li>
-          <li>Opt in to a shared ecosystem of peer organization documents for partnership and alignment checks</li>
         </ul>
       </div>
 
       <div class="card-section" style="background:var(--core-bg)">
         <p class="card-section-label">AI Skills Developed</p>
-        <p class="skills-note">Builds on Amplify, adds organizational grounding and RAG</p>
+        <p class="skills-note">Builds on Amplify — adds organizational grounding and RAG</p>
         <div class="skills-list">
           <span class="skill-tag colored" style="background:var(--core)">Retrieval-augmented generation (RAG)</span>
           <span class="skill-tag">Context window awareness</span>
@@ -797,11 +884,11 @@
 
       <div class="card-section">
         <p class="card-section-label">Why It Encourages Return Visits</p>
-        <p>Once organizational documents are uploaded, future tasks on the platform benefit from them. Leaving means starting over. Core creates platform dependency that deepens with use.</p>
+        <p>Once organizational documents are uploaded, future tasks on the platform benefit from them.</p>
       </div>
 
       <div class="card-section">
-        <p class="card-section-label">Value to SpringboardAI</p>
+        <p class="card-section-label">Value to Springboard AI</p>
         <p>Core is the organizational intelligence layer that makes every other platform asset more precise. It teaches RAG through use, not instruction, and makes the platform purpose-built for each organization. Mission becomes the engine.</p>
       </div>
 
@@ -829,18 +916,18 @@
 </section>
 
 <!-- ── ILLUMINATE ── -->
-<section id="illuminate" class="concept-section" aria-label="Illuminate concept">
+<section id="illuminate" class="concept-section" style="background:var(--off-white)" aria-label="Illuminate concept">
   <article class="concept-card">
     <header class="card-header" style="border-left: 4px solid var(--illuminate)">
       <p class="card-num" style="color:var(--illuminate)">Concept 03</p>
       <h2 class="card-title">Illuminate</h2>
-      <p class="card-tagline">Bring the human story inside a budget line into the light.</p>
+      <p class="card-tagline">Bring the human story inside your budget into the light.</p>
     </header>
     <div class="card-body">
       <div class="workflow-wrap">
         <p class="workflow-label">Workflow</p>
         <div class="workflow" role="list">
-          <span class="wf-step" role="listitem">Budget Line Items</span>
+          <span class="wf-step" role="listitem">Budget Categories</span>
           <span class="wf-arrow">+</span>
           <span class="wf-step" role="listitem">Org Documents</span>
           <span class="wf-arrow">→</span>
@@ -854,30 +941,29 @@
 
       <div class="card-section">
         <p class="card-section-label">Overview</p>
-        <p>Illuminate matches each line item in a budget to a real story already sitting in the organization's own documents, producing a narrative budget that makes financial data legible to donors, boards, and funders.</p>
+        <p>Illuminate matches budget categories to real stories already sitting in the organization's own documents, producing a narrative budget that shows how spending aligns with mission and makes financial data legible to donors, boards, and funders.</p>
       </div>
 
       <div class="card-section">
         <p class="card-section-label">Opportunity</p>
-        <p>A budget is a spreadsheet: accurate, necessary, and invisible to anyone who cannot picture what a line item does in the world. A narrative budget connects each dollar to a human outcome. Those stories already exist.</p>
-        <p>Illuminate is contextual by design. It matches budget lines only to stories that exist in the organization's own documents, flags every match with its source, and states plainly when no honest match exists. It will not invent.</p>
+        <p>A budget is a spreadsheet: accurate, necessary, and invisible to anyone who cannot picture what a category funds in the world. A narrative budget connects spending to mission and human outcome. Those stories already exist.</p>
+        <p>Illuminate is contextual by design. It matches budget categories only to stories that exist in the organization's own documents, flags every match with its source, and states plainly when no honest match exists. It will not invent.</p>
       </div>
 
       <div class="card-section">
         <p class="card-section-label">How It Works</p>
         <ul class="card-list">
-          <li>Upload budget line items alongside existing organizational documents in any combination</li>
+          <li>Upload a budget alongside existing organizational documents in any combination</li>
           <li>Illuminate reads all documents and extracts stories, statistics, quotes, and outcomes</li>
-          <li>Each budget category is matched to the strongest relevant story found</li>
-          <li>Unmatched lines are flagged honestly rather than filled with invented content</li>
-          <li>Output is a structured table: budget category, amount, story match, source, narrative bridge sentence</li>
-          <li>Export for use in fundraising and board materials</li>
+          <li>Stories are matched and grouped by budget category, not individual line item</li>
+          <li>Unmatched categories are flagged honestly rather than filled with invented content</li>
+          <li>Output is a narrative budget organized by category, showing amount, matched story, source, and how the spending supports the mission</li>
         </ul>
       </div>
 
       <div class="card-section" style="background:var(--illuminate-bg)">
         <p class="card-section-label">AI Skills Developed</p>
-        <p class="skills-note">Builds on Amplify and Core, adds multi-document synthesis and guardrails</p>
+        <p class="skills-note">Builds on Amplify and Core — adds multi-document synthesis and guardrails</p>
         <div class="skills-list">
           <span class="skill-tag colored" style="background:var(--illuminate)">Multi-document retrieval</span>
           <span class="skill-tag">Task decomposition</span>
@@ -893,7 +979,7 @@
       </div>
 
       <div class="card-section">
-        <p class="card-section-label">Value to SpringboardAI</p>
+        <p class="card-section-label">Value to Springboard AI</p>
         <p>Illuminate serves the sector's top AI use cases, grant writing and donor engagement, through a format most organizations have never produced efficiently. The integrity concern is answered in the architecture: no fabrication, full source attribution, honest when matches do not exist.</p>
       </div>
 
@@ -922,12 +1008,12 @@
 </section>
 
 <!-- ── COACH ── -->
-<section id="coach" class="concept-section" style="background:var(--off-white)" aria-label="Coach concept">
+<section id="coach" class="concept-section" aria-label="Coach concept">
   <article class="concept-card">
     <header class="card-header" style="border-left: 4px solid var(--coach)">
       <p class="card-num" style="color:var(--coach)">Concept 04</p>
       <h2 class="card-title">Coach</h2>
-      <p class="card-tagline">Build AI fluency, one task at a time.</p>
+      <p class="card-tagline">An interactive, dynamic prompt library for real nonprofit work.</p>
     </header>
     <div class="card-body">
       <div class="workflow-wrap">
@@ -941,18 +1027,18 @@
           <span class="wf-arrow">→</span>
           <span class="wf-step accent" style="background:var(--coach)" role="listitem">Leader Owns It</span>
           <span class="wf-arrow">→</span>
-          <span class="wf-step" role="listitem">Transferable Skill</span>
+          <span class="wf-step" role="listitem">Saved to Library</span>
         </div>
       </div>
 
       <div class="card-section">
         <p class="card-section-label">Overview</p>
-        <p>Coach mirrors the pedagogical structure of the live training, active use before explanation, to help leaders build contextual prompts for their real work and walk away with both a usable artifact and transferable AI skills.</p>
+        <p>Coach is used for brainstorming and drafting prompts. It functions as an interactive, dynamic prompt library: leaders build prompts for real work, save them, and draw on prompts contributed by other leaders through Leap.</p>
       </div>
 
       <div class="card-section">
         <p class="card-section-label">Opportunity</p>
-        <p>The gap between training inspiration and workplace execution is wider than a 90-minute session can bridge. Generic prompts produce generic output. A two-person housing nonprofit needs a different prompt than a fifty-person youth development organization. Coach closes that gap by meeting leaders at their actual work and teaching AI fluency as a byproduct of getting something real done.</p>
+        <p>The gap between training inspiration and workplace execution is wider than a 90-minute session can bridge. Generic prompts produce generic output. A two-person housing nonprofit needs a different prompt than a fifty-person youth development organization. Coach closes that gap by meeting leaders at their actual work.</p>
       </div>
 
       <div class="card-section">
@@ -961,7 +1047,7 @@
           <div>
             <p class="coach-phase-title" style="color:var(--coach); border-color:var(--coach)">Coach demonstrates</p>
             <ul class="card-list">
-              <li>Leader arrives with something that needs to be produced: a grant narrative, board report, or donor email</li>
+              <li>Nonprofit leader arrives with something that needs to be produced or a task they want to brainstorm: a grant narrative, board report, or donor email</li>
               <li>Coach asks three questions: what is the organization trying to do, who is this for, what does a good result look like</li>
               <li>Coach builds a prompt, shows it, and runs it immediately</li>
               <li>Leader sees the output before any explanation is given</li>
@@ -971,14 +1057,14 @@
             <p class="coach-phase-title" style="color:var(--coach); border-color:var(--coach)">Coach and leader work together</p>
             <ul class="card-list">
               <li>Coach names what happened: what each prompt element did, what the AI was instructed to do, and why the output took the shape it did</li>
-              <li>Leader adjusts an element, audience, tone, format, or context, and sees what changes</li>
+              <li>Leader adjusts an element (audience, tone, format, or context) and sees what changes</li>
             </ul>
           </div>
           <div>
             <p class="coach-phase-title" style="color:var(--coach); border-color:var(--coach)">Leader owns it</p>
             <ul class="card-list">
               <li>Leader refines and regenerates independently</li>
-              <li>Leaves with a usable artifact and a prompt they understand well enough to adapt in any AI tool</li>
+              <li>The finished prompt is saved to the leader's library, alongside relevant prompts contributed by other organizations through Leap</li>
             </ul>
           </div>
         </div>
@@ -986,7 +1072,7 @@
 
       <div class="card-section" style="background:var(--coach-bg)">
         <p class="card-section-label">AI Skills Developed</p>
-        <p class="skills-note">Synthesizes concepts introduced in Amplify, Core, and Illuminate, names them explicitly for the first time</p>
+        <p class="skills-note">Synthesizes concepts introduced in Amplify, Core, and Illuminate, and names them explicitly for the first time</p>
         <div class="skills-list">
           <span class="skill-tag colored" style="background:var(--coach)">Prompt anatomy</span>
           <span class="skill-tag">Prompt portability</span>
@@ -997,12 +1083,12 @@
 
       <div class="card-section">
         <p class="card-section-label">Why It Encourages Return Visits</p>
-        <p>A grant narrative needs a different prompt than a board report. A two-person organization needs different context than a fifty-person one. Coach does not repeat itself because the work does not repeat itself. A successful session produces something worth sharing, and Leap is where that sharing happens.</p>
+        <p>Every new task needs its own prompt: a grant narrative and a board report don't share one. Leaders come back each time real work comes up, and the library grows with each new submission to Leap, giving them more to draw on with each visit.</p>
       </div>
 
       <div class="card-section">
-        <p class="card-section-label">Value to SpringboardAI</p>
-        <p>Coach is where training transfer happens. It applies the same instructional sequence as the live session, try first, understand after, to real work the leader already needs to do. Each session produces a visible artifact and a portable prompt. The field scan found training is only effective when repeated, contextual, and tied to real tasks. Coach is built around that finding.</p>
+        <p class="card-section-label">Value to Springboard AI</p>
+        <p>Coach is where training transfer happens. It applies the same instructional sequence as the live session (try first, understand after) to real work the leader already needs to do. Each session produces a saved, reusable prompt rather than a one-time output.</p>
       </div>
 
       <div class="card-section">
@@ -1020,9 +1106,8 @@
       <div class="card-section">
         <p class="card-section-label">Optional Future Expansion</p>
         <div class="expansion-list">
-          <span class="expansion-item">Saved prompt library personal to each organization</span>
           <span class="expansion-item">Session history and progress tracking</span>
-          <span class="expansion-item">Pathway to Leap: leaders whose Coach sessions produce exceptional results are invited to submit to the community</span>
+          <span class="expansion-item">Browsing the library by category, role, or task type</span>
         </div>
       </div>
     </div>
@@ -1030,12 +1115,12 @@
 </section>
 
 <!-- ── LEAP ── -->
-<section id="leap" class="concept-section" aria-label="Leap concept">
+<section id="leap" class="concept-section" style="background:var(--off-white)" aria-label="Leap concept">
   <article class="concept-card">
     <header class="card-header" style="border-left: 4px solid var(--leap)">
       <p class="card-num" style="color:var(--leap)">Concept 05</p>
       <h2 class="card-title">Leap</h2>
-      <p class="card-tagline">One great idea, shared. The community gains momentum.</p>
+      <p class="card-tagline">One idea shared moves the whole sector forward.</p>
     </header>
     <div class="card-body">
       <div class="workflow-wrap">
@@ -1047,38 +1132,38 @@
           <span class="wf-arrow">→</span>
           <span class="wf-step" role="listitem">Human Review</span>
           <span class="wf-arrow">→</span>
-          <span class="wf-step accent" style="background:var(--leap)" role="listitem">Knowledge Library</span>
+          <span class="wf-step accent" style="background:var(--leap)" role="listitem">Prompt Library</span>
           <span class="wf-arrow">→</span>
-          <span class="wf-step" role="listitem">Coach + Community</span>
+          <span class="wf-step" role="listitem">Coach</span>
         </div>
       </div>
 
       <div class="card-section">
         <p class="card-section-label">Overview</p>
-        <p>Leap is the platform's agentic AI concept. AI agents that act without waiting to be asked represent one of the most significant shifts underway in how knowledge work is organized. Leap's agent receives submissions, scores them against defined criteria, generates feedback, and routes approved entries through human review. Approved entries feed into Coach and appear on a public forum where leaders browse wins from peers in similar organizations.</p>
+        <p>Users submit AI wins, prompts, and artifacts to Leap. An AI agent reviews each submission against defined criteria and routes approved entries to a human curator. Approved submissions are organized into an interactive prompt library, which Coach draws on to help leaders with their own projects.</p>
       </div>
 
       <div class="card-section">
         <p class="card-section-label">Opportunity</p>
-        <p>Generic AI examples do not resonate with nonprofit leaders. A housing organization learns differently from a housing example than from a corporate one. No existing platform captures real, sector-specific AI wins at scale and makes them retrievable by context. Leap builds that resource while teaching the skills required to contribute to it.</p>
-        <p>Submitting real work raises legitimate concerns: confidentiality, rejection, and competitive exposure. Leap addresses each structurally. A confidentiality check runs before any submission enters the queue. Returned submissions are framed as coaching. A sector that learns together moves faster than one where knowledge stays siloed.</p>
+        <p>Generic AI examples do not resonate with nonprofit leaders. A housing organization learns differently from a housing example than from a corporate one. No existing platform captures real, sector-specific AI wins at scale and makes them retrievable by context.</p>
+        <p>Submitting real work raises legitimate concerns: confidentiality, rejection, and competitive exposure. Leap addresses each structurally. A confidentiality check runs before any submission enters the queue, and returned submissions come with specific feedback rather than a flat rejection.</p>
       </div>
 
       <div class="card-section">
         <p class="card-section-label">How It Works</p>
         <ul class="card-list">
-          <li>Complete a structured submission form: organization context, challenge faced, AI tool used, prompt, artifact, and outcome</li>
-          <li>Stories and experiences without a formal prompt are accepted</li>
-          <li>Submission triggers the AI agent, which scores the entry and returns one of three outcomes: approved, returned for revision with specific feedback, or discarded with explanation</li>
-          <li>Leaders whose submissions are returned receive live prompt-quality coaching through the feedback itself</li>
-          <li>Approved submissions pass to a human curator, then enter the Leap forum and a searchable database tagged for contextual retrieval by Coach</li>
-          <li>Coach draws on the Leap database to surface contextually relevant examples: a two-person housing nonprofit gets examples from organizations that look like them</li>
+          <li>Leader submits an AI win, prompt, or artifact through a structured form: organization context, challenge faced, AI tool used, prompt, artifact, and outcome</li>
+          <li>Submissions without a formal prompt are also accepted</li>
+          <li>An AI agent scores the submission and returns one of three outcomes: approved, returned for revision with specific feedback, or discarded with explanation</li>
+          <li>Approved submissions pass to a human curator for final review</li>
+          <li>Approved submissions are added to the prompt library, tagged by context, tool, and use case</li>
+          <li>Coach draws on the library to surface relevant prompts for leaders working on similar projects</li>
         </ul>
       </div>
 
       <div class="card-section" style="background:var(--leap-bg)">
         <p class="card-section-label">AI Skills Developed</p>
-        <p class="skills-note">Most advanced concept in the set, introduces agentic AI and community knowledge systems</p>
+        <p class="skills-note">Most advanced concept in the set — introduces agentic AI and community knowledge systems</p>
         <div class="skills-list">
           <span class="skill-tag colored" style="background:var(--leap)">Agentic AI</span>
           <span class="skill-tag">Prompt quality and construction</span>
@@ -1090,12 +1175,12 @@
 
       <div class="card-section">
         <p class="card-section-label">Why It Encourages Return Visits</p>
-        <p>Leaders return to see if their submission was approved. They return to browse new entries from peers. They return when Coach surfaces a relevant example from the database. They return to submit their next win. Leap creates four distinct return triggers where most platform assets create one.</p>
+        <p>Leaders return to check on submissions, to use Coach with new library entries, and to submit their next win.</p>
       </div>
 
       <div class="card-section">
-        <p class="card-section-label">Value to SpringboardAI</p>
-        <p>Leap makes the platform a living resource rather than a static tool set. Each submission strengthens Coach. A leader who submits has moved from consumer to contributor, the deepest form of AI adoption. Every approved submission is a documented behavior change traceable to training. That is evidence funders can act on and SpringboardAI can build from.</p>
+        <p class="card-section-label">Value to Springboard AI</p>
+        <p>Leap makes Coach more useful over time. Each approved submission adds to the prompt library. Approved submissions are also a record of applied AI use, which Springboard AI can report to funders.</p>
       </div>
 
       <div class="card-section">
@@ -1106,7 +1191,7 @@
         </div>
         <div class="consideration">
           <svg class="consideration-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          <p>The database will initially be sparse. A seeding strategy, curated submissions from trusted organizations before public launch, is recommended.</p>
+          <p>The library will initially be sparse. Seeding it with curated submissions from trusted organizations before launch is recommended.</p>
         </div>
         <div class="consideration">
           <svg class="consideration-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
@@ -1117,8 +1202,8 @@
       <div class="card-section">
         <p class="card-section-label">Optional Future Expansion</p>
         <div class="expansion-list">
-          <span class="expansion-item">Cohort-based sharing among organizations in the same training session</span>
-          <span class="expansion-item">Analytics dashboard showing which use cases generate the most wins across the sector</span>
+          <span class="expansion-item">Browsing the library by category or role</span>
+          <span class="expansion-item">Analytics on which prompts Coach surfaces most often</span>
           <span class="expansion-item">Funder-facing view of aggregate AI adoption patterns across grantee organizations</span>
         </div>
       </div>
@@ -1127,13 +1212,30 @@
 </section>
 
 <!-- ── SKILLS PROGRESSION ── -->
-<section id="skills" class="section-wrap" style="background:var(--off-white)" aria-label="AI Skills Progression">
+<section id="skills" class="section-wrap" aria-label="AI Skills Progression">
   <div class="section-inner">
     <p class="section-eyebrow">Learning Architecture</p>
     <h2 class="section-title">AI Capability Progression</h2>
     <p class="section-desc">Skills build over time. Each concept adds new capability while reinforcing what came before.</p>
 
     <div class="progression-track" role="list">
+      <div class="progression-loop" aria-hidden="true">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--leap)" stroke-width="1.8">
+          <path d="M3 10a7 7 0 0112-4.9M21 9V4m0 5h-5"/>
+          <path d="M21 14a7 7 0 01-12 4.9M3 15v5m0-5h5"/>
+        </svg>
+        <span class="progression-loop-label">Coach ⇄ Leap</span>
+      </div>
+      <div class="progression-col" role="listitem">
+        <p class="prog-concept" style="color:var(--ground)">Groundwork</p>
+        <ul class="prog-skills">
+          <li>Confidentiality judgment</li>
+          <li>Structured vs. unstructured data</li>
+          <li>Garbage-in/garbage-out</li>
+          <li>Taxonomy consistency</li>
+          <li>Human-in-the-loop</li>
+        </ul>
+      </div>
       <div class="progression-col" role="listitem">
         <p class="prog-concept" style="color:var(--amplify)">Amplify</p>
         <ul class="prog-skills">
@@ -1187,11 +1289,11 @@
 </section>
 
 <!-- ── ASSESSMENT ── -->
-<section id="assessment" class="section-wrap" aria-label="Assessment Framework">
+<section id="assessment" class="section-wrap" style="background:var(--off-white)" aria-label="Assessment Framework">
   <div class="section-inner">
     <p class="section-eyebrow">Future Design Recommendation</p>
     <h2 class="section-title">Learning Outcomes and Assessment</h2>
-    <p class="assessment-note">A shared outcomes framework would help SpringboardAI evaluate genuine capability growth rather than activity completion. The following six competencies reflect where nonprofit AI leadership is heading in 2026, durable enough to outlast any specific tool.</p>
+    <p class="assessment-note">A shared outcomes framework would help Springboard AI evaluate genuine capability growth rather than activity completion. The following six competencies reflect where nonprofit AI leadership is heading in 2026, durable enough to outlast any specific tool.</p>
 
     <div class="competency-grid" role="list">
       <div class="competency-card" role="listitem">
@@ -1228,19 +1330,17 @@
 
     <div style="margin-top:2rem">
       <div class="leap-highlight">
-        <strong>Performance-based assessment via Leap:</strong> The five concepts build these competencies through authentic, task-based practice. Participants demonstrate understanding by producing artifacts, not completing quizzes. Leap offers the strongest opportunity for performance-based assessment by capturing prompts, revisions, and completed work over time.
-      </div>
-    </div>
-
-    <div style="margin-top:1.5rem">
-      <div class="disclaimer-box">
-        In keeping with the responsible AI principles reflected throughout these concepts, I used Claude as a collaborative thought partner for brainstorming, critique, and iterative design. Established instructional design principles and learning science provided the foundation for the instructional approach. AI helped accelerate exploration and refinement, but the concepts, learning architecture, and final editorial decisions are my own. I used AI as a tool for thinking with, not a substitute for professional judgment.
+        <strong>Performance-based assessment via Leap:</strong> The concepts build these competencies through authentic, task-based practice. Participants demonstrate understanding by producing artifacts, not completing quizzes. Leap offers the platform's strongest opportunity for performance-based assessment by capturing prompts, revisions, and completed work over time.
       </div>
     </div>
   </div>
 </section>
 
 </main>
+
+<div class="disclosure-footer">
+  <p>In keeping with the responsible AI principles reflected throughout these concepts, I used Claude as a collaborative thought partner for brainstorming, critique, and iterative design. Established instructional design principles and learning science provided the foundation for the instructional approach. AI helped accelerate exploration and refinement, but the concepts, learning architecture, and final editorial decisions are my own.</p>
+</div>
 
 <footer>
   <p>James D. Rodgers &nbsp;·&nbsp; Instructional Designer &amp; AI Learning Experience Designer</p>
@@ -1261,7 +1361,7 @@
 
   // Stagger journey steps
   document.querySelectorAll('.journey-step').forEach((el, i) => {
-    el.style.transitionDelay = `${i * 80}ms`;
+    el.style.transitionDelay = (i * 80) + 'ms';
   });
 
   // Active nav highlighting
@@ -1273,7 +1373,7 @@
       if (entry.isIntersecting) {
         const id = entry.target.getAttribute('id');
         navLinks.forEach(link => {
-          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+          link.classList.toggle('active', link.getAttribute('href') === ('#' + id));
         });
       }
     });
@@ -1281,28 +1381,34 @@
 
   sections.forEach(s => navObserver.observe(s));
 
-  // ── Password gate ──
-  const SITE_PASSWORD = "springboard2026"; // change this to whatever you'd like
+  // Password gate
+  (function() {
+    const gate = document.getElementById('passwordGate');
+    const input = document.getElementById('pwInput');
+    const btn = document.getElementById('pwSubmit');
+    const err = document.getElementById('pwError');
+    const CORRECT = 'springboard2026';
 
-  function checkPassword() {
-    const input = document.getElementById('gate-password');
-    const error = document.getElementById('gate-error');
-    if (input.value === SITE_PASSWORD) {
-      document.getElementById('gate').style.display = 'none';
-      document.getElementById('content').classList.add('unlocked');
-    } else {
-      error.textContent = "That password isn't correct. Please try again.";
-      input.value = '';
-      input.focus();
+    document.body.classList.add('locked');
+
+    function tryUnlock() {
+      if (input.value === CORRECT) {
+        gate.classList.add('hidden');
+        document.body.classList.remove('locked');
+      } else {
+        err.textContent = 'Incorrect password. Try again.';
+        input.value = '';
+        input.focus();
+      }
     }
-  }
 
-  document.getElementById('gate-password').addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') checkPassword();
-  });
+    btn.addEventListener('click', tryUnlock);
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') tryUnlock();
+    });
+    input.focus();
+  })();
 </script>
-
-</div>
 
 </body>
 </html>
