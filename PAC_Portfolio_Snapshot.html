@@ -4,6 +4,16 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>PAC / Swan-Ganz Basics — Instructional Design Portfolio</title>
+<meta name="description" content="A self-guided critical care learning experience covering pulmonary artery catheter interpretation, waveform analysis, and hemodynamic monitoring, built with a clinical SME and a custom AI tutor." />
+<meta property="og:title" content="PAC / Swan-Ganz Basics — Instructional Design Portfolio" />
+<meta property="og:description" content="A self-guided critical care learning experience covering pulmonary artery catheter interpretation, waveform analysis, and hemodynamic monitoring, built with a clinical SME and a custom AI tutor." />
+<meta property="og:image" content="https://jamesdrodgers.ai/PAC_Bot.png" />
+<meta property="og:url" content="https://jamesdrodgers.ai/PAC_Portfolio_Snapshot.html" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="PAC / Swan-Ganz Basics — Instructional Design Portfolio" />
+<meta name="twitter:description" content="A self-guided critical care learning experience covering pulmonary artery catheter interpretation, waveform analysis, and hemodynamic monitoring, built with a clinical SME and a custom AI tutor." />
+<meta name="twitter:image" content="https://jamesdrodgers.ai/PAC_Bot.png" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -282,9 +292,56 @@
     body { background: white; }
     .page { box-shadow: none; margin: 0; border-radius: 0; }
   }
+
+  /* NAV */
+  .site-nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--rule);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .site-nav-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    text-decoration: none;
+  }
+  .site-nav-links { display: flex; gap: 4px; }
+  .site-nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--mid);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: background 0.15s, color 0.15s;
+  }
+  .site-nav-links a:hover { background: var(--accent-lt); color: var(--accent); }
+
+  @media (max-width: 640px) {
+    .site-nav-links a { padding: 6px 8px; font-size: 12px; }
+  }
+
+  @media print {
+    .site-nav { display: none; }
+  }
 </style>
 </head>
 <body>
+<nav class="site-nav">
+  <a class="site-nav-name" href="https://www.jamesdrodgers.ai">James D. Rodgers</a>
+  <div class="site-nav-links">
+    <a href="https://www.jamesdrodgers.ai/portfolio">Portfolio</a>
+    <a href="https://www.jamesdrodgers.ai/resume">Resume</a>
+    <a href="https://www.jamesdrodgers.ai/jamesrodgers">About</a>
+  </div>
+</nav>
 <div class="page">
 
   <div class="header">
