@@ -1,0 +1,169 @@
+html, body {
+  height: auto !important;
+  min-height: 100% !important;
+  overflow: visible !important;
+  overflow-y: auto !important;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f5f6f8;
+  color: #1a1a1a;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: #2563eb;
+  text-decoration: none;
+  margin-bottom: 36px;
+  font-weight: 500;
+  transition: opacity 0.15s;
+}
+
+.back-link:hover { opacity: 0.7; }
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 36px;
+}
+
+.profile-header img {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e0e4ea;
+  flex-shrink: 0;
+}
+
+.profile-header-text h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: #1a1a1a;
+}
+
+.profile-header-text p {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.section h2 {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: #2563eb;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e4e8ee;
+}
+
+.section p {
+  font-size: 0.93rem;
+  color: #3a3a3a;
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+
+.section p:last-child { margin-bottom: 0; }
+
+/* Education */
+.edu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.edu-item {
+  border-left: 2px solid #e0e4ea;
+  padding-left: 14px;
+}
+
+.edu-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 2px;
+}
+
+.edu-meta {
+  font-size: 0.8rem;
+  color: #888;
+  line-height: 1.4;
+}
+
+/* Contact */
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 0.88rem;
+}
+
+.contact-label {
+  font-weight: 600;
+  color: #1a1a1a;
+  min-width: 70px;
+  flex-shrink: 0;
+}
+
+.contact-row a {
+  color: #2563eb;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.contact-row a:hover { opacity: 0.7; }
+
+.portfolio-cta {
+  margin-top: 32px;
+  background: #fff;
+  border: 1px solid #e0e4ea;
+  border-radius: 10px;
+  padding: 20px 22px;
+  font-size: 0.88rem;
+  color: #3a3a3a;
+  line-height: 1.7;
+}
+
+.portfolio-cta a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.portfolio-cta a:hover { text-decoration: underline; }
+
+.footer-name {
+  margin-top: 56px;
+  padding-top: 20px;
+  border-top: 1px solid #e4e8ee;
+  font-size: 0.8rem;
+  color: #aaa;
+}
