@@ -215,6 +215,8 @@ body {
 .bubble.bot p { margin: 0 0 12px 0; }
 .bubble.bot p:last-child { margin-bottom: 0; }
 .bubble.bot strong { color: var(--text-primary); font-weight: 600; }
+.bubble.bot a { color: var(--primary-color); text-decoration: underline; }
+.bubble.bot a:hover { color: var(--primary-hover); }
 .bubble.bot br { display: block; content: ""; margin-top: 4px; }
 
 /* TYPING INDICATOR */

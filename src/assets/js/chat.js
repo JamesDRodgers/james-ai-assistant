@@ -79,7 +79,7 @@ window.onclick = function (event) {
 };
 
 // FORMAT BOT MESSAGE
-// Converts plain text with newlines and **bold** into clean HTML.
+// Converts plain text with newlines, **bold**, and [text](url) links into clean HTML.
 // User messages are kept as plain text for safety.
 function formatMessage(text) {
 
@@ -91,6 +91,13 @@ function formatMessage(text) {
 
   // Convert **bold** markers
   safe = safe.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+
+  // Convert [text](url) links — only http(s) or site-relative URLs are ever
+  // linkified, so no javascript: or other unsafe scheme can become clickable.
+  safe = safe.replace(
+    /\[([^\]]+)\]\((https?:\/\/[^\s)]+|\/[^\s)]*)\)/g,
+    (match, linkText, url) => `<a href="${url}" target="_blank" rel="noopener noreferrer">${linkText}</a>`
+  );
 
   // Split on double newlines to create paragraphs
   const paragraphs = safe
