@@ -54,8 +54,16 @@ export async function handler(event) {
     let run = await runRes.json();
     if (run.error) throw new Error(run.error.message);
 
-    // 4. Poll until the run completes
+    // 4. Poll until the run completes (bounded so a stuck run fails fast
+    // instead of polling until the function's own execution timeout kills it)
+    const MAX_POLL_ATTEMPTS = 40;
+    let pollAttempts = 0;
+
     while (run.status !== "completed") {
+      if (pollAttempts++ >= MAX_POLL_ATTEMPTS) {
+        throw new Error(`Run timed out after ${MAX_POLL_ATTEMPTS} polling attempts (status: ${run.status})`);
+      }
+
       await new Promise((r) => setTimeout(r, 700));
 
       const check = await fetch(

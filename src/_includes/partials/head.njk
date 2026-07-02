@@ -1,0 +1,22 @@
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}" />
+{%- if ogTitle %}
+<meta property="og:title" content="{{ ogTitle }}" />
+<meta property="og:description" content="{{ ogDescription }}" />
+<meta property="og:image" content="https://jamesdrodgers.ai/og-image.png" />
+<meta property="og:url" content="{{ ogUrl }}" />
+{%- endif %}
+{%- if ogType %}
+<meta property="og:type" content="{{ ogType }}" />
+{%- endif %}
+{%- if twitterCard %}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{ ogTitle }}" />
+<meta name="twitter:description" content="{{ ogDescription }}" />
+<meta name="twitter:image" content="https://jamesdrodgers.ai/og-image.png" />
+{%- endif %}
+{%- if googleFont %}
+<link href="{{ googleFont }}" rel="stylesheet">
+{%- endif %}
