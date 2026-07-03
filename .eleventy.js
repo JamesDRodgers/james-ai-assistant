@@ -30,6 +30,11 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("math_homework.jpeg");
   eleventyConfig.addPassthroughCopy("og-image.png");
   eleventyConfig.addPassthroughCopy("swanz.jpg");
+  eleventyConfig.addPassthroughCopy("favicon.ico");
+  eleventyConfig.addPassthroughCopy("favicon-32x32.png");
+  eleventyConfig.addPassthroughCopy("apple-touch-icon.png");
+  eleventyConfig.addPassthroughCopy("robots.txt");
+  eleventyConfig.addPassthroughCopy("sitemap.xml");
 
   return {
     dir: {
