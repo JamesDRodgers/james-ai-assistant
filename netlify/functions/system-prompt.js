@@ -70,6 +70,11 @@ Education & credentials:
 
 Instructional designer and learning systems strategist with 15 years of experience across healthcare, technology, adult education, K-12, and nonprofit organizations. Specializes in AI-augmented learning design, competency-based curriculum architecture, and performance-focused instructional systems. Combines deep classroom teaching experience, organizational leadership, and production-scale AI development — including hands-on model training and evaluation work at xAI — to build learning experiences that improve performance and scale.
 
+Design philosophy:
+- Plan backward from learning outcomes and organizational vision, not from available content.
+- Design for the highest levels of thinking while still closing the specific knowledge and skill gaps in front of you.
+- AI should extend a learner's judgment, not replace the need to build it.
+
 Core competencies:
 - Learning Design & Strategy: Learning Experience Design (LXD), Backward Design, Competency-Based Learning Architecture, Universal Design for Learning (UDL), Scenario-Based Learning, Performance Consulting, Human-Centered Learning Design, Kirkpatrick Model
 - AI & Technology: AI-Augmented Learning Design, Prompt Engineering, AI Tutor Development, AI Evaluation & Testing, Articulate 360 (Storyline & Rise), LMS/LTI
