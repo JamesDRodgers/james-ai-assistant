@@ -10,22 +10,26 @@ twitterCard: true
 <html lang="en">
 <head>
 {% include "partials/head.njk" %}
+  <link rel="stylesheet" href="/assets/css/nav.css" />
   <link rel="stylesheet" href="/assets/css/chat.css" />
 </head>
 
 <body>
 
+  {% include "partials/nav.njk" %}
+
   <div class="container">
 
-    <!-- SIDEBAR -->
+    <!-- SIDEBAR: bio/identity content, not navigation — the four site-wide
+         destinations now live in the persistent top nav above. -->
     <aside class="sidebar collapsed">
 
       <button
         class="mobile-toggle"
         onclick="toggleSidebar()"
-        aria-label="Toggle Menu"
+        aria-label="Toggle About James"
       >
-        ☰ Menu
+        ☰ About James
       </button>
 
       <!-- IDENTITY ZONE -->
@@ -55,38 +59,6 @@ twitterCard: true
           <li>Ask what kinds of roles or organizations are the best fit for his work</li>
         </ul>
 
-      </div>
-
-      <hr class="divider" />
-
-      <!-- NAVIGATION -->
-      <section class="nav-links-section">
-        <h3>Explore</h3>
-        <div class="nav-link-list">
-          <a href="https://www.jamesdrodgers.ai/portfolio" class="nav-link-item">
-            <span class="nav-link-icon">🗂️</span> Portfolio
-          </a>
-          <a href="https://www.jamesdrodgers.ai/resume" class="nav-link-item">
-            <span class="nav-link-icon">📄</span> Resume
-          </a>
-          <a href="https://www.jamesdrodgers.ai/jamesrodgers" class="nav-link-item">
-            <span class="nav-link-icon">👤</span> About Me
-          </a>
-        </div>
-      </section>
-
-
-      <hr class="divider" />
-
-      <!-- CONTACT -->
-      <div class="sidebar-contact">
-        <button
-          class="contact-btn-sidebar"
-          onclick="showContactForm()"
-          style="min-height:44px; width:100%;"
-        >
-          Contact James
-        </button>
       </div>
 
     </aside>
@@ -138,37 +110,7 @@ twitterCard: true
 
   </div>
 
-  <!-- CONTACT MODAL -->
-  <div id="contactModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeContactForm()">&times;</span>
-      <h2>Contact James</h2>
-      <p>Send James a message and he'll get back to you soon.</p>
-      <form id="contactForm" action="https://formspree.io/f/mrbrlydj" method="POST">
-        <div class="form-group">
-          <label>Your Name *</label>
-          <input type="text" name="name" required />
-        </div>
-        <div class="form-group">
-          <label>Your Email *</label>
-          <input type="email" name="_replyto" required />
-        </div>
-        <div class="form-group">
-          <label>Subject</label>
-          <input type="text" name="_subject" value="Contact from jamesdrodgers.ai" />
-        </div>
-        <div class="form-group">
-          <label>Message *</label>
-          <textarea name="message" rows="5" required></textarea>
-        </div>
-        <div class="form-actions">
-          <button type="button" class="btn-secondary" onclick="closeContactForm()">Cancel</button>
-          <button type="submit" class="btn-primary">Send Message</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
+  <script src="/assets/js/nav.js"></script>
   <script src="/assets/js/chat.js"></script>
   <script>
     function sendChip(btn) {

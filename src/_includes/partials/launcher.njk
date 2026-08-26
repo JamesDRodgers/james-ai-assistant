@@ -1,0 +1,29 @@
+<!-- Floating chat launcher — desktop only, not shown on the chat homepage itself -->
+<button
+  type="button"
+  class="chat-launcher"
+  id="chatLauncherBtn"
+  aria-haspopup="dialog"
+  aria-expanded="false"
+  aria-controls="chatLauncherPanel"
+  aria-label="Ask about James"
+>💬</button>
+
+<div
+  class="chat-launcher-panel"
+  id="chatLauncherPanel"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Ask about James"
+  hidden
+>
+  <div class="chat-launcher-head">
+    <span class="chat-launcher-title">Ask about James</span>
+    <button type="button" class="chat-launcher-close" id="chatLauncherClose" aria-label="Close chat">&times;</button>
+  </div>
+  <div class="chat-launcher-messages" id="chatLauncherMessages"></div>
+  <div class="chat-launcher-input-row">
+    <input type="text" id="chatLauncherInput" placeholder="Ask a question…" autocomplete="off" />
+    <button type="button" id="chatLauncherSend">Send</button>
+  </div>
+</div>

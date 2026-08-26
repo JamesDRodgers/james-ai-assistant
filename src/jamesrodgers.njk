@@ -11,13 +11,15 @@ twitterCard: true
 <html lang="en">
 <head>
 {% include "partials/head.njk" %}
+  <link rel="stylesheet" href="/assets/css/nav.css" />
+  <link rel="stylesheet" href="/assets/css/launcher.css" />
   <link rel="stylesheet" href="/assets/css/jamesrodgers.css" />
 </head>
 
 <body>
-  <div class="page-wrap">
+  {% include "partials/nav.njk" %}
 
-    <a href="https://www.jamesdrodgers.ai/" class="back-link">← Back to portfolio</a>
+  <div class="page-wrap">
 
     <div class="profile-header">
       <img src="/headshot.png" alt="James D. Rodgers" />
@@ -90,12 +92,17 @@ twitterCard: true
       </div>
 
       <div class="portfolio-cta">
-        If you'd like to learn more about my work, <a href="https://jamesdrodgers.ai/">talk to my Portfolio</a>, an interactive portfolio and resume powered by AI.
+        If you'd like to learn more about my work, <a href="https://jamesdrodgers.ai/">chat with the AI assistant</a> trained on my background, or browse the <a href="/portfolio/">portfolio</a> directly.
       </div>
     </div>
 
     <div class="footer-name">James D. Rodgers · San Francisco, CA</div>
 
   </div>
+
+  {% include "partials/launcher.njk" %}
+
+  <script src="/assets/js/nav.js"></script>
+  <script src="/assets/js/launcher.js"></script>
 </body>
 </html>

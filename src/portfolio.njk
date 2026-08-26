@@ -10,21 +10,13 @@ googleFont: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600
 <html lang="en">
 <head>
 {% include "partials/head.njk" %}
+  <link rel="stylesheet" href="/assets/css/nav.css" />
+  <link rel="stylesheet" href="/assets/css/launcher.css" />
   <link rel="stylesheet" href="/assets/css/portfolio.css" />
 </head>
 <body>
 
-  <nav>
-    <div class="nav-inner">
-      <a href="https://www.jamesdrodgers.ai/" class="nav-name">James D. Rodgers</a>
-      <div class="nav-links">
-        <a href="https://www.jamesdrodgers.ai/portfolio" class="active">Portfolio</a>
-        <a href="https://www.jamesdrodgers.ai/resume">Resume</a>
-        <a href="https://www.jamesdrodgers.ai/jamesrodgers">About</a>
-        <a href="https://www.jamesdrodgers.ai/" class="nav-cta">Talk to My Portfolio →</a>
-      </div>
-    </div>
-  </nav>
+  {% include "partials/nav.njk" %}
 
   <div class="page-header">
     <div class="page-eyebrow">Instructional Design · Learning Systems · AI Integration</div>
@@ -163,6 +155,11 @@ googleFont: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600
     <div class="footer-name">James D. Rodgers · Instructional Designer</div>
     <div class="footer-link"><a href="https://www.jamesdrodgers.ai/">www.jamesdrodgers.ai</a></div>
   </div>
+
+  {% include "partials/launcher.njk" %}
+
+  <script src="/assets/js/nav.js"></script>
+  <script src="/assets/js/launcher.js"></script>
 
 </body>
 </html>

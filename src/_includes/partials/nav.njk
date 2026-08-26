@@ -1,0 +1,65 @@
+<header class="site-nav">
+  <div class="site-nav-inner">
+    <a href="/" class="site-nav-brand">
+      <span class="site-nav-brand-full">James D. Rodgers</span>
+      <span class="site-nav-brand-short" aria-hidden="true">JR</span>
+    </a>
+
+    <nav class="site-nav-links" aria-label="Primary">
+      <a href="/" class="site-nav-link{{ ' is-current' if page.url == '/' }}">
+        <span class="site-nav-link-icon" aria-hidden="true">💬</span>
+        <span class="site-nav-link-label">Chat</span>
+      </a>
+      <a href="/portfolio/" class="site-nav-link{{ ' is-current' if page.url == '/portfolio/' }}">
+        <span class="site-nav-link-icon" aria-hidden="true">🗂️</span>
+        <span class="site-nav-link-label site-nav-link-label--full">Portfolio</span>
+        <span class="site-nav-link-label site-nav-link-label--short" aria-hidden="true">Work</span>
+      </a>
+      <a href="/resume/" class="site-nav-link{{ ' is-current' if page.url == '/resume/' }}">
+        <span class="site-nav-link-icon" aria-hidden="true">📄</span>
+        <span class="site-nav-link-label site-nav-link-label--full">Resume</span>
+        <span class="site-nav-link-label site-nav-link-label--short" aria-hidden="true">Résumé</span>
+      </a>
+      <a href="/jamesrodgers/" class="site-nav-link{{ ' is-current' if page.url == '/jamesrodgers/' }}">
+        <span class="site-nav-link-icon" aria-hidden="true">👤</span>
+        <span class="site-nav-link-label">About</span>
+      </a>
+    </nav>
+
+    <button type="button" class="site-nav-contact" onclick="showContactForm()">
+      <span aria-hidden="true">✉️</span>
+      <span class="site-nav-contact-label">Contact</span>
+    </button>
+  </div>
+</header>
+
+<!-- CONTACT MODAL (shared across every page) -->
+<div id="contactModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeContactForm()">&times;</span>
+    <h2>Contact James</h2>
+    <p>Send James a message and he'll get back to you soon.</p>
+    <form id="contactForm" action="https://formspree.io/f/mrbrlydj" method="POST">
+      <div class="form-group">
+        <label>Your Name *</label>
+        <input type="text" name="name" required />
+      </div>
+      <div class="form-group">
+        <label>Your Email *</label>
+        <input type="email" name="_replyto" required />
+      </div>
+      <div class="form-group">
+        <label>Subject</label>
+        <input type="text" name="_subject" value="Contact from jamesdrodgers.ai" />
+      </div>
+      <div class="form-group">
+        <label>Message *</label>
+        <textarea name="message" rows="5" required></textarea>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" onclick="closeContactForm()">Cancel</button>
+        <button type="submit" class="btn-primary">Send Message</button>
+      </div>
+    </form>
+  </div>
+</div>

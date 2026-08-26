@@ -19,20 +19,6 @@ body {
   padding: 48px 24px 80px;
 }
 
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.82rem;
-  color: #2563eb;
-  text-decoration: none;
-  margin-bottom: 36px;
-  font-weight: 500;
-  transition: opacity 0.15s;
-}
-
-.back-link:hover { opacity: 0.7; }
-
 .profile-header {
   display: flex;
   align-items: center;
