@@ -50,34 +50,6 @@ function clearChat() {
   chatContainer.innerHTML = "";
 }
 
-// CONTACT MODAL
-function showContactForm() {
-
-  document.getElementById("contactModal")
-    .style.display = "block";
-
-  document.body.style.overflow = "hidden";
-}
-
-function closeContactForm() {
-
-  document.getElementById("contactModal")
-    .style.display = "none";
-
-  document.body.style.overflow = "auto";
-}
-
-// CLICK OUTSIDE MODAL
-window.onclick = function (event) {
-
-  const modal =
-    document.getElementById("contactModal");
-
-  if (event.target === modal) {
-    closeContactForm();
-  }
-};
-
 // FORMAT BOT MESSAGE
 // Converts plain text with newlines, **bold**, and [text](url) links into clean HTML.
 // User messages are kept as plain text for safety.
@@ -205,7 +177,11 @@ async function sendMessage() {
 
     hideTyping();
 
-    displayMessage(data.reply, "bot");
+    if (response.ok && data.reply) {
+      displayMessage(data.reply, "bot");
+    } else {
+      displayMessage("Something went wrong. Please try again.", "bot");
+    }
 
   } catch (err) {
 

@@ -45,7 +45,7 @@ body {
   padding: 28px 22px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.07);
   position: sticky;
-  top: 32px;
+  top: 76px; /* clears the sticky .site-nav bar above it */
 }
 
 .avatar {
@@ -123,22 +123,6 @@ body {
   flex-shrink: 0;
   opacity: 0.5;
 }
-
-.portfolio-btn {
-  display: block;
-  margin-top: 16px;
-  background: var(--accent);
-  color: var(--white);
-  text-align: center;
-  padding: 9px 14px;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background 0.2s;
-}
-
-.portfolio-btn:hover { background: var(--accent-dk); }
 
 .main {
   flex: 1;

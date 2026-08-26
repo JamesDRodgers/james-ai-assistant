@@ -1,0 +1,295 @@
+:root {
+  --nav-accent: #5b7fe8;
+  --nav-accent-dk: #4a6dd4;
+  --nav-tint: #eef1f8;
+  --nav-ink: #1a1d23;
+  --nav-ink-soft: #4a5568;
+  --nav-ink-faint: #8492a6;
+  --nav-rule: #dde1ea;
+  --nav-rule-strong: #c7cddb;
+  --nav-surface: #ffffff;
+  --nav-surface-2: #f7f8fa;
+}
+
+/* ============ NAV BAR — same four links, same order, every page ============ */
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--nav-surface);
+  border-bottom: 1px solid var(--nav-rule);
+  font-family: "Inter", sans-serif;
+}
+
+.site-nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.site-nav-brand {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--nav-ink);
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.site-nav-brand-short {
+  display: none;
+}
+
+.site-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.site-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--nav-ink-faint);
+  text-decoration: none;
+  padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.site-nav-link:hover {
+  color: var(--nav-ink);
+}
+
+.site-nav-link.is-current {
+  color: var(--nav-accent);
+  font-weight: 700;
+  border-bottom-color: var(--nav-accent);
+}
+
+.site-nav-link-icon {
+  display: none;
+}
+
+.site-nav-link-label--short {
+  display: none;
+}
+
+.site-nav-contact {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--nav-ink-faint);
+  background: transparent;
+  border: 1px solid var(--nav-rule);
+  padding: 7px 13px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.site-nav-contact:hover {
+  color: var(--nav-ink);
+  border-color: var(--nav-rule-strong);
+}
+
+.site-nav-contact:focus-visible,
+.site-nav-link:focus-visible,
+.site-nav-brand:focus-visible {
+  outline: 2px solid var(--nav-accent);
+  outline-offset: 2px;
+}
+
+/* ============ MOBILE — always-visible compact bar, no hamburger ============ */
+
+@media (max-width: 700px) {
+  .site-nav-inner {
+    padding: 8px 10px;
+    gap: 4px;
+  }
+
+  .site-nav-brand-full {
+    display: none;
+  }
+
+  .site-nav-brand-short {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: var(--nav-accent);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+  }
+
+  .site-nav-links {
+    margin-left: auto;
+    gap: 4px;
+  }
+
+  .site-nav-link {
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border-radius: 9px;
+    border-bottom: none;
+    font-size: 6.8px;
+    font-weight: 700;
+  }
+
+  .site-nav-link.is-current {
+    background: var(--nav-tint);
+    border-bottom: none;
+  }
+
+  .site-nav-link-icon {
+    display: block;
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  .site-nav-link-label--full {
+    display: none;
+  }
+
+  .site-nav-link-label--short {
+    display: block;
+  }
+
+  .site-nav-contact {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 9px;
+  }
+
+  .site-nav-contact-label {
+    display: none;
+  }
+}
+
+/* ============ CONTACT MODAL — shared across every page ============ */
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--nav-surface);
+  width: 90%;
+  max-width: 500px;
+  margin: 5% auto;
+  padding: 32px;
+  border-radius: 16px;
+  font-family: "Inter", sans-serif;
+}
+
+.modal-content h2 {
+  color: var(--nav-ink);
+}
+
+.close {
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--nav-ink-soft);
+}
+
+.close:hover {
+  color: var(--nav-ink);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--nav-ink-soft);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid var(--nav-rule);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--nav-accent);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: var(--nav-accent);
+  color: #fff;
+  transition: background 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: var(--nav-accent-dk);
+}
+
+.btn-secondary {
+  background: #ececec;
+  color: var(--nav-ink);
+}
+
+.btn-secondary:hover {
+  background: #ddd;
+}
+
+@media (max-width: 700px) {
+  .modal-content {
+    width: 95%;
+    margin: 10px auto;
+    padding: 20px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
