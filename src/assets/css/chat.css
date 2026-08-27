@@ -201,23 +201,6 @@ body {
   30% { transform: translateY(-6px); opacity: 1; }
 }
 
-/* MOBILE TOGGLE BUTTON — collapses the bio/identity panel only. The four
-   navigational destinations are never hidden; they live in the always-visible
-   top nav bar. */
-.mobile-toggle {
-  display: none;
-  background: none;
-  border: 2px solid var(--border-light);
-  border-radius: var(--radius-md);
-  padding: 10px 16px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  color: var(--text-primary);
-  width: 100%;
-  text-align: left;
-}
-
 .visually-hidden {
   position: absolute;
   left: -9999px;
@@ -228,29 +211,11 @@ body {
 
   .container { flex-direction: column; }
 
+  /* Bio/identity sidebar is desktop-only — on mobile it duplicated the
+     nav's own "About" tab, so it's hidden entirely rather than made
+     collapsible. */
   .sidebar {
-    width: 100%;
-    padding: 16px 20px;
-    overflow-y: visible;
-    flex-shrink: 0;
-  }
-
-  .mobile-toggle {
-    display: block;
-    margin-bottom: 16px;
-  }
-
-  /* Bio content hidden when collapsed */
-  .sidebar.collapsed ul,
-  .sidebar.collapsed p,
-  .sidebar.collapsed .profile {
     display: none;
-  }
-
-  .sidebar:not(.collapsed) ul,
-  .sidebar:not(.collapsed) p,
-  .sidebar:not(.collapsed) .profile {
-    display: block;
   }
 
   /* Chat area */
@@ -295,19 +260,6 @@ body {
   .util-btn {
     padding: 10px 14px;
     font-size: 13px;
-  }
-
-  /* Avatar */
-  .avatar {
-    width: 80px;
-    height: 80px;
-  }
-
-  .profile h1 { font-size: 1.2rem; }
-
-  .tagline {
-    font-size: 0.85rem;
-    margin-bottom: 16px;
   }
 }
 

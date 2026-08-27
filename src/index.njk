@@ -21,16 +21,10 @@ twitterCard: true
   <div class="container">
 
     <!-- SIDEBAR: bio/identity content, not navigation — the four site-wide
-         destinations now live in the persistent top nav above. -->
-    <aside class="sidebar collapsed">
-
-      <button
-        class="mobile-toggle"
-        onclick="toggleSidebar()"
-        aria-label="Toggle About James"
-      >
-        ☰ About James
-      </button>
+         destinations now live in the persistent top nav above. Desktop only:
+         on mobile this duplicated the nav's own "About" tab, so it's hidden
+         there instead of made collapsible. -->
+    <aside class="sidebar">
 
       <!-- IDENTITY ZONE -->
       <div class="profile">
