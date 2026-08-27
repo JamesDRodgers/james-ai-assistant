@@ -2,21 +2,6 @@ const chatContainer = document.getElementById("chatContainer");
 const userInput = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 
-// MOBILE SIDEBAR
-function toggleSidebar() {
-
-  const sidebar = document.querySelector(".sidebar");
-
-  const isCollapsed =
-    sidebar.classList.toggle("collapsed");
-
-  const toggleBtn =
-    document.querySelector(".mobile-toggle");
-
-  toggleBtn.textContent =
-    isCollapsed ? "☰ Menu" : "✕ Close";
-}
-
 // PRESET QUESTIONS
 function setPresetQuestion(btn) {
 
