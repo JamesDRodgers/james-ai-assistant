@@ -2,34 +2,6 @@ const chatContainer = document.getElementById("chatContainer");
 const userInput = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 
-// PRESET QUESTIONS
-function setPresetQuestion(btn) {
-
-  const text = btn.innerText.trim();
-
-  userInput.value = text;
-
-  userInput.focus();
-
-  requestAnimationFrame(() => {
-
-    userInput.scrollLeft = 0;
-
-    userInput.setSelectionRange(0, 0);
-  });
-
-  if (window.innerWidth <= 900) {
-
-    const sidebar =
-      document.querySelector(".sidebar");
-
-    sidebar.classList.add("collapsed");
-
-    document.querySelector(".mobile-toggle")
-      .textContent = "☰ Menu";
-  }
-}
-
 // CLEAR CHAT
 function clearChat() {
   chatContainer.innerHTML = "";
