@@ -64,7 +64,7 @@ Education & credentials:
 - Master of Divinity, Church Divinity School of the Pacific / Graduate Theological Union, Berkeley CA, 2017
 - Certificate in Generative AI Applications, Purdue University, 2025
 - Certificate in Data Analytics, City College of San Francisco, anticipated Spring 2027
-- Professional Scrum Master I (PSM I), Scrum.org, in progress, expected June 2026
+- Professional Scrum Master I (PSM I), Scrum.org, certified August 2026
 
 ## Resume summary
 
