@@ -190,7 +190,7 @@ details>summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;alig
       <li data-first="m4"><a href="#m4"><span class="mi"><span class="ico"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 13l2 2 4-4"/></svg></span><span><b>5. Test and fix it</b><br><span class="mut">Try it on a new situation and improve it.</span></span></span><span class="mut">15 min</span></a></li>
       <li data-first="m5"><a href="#m5"><span class="mi"><span class="ico"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.2 10.9l7.6-3.8M8.2 13.1l7.6 3.8"/></svg></span><span><b>6. Share it</b><br><span class="mut">Give it to a colleague and see how it's used.</span></span></span><span class="mut">10 min</span></a></li>
       <li data-first="wrap"><a href="#wrap"><span class="mi"><span class="ico"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></svg></span><span><b>Course summary</b><br><span class="mut">Review what you learned and where to learn more.</span></span></span><span class="mut">5 min</span></a></li>
-      <li data-first="feedback"><a href="#feedback"><span class="mi"><span class="ico"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M4 5h16v11H9l-5 4V5z"/></svg></span><span><b>Feedback</b><br><span class="mut">Optional. Tell James what to improve.</span></span></span><span class="mut">2 min</span></a></li>
+      <li data-first="feedback"><a href="#feedback"><span class="mi"><span class="ico"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M4 5h16v11H9l-5 4V5z"/></svg></span><span><b>Feedback</b><br><span class="mut">Optional. Tell us what to improve.</span></span></span><span class="mut">2 min</span></a></li>
     </ol>
   </section>
   <section class="cols">
@@ -619,7 +619,7 @@ Would you like me to draft any of these messages?</div></div>
 
 <!-- FEEDBACK -->
 <section class="view" data-view="feedback" data-mod="8" hidden>
-  <div class="title"><p class="lbl">Optional · 2 minutes</p><h1 tabindex="-1">Tell James what you think</h1><div class="rule" aria-hidden="true"></div><p>Your feedback goes to the course creator and shapes the next version.</p></div>
+  <div class="title"><p class="lbl">Optional · 2 minutes</p><h1 tabindex="-1">Tell us what you think</h1><div class="rule" aria-hidden="true"></div><p>Your feedback goes to the course creator and shapes the next version.</p></div>
   <section class="box sand"><p style="margin:0"><b>This is the only thing in the course that's sent anywhere,</b> and only when you press Send. Your method, skill, test log, and handoff note are not included. Please don't include details about your organization.</p></section>
   <form class="box" id="fbForm" style="display:flex;flex-direction:column;gap:20px">
     <fieldset style="border:0;margin:0;padding:0"><legend class="fl">How useful was this course?</legend><div class="row">
@@ -903,7 +903,7 @@ $("#fbForm").addEventListener("submit",function(e){e.preventDefault();var f=this
   if(!body.usefulness&&!body.finished&&!body.stuck.trim()&&!body.worked.trim()&&!body.change.trim()){msg.textContent="Answer at least one question before sending.";return;}
   btn.disabled=true;msg.textContent="Sending...";
   fetch("https://formspree.io/f/mrbrlydj",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(body)})
-   .then(function(r){if(!r.ok)throw new Error(r.status);f.querySelectorAll("fieldset,div:not(.toast)").forEach(function(x){x.hidden=true;});msg.textContent="Thank you. Your feedback was sent to James.";})
+   .then(function(r){if(!r.ok)throw new Error(r.status);f.querySelectorAll("fieldset,div:not(.toast)").forEach(function(x){x.hidden=true;});msg.textContent="Thank you. Your feedback was sent.";})
    .catch(function(){btn.disabled=false;msg.textContent="That didn't send. Check your connection and try again.";});});
 
 show();
