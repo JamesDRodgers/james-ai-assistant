@@ -10,6 +10,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("usher-training.html");
   eleventyConfig.addPassthroughCopy("sb_proposal.html");
   eleventyConfig.addPassthroughCopy("swim");
+  eleventyConfig.addPassthroughCopy("courses");
 
   // Images, PDFs, and other binary assets referenced (by root-relative path)
   // from both the templated pages and the passthrough case-study pages above.
