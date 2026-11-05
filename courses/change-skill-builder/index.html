@@ -1,0 +1,913 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Change Management Skill Builder · James D. Rodgers</title>
+<meta name="description" content="A free course: turn the way you already handle change into a Claude skill that helps you create a communication plan. Designed by James D. Rodgers.">
+<meta property="og:title" content="Change Management Skill Builder">
+<meta property="og:description" content="A free course: turn the way you already handle change into a Claude skill that helps you create a communication plan.">
+<meta property="og:image" content="https://jamesdrodgers.ai/courses/change-skill-builder/hero.jpg">
+<meta property="og:url" content="https://jamesdrodgers.ai/courses/change-skill-builder/">
+<link rel="icon" href="/headshot.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: one centered 1040px column per screen; teal header band; white content boxes on ivory. Single light look by design (course palette). */
+:root{
+  --teal:#193F46; --sage:#547C70; --ivory:#F5F3EE; --white:#FFFFFF; --terra:#D38A70; --sand:#DECDA4;
+  --line:#E2DCCF; --line-soft:#EEEAE0; --tint:#E5ECE9; --dash:#CFC8B8;
+  --font:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--ivory);color:var(--teal);font-family:var(--font);font-size:16px;line-height:1.6}
+a{color:var(--teal)} a:hover{color:var(--sage)}
+h1,h2{text-wrap:balance}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.band{background:var(--teal);border-bottom:4px solid var(--terra);color:var(--white)}
+header.band .wrap{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding-block:14px}
+header.band a{color:var(--white);font-weight:600;font-size:15px;text-decoration:none}
+header.band a:hover{color:var(--sand)}
+header.band .note{font-size:13px}
+main .wrap{padding-block:32px 72px;display:flex;flex-direction:column;gap:28px}
+.view{display:flex;flex-direction:column;gap:28px}
+.lbl{font-size:11.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin:0 0 12px}
+h2.lbl{font-size:21px;font-weight:800;letter-spacing:0;text-transform:none;line-height:1.3;margin:0 0 14px;display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+h2.lbl .num{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;margin:0}
+@media (max-width:600px){h2.lbl{font-size:19px}}
+.num{display:inline-block;background:var(--sage);color:var(--white);border-radius:999px;padding:3px 10px;margin-right:8px;letter-spacing:1px}
+.box{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:24px;min-width:0}
+.box.sand{background:var(--sand);border-color:var(--sand)}
+.box.tint{background:var(--tint);border-color:var(--sage)}
+.mut{color:var(--sage)}
+.box .mut,.inner .mut{color:var(--sage)}
+.title h1{margin:0 0 12px;font-size:32px;line-height:1.2;font-weight:800}
+.title .rule{width:64px;height:5px;border-radius:3px;background:var(--terra);margin:0 0 16px}
+.title p{margin:0;max-width:640px}
+.sr{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border-radius:8px;font:600 15px var(--font);border:2px solid var(--teal);cursor:pointer;text-decoration:none;background:var(--white);color:var(--teal)}
+.btn:hover{border-color:var(--terra);color:var(--teal)}
+.btn.p{background:var(--teal);color:var(--white)}
+.btn.p:hover{background:var(--sage);border-color:var(--sage);color:var(--white)}
+.btn[disabled]{opacity:.55;cursor:not-allowed}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.cols{display:flex;flex-wrap:wrap;gap:16px}
+.cols>*{flex:1 1 300px;min-width:0}
+.stepper{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.stepper li{flex:1 1 0;min-width:84px;position:relative;padding:10px 6px;border-radius:8px;font-size:12.5px;line-height:1.25;text-align:center;border:1px solid var(--line);background:var(--white)}
+.stepper li.on{background:var(--teal);color:var(--white);border-color:var(--teal);font-weight:700}
+.stepper li.done{background:var(--tint);border-color:var(--sage)}
+.stepper li a{color:inherit;text-decoration:none;display:block}
+.stepper li a:hover{text-decoration:underline}
+.stepper li.home{background:var(--sand);border-color:var(--sand);font-weight:700}
+.stepper li.locked{background:var(--ivory);border-style:dashed;border-color:var(--dash)}
+.modlist li .locked{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;padding:16px 20px;background:var(--ivory);border:1px dashed var(--dash);border-radius:12px}
+.notice{background:var(--sand);border-radius:8px;padding:12px 16px;font-size:15px}
+header.band .links{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+label.fl{display:block;font-weight:600;margin-bottom:6px}
+textarea,input[type=text],input[type=email],input[type=date],select{font:16px/1.55 var(--font);color:var(--teal);background:var(--white);border:1.5px solid var(--sage);border-radius:8px;padding:10px 12px;width:100%}
+textarea{min-height:88px;resize:vertical}
+.chk{display:flex;gap:10px;align-items:center;min-height:44px}
+.chk input{width:20px;height:20px;accent-color:var(--teal);flex:none}
+.q{display:flex;flex-direction:column;gap:6px}
+.do{margin:0 0 12px;font-size:15px;background:var(--tint);border-radius:8px;padding:10px 14px}
+.do b{margin-right:4px}
+.onpage ol{margin:8px 0 0;padding-left:22px;line-height:1.8}
+.gp{margin:2px 0 12px 30px;padding:14px 16px;border-left:3px solid var(--sage);background:var(--ivory);border-radius:0 8px 8px 0;display:flex;flex-direction:column;gap:14px}
+.gp[hidden],.q[hidden]{display:none}
+legend.fl{font-weight:600;margin-bottom:6px}
+.gp fieldset{border:0;margin:0;padding:0}
+.gp legend{font-weight:600;margin-bottom:4px;padding:0}
+.chgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));column-gap:16px}
+.chgrid .chk{min-height:36px;font-size:15px}
+@media (max-width:600px){.gp{margin-left:0}}
+.inner{border:1px solid var(--line);border-radius:8px;padding:14px 16px;background:var(--white);min-width:0}
+.well{border:1px solid var(--line);border-radius:8px;padding:14px 16px;background:var(--ivory);min-width:0}
+.pending{border:1.5px dashed var(--dash);border-radius:8px;padding:16px;background:var(--ivory);font-size:14px}
+.prompt{max-height:300px;overflow:auto;white-space:pre-wrap;font:13px/1.6 var(--mono);border:1px solid var(--line);border-radius:8px;padding:14px 16px;background:var(--ivory)}
+.out{white-space:pre-wrap;font-size:14.5px;line-height:1.6;border:1px solid var(--line);border-radius:8px;padding:16px;background:var(--ivory);max-height:520px;overflow:auto}
+.navrow{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+.modlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.modlist li a{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;padding:16px 20px;background:var(--white);border:1px solid var(--line);border-radius:12px;text-decoration:none}
+.modlist li a:hover{border-color:var(--terra)}
+.mi{display:flex;gap:14px;align-items:center}
+.ico{width:44px;height:44px;border-radius:50%;background:var(--tint);color:var(--teal);display:flex;align-items:center;justify-content:center;flex:none}
+.modlist li .locked .ico{background:var(--white);color:var(--sage)}
+.stepper li a,.stepper li.on,.stepper li.locked{display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center}
+.stepper li svg{width:20px;height:20px}
+.stepper .chk-done{position:absolute;top:4px;right:6px;font-size:11px;font-weight:700}
+@media (max-width:700px){.stepper li{flex:1 1 22%}}
+.hero img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--line)}
+.flipgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.flip{position:relative;height:200px;padding:0;border:0;background:transparent;cursor:pointer;perspective:900px;font-family:var(--font);text-align:center;color:var(--teal)}
+.flip .in{position:absolute;inset:0;transition:transform .45s ease;transform-style:preserve-3d;display:block}
+.flip.on .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px;border-radius:10px;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.front{background:var(--white);border:1px solid var(--line)}
+.back{background:var(--sand);border:1.5px solid var(--teal);transform:rotateY(180deg)}
+.obj{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line-soft);font-size:15px;line-height:1.5}
+.obj:last-child{border-bottom:0}
+.tag{flex:none;font-size:12px;font-weight:700;background:var(--sand);border-radius:4px;padding:3px 8px;margin-top:2px}
+.part{border:1px solid var(--line);border-radius:8px;padding:14px 16px;display:flex;flex-wrap:wrap;gap:12px;align-items:baseline}
+.part b{font-size:12px;color:var(--white);background:var(--teal);border-radius:4px;padding:3px 8px}
+.sortrow{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line-soft);padding-bottom:12px}
+.sortrow:last-child{border-bottom:0}
+.sortrow .btn[aria-pressed=true]{background:var(--sand)}
+.sortrow .why{flex-basis:100%;font-size:14px}
+.tbl{width:100%;border-collapse:collapse;font-size:15px}
+.finish{background:var(--teal);color:var(--white);border-radius:16px;padding:36px 32px;border-bottom:6px solid var(--terra);box-shadow:0 6px 24px rgba(25,63,70,.18)}
+.finish h2{margin:12px 0 10px;font-size:34px;line-height:1.15;font-weight:800;color:var(--white)}
+.finish-lead{margin:0 0 14px;font-size:20px;line-height:1.5;max-width:640px}
+.finish-mark{width:64px;height:64px;border-radius:50%;background:var(--sand);color:var(--teal);display:flex;align-items:center;justify-content:center}
+.finish .btn.finish-btn{background:var(--white);color:var(--teal);border-color:var(--white)}
+.finish .btn.finish-btn:hover{background:var(--sand);border-color:var(--sand)}
+.finish .toast{color:var(--white)}
+@media (max-width:600px){.finish{padding:28px 20px}.finish h2{font-size:28px}}
+.ggroup{margin:0 0 18px}.ggroup h3{font-size:18px;margin:0 0 6px}
+.grow{border:0;margin:0;padding:10px 0;border-bottom:1px solid var(--line-soft);display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.grow legend{float:left;padding:0;font-size:16px;max-width:620px}
+.yn{display:flex;gap:8px}.yn label{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 14px;border:1.5px solid var(--teal);border-radius:8px;cursor:pointer;font-weight:600;font-size:15px}
+.yn input{accent-color:var(--teal);width:18px;height:18px}
+.yn label:has(input:checked){background:var(--teal);color:var(--white)}
+.yn label:has(input:checked) input{accent-color:var(--white)}
+.grow .fixhint{flex-basis:100%;font-size:15px;background:var(--ivory);border-left:3px solid var(--terra);padding:8px 12px;border-radius:0 6px 6px 0}
+.tbl th,.tbl td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+.tbl th{font-size:13px;color:var(--sage)}
+.scroll{overflow-x:auto}
+.radio{flex:1 1 280px;display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:8px;padding:14px;font-size:15px;cursor:pointer;background:var(--white)}
+.radio:has(input:checked){border:2px solid var(--teal)}
+.radio input{accent-color:var(--teal);margin-top:4px}
+.toast{font-size:14px;min-height:20px}
+details>summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center}
+.flag{border-left:0;background:var(--sand);border-radius:8px;padding:12px 14px;font-size:14px}
+</style>
+
+<header class="band"><div class="wrap"><a href="#home">Change Management Skill Builder</a><span class="links"><span class="note">Progress saved in this browser</span><a href="#home">Course home</a><a href="/portfolio">Portfolio</a></span></div></header>
+<main><div class="wrap" id="app">
+<div class="notice" id="lockNotice" role="status" hidden></div>
+
+<!-- HOME -->
+<section class="view" data-view="home">
+  <div class="hero" style="display:flex;flex-direction:column;gap:24px">
+    <h1 class="sr" tabindex="-1">Change Management Skill Builder</h1>
+    <img src="hero.jpg" width="1600" height="907" alt="Change Management Skill Builder. Build confidence, communication, and practical tools for leading through change. Illustration of a person working on a laptop, surrounded by icons for conversation, people, ideas, and planning.">
+    <div style="max-width:720px">
+      <p class="lbl">Free course · 6 modules · About 95 minutes</p>
+      <p style="margin:0;font-size:18px;line-height:1.6">For nonprofit leaders. Turn the way you already lead change into a Claude skill you and your team can reuse.</p>
+    </div>
+  </div>
+  <section class="box sand" aria-labelledby="whatskill" style="padding:28px">
+    <h2 id="whatskill" style="margin:0 0 12px;font-size:26px;line-height:1.25;font-weight:800">What's a Claude skill?</h2>
+    <p style="margin:0 0 12px;font-size:18px;line-height:1.6;max-width:720px">A Claude skill is a saved set of instructions that teaches Claude how to do one specific task your way. You add it to your Claude account once. After that, whenever you ask for that kind of task in any chat, Claude recognizes it, loads your instructions, and follows them, so you don't have to explain your process again.</p>
+    <div class="cols" style="margin:0 0 4px">
+      <div class="inner"><b>A prompt</b><div style="font-size:15px;margin-top:4px">The message you type in one chat. Claude uses it for that conversation only. To get the same approach next time, you have to explain it again.</div></div>
+      <div class="inner"><b>A skill</b><div style="font-size:15px;margin-top:4px">Instructions saved to your account. Claude uses them whenever it recognizes the task, in any chat. You can share the file so colleagues get the same approach.</div></div>
+    </div>
+  </section>
+  <section style="max-width:760px">
+    <h2 style="margin:0 0 10px;font-size:22px;line-height:1.3;font-weight:800">In this course, you'll build a skill of your own</h2>
+    <p style="margin:0;font-size:17px;line-height:1.65">You'll base it on how you already lead change and on the people your organization serves, works with, and answers to. The next time something changes, Claude will help you plan who to tell, in what order, and what to say, the way you would.</p>
+  </section>
+  <section class="box"><h2 class="lbl">You'll leave with</h2>
+    <div class="cols" style="gap:20px">
+      <div><b>Your method, written down</b><div class="mut" style="font-size:14px">How you already handle change, as questions and rules</div></div>
+      <div><b>A working skill</b><div class="mut" style="font-size:14px">Built in your own Claude account</div></div>
+      <div><b>A test log</b><div class="mut" style="font-size:14px">What failed, what you fixed</div></div>
+      <div><b>A handoff note</b><div class="mut" style="font-size:14px">So a colleague can use it too</div></div>
+    </div>
+  </section>
+  <section><h2 class="lbl">The modules</h2>
+    <ol class="modlist">
+      <li data-first="m1"><a href="#m1"><span class="mi"><span class="ico"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span><span><b>1. Why bother?</b><br><span class="mut">See what a skill does that a single prompt can't.</span></span></span><span class="mut">10 min</span></a></li>
+      <li data-first="m2"><a href="#m2"><span class="mi"><span class="ico"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M4 20h4L19 9l-4-4L4 16v4z"/><path d="M13.5 6.5l4 4"/></svg></span><span><b>2. Capture your method</b><br><span class="mut">Write down how you already lead change.</span></span></span><span class="mut">25 min</span></a></li>
+      <li data-first="m3"><a href="#m3"><span class="mi"><span class="ico"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-.5-.5-2.5z"/></svg></span><span><b>3. Build the skill</b><br><span class="mut">Claude turns your method into a skill.</span></span></span><span class="mut">20 min</span></a></li>
+      <li data-first="up"><a href="#up"><span class="mi"><span class="ico"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M12 15V4"/><path d="M7 9l5-5 5 5"/><path d="M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></svg></span><span><b>4. Upload your skill</b><br><span class="mut">Add it to Claude and turn it on.</span></span></span><span class="mut">10 min</span></a></li>
+      <li data-first="m4"><a href="#m4"><span class="mi"><span class="ico"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 13l2 2 4-4"/></svg></span><span><b>5. Test and fix it</b><br><span class="mut">Try it on a new situation and improve it.</span></span></span><span class="mut">15 min</span></a></li>
+      <li data-first="m5"><a href="#m5"><span class="mi"><span class="ico"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.2 10.9l7.6-3.8M8.2 13.1l7.6 3.8"/></svg></span><span><b>6. Share it</b><br><span class="mut">Give it to a colleague and see how it's used.</span></span></span><span class="mut">10 min</span></a></li>
+      <li data-first="wrap"><a href="#wrap"><span class="mi"><span class="ico"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></svg></span><span><b>Course summary</b><br><span class="mut">Review what you learned and where to learn more.</span></span></span><span class="mut">5 min</span></a></li>
+      <li data-first="feedback"><a href="#feedback"><span class="mi"><span class="ico"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M4 5h16v11H9l-5 4V5z"/></svg></span><span><b>Feedback</b><br><span class="mut">Optional. Tell us what to improve.</span></span></span><span class="mut">2 min</span></a></li>
+    </ol>
+  </section>
+  <section class="cols">
+    <div class="box"><h2 class="lbl">Before you start</h2><p style="margin:0 0 8px">Make sure you have:</p><ul style="margin:0;padding-left:18px;line-height:1.85"><li>A Claude account. The Free plan works.</li><li>Code execution turned on in Claude's settings. Module 3 shows you how.</li><li>A change you've led, to draw on in Module 2.</li></ul></div>
+    <div class="box"><h2 class="lbl">Your privacy</h2><p style="margin:0">What you type in this course stays in your browser. Nothing is sent to this site, except feedback you choose to send at the end. When you work with Claude, you use your own account. You can download your work at any time.</p></div>
+  </section>
+  <div class="row" style="justify-content:center;padding-block:8px"><a class="btn p" href="#objectives" id="startBtn">Start the course</a><a class="btn" id="resumeBtn" href="#home" hidden>Continue where you left off</a></div>
+  <p style="text-align:center;margin:0;font-size:15px"><a href="#about">Reviewing this course? See how it was designed.</a></p>
+</section>
+
+<!-- ABOUT -->
+<section class="view" data-view="about" hidden>
+  <div class="title"><p class="lbl">For reviewers · 3 minutes</p><h1 tabindex="-1">How this course was designed</h1><div class="rule" aria-hidden="true"></div><p>A short case study: who it's for, what it's built to do, the choices behind it, and how it was tested. Designed by James D. Rodgers, built with Claude as a design and build partner.</p></div>
+  <section class="box"><h2 class="lbl">The problem</h2>
+    <p style="margin:0 0 10px">Nonprofit leaders, especially at organizations of 20 to 60 staff, lead change often, usually without a communications team. Most already know how to tell people well: who hears first, who needs a phone call, what not to put in an email. That knowledge lives in their heads, and it gets skipped when things move fast.</p>
+    <p style="margin:0">Generic AI advice doesn't help much, because it doesn't know their people or their rules. This course teaches them to turn their own method into a Claude skill, so Claude follows it every time.</p></section>
+  <section class="box"><h2 class="lbl">Scope</h2>
+    <p style="margin:0">The skill plans change communication: who to tell, in what order, and what to say. That is one part of change management, not all of it. I chose it because it's where small organizations most often get hurt: staff learning about their own jobs from an all-staff email, or a funder hearing news secondhand.</p></section>
+  <section class="box"><h2 class="lbl">The approach</h2>
+    <div class="scroll"><table class="tbl"><thead><tr><th scope="col">Principle</th><th scope="col">Where it shows up</th></tr></thead><tbody>
+      <tr><td><b>Backward design</b></td><td>I started from the end product, a working skill in the learner's own Claude account, and the behaviors that show it works. Those became the <a href="#objectives">objectives</a> and the Module 5 grading checklist.</td></tr>
+      <tr><td><b>Merrill's First Principles</b></td><td>Activation: Module 2 starts from a real change the learner led. Demonstration: Module 1 shows two answers side by side. Application: Modules 3 to 5. Integration: Module 6, where they hand the skill to a colleague.</td></tr>
+      <tr><td><b>Contrasting cases</b></td><td>Module 1 puts a one-off prompt next to a skill on the same situation, and asks learners what they notice before showing them.</td></tr>
+      <tr><td><b>Critical incident technique</b></td><td>Module 2's walk-back questions pull the learner's method out of one real event instead of asking them to describe it in the abstract.</td></tr>
+      <tr><td><b>Adult learning</b></td><td>Everything uses the learner's own organization and their own account. They leave with something they'll use the next week.</td></tr>
+      <tr><td><b>Feedback tied to action</b></td><td>In Module 5, each No on the grading checklist names the part of the skill to fix and what to ask Claude.</td></tr>
+    </tbody></table></div></section>
+  <section class="box"><h2 class="lbl">Key decisions</h2>
+    <ul style="margin:0;padding-left:20px;line-height:1.7">
+      <li style="margin-bottom:8px"><b>Learners work in their own Claude account.</b> They keep the skill, and nothing about their organization is sent to this site. The trade-off is a few setup steps, which Modules 3 and 4 walk through.</li>
+      <li style="margin-bottom:8px"><b>No AI runs on this site.</b> The Module 1 examples are written ahead of time. That keeps the course free to run and private. The trade-off is no personalized feedback in Module 1, so learners compare their notes with an expert list instead.</li>
+      <li><b>One prompt builds the whole skill.</b> An earlier version had learners fill in each part of the skill with checkboxes. It worked, but it was long, and testing suggested people would drop off. Now Claude writes the skill from their Module 2 answers, shows it in full, and only packages it once the learner has read it.</li>
+    </ul></section>
+  <section class="box"><h2 class="lbl">How it was tested</h2>
+    <p style="margin:0 0 10px">I tested the course in walkthroughs with simulated learners: leaders of a youth orchestra, a food bank, a health clinic, an animal shelter, an arts center, and others. The cases covered thin answers, a phone screen, answers written in Spanish, unusual formatting in Claude's replies, and learners who edit their work after drafting. Testing led to these changes:</p>
+    <ul style="margin:0 0 10px;padding-left:20px;line-height:1.7"><li>The learner's own rules now go into the skill word for word, instead of through Claude's rewording.</li><li>The course checks the skill file before upload, and catches problems like a missing folder or a description that would break the file.</li><li>The page now gives clear instructions at each step, and a plain message when something goes wrong.</li><li>Module 3 went from many checkboxes to one prompt.</li></ul>
+    <p style="margin:0">Accessibility: keyboard use throughout, real headings for screen readers, labeled controls, color contrast checked, and layouts tested at phone width. Next step: a pilot with real nonprofit leaders.</p></section>
+  <section class="box"><h2 class="lbl">How success is measured</h2>
+    <ul style="margin:0;padding-left:20px;line-height:1.7"><li><b>Reaction:</b> the optional feedback form at the end.</li><li><b>Learning:</b> a working skill that passes the Module 5 grading checklist.</li><li><b>Behavior:</b> the two-week check-in with a colleague in Module 6: is the skill being used on real changes?</li></ul></section>
+  <section class="box sand"><h2 class="lbl">Look around</h2>
+    <p style="margin:0 0 14px">The course normally opens one module at a time. You can unlock every module to look through it.</p>
+    <div class="row"><button type="button" class="btn p" id="unlockAll">Unlock all modules</button><a class="btn" href="#home">Course home</a><span class="toast mut" id="unlockMsg" aria-live="polite"></span></div></section>
+</section>
+
+<!-- OBJECTIVES -->
+<section class="view" data-view="objectives" hidden>
+  <div class="title"><p class="lbl">Before you start</p><h1 tabindex="-1">What you'll learn</h1><div class="rule" aria-hidden="true"></div><p>The purpose of this course is to develop your own Claude skill to implement change in your organization. Below is what you'll be able to do by the end, what you'll understand along the way, and the words this course uses.</p></div>
+  <div class="cols">
+    <section class="box"><h2 class="lbl">Skills · You'll be able to</h2>
+      <div class="obj"><span class="tag">M1</span><span>Tell when a task is worth turning into a skill and when a single prompt is enough</span></div>
+      <div class="obj"><span class="tag">M2</span><span>Write down your own change method as questions and standing rules, drawn from a change you've led</span></div>
+      <div class="obj"><span class="tag">M3</span><span>Write a skill description that makes Claude use your skill when it should</span></div>
+      <div class="obj"><span class="tag">M3</span><span>Build a working Claude skill from your method, with an output format and guardrails</span></div>
+      <div class="obj"><span class="tag">M4</span><span>Check your skill's output against a checklist and fix the part of the skill that caused each problem</span></div>
+      <div class="obj"><span class="tag">M5</span><span>Hand your skill to a colleague with a note, a version label, and a plan to see if it's used</span></div>
+    </section>
+    <section class="box"><h2 class="lbl">Knowledge · You'll understand</h2>
+      <div class="obj"><span class="tag">M1</span><span>How a skill differs from a prompt</span></div>
+      <div class="obj"><span class="tag">M2</span><span>Why your own experience is the best starting point for your method, and how formal change models compare</span></div>
+      <div class="obj"><span class="tag">M2</span><span>Why the order people hear about a change matters in a small organization</span></div>
+      <div class="obj"><span class="tag">M3</span><span>How Claude decides when to use a skill</span></div>
+      <div class="obj"><span class="tag">M3</span><span>What guardrails do, and why the skill flags HR or legal review</span></div>
+      <div class="obj"><span class="tag">M4</span><span>Why AI output needs your review before it goes to anyone</span></div>
+      <div class="obj"><span class="tag">M5</span><span>How sharing a skill works on individual plans and on Team plans</span></div>
+    </section>
+  </div>
+  <section class="box">
+    <div class="row" style="justify-content:space-between;margin-bottom:16px"><div><h2 class="lbl" style="margin-bottom:4px">Key terms</h2><p class="mut" style="margin:0;font-size:15px">Select a card to see the definition. Select it again to flip it back.</p></div><button type="button" class="btn" id="flipall" aria-pressed="false">Show all definitions</button></div>
+    <div class="flipgrid" id="terms"></div>
+  </section>
+  <div class="navrow"><a class="btn" href="#home">Course home</a><a class="btn p" href="#m1">Start Module 1: Why bother?</a></div>
+</section>
+
+<!-- M1 PART 1 -->
+<section class="view" data-view="m1" data-mod="1" hidden>
+  <div class="title"><p class="lbl">Module 1 · 10 minutes · Part 1 of 2: Two answers</p><h1 tabindex="-1">Why bother?</h1><div class="rule" aria-hidden="true"></div><p><b>By the end, you can:</b> tell when a task is worth turning into a skill, and when a single prompt is enough.</p></div>
+  <section class="box"><h2 class="lbl">The situation</h2>
+    <p style="margin:0 0 8px;font-size:17px"><b>Imagine you're in the following situation:</b></p><p style="margin:0 0 12px;font-size:17px">You lead a 35-person youth services nonprofit. Your largest foundation grant, which paid for most of your after-school tutoring program, wasn't renewed. You plan to close the program by spring. Your board votes on the closure next week.</p>
+    <ul style="margin:0 0 12px;padding-left:20px;line-height:1.8"><li>4 program staff</li><li>22 volunteer tutors</li><li>60 students and their families</li><li>2 partner schools</li><li>3 smaller funders who also support the program</li></ul>
+    <p style="margin:0;font-size:17px">You ask Claude for help planning how to tell people.</p>
+  </section>
+  <section><h2 class="lbl">Two answers to the same request</h2>
+    <p style="margin:0 0 16px;max-width:720px">Both answers were generated with Claude for this course. The first shows Claude following a single prompt without a predetermined skill. The second shows Claude following an example skill. If you try these prompts yourself, the wording will differ.</p>
+    <div class="cols">
+      <div class="box"><b>A one-off prompt</b><div class="mut" style="font-size:14px;margin:4px 0 14px">"Write an email announcing that we're closing the tutoring program."</div><div class="out" id="ansA" tabindex="0" role="region" aria-label="Answer to the one-off prompt">Here's a draft announcement. Since your board hasn't voted yet, I'd hold this until after the vote.
+
+Subject: An update on our After-School Tutoring Program
+
+Dear families, volunteers, and partners,
+
+I'm writing to share difficult news. After [number] years serving students in our community, [Organization] will close its After-School Tutoring Program at the end of [month].
+
+This decision follows the loss of the program's primary source of funding. We explored options to keep the program running, but we were not able to replace that support in time.
+
+We know how much this program means to the students and families who are part of it, to the volunteer tutors who give their time each week, and to our partner schools. We are deeply grateful to each of you.
+
+Between now and the program's last day, sessions will continue as scheduled. In the coming weeks, we'll share information about other tutoring resources in the area, and our staff will be available to answer your questions.
+
+If you have questions, please contact [name] at [email or phone].
+
+With gratitude,
+[Your name]
+Executive Director
+
+Want me to adjust the tone, or write versions for specific groups like staff or funders?</div></div>
+      <div class="box"><b>A skill built on a real method</b><div class="mut" style="font-size:14px;margin:4px 0 14px">"Help me plan how to tell people about this," with the example skill turned on</div><div class="out" id="ansB" tabindex="0" role="region" aria-label="Answer with the skill">Review needed: talk with HR or legal counsel before any of this goes out.
+
+Nothing below goes out before the board votes, except your conversation with the board chair to prepare for the vote.
+
+CHANGE SUMMARY
+Our largest grant for the after-school tutoring program wasn't renewed. If the board approves next week, we'll close the program by spring. We're planning how to support the students, families, staff, and volunteers it serves through the transition.
+
+STAKEHOLDER MAP
+- Board chair · High · The grant decision, the recommendation, and the plan for telling people
+- Full board · High · What they're voting on, and the impact on staff, families, and partners
+- 4 program staff · High · Their jobs end; the timing and the support available [confirm]
+- Rest of staff · Low · The program is closing, and what to say if asked
+- 3 smaller funders · Medium · What happens to their grants to this program
+- 2 partner schools · High · The closing date, and what students and families will be told
+- 22 volunteer tutors · Medium · Their last session, and how to say goodbye to students
+- 60 students and families · High · When the program ends, and other places to find tutoring [confirm]
+
+LIKELY QUESTIONS
+- Board chair: Is there any way to replace the funding? What will closing cost?
+- Program staff: When is my last day? Is there severance, or other work here?
+- Funders: Will our grant be returned or redirected?
+- Partner schools: What should we tell students who ask?
+- Volunteers: When is my last session? Can I volunteer elsewhere here?
+- Families: When is the last day? Where else can my child get help?
+
+WHO HEARS FIRST
+1. Board chair, before the vote
+2. Full board, at the vote (next week)
+3. The 4 program staff, in person (the day after the vote)
+4. Rest of staff (the same day)
+5. 3 smaller funders, a call from you (within 48 hours)
+6. Partner schools, before families (within 48 hours)
+7. Volunteer tutors, from their coordinator (within 48 hours)
+8. Students and families (after volunteers and schools)
+
+COMMS PLAN
+- Board chair: you, by call or in person, this week. Cover the grant decision, the recommendation, any alternatives considered [confirm], and the plan for telling everyone else after the vote.
+- Program staff: you, in person, the day after the vote. Cover the decision, their last day, the support available, and who else will hear and when.
+- Funders: you, by phone, within 48 hours. Cover the decision, what it means for their grant, and how you'll support families.
+- Partner schools: the program director [confirm], by phone with a follow-up email, within 48 hours. Cover the closing date, what families will hear and when, and who to contact.
+- Volunteers: their coordinator, by phone or at their next session. Cover the last session date, saying goodbye to students, and other ways to stay involved [confirm].
+- Families: you and program staff, by letter or email plus a chance to talk, after schools and volunteers know. Cover the last day, other tutoring options, and who to contact.
+
+CHECK BEFORE USING
+- The exact closing date [confirm]
+- Whether any staff already know
+- Whether the foundation's decision is public
+- Which funders count as major
+- Who manages each partner school relationship
+
+Would you like me to draft any of these messages?</div></div>
+    </div>
+  </section>
+  <section class="box"><h2 class="lbl">Your turn: what did you notice about these two responses?</h2>
+    <p style="margin:0 0 12px">Compare the two answers. What did the one-off answer miss, and what would that mean for a 35-person organization? A few things to look at:</p>
+    <ul style="margin:0 0 16px;padding-left:20px;line-height:1.8">
+      <li>Who hears about the closure, and in what order?</li>
+      <li>Does anyone get a private conversation before the news goes wide?</li>
+      <li>Did it add anything you didn't tell it?</li>
+      <li>What did it get right?</li>
+    </ul>
+    <label class="fl" for="m1notice">What you noticed</label>
+    <textarea id="m1notice" data-key="m1notice" style="min-height:130px" placeholder="A few sentences is plenty."></textarea>
+    <div class="row" style="margin-top:14px"><button type="button" class="btn p" id="noticeBtn">Compare with our list</button><span class="toast mut" id="noticeMsg" aria-live="polite"></span></div>
+    <details id="noticeList" style="margin-top:16px"><summary>See our full list</summary><ol style="margin:8px 0 0;padding-left:20px"><li style="margin-bottom:10px"><b>Everyone hears at once.</b> In a 35-person organization, the order people hear matters. Staff who learn about their own jobs from the same email as families can feel it as a breach of trust.</li><li style="margin-bottom:10px"><b>The program staff hear with everyone else.</b> Their jobs are ending. They need a private, in-person conversation before anyone else knows.</li><li style="margin-bottom:10px"><b>Funders and schools are treated like the public.</b> A funder who learns about a closure from a group email, or a school that hears at the same time as its students' families, has reason to question the relationship.</li><li style="margin-bottom:10px"><b>No review flag.</b> Ending jobs and ending a service to families can carry legal and HR obligations. A plan should stop and say so.</li><li style="margin-bottom:10px"><b>It filled a gap with an invented fact.</b> "We explored options" may be true, but you didn't say it. If it isn't true, it's now in a message with your name on it.</li><li style="margin-bottom:10px"><b>What it got right.</b> It noticed the board hadn't voted and suggested waiting. That's a good start, but it stopped there instead of planning around the vote.</li></ol></details>
+  </section>
+  <div class="navrow"><a class="btn" href="#objectives">Back: Objectives and key terms</a><a class="btn p" href="#m1b">Next: Part 2, Skill or prompt?</a></div>
+</section>
+
+<!-- M1 PART 2 -->
+<section class="view" data-view="m1b" data-mod="1" hidden>
+  <div class="title"><p class="lbl">Module 1 · Part 2 of 2: Skill or prompt?</p><h1 tabindex="-1">Why bother?</h1><div class="rule" aria-hidden="true"></div><p>Continued from <a href="#m1">Part 1: Two answers</a>.</p></div>
+  <h2 style="margin:0;font-size:22px;line-height:1.3;font-weight:800">When is it worth it to use a skill?</h2>
+  <section class="cols">
+    <div class="box"><h2 class="lbl">Why a skill</h2><ul style="margin:0;padding-left:18px;line-height:1.85"><li>Build it once, use it on every change</li><li>It follows your judgment, not generic advice</li><li>You can hand it to a colleague</li></ul></div>
+    <div class="box"><h2 class="lbl">When it isn't worth it</h2><p style="margin:0 0 10px">A one-time task doesn't need a skill. A skill earns its keep when you do something again and again and want it done your way.</p><p style="margin:0">If you only want Claude to keep background about your organization in mind, a Claude Project with instructions may be enough. A skill is better when you want a set method followed in any chat, and when you want to hand that method to colleagues.</p></div>
+  </section>
+  <section class="box"><h2 class="lbl">Check: skill or just a prompt?</h2><div id="sort" style="display:flex;flex-direction:column;gap:12px"></div></section>
+  <section class="box" id="m1b-demo-box"><h2 class="lbl">Try another example with skills</h2>
+    <p style="margin:0 0 6px">This is the skill you'll build your own version of. Pick a situation and see what it does: who to tell, in what order, and what to say.</p>
+    <p class="mut" style="margin:0 0 16px;font-size:14px">Both situations are made up, and you don't type anything. Both answers were written ahead of time by following the example skill, so you can see what it produces.</p>
+    <fieldset style="border:0;margin:0 0 16px;padding:0" class="row"><legend class="sr">Situation</legend>
+      <label class="radio"><input type="radio" name="demo" value="a" checked> <span><b>Two programs merge.</b> One director will lead both, starting in January.</span></label>
+      <label class="radio"><input type="radio" name="demo" value="b"> <span><b>Volunteer scheduling moves to an app.</b> About 120 volunteers, some without smartphones.</span></label>
+    </fieldset>
+    <div class="row"><button type="button" class="btn p" id="runDemo">Show the skill's answer</button></div>
+    <div class="out" id="demoOut" style="margin-top:16px" aria-live="polite">The result appears here: change summary, stakeholder map, likely questions, who hears first, comms plan, and what to check before using.</div>
+  </section>
+  <div class="navrow"><a class="btn" href="#m1">Back: Part 1, Two answers</a><a class="btn p" href="#m2">Next: Capture your method</a></div>
+</section>
+
+<!-- M2 PART 1 -->
+<section class="view" data-view="m2" data-mod="2" hidden>
+  <div class="title"><p class="lbl">Module 2 · 25 minutes · Part 1 of 2: Your story</p><h1 tabindex="-1">Capture your method</h1><div class="rule" aria-hidden="true"></div><p><b>By the end, you can:</b> write down how you already lead change, as questions and rules a skill can follow.</p><p style="margin-top:10px">In this module, you'll use an example of your own. Later, you'll use it to write a skill that meets the needs of your organization and your own process.</p></div>
+  <section class="box sand"><p style="margin:0"><b>Write honestly. This stays with you.</b> Your answers are saved only in this browser and never sent to this site. In Module 3, you'll paste them into your own Claude account, so leave out names and confidential details. You can download or clear your answers at any time.</p></section>
+  <section class="box"><h2 class="lbl"><span class="num">Step 1</span>Your people</h2>
+    <p style="margin:0 0 6px">Check the groups your organization usually has to tell when something changes. For each one, write a few words about how they usually hear from you and what they need.</p>
+    <p class="mut" style="margin:0 0 14px;font-size:15px">Use groups and roles, not names.</p>
+    <div id="groups"></div></section>
+  <section class="box"><h2 class="lbl"><span class="num">Step 2</span>Pick a real change</h2>
+    <div class="q"><label class="fl" for="c0">Think of the last change you led that mattered. What was it?</label><textarea id="c0" data-key="c0" placeholder="For example: we moved our food pantry to a new site"></textarea></div></section>
+  <section class="box"><h2 class="lbl"><span class="num">Step 3</span>Walk back through it</h2>
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <div class="q"><label class="fl" for="c1">Who was affected, including people you didn't think of at first?</label><textarea id="c1" data-key="c1" placeholder="Start with the groups you checked in Step 1, then add anyone you missed"></textarea></div>
+      <div class="q"><label class="fl" for="c2">What actually changed for each group?</label><textarea id="c2" data-key="c2"></textarea></div>
+      <div class="q"><label class="fl" for="c3">What did people ask, or what should you have been ready for?</label><textarea id="c3" data-key="c3"></textarea></div>
+      <div class="q"><label class="fl" for="c4">Who told whom, and in what order?</label><textarea id="c4" data-key="c4"></textarea></div>
+      <div class="q"><label class="fl" for="c5">What would you do differently?</label><textarea id="c5" data-key="c5"></textarea></div>
+    </div></section>
+  <div class="navrow"><a class="btn" href="#m1b">Back: Why bother?</a><a class="btn p" href="#m2b">Next: Part 2, Your rules</a></div>
+</section>
+
+<!-- M2 PART 2 -->
+<section class="view" data-view="m2b" data-mod="2" hidden>
+  <div class="title"><p class="lbl">Module 2 · Part 2 of 2: Your rules</p><h1 tabindex="-1">Capture your method</h1><div class="rule" aria-hidden="true"></div><p>Continued from <a href="#m2">Part 1: Your story</a>.</p></div>
+  <section class="box tint"><h2 class="lbl">From Part 1</h2>
+    <p style="margin:0 0 14px">You listed the groups you usually tell and walked back through a real change. Now turn what you know into rules your skill will follow every time.</p>
+    <div class="cols"><div class="inner"><div style="font-size:13px;font-weight:700;margin-bottom:6px">Your people</div><div class="mut" id="m2bPeople" style="font-size:14px;white-space:pre-wrap"></div></div>
+      <div class="inner"><div style="font-size:13px;font-weight:700;margin-bottom:6px">Your change</div><div class="mut" id="m2bChange" style="font-size:14px;white-space:pre-wrap"></div></div></div>
+    <p style="margin:12px 0 0;font-size:14px">Want to change something? <a href="#m2">Edit it in Part 1</a>.</p>
+  </section>
+  <section class="box"><h2 class="lbl"><span class="num">Step 4</span>Your organization's rules</h2>
+    <p style="margin:0 0 12px">A rule is something you do every time there's a change, the way your organization does it. Write as many as you need. Some questions to get you started:</p>
+    <ul style="margin:0 0 16px;padding-left:20px;line-height:1.8">
+      <li>Looking at your groups, who always hears first? Who hears last?</li>
+      <li>Is there anyone who should never hear by mass email or newsletter?</li>
+      <li>What has to happen before anything goes public?</li>
+      <li>Who has to approve a message before it goes out?</li>
+      <li>What did you learn from your change in Part 1 that you'd want to do every time?</li>
+    </ul>
+    <div id="ruleRows" style="display:flex;flex-direction:column;gap:14px"></div>
+    <div class="row" style="margin-top:14px"><button type="button" class="btn" id="addRule">Add a rule</button></div>
+  </section>
+  <section class="box"><h2 class="lbl"><span class="num">Step 5</span>What's unique about your organization</h2>
+    <div class="q"><label class="fl" for="uniq">What should anyone planning a change here know about your organization?</label>
+      <p class="mut" id="uniqHint" style="margin:0 0 4px;font-size:15px">For example: a union contract, families who speak languages other than English at home, a government contract with notice requirements, a congregation you share space with, or a small community where news travels fast.</p>
+      <textarea id="uniq" data-key="uniq" aria-describedby="uniqHint"></textarea></div>
+  </section>
+  <details class="box"><summary>Why not Kotter or ADKAR?</summary><p style="margin:8px 0 0">Established change models are well researched and worth reading. We don't build on them here for two reasons. They were designed for large organizations with change teams and long timelines. And the point of this course is to put your judgment into the tool. If a formal model helps you, borrow from it as you write your rules.</p></details>
+  <section class="box"><h2 class="lbl">Your method, on one page</h2>
+    <p class="mut" style="margin:0 0 14px;font-size:15px">Your people, your change story, your rules, and what's unique about your organization, saved in this browser. You can download a copy to keep, or clear it.</p>
+    <div class="row"><button type="button" class="btn" data-dl="method">Download my method</button><button type="button" class="btn" id="clearAll">Clear everything</button></div>
+    <div class="toast mut" data-toast="method" aria-live="polite"></div>
+    <div id="clearConfirm" hidden class="flag" style="margin-top:10px">This clears every answer in the course from this browser. <span class="row" style="margin-top:8px"><button type="button" class="btn p" id="clearYes">Clear everything</button><button type="button" class="btn" id="clearNo">Keep my answers</button></span></div>
+  </section>
+  <section class="box tint"><h2 class="lbl">Coming up in Module 3</h2><p style="margin:0">You'll copy one prompt into Claude, and it builds your whole skill. Your answers and rules come with you automatically; you won't need to retype anything.</p></section>
+  <div class="navrow"><a class="btn" href="#m2">Back: Part 1, Your story</a><a class="btn p" href="#m3">Next: Build the skill</a></div>
+</section>
+
+<!-- M3 PART 1 -->
+<section class="view" data-view="m3" data-mod="3" hidden>
+  <div class="title"><p class="lbl">Module 3 · 20 minutes · Part 1 of 2: Build it with Claude</p><h1 tabindex="-1">Build the skill</h1><div class="rule" aria-hidden="true"></div><p><b>By the end, you can:</b> turn your method into a working Claude skill, with a description that makes Claude use it at the right time.</p></div>
+  <section class="box sand onpage"><h2 class="lbl">On this page</h2><p style="margin:0">You don't fill anything in here. Your Module 2 answers are already in your prompt.</p>
+    <ol><li><b>Step 1:</b> Turn on one setting in Claude.</li><li><b>Step 2:</b> See what Claude will build.</li><li><b>Step 3:</b> Copy your prompt into Claude. Claude shows you your whole skill file.</li></ol></section>
+  <section class="box"><h2 class="lbl"><span class="num">Step 1</span>Turn on code execution</h2>
+    <p class="do" style="margin:0"><b>Do this:</b> In Claude, go to <b>Settings &gt; Capabilities</b> and turn on <b>Code execution and file creation</b> (in newer layouts it's called <b>Create and edit files</b>). Skills need it, and it lets Claude make your skill file. On a Team or Enterprise plan, an organization owner turns it on.</p></section>
+  <section class="box"><h2 class="lbl"><span class="num">Step 2</span>What Claude will build</h2>
+    <p style="margin:0 0 14px">Every skill has four parts. Claude writes all four from your Module 2 answers. Knowing them helps you fix your skill in Module 5.</p>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div class="part"><b>1 · Description</b><span>When Claude should use the skill. Claude writes it from the kinds of change in your notes.</span></div>
+      <div class="part"><b>2 · Steps and rules</b><span>Your method. Steps come from your change story. Your rules go in word for word.</span></div>
+      <div class="part"><b>3 · Output format</b><span>The six sections Claude gives you every time, from change summary to what to check.</span></div>
+      <div class="part"><b>4 · Guardrails</b><span>What the skill must never do, such as invent facts. Five standard ones, plus any your story points to.</span></div>
+    </div>
+    <details style="margin-top:16px"><summary>See what goes into your prompt</summary>
+      <div class="cols" style="margin-top:10px"><div class="inner" style="background:var(--ivory)"><div style="font-size:13px;font-weight:700;margin-bottom:6px">Your people</div><div class="mut" id="carryPeople" style="font-size:14px;white-space:pre-wrap"></div></div>
+        <div class="inner" style="background:var(--ivory)"><div style="font-size:13px;font-weight:700;margin-bottom:6px">Your change</div><div class="mut" id="carryChange" style="font-size:14px;white-space:pre-wrap"></div></div>
+        <div class="inner" style="background:var(--ivory)"><div style="font-size:13px;font-weight:700;margin-bottom:6px">Your rules</div><div class="mut" id="carryRules" style="font-size:14px;white-space:pre-wrap"></div></div></div>
+      <p style="margin:12px 0 0;font-size:14px">Want to change something? <a href="#m2">Edit it in Module 2</a>. Your prompt updates on its own.</p></details></section>
+  <section class="box"><h2 class="lbl"><span class="num">Step 3</span>Get your skill from Claude</h2>
+    <div class="flag" id="thinNote" hidden style="margin:0 0 14px"></div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:6px">Your prompt</div>
+    <div class="prompt" id="promptBox" tabindex="0" role="region" aria-label="Your prompt"></div>
+    <div class="row" style="margin-top:12px"><button type="button" class="btn p" data-copy="promptBox">Copy prompt</button><span class="toast mut" data-toast="promptBox" aria-live="polite"></span></div>
+    <div style="margin-top:24px;background:#DECDA4;border:2px solid #193F46;border-radius:12px;padding:24px 28px"><h3 style="margin:0 0 14px;font-size:24px;line-height:1.3;font-weight:800;color:#193F46">What to do next</h3><ol style="margin:0 0 18px;padding-left:28px;font-size:19px;line-height:1.6;color:#193F46"><li style="margin-bottom:6px;padding-left:4px"><a href="https://claude.ai/new" target="_blank" rel="noopener">Open Claude</a> in a new tab and start a new chat</li><li style="margin-bottom:6px;padding-left:4px">Paste the prompt and send it</li><li style="margin-bottom:6px;padding-left:4px">Answer any questions Claude asks</li><li style="margin-bottom:6px;padding-left:4px">Claude shows your whole skill file and asks if you want a .zip. Don't say yes yet.</li><li style="margin-bottom:6px;padding-left:4px">Keep the chat open and come back here for Part 2</li></ol><a href="https://claude.ai/new" target="_blank" rel="noopener" class="btn p" style="text-decoration:none">Open Claude in a new tab</a></div>
+</section>
+  <div class="navrow"><a class="btn" href="#m2b">Back: Capture your method</a><a class="btn p" href="#m3b">Next: Part 2, Check it and export it</a></div>
+</section>
+
+<!-- M3 PART 2 -->
+<section class="view" data-view="m3b" data-mod="3" hidden>
+  <div class="title"><p class="lbl">Module 3 · Part 2 of 2: Check it and export it</p><h1 tabindex="-1">Build the skill</h1><div class="rule" aria-hidden="true"></div><p>Continued from <a href="#m3">Part 1: Build it with Claude</a>.</p></div>
+  <section class="box"><h2 class="lbl"><span class="num">Step 4</span>Read it before you export it</h2>
+    <p class="do"><b>Do this:</b> Read the skill file Claude showed you. Look for these four things. If one is off, tell Claude what's wrong in the same chat and ask for a corrected version.</p>
+    <ul style="margin:0;padding-left:20px;line-height:1.9"><li>The description names the task and the kinds of change you'd use it for</li><li>Your rules are there, word for word</li><li>The steps match how you actually handled your change</li><li>The guardrails include the HR or legal review flag</li></ul>
+    <p class="mut" style="margin:12px 0 0;font-size:15px">Claude can get it wrong. You know your method; it doesn't. Look at Claude's suggestions too, and ask it to add any you'd actually do.</p></section>
+  <section class="box"><h2 class="lbl"><span class="num">Step 5</span>Export it as a .zip</h2>
+    <p class="do"><b>Do this:</b> When the file looks right, answer Claude's question: <b>"Yes, export it as a .zip."</b> Download the file Claude makes. Keep the chat open; you'll come back to it to make changes.</p>
+    <p class="mut" style="margin:0;font-size:15px">Claude can't make files? Use the box below instead.</p>
+    <details style="margin-top:16px" id="fallback"><summary>Claude showed the skill as text instead of a file?</summary>
+      <p class="mut" style="margin:8px 0 10px;font-size:14px">Copy the SKILL.md text from Claude's reply, paste it here, and this page will make the .zip for you.</p>
+      <label class="fl" for="skillPaste">Your SKILL.md text</label><textarea id="skillPaste" data-key="skillPaste" style="min-height:140px"></textarea>
+      <div class="row" style="margin-top:12px"><button type="button" class="btn p" data-dl="skill">Make my .zip</button><span class="toast mut" data-toast="skill" aria-live="polite"></span></div></details></section>
+  <div class="navrow"><a class="btn" href="#m3">Back: Part 1, Build it with Claude</a><a class="btn p" href="#up">Next: Upload your skill</a></div>
+</section>
+
+<!-- UPLOAD -->
+<section class="view" data-view="up" data-mod="4" hidden>
+  <div class="title"><p class="lbl">Module 4 · 10 minutes</p><h1 tabindex="-1">Upload your skill</h1><div class="rule" aria-hidden="true"></div><p><b>By the end, you can:</b> check that your skill file is built the way Claude needs, upload it, turn it on, and fix the most common upload problems.</p></div>
+  <section class="box sand onpage"><h2 class="lbl">On this page</h2>
+    <ol><li><b>Step 1:</b> Learn what Claude needs in a skill file, and check yours.</li><li><b>Step 2:</b> Make sure skills are turned on for your account.</li><li><b>Step 3:</b> Upload your skill and turn it on.</li><li><b>Step 4:</b> Confirm it works.</li></ol></section>
+  <section class="box"><h2 class="lbl"><span class="num">Step 1</span>What Claude needs</h2>
+    <p style="margin:0 0 14px">Claude only accepts a skill packed a certain way. If you used the prompt in Module 3, yours already is. Knowing the rules helps when an upload fails.</p>
+    <div class="cols"><div class="inner"><b>The right shape</b>
+      <pre style="margin:10px 0 0;font:14px/1.7 ui-monospace,monospace;white-space:pre-wrap" aria-label="The zip file contains a folder named change-planning, which contains SKILL.md">change-planning-v1.0.zip
+└─ change-planning/
+   └─ SKILL.md</pre></div>
+      <div class="inner"><b>A common mistake</b>
+      <pre style="margin:10px 0 0;font:14px/1.7 ui-monospace,monospace;white-space:pre-wrap" aria-label="The zip file contains SKILL.md directly, with no folder">change-planning-v1.0.zip
+└─ SKILL.md</pre><p class="mut" style="margin:8px 0 0;font-size:14px">The file is loose in the .zip, with no folder around it. Claude rejects this.</p></div></div>
+    <ul style="margin:16px 0 0;padding-left:20px;line-height:1.8">
+      <li><b>One folder inside the .zip,</b> with the same name as your skill: <code>change-planning</code></li>
+      <li><b>SKILL.md inside that folder.</b> This is the file Claude reads.</li>
+      <li><b>A header at the top of SKILL.md,</b> between two lines of three dashes, with two lines:
+        <ul style="margin:4px 0;padding-left:20px"><li><code>name:</code> lowercase letters, numbers, and hyphens only, up to 64 characters</li><li><code>description:</code> up to 200 characters. Claude reads it to decide when to use your skill.</li></ul></li>
+    </ul>
+    <div class="inner" style="margin-top:16px;background:var(--ivory)"><b>Check my file</b>
+      <p class="mut" style="margin:4px 0 10px;font-size:14px">Choose your .zip. This page reads it in your browser and checks the rules above. Nothing is uploaded.</p>
+      <label class="fl" for="zipCheck">Your skill .zip</label><input type="file" id="zipCheck" accept=".zip,application/zip">
+      <ul id="zipResult" aria-live="polite" style="margin:12px 0 0;padding-left:0;list-style:none;line-height:1.8"></ul></div></section>
+  <section class="box"><h2 class="lbl"><span class="num">Step 2</span>Make sure skills are turned on</h2>
+    <p style="margin:0 0 12px">Skills work on every Claude plan, including Free. They need code execution turned on.</p>
+    <div class="cols"><div class="inner"><b>Free, Pro, Max, or Ultra</b><p style="margin:6px 0 0;font-size:15px">Go to <b>Settings &gt; Capabilities</b> and turn on <b>Code execution and file creation</b>. In newer layouts it's called <b>Create and edit files</b>. You did this in Module 3.</p></div>
+      <div class="inner"><b>Team or Enterprise</b><p style="margin:6px 0 0;font-size:15px">An owner goes to <b>Organization settings &gt; Plugins &amp; skills</b>, opens the <b>Policy</b> tab, and turns on both code execution and Skills. If you aren't an owner, ask yours.</p></div></div></section>
+  <section class="box"><h2 class="lbl"><span class="num">Step 3</span>Upload and turn it on</h2>
+    <ol style="margin:0;padding-left:20px;line-height:1.9"><li>In Claude, go to <b>Customize &gt; Skills</b></li><li>Click <b>+</b>, then <b>+ Create skill</b></li><li>Choose <b>Upload a skill</b></li><li>Choose your .zip file</li><li>Find your skill in the list and turn on the switch next to it. A skill that's switched off isn't available to Claude.</li></ol></section>
+  <section class="box"><h2 class="lbl"><span class="num">Step 4</span>Confirm it works</h2>
+    <p class="do"><b>Do this:</b> Start a new chat and name the skill, so you know it loads. Then read Claude's reply: it should use your six output sections.</p>
+    <div class="prompt" id="upTest">Use my change-planning skill. We're changing our office hours next month. Help me plan how to tell people.</div>
+    <div class="row" style="margin-top:12px"><button type="button" class="btn" data-copy="upTest">Copy</button><span class="toast mut" data-toast="upTest" aria-live="polite"></span></div>
+    <p class="mut" style="margin:12px 0 0;font-size:15px">In Module 5, you'll test whether Claude uses it on its own, without being told.</p></section>
+  <section class="box"><h2 class="lbl">If something goes wrong</h2>
+    <table class="tbl"><thead><tr><th scope="col">What you see</th><th scope="col">What to do</th></tr></thead><tbody>
+      <tr><td>No Skills section in Customize</td><td>Code execution is off. Turn it on (Step 2).</td></tr>
+      <tr><td>Skills are greyed out</td><td>Code execution is off for your account or your organization. On Team or Enterprise, ask an owner.</td></tr>
+      <tr><td>The upload fails</td><td>Run "Check my file" in Step 1. The usual causes are a missing folder, a folder name that doesn't match the skill name, a missing SKILL.md, or symbols the name doesn't allow.</td></tr>
+      <tr><td>You can't create or upload skills at work</td><td>Your organization may have turned off skills people make themselves. Ask an owner.</td></tr>
+      <tr><td>Claude doesn't use it</td><td>Check that the switch is on. Then name the skill in your request. If Claude still skips it, the description needs work; Module 5 covers that.</td></tr>
+    </tbody></table></section>
+  <section class="box tint"><h2 class="lbl">Updating it later</h2>
+    <p style="margin:0">When you fix your skill in Module 5, you'll upload the new version the same way. Then turn off the old one, or delete it: open it in Customize &gt; Skills, switch it off, click <b>...</b>, and choose <b>Delete</b>. Only keep one version switched on.</p>
+    <p class="mut" style="margin:10px 0 0;font-size:14px">From Anthropic's help articles: <a href="https://support.claude.com/en/articles/12512180-use-skills-in-claude" target="_blank" rel="noopener">Use skills in Claude</a> and <a href="https://support.claude.com/en/articles/12512198-how-to-create-custom-skills" target="_blank" rel="noopener">How to create custom skills</a>. Menus change; check there if a step doesn't match.</p></section>
+  <div class="navrow"><a class="btn" href="#m3b">Back: Build the skill</a><a class="btn p" href="#m4">Next: Test and fix it</a></div>
+</section>
+<!-- M4 PART 1 -->
+<section class="view" data-view="m4" data-mod="5" hidden>
+  <div class="title"><p class="lbl">Module 5 · 15 minutes · Part 1 of 2: Run and grade</p><h1 tabindex="-1">Test and fix it</h1><div class="rule" aria-hidden="true"></div><p><b>By the end, you can:</b> grade your skill's answer, see which part of the skill to fix, and make a better version.</p></div>
+  <section class="box sand onpage"><h2 class="lbl">On this page</h2>
+    <ol><li><b>Step 1:</b> Give your skill a new situation.</li><li><b>Step 2:</b> Grade Claude's answer, Yes or No.</li></ol>
+    <p style="margin:8px 0 0">On the next page, you'll fix anything that got a No.</p></section>
+  <section class="box"><h2 class="lbl"><span class="num">Step 1</span>Run a test</h2>
+    <p class="do"><b>Do this:</b> Start a new chat in Claude and paste this situation. Don't name your skill. Part of the test is whether Claude uses it on its own.</p>
+    <div class="well" id="scenA">Our after-school program is going from five days a week to four, starting in March, because a grant was cut. Two part-time staff will lose hours. The board approved this last week. About 60 families and 15 volunteers are part of the program. Help me plan how to tell people.</div>
+    <div class="row" style="margin-top:12px"><button type="button" class="btn p" data-copy="scenA">Copy the situation</button><span class="toast mut" data-toast="scenA" aria-live="polite"></span></div></section>
+  <section class="box"><h2 class="lbl"><span class="num">Step 2</span>Grade Claude's answer</h2>
+    <p class="do"><b>Do this:</b> Read Claude's answer, then choose Yes or No for each line. A No shows you which part of your skill to fix.</p>
+    <div id="grader"></div>
+    <div class="box tint" style="margin-top:16px;padding:16px 20px" aria-live="polite"><b id="gradeScore">0 of 13 answered</b><div class="mut" id="gradeNote" style="font-size:15px;margin-top:4px">Answer every line to see your result.</div></div></section>
+  <div class="navrow"><a class="btn" href="#up">Back: Upload your skill</a><a class="btn p" href="#m4b">Next: Part 2, Fix and retest</a></div>
+</section>
+
+<!-- M4 PART 2 -->
+<section class="view" data-view="m4b" data-mod="5" hidden>
+  <div class="title"><p class="lbl">Module 5 · Part 2 of 2: Fix and retest</p><h1 tabindex="-1">Test and fix it</h1><div class="rule" aria-hidden="true"></div><p>Continued from <a href="#m4">Part 1: Run and grade</a>.</p></div>
+  <section class="box"><h2 class="lbl"><span class="num">Step 3</span>What to fix</h2>
+    <div id="fixList"></div>
+    <p class="mut" style="margin:12px 0 0;font-size:14px">Want to change your answers? <a href="#m4">Go back to the grades</a>.</p></section>
+  <section class="box"><h2 class="lbl"><span class="num">Step 4</span>Make version 1.1</h2>
+    <ol style="margin:0;padding-left:20px;line-height:1.9"><li>Go back to the Claude chat where you built your skill</li><li>Tell Claude what went wrong, using the fixes above. Ask for version 1.1, show it to you, then export it as a .zip.</li><li>In <b>Customize &gt; Skills</b>, upload version 1.1 and switch off version 1.0, the same way as in <a href="#up">Module 4</a></li><li>Start a new chat, paste the same situation, and grade the answer again</li></ol></section>
+  <section class="box"><h2 class="lbl"><span class="num">Step 5</span>Your test log</h2>
+    <p class="mut" style="margin:0 0 12px;font-size:15px">Write down each problem, what you changed, and whether the retest passed. Your No answers can fill it in for you.</p>
+    <div class="row" style="margin-bottom:14px"><button type="button" class="btn" id="logFromGrades">Add my No answers to the log</button><span class="toast mut" id="logMsg" aria-live="polite"></span></div>
+    <div id="logRows" style="display:flex;flex-direction:column;gap:12px"></div>
+    <div class="row" style="margin-top:12px"><button type="button" class="btn" id="addRow">Add a row</button><button type="button" class="btn p" data-dl="log">Download my test log</button><span class="toast mut" data-toast="log" aria-live="polite"></span></div></section>
+  <div class="navrow"><a class="btn" href="#m4">Back: Part 1, Run and grade</a><a class="btn p" href="#m5">Next: Share it</a></div>
+</section>
+
+<!-- M5 -->
+<section class="view" data-view="m5" data-mod="6" hidden>
+  <div class="title"><p class="lbl">Module 6 · 10 minutes</p><h1 tabindex="-1">Share it</h1><div class="rule" aria-hidden="true"></div><p><b>By the end, you can:</b> hand your skill to a colleague with a note, a version label, and a plan to see if it's used.</p></div>
+  <section class="box"><h2 class="lbl"><span class="num">Step 1</span>How to share it</h2>
+    <p class="mut" style="margin:0 0 14px;font-size:15px">It depends on your Claude plan.</p>
+    <div class="cols"><div class="inner" style="border:2px solid var(--teal)"><b>Individual plan: send the file</b><ol style="margin:6px 0 0;padding-left:20px;line-height:1.8"><li>Send your colleague the .zip</li><li>They upload it in their own Claude settings</li><li>They turn it on</li></ol></div>
+      <div class="inner"><b>Team or Enterprise: share in Claude</b><p style="margin:6px 0 0">Share it with specific colleagues, or publish it to your whole organization if your admin allows it.</p></div></div>
+    <p class="mut" style="margin:12px 0 0;font-size:14px">See <a href="https://support.claude.com/en/articles/12512180-use-skills-in-claude" target="_blank" rel="noopener">Anthropic's help article</a> for current sharing options.</p></section>
+  <section class="box"><h2 class="lbl"><span class="num">Step 2</span>Write a handoff note</h2>
+    <p class="mut" style="margin:0 0 12px;font-size:15px">A tool without context doesn't get used. Edit this template. Include the version you made in Module 5, so everyone knows which copy is current.</p>
+    <label class="fl" for="note">Your note</label><textarea id="note" data-key="note" style="min-height:180px"></textarea>
+    <div class="row" style="margin-top:12px"><button type="button" class="btn" data-copy="note">Copy note</button><span class="toast mut" data-toast="note" aria-live="polite"></span></div></section>
+  <section class="box"><h2 class="lbl"><span class="num">Step 3</span>Check in after two weeks</h2>
+    <p class="mut" style="margin:0 0 12px;font-size:15px">Ask your colleague three questions. Their answers point to your next fix.</p>
+    <ol style="margin:0 0 16px;padding-left:20px;line-height:1.9"><li>Have you used it on a real change?</li><li>Did you change what it gave you? How?</li><li>Did anything go out in the wrong order?</li></ol>
+    <label class="fl" for="ci">Check-in date</label><input type="date" id="ci" data-key="ci" style="max-width:240px"></section>
+  <section class="finish" aria-labelledby="finishH">
+    <div class="finish-mark" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+    <h2 id="finishH">You finished the course</h2>
+    <p class="finish-lead">You built a Claude skill from the way you already lead change, tested it, fixed it, and handed it to a colleague.</p>
+    <p style="margin:0 0 16px;font-size:16px">Here's everything you made. Your skill is the .zip Claude made for you. Everything else is saved on this device.</p>
+    <div class="row"><button type="button" class="btn finish-btn" data-dl="method">Download your method</button><button type="button" class="btn finish-btn" data-dl="log">Download your test log</button><button type="button" class="btn finish-btn" data-dl="note">Download your handoff note</button></div>
+    <div class="toast" data-toast="m5" aria-live="polite" style="margin-top:10px"></div></section>
+  <div class="navrow"><a class="btn" href="#m4b">Back: Test and fix it</a><a class="btn p" href="#wrap">Next: Course summary</a></div>
+</section>
+
+<!-- WRAP-UP -->
+<section class="view" data-view="wrap" data-mod="7" hidden>
+  <div class="title"><p class="lbl">Course summary · 5 minutes</p><h1 tabindex="-1">What you learned</h1><div class="rule" aria-hidden="true"></div><p>You started with a way of leading change that lived in your head. You now have it written down, built into a Claude skill, tested, and in a colleague's hands.</p></div>
+  <section class="box"><h2 class="lbl">Module by module</h2>
+    <ul style="list-style:none;margin:0;padding:0">
+<li class="obj"><span class="tag">1</span><span><b>Why bother?</b><br>A skill saves your method so Claude follows it every time. A one-off prompt starts from scratch and gives generic advice.</span></li><li class="obj"><span class="tag">2</span><span><b>Capture your method</b><br>You wrote down who you usually tell, how they hear from you, a real change you led, your standing rules, and what's unique about your organization.</span></li><li class="obj"><span class="tag">3</span><span><b>Build the skill</b><br>Claude turned your notes into the four parts of a skill: a description, steps and rules, an output format, and guardrails. You read it before exporting it.</span></li><li class="obj"><span class="tag">4</span><span><b>Upload your skill</b><br>You learned the shape Claude needs (a folder named for the skill, with SKILL.md inside), turned skills on, and uploaded yours.</span></li><li class="obj"><span class="tag">5</span><span><b>Test and fix it</b><br>You tried it on a new situation, traced each problem to the part of the skill that caused it, and made a new version.</span></li><li class="obj"><span class="tag">6</span><span><b>Share it</b><br>You handed it to a colleague with a note on when to use it and what to check, and set a date to ask how it's going.</span></li>
+    </ul></section>
+  <section class="box tint"><h2 class="lbl">Keep it going</h2>
+    <ul style="margin:0;padding-left:20px;line-height:1.85"><li><b>Use it on your next real change,</b> even a small one. Real use shows gaps a test can't.</li><li><b>Update it after each change.</b> When you'd do something differently, add it as a rule and make a new version.</li><li><b>Build a second skill</b> for another task you do again and again. The steps are the same: write down your method, have Claude build it, upload, test, share.</li></ul></section>
+  <section class="box"><h2 class="lbl">Keep learning</h2>
+    <ol style="margin:0;padding-left:20px;line-height:1.6">
+      <li style="margin-bottom:14px"><a href="https://anthropic.skilljar.com/ai-fluency-for-nonprofits" target="_blank" rel="noopener"><b>AI Fluency for Nonprofits</b></a> <span class="mut">· Anthropic and GivingTuesday · free</span><br>A short course on working with AI in a way that fits your mission and values: what to hand to AI, how to describe the task, and how to check the result.</li>
+      <li style="margin-bottom:14px"><a href="https://support.claude.com/en/articles/12512198-how-to-create-custom-skills" target="_blank" rel="noopener"><b>How to create custom skills</b></a> <span class="mut">· Claude Help Center · free</span><br>Anthropic's guide to writing skills: the file format, writing a good description, adding example files, and testing. Start here for your second skill.</li>
+      <li><a href="https://nonprofitrisk.org/resources/risk-management-essentials/the-change-management-issue-spring-2024/" target="_blank" rel="noopener"><b>The Change Management Issue</b></a> <span class="mut">· Nonprofit Risk Management Center · free download</span><br>Articles on leading change in nonprofits, including how to build a communications plan to support a change. Useful for sharpening the method behind your skill.</li>
+    </ol></section>
+  <div class="navrow"><a class="btn" href="#m5">Back: Share it</a><a class="btn p" href="#feedback">Next: Give feedback (optional)</a></div>
+</section>
+
+<!-- FEEDBACK -->
+<section class="view" data-view="feedback" data-mod="8" hidden>
+  <div class="title"><p class="lbl">Optional · 2 minutes</p><h1 tabindex="-1">Tell us what you think</h1><div class="rule" aria-hidden="true"></div><p>Your feedback goes to the course creator and shapes the next version.</p></div>
+  <section class="box sand"><p style="margin:0"><b>This is the only thing in the course that's sent anywhere,</b> and only when you press Send. Your method, skill, test log, and handoff note are not included. Please don't include details about your organization.</p></section>
+  <form class="box" id="fbForm" style="display:flex;flex-direction:column;gap:20px">
+    <fieldset style="border:0;margin:0;padding:0"><legend class="fl">How useful was this course?</legend><div class="row">
+      <label class="radio" style="flex:0 1 auto"><input type="radio" name="use"> Not useful</label><label class="radio" style="flex:0 1 auto"><input type="radio" name="use"> Somewhat</label><label class="radio" style="flex:0 1 auto"><input type="radio" name="use"> Useful</label><label class="radio" style="flex:0 1 auto"><input type="radio" name="use"> Very useful</label></div></fieldset>
+    <fieldset style="border:0;margin:0;padding:0"><legend class="fl">Did you finish a working skill?</legend><div class="row">
+      <label class="radio" style="flex:0 1 auto"><input type="radio" name="fin"> Yes</label><label class="radio" style="flex:0 1 auto"><input type="radio" name="fin"> Not yet</label><label class="radio" style="flex:0 1 auto"><input type="radio" name="fin"> I got stuck</label></div></fieldset>
+    <div><label class="fl" for="fb0">If you got stuck, where?</label><textarea id="fb0" style="min-height:64px"></textarea></div>
+    <div><label class="fl" for="fb1">What worked?</label><textarea id="fb1"></textarea></div>
+    <div><label class="fl" for="fb2">What would you change?</label><textarea id="fb2"></textarea></div>
+    <div><label class="fl" for="fb3">Your email (optional, if you'd like a reply)</label><input type="email" id="fb3" style="max-width:420px"></div>
+    <div><button type="submit" class="btn p">Send feedback</button></div>
+    <div class="toast" id="fbMsg" aria-live="polite"></div>
+  </form>
+  <div class="navrow"><a class="btn" href="#wrap">Back: Course summary</a><a class="btn p" href="#home">Course home</a></div>
+</section>
+
+</div></main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+(function(){
+var EXAMPLE_SKILL = "---\nname: change-planning\ndescription: Plans who to tell, in what order, and what to say when a nonprofit makes a change, such as a program closing, a restructure, new software, or a leadership transition.\n---\n\n# Change Planning\n\nUse this skill when someone describes a change at their organization and wants help planning how people will hear about it. This skill plans communication. It does not decide whether the change is a good idea.\n\n## Step 1: Check what's missing\n\nBefore planning, look for these in what the user told you:\n\n- What is changing, and why\n- When it takes effect\n- What is already decided and what is still open, especially whether the board has approved\n- Which groups the user already knows are affected\n- Anything that must stay confidential for now\n\nIf the board approval status or the timeline is missing, ask about it before you plan. Ask no more than three questions, all at once, and wait for the answers. If anything else is missing, plan anyway and list it under \"Check before using.\"\n\n## Step 2: Work through the method\n\nFor this change, work through these questions in order:\n\n1. **Who is affected?** Consider every group: board, staff (by team), volunteers, clients and families, funders, partners, and the wider community. Include a group the user didn't mention only if the change clearly touches it, and mark it \"(check).\"\n2. **What changes for each group?** Be specific to this change.\n3. **What will each group ask?** Write their likely questions as questions.\n4. **Who tells whom, and in what order?** Apply the rules in Step 3.\n5. **What could go wrong?** Name the most likely way someone hears the news badly, too early, or secondhand.\n\n## Step 3: Follow these rules\n\n- If the board must approve the change and hasn't yet, plan the full sequence to start after the vote. Mark clearly that nothing goes out before the vote, except what's needed to prepare it.\n- The board chair hears before the full board.\n- People whose jobs, hours, pay, roles, or supervisor change hear before anyone else on staff, and they hear it in person.\n- All staff hear before anyone outside the organization.\n- Staff hear before volunteers. Volunteers hear before clients and families, unless clients face an immediate risk.\n- Partners whose work, space, or money is directly affected hear before the people they serve and before any public announcement.\n- Volunteers hear from their coordinator, never from a mass email.\n- Major funders hear directly from the Executive Director before any public announcement.\n- No group should learn about the change from another group's announcement.\n\n## Step 4: Use this output format\n\nUse these six sections, in this order, with these headings:\n\n1. **Change summary.** One short paragraph in plain words that the user could say out loud to anyone.\n2. **Stakeholder map.** A table with three columns: Group, How much it affects them (High, Medium, Low), What they need to know.\n3. **Likely questions.** For each group, two or three questions they will probably ask.\n4. **Who hears first.** A numbered order of conversations, with timing relative to the first one (for example, \"Day 1,\" \"Within 48 hours\").\n5. **Comms plan.** For each group: who tells them, how (in person, call, meeting, email), when, and three or four points to cover.\n6. **Check before using.** Every assumption you made, as a list the user can confirm or correct.\n\nIf Step 5 below applies, put the review flag above the change summary.\n\n## Step 5: Guardrails\n\n- Never invent names, numbers, dates, or facts about the organization. Use roles (\"the program director\"). Write \"[confirm]\" where a fact is needed but unknown.\n- Never claim how people feel. Describe what they may ask or need instead.\n- Use plain language. Avoid jargon such as \"change champion,\" \"cascade,\" \"stakeholder alignment,\" or \"buy-in.\"\n- Don't advise on whether to make the change.\n- If the change involves job loss, reduced hours or pay, changed roles, contracts, ending services to clients, or grant terms, start the output with: \"Review needed: talk with HR or legal counsel before any of this goes out.\"\n- If the user shares confidential personnel details, don't repeat them. Remind them not to include those details.\n- Don't write full messages or emails unless the user asks. Offer to draft one at the end.\n\nVersion: v1.1 starter method\nWhat changed in v1.1: plans the full sequence when a board vote is pending; adds rules for partners and for all staff; counts a new supervisor as a role change.\n";
+var PROMPT_TEMPLATE = "I lead a nonprofit, and I want to turn the way I handle organizational change into a Claude skill. Below are my notes from an online course. Please build the complete skill for me.\n\nHow to work:\n- First, read everything. If something important is unclear, ask me up to three short questions, all at once, and wait for my answers. If nothing is unclear, go straight to building.\n- Use my own method. Don't add steps or practices I didn't describe.\n- Put my rules into the skill exactly as I wrote them, word for word.\n- Replace any names of real people with their role.\n- Don't assume my job title or anyone else's. Use the roles I used.\n- Write in plain language with no jargon.\n\nBuild one file named SKILL.md with these parts, in this order:\n1. A header that starts and ends with a line of three dashes (---). Inside it, two lines:\n   name: change-planning\n   description: \"...\"\n   The description is one sentence in double quotes, under 200 characters. It names the task and the situation so Claude knows when to use the skill, and mentions the kinds of change in my notes. For example: \"Plans who to tell, in what order, and what to say when our nonprofit makes a change, such as a program closing or a new system.\"\n2. # Change Planning, then one sentence on when to use this skill.\n3. ## Step 1: Check what's missing. If the timeline or whether the change is approved is missing, ask about it before planning, in no more than three questions.\n4. ## Step 2: Work through my method. Numbered questions to work through for any new change, based on how I handled mine.\n5. ## Who we usually tell. My groups, how each usually hears from me, and what each needs, as I listed them.\n6. ## Step 3: Follow my rules. My rules, word for word, one per line starting with \"- \".\n7. ## About our organization. What's unique, in my words. Leave this section out if I didn't add anything.\n8. ## Step 4: Use this output format. Six numbered sections: Change summary, Stakeholder map, Likely questions, Who hears first, Comms plan, Check before using.\n9. ## Step 5: Guardrails. Include these five, plus any my story points to:\n   - Never invent names, numbers, dates, or facts about the organization. Use roles, and write \"[confirm]\" where a fact is needed but unknown.\n   - Never claim how people feel. Describe what they may ask or need instead.\n   - Use plain language. Avoid jargon such as \"change champion,\" \"cascade,\" \"stakeholder alignment,\" or \"buy-in.\"\n   - Don't advise on whether to make the change.\n   - If the change involves job loss, reduced hours or pay, changed roles, contracts, ending services to clients, or grant terms, start the output with: \"Review needed: talk with HR or legal counsel before any of this goes out.\"\n10. ## Worked example. A short summary of my change and how I'd handle it now.\n11. A last line: Version: v1.0\n\nWhen it's done:\n- Show me the complete SKILL.md in one code block, so I can read it before anything else.\n- Under it, list up to three things my method might be missing, as suggestions for me to decide on. Don't add them to the file.\n- Then ask me whether I'd like it exported as a .zip to upload to Claude. Don't make the .zip until I say yes.\n- If I say yes, create a .zip named change-planning-v1.0.zip that contains a folder named change-planning with SKILL.md inside, and give it to me to download.\n\nMY NOTES\n\nThe groups I usually tell, how they usually hear from me, and what they need:\n{{people}}\n\nMy change:\n{{change}}\n\nWho was affected, including people I didn't think of at first:\n{{q1}}\n\nWhat changed for each group:\n{{q2}}\n\nWhat people asked or worried about:\n{{q3}}\n\nWho told whom, in what order, and how:\n{{q4}}\n\nWhat I'd do differently:\n{{q5}}\n\nMy standing rules:\n{{rules}}\n\nWhat's unique about my organization:\n{{unique}}";
+var KEY="cmsb-preview-v1";
+var S={};
+try{S=JSON.parse(localStorage.getItem(KEY)||"{}")||{};}catch(e){S={};}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+var $=function(s,r){return (r||document).querySelector(s);}, $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));};
+
+/* ---------- routing ---------- */
+var ORDER=["home","objectives","m1","m1b","m2","m2b","m3","m3b","up","m4","m4b","m5","wrap","feedback"];
+var MICON=["<svg aria-hidden=\"true\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"flex:none\"><path d=\"M9 18h6\"/><path d=\"M10 21h4\"/><path d=\"M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z\"/></svg>", "<svg aria-hidden=\"true\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"flex:none\"><path d=\"M4 20h4L19 9l-4-4L4 16v4z\"/><path d=\"M13.5 6.5l4 4\"/></svg>", "<svg aria-hidden=\"true\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"flex:none\"><path d=\"M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-.5-.5-2.5z\"/></svg>", "<svg aria-hidden=\"true\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"flex:none\"><path d=\"M12 15V4\"/><path d=\"M7 9l5-5 5 5\"/><path d=\"M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4\"/></svg>", "<svg aria-hidden=\"true\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"flex:none\"><rect x=\"5\" y=\"4\" width=\"14\" height=\"17\" rx=\"2\"/><path d=\"M9 4V3h6v1\"/><path d=\"M9 13l2 2 4-4\"/></svg>", "<svg aria-hidden=\"true\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"flex:none\"><circle cx=\"6\" cy=\"12\" r=\"2.5\"/><circle cx=\"18\" cy=\"6\" r=\"2.5\"/><circle cx=\"18\" cy=\"18\" r=\"2.5\"/><path d=\"M8.2 10.9l7.6-3.8M8.2 13.1l7.6 3.8\"/></svg>", "<svg aria-hidden=\"true\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"flex:none\"><path d=\"M5 21V4\"/><path d=\"M5 4h11l-2 4 2 4H5\"/></svg>", "<svg aria-hidden=\"true\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"flex:none\"><path d=\"M4 5h16v11H9l-5 4V5z\"/></svg>"];
+var MODS=["1 · Why bother?","2 · Capture your method","3 · Build the skill","4 · Upload","5 · Test and fix it","6 · Share it","Summary","Feedback (optional)"];
+var MSHORT=["1 · Why bother","2 · Capture","3 · Build","4 · Upload","5 · Test","6 · Share","Summary","Feedback"];
+var FIRST=["m1","m2","m3","up","m4","m5","wrap","feedback"], LAST=["m1b","m2b","m3b","up","m4b","m5","wrap","feedback"];
+var NAMES={home:"the course home page",objectives:"Objectives and key terms",m1:"Module 1",m1b:"Module 1, Part 2",m2:"Module 2",m2b:"Module 2, Part 2",m3:"Module 3",m3b:"Module 3, Part 2",up:"Module 4",m4:"Module 5",m4b:"Module 5, Part 2",m5:"Module 6",wrap:"the course summary",feedback:"the feedback page"};
+var I=function(h){return ORDER.indexOf(h);};
+function rawReached(){return typeof S.reached==="number"?S.reached:0;}
+function reached(){return Math.max(rawReached(),2);}
+function stepper(cur){var ol=document.createElement("ol");ol.className="stepper";ol.setAttribute("aria-label","Course progress");
+  var hm=document.createElement("li");hm.className="home";hm.innerHTML='<a href="#home"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg><span>Home</span><span class="sr"> (course home)</span></a>';ol.appendChild(hm);
+  MODS.forEach(function(m,i){var li=document.createElement("li");var n=i+1;var open=reached()>=I(FIRST[i]);var done=reached()>I(LAST[i]);
+    if(n===cur){li.className="on";li.setAttribute("aria-current","step");li.innerHTML=MICON[i]+'<span aria-hidden="true">'+MSHORT[i]+'</span><span class="sr">'+m+'</span>';}
+    else if(open){li.className=done?"done":"";var a=document.createElement("a");a.href="#"+FIRST[i];a.innerHTML=MICON[i]+'<span aria-hidden="true">'+MSHORT[i]+'</span><span class="sr">'+m+'</span>'+(done?'<span class="chk-done" aria-hidden="true">✓</span><span class="sr"> (done)</span>':'');li.appendChild(a);}
+    else{li.className="locked";li.innerHTML=MICON[i]+'<span aria-hidden="true">'+MSHORT[i]+'</span><span class="sr">'+m+' (locked)</span>';li.setAttribute("aria-disabled","true");}
+    ol.appendChild(li);});return ol;}
+function renderSteppers(){$$(".view[data-mod]").forEach(function(v){var old=v.querySelector(".stepper");var n=stepper(+v.dataset.mod);if(old)v.replaceChild(n,old);else v.insertBefore(n,v.firstChild);});}
+function renderHome(){$$(".modlist li[data-first]").forEach(function(li){var h=li.dataset.first;var open=reached()>=I(h);
+    if(!li._link)li._link=li.querySelector("a");
+    var lk=li.querySelector(".locked");
+    if(open){if(lk)li.replaceChild(li._link,lk);}
+    else if(!lk){var d=document.createElement("div");d.className="locked";d.setAttribute("aria-disabled","true");
+      d.innerHTML=li._link.innerHTML.replace(/<span class="mut">(\d+ min)<\/span>$/,function(m0,t){return '<span class="mut" style="display:inline-flex;gap:6px;align-items:center">'+t+' <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="sr">, locked until you finish the earlier modules</span></span>';});li.replaceChild(d,li._link);}});
+  var r=rawReached(),rb=$("#resumeBtn");if(r>=3){rb.hidden=false;rb.href="#"+ORDER[r];rb.textContent="Continue where you left off: "+NAMES[ORDER[r]];}else rb.hidden=true;}
+var noticeTimer=null;
+function notice(msg){var n=$("#lockNotice");n.textContent=msg;n.hidden=false;clearTimeout(noticeTimer);noticeTimer=setTimeout(function(){n.hidden=true;},8000);}
+function show(){var h=(location.hash||"#home").slice(1);var target=null;
+  if(h==="m1b-demo"){h="m1b";target="m1b-demo-box";}
+  if(I(h)<0&&h!=="about")h="home";
+  var i=I(h),r=reached();
+  if(i>r+1){var back=ORDER[r];notice("That part of the course opens after you finish the modules before it. You're back at "+NAMES[back]+", the furthest you've reached.");location.hash="#"+back;return;}
+  if(i>rawReached()){S.reached=i;save();}
+  renderSteppers();renderHome();
+  $$(".view").forEach(function(v){v.hidden=v.dataset.view!==h;});
+  if(h==="m3"||h==="m3b")renderCarry();
+  if(h==="m2b")renderM2b();
+  if(target){var t=document.getElementById(target);if(t)t.scrollIntoView();}
+  else{window.scrollTo(0,0);var hd=$('.view[data-view="'+h+'"] h1');if(hd)hd.focus({preventScroll:true});}}
+window.addEventListener("hashchange",show);
+
+/* ---------- saved fields ---------- */
+$$("[data-key]").forEach(function(el){var k=el.dataset.key;
+  if(el.type==="checkbox"){el.checked=!!S[k];el.addEventListener("change",function(){S[k]=el.checked;save();});}
+  else{if(S[k]!=null)el.value=S[k];el.addEventListener("input",function(){S[k]=el.value;save();if(k==="desc")descCount();});}});
+var NOTE_DEFAULT="I built a Claude skill that plans how we tell people about a change: who, in what order, and what to say.\nUse it when: [the kinds of change you'd use it for]\nBefore you use what it gives you, check: [the assumptions list at the end, and anything about the board]\nFile: change-planning-v[version]-[date].zip (the newest version)\nQuestions? [your name]";
+if(!S.note){$("#note").value=NOTE_DEFAULT;}
+
+/* ---------- M2 people ---------- */
+var GROUPS=[["chair","Board chair"],["board","Full board"],["lead","Leadership team"],["staff","Staff"],["vol","Volunteers"],["served","People you serve, such as clients, participants, students, or members"],["fam","Families or caregivers"],["fund","Funders and donors"],["part","Partner organizations"],["comm","Neighbors and the wider community"],["gov","Government agencies or regulators"],["media","Local media"],["other","Another group"]];
+var CHANNELS=["In person, one on one","Phone call","Email to them directly","Text message","A group meeting","Newsletter or mass email","Website or social media","Through someone else, such as a supervisor or coordinator"];
+S.ppl=S.ppl||{};
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+function renderGroups(){var box=$("#groups");box.innerHTML="";
+  GROUPS.forEach(function(g){var id=g[0],st=S.ppl[id]||(S.ppl[id]={on:false,name:"",ch:{},need:""});
+    var w=document.createElement("div");
+    var h='<label class="chk"><input type="checkbox" id="g_'+id+'" aria-controls="gp_'+id+'"> '+esc(g[1])+'</label><div class="gp" id="gp_'+id+'"'+(st.on?'':' hidden')+'>';
+    if(id==="other")h+='<div class="q"><label class="fl" for="gn_other">Name of the group</label><input type="text" id="gn_other"></div>';
+    if(st.how==null){var old=CHANNELS.filter(function(c,i){return st.ch&&st.ch[i];});st.how=old.join("; ");}
+    h+='<div class="q"><label class="fl" for="gh_'+id+'">How do they usually hear from you?</label><input type="text" id="gh_'+id+'" placeholder="For example: in person, then a follow-up email"></div>';
+    h+='<div class="q"><label class="fl" for="gd_'+id+'">What do they need from you when something changes?</label><input type="text" id="gd_'+id+'" placeholder="For example: to hear before it\'s public, and a date they can plan around"></div></div>';
+    w.innerHTML=h;box.appendChild(w);
+    var cb=w.querySelector("#g_"+id),pn=w.querySelector("#gp_"+id),ta=w.querySelector("#gd_"+id),nm=w.querySelector("#gn_other");
+    cb.checked=!!st.on;cb.setAttribute("aria-expanded",st.on?"true":"false");
+    cb.addEventListener("change",function(){st.on=cb.checked;pn.hidden=!cb.checked;cb.setAttribute("aria-expanded",cb.checked?"true":"false");save();});
+    ta.value=st.need||"";ta.addEventListener("input",function(){st.need=ta.value;save();});
+    if(nm){nm.value=st.name||"";nm.addEventListener("input",function(){st.name=nm.value;save();});}
+    var hw=w.querySelector("#gh_"+id);hw.value=st.how||"";hw.addEventListener("input",function(){st.how=hw.value;save();});});}
+renderGroups();
+function peopleText(){return GROUPS.filter(function(g){var st=S.ppl[g[0]];return st&&st.on;}).map(function(g){var st=S.ppl[g[0]];
+  var name=g[0]==="other"?((st.name&&st.name.trim())||"Another group"):g[1];
+  var how=(st.how!=null?st.how:CHANNELS.filter(function(c,i){return st.ch&&st.ch[i];}).join("; ")).trim().replace(/\s+/g," ").replace(/\.$/,"");
+  var line="- "+name+"."+(how?" Usually hear by: "+how+".":"");
+  if(st.need&&st.need.trim())line+=" What they need: "+st.need.trim().replace(/\s+/g," ");
+  return line;}).join("\n");}
+
+/* ---------- M2 rules ---------- */
+var RULE_PH=["For example: The board chair hears before anyone else","For example: Volunteers hear from their coordinator, never from a mass email","For example: Always ask who loses something, not just who changes","For example: Staff whose jobs change hear in person, before anyone else on staff"];
+if(!Array.isArray(S.rules)){S.rules=["r1","r2","r3"].map(function(k){return (S[k]||"").trim();}).filter(Boolean);while(S.rules.length<3)S.rules.push("");}
+function renderRules(){var box=$("#ruleRows");box.innerHTML="";
+  S.rules.forEach(function(r,i){var d=document.createElement("div");d.className="q";
+    d.innerHTML='<label class="fl" for="rule'+i+'">Rule '+(i+1)+'</label><textarea id="rule'+i+'" style="min-height:64px" placeholder="'+RULE_PH[i%RULE_PH.length]+'"></textarea>'+(S.rules.length>1?'<div><button type="button" class="btn" style="min-height:36px;font-size:14px" aria-label="Remove rule '+(i+1)+'">Remove</button></div>':'');
+    box.appendChild(d);var ta=d.querySelector("textarea");ta.value=r;ta.addEventListener("input",function(){S.rules[i]=ta.value;save();});
+    var rm=d.querySelector("button");if(rm)rm.addEventListener("click",function(){S.rules.splice(i,1);save();renderRules();var f=$("#rule"+Math.max(0,i-1));if(f)f.focus();});});}
+renderRules();
+$("#addRule").addEventListener("click",function(){S.rules.push("");save();renderRules();$("#rule"+(S.rules.length-1)).focus();});
+function rulesText(){return (S.rules||[]).map(function(r){return r.trim().replace(/\s+/g," ");}).filter(Boolean).map(function(r){return "- "+r;}).join("\n");}
+function renderM2b(){$("#m2bPeople").textContent=peopleText()||"You haven't checked any groups yet. Go to Part 1, Step 1.";$("#m2bChange").textContent=v("c0","You haven't written this yet. Go to Part 1, Step 2.");}
+
+/* ---------- copy ---------- */
+function toast(name,msg){$$('[data-toast="'+name+'"]').forEach(function(t){t.textContent=msg;setTimeout(function(){if(t.textContent===msg)t.textContent="";},4000);});}
+$$("[data-copy]").forEach(function(b){b.addEventListener("click",function(){var id=b.dataset.copy;var el=document.getElementById(id);var text=("value" in el && el.tagName!=="DIV")?el.value:el.textContent;
+  var ok=function(){toast(id,"Copied.");};
+  var fallback=function(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);if(el.select)el.select();toast(id,"Selected. Press Ctrl+C or Cmd+C to copy.");};
+  try{navigator.clipboard.writeText(text).then(ok,fallback);}catch(e){fallback();}});});
+
+/* ---------- objectives: flip cards ---------- */
+var TERMS=[["Prompt", "The message you send Claude in a chat. It guides that conversation only; Claude doesn't carry it into new chats."], ["Skill", "Instructions saved to your Claude account that teach Claude one specific task your way. Claude loads them whenever a request matches, in any chat."], ["Description", "The short summary at the top of a skill, up to 200 characters, that tells Claude what the skill does and when to use it. If it's vague, Claude won't know to use the skill."], ["Method", "Your repeatable way of handling a kind of situation: the questions you ask, the order you follow, and the judgment calls you make."], ["Standing rule", "A specific practice you follow every time, whatever the details of the change. For example: the board chair hears before the full board."], ["Guardrail", "An instruction that sets a limit on what the skill may do, such as never inventing facts or always flagging changes that need HR or legal review."], ["Stakeholder", "Any person or group the change affects, or who can influence how it goes: staff, board, volunteers, clients and families, funders, partners."], ["Sequence", "The order in which each group hears about a change, and from whom. The wrong order can damage trust even when the message is right."], ["Comms plan", "For each stakeholder group: who delivers the message, by what channel, when, and the key points to cover."], ["Handoff note", "A short message you send with a shared skill: what it does, when to use it, what to check before acting on it, and which version is current."]];
+var grid=$("#terms");
+TERMS.forEach(function(t){var b=document.createElement("button");b.type="button";b.className="flip";b.setAttribute("aria-pressed","false");b.setAttribute("aria-label",t[0]+". Show definition");
+  b.innerHTML='<span class="in"><span class="face front"><span style="font-size:18px;font-weight:700"></span><span class="mut" style="font-size:12px;margin-top:8px">Tap to flip</span></span><span class="face back" aria-hidden="true"><span style="font-size:13px;font-weight:700;margin-bottom:6px"></span><span style="font-size:14px;line-height:1.45"></span></span></span>';
+  var sp=b.querySelectorAll(".face span");sp[0].textContent=t[0];sp[2].textContent=t[0];sp[3].textContent=t[1];
+  b.addEventListener("click",function(){set(b,!b.classList.contains("on"));});grid.appendChild(b);});
+function set(b,on){b.classList.toggle("on",on);b.setAttribute("aria-pressed",on?"true":"false");var t=b.querySelectorAll(".face span")[0].textContent;var d=b.querySelectorAll(".face span")[3].textContent;b.setAttribute("aria-label",on?t+": "+d:t+". Show definition");b.querySelector(".front").setAttribute("aria-hidden",on?"true":"false");b.querySelector(".back").setAttribute("aria-hidden",on?"false":"true");}
+$("#flipall").addEventListener("click",function(){var on=this.getAttribute("aria-pressed")!=="true";this.setAttribute("aria-pressed",on?"true":"false");this.textContent=on?"Hide all definitions":"Show all definitions";$$(".flip").forEach(function(b){set(b,on);});});
+
+/* ---------- M1b sort ---------- */
+var SORT=[["Drafting a thank-you note to one donor","Usually just a prompt. It's a one-time task. If you write many thank-you notes in your own voice, that could become a skill."],["Writing every monthly board report the same way","Usually a skill. It's the same task every month, done your way, with the sections your board expects."],["Summarizing one article for a staff meeting","Usually just a prompt. You do it once, and there's no method to repeat."],["Screening every volunteer application against your criteria","Usually a skill. You apply the same criteria every time, and a skill keeps them consistent. Review its results before deciding about any person."]];
+var sortBox=$("#sort");
+SORT.forEach(function(r,i){var row=document.createElement("div");row.className="sortrow";
+  row.innerHTML='<span style="flex:1 1 280px"></span><span class="row" style="gap:8px"><button type="button" class="btn" aria-pressed="false">Skill</button><button type="button" class="btn" aria-pressed="false">Just a prompt</button></span><div class="why mut" hidden></div>';
+  row.firstChild.textContent=r[0];var why=row.querySelector(".why");why.textContent=r[1];
+  var bs=row.querySelectorAll("button");bs.forEach(function(b,j){b.addEventListener("click",function(){bs.forEach(function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");why.hidden=false;S["sort"+i]=j;save();});});
+  if(S["sort"+i]!=null){bs[S["sort"+i]].setAttribute("aria-pressed","true");why.hidden=false;}
+  sortBox.appendChild(row);});
+
+/* ---------- M1b demo (viewer's Claude via sample) ---------- */
+var SCEN={a:"Our organization has 42 staff. We're merging our two smallest programs, senior meals and home visits, under one director starting in January. The home visit director is leaving at the end of December, and the senior meals director will run both programs. The board approved this last month. Volunteers in both programs keep their roles but will report to a new supervisor. Help me plan how to tell people.",
+ b:"I'm the Program Director for our volunteer program. About 120 volunteers serve across our three programs. Next month we're moving volunteer scheduling from a shared spreadsheet and phone calls to a scheduling app. Volunteers will need to create an account and sign up for shifts in the app. Our two volunteer coordinators will manage it. Some of our longest-serving volunteers don't use smartphones. Help me plan how to tell people."};
+var DEMO_OUT={"a": "Review needed: talk with HR or legal counsel before any of this goes out.\n\nCHANGE SUMMARY\nStarting in January, our senior meals and home visit programs will become one program with one director. The senior meals director will lead both. The home visit director is leaving at the end of December. Volunteers keep their roles but will report to a new supervisor. Services to seniors continue [confirm].\n\nSTAKEHOLDER MAP\n- Board \u00b7 Low \u00b7 The board already approved this. They need the plan for telling everyone else.\n- Home visit director \u00b7 High \u00b7 How and when their departure is shared, and their role in the handoff\n- Senior meals director \u00b7 High \u00b7 Their new role, start date, and what they're responsible for\n- Home visit staff \u00b7 High \u00b7 They get a new supervisor in January. What changes day to day, and what doesn't\n- Senior meals staff \u00b7 Medium \u00b7 Their director takes on a second program. What changes for them\n- Rest of staff \u00b7 Low \u00b7 The programs are merging, and who leads them\n- Volunteers in both programs \u00b7 Medium \u00b7 Their new supervisor, and that their roles stay the same\n- Seniors and their families \u00b7 Medium \u00b7 Whether meals and visits continue, and who to call [confirm]\n- Funders of either program \u00b7 Medium \u00b7 How the merger affects the programs they fund [confirm]\n\nLIKELY QUESTIONS\n- Home visit staff: Who do I report to now? Will my job or schedule change? Why is the director leaving?\n- Senior meals staff: Will our director have less time for us? Will we take on home visit work?\n- Volunteers: Who is my new supervisor? Does my schedule change?\n- Seniors and families: Will my meals or visits stop? Will I see the same people?\n- Funders: Will the program we fund keep its focus? Who is our contact now?\n\nWHO HEARS FIRST\n1. Home visit director and senior meals director, separately and in person (Day 1)\n2. Home visit staff, in person, from you and the senior meals director (Day 2)\n3. Senior meals staff, in person (Day 2)\n4. Rest of staff, at a staff meeting or by email (Day 3)\n5. Board, a short update on the plan (Day 3)\n6. Volunteers in both programs, from their coordinators (within the first week)\n7. Funders of either program, a call from you (within the first week)\n8. Seniors and families (after volunteers and funders know)\n\nCOMMS PLAN\n- Both directors: you, in person, before anyone else. Cover the timeline, each director's role in the handoff, and how the home visit director's departure will be described.\n- Home visit staff: you and the senior meals director, in person. Cover who they report to in January, what stays the same in their work, and who to bring questions to.\n- Senior meals staff: you and their director, in person. Cover what changes for them, and what doesn't.\n- Rest of staff: you, at a staff meeting or by email. Cover the merger, who leads it, and the timing.\n- Volunteers: their coordinators, by phone or in person. Cover their new supervisor, that their roles stay the same, and who to contact.\n- Funders: you, by phone. Cover the merger, what it means for their grant, and who their contact will be.\n- Seniors and families: program staff, by phone or at their next visit or meal. Cover what continues, any change in who they see, and who to call.\n\nCHECK BEFORE USING\n- Whether staff already know the home visit director is leaving\n- Whether any staff roles, hours, or pay change [confirm]\n- Whether services to seniors continue without a gap [confirm]\n- Who coordinates volunteers in each program\n- Which funders support each program\n\nWould you like me to draft any of these messages?", "b": "CHANGE SUMMARY\nNext month, we're moving volunteer scheduling from a shared spreadsheet and phone calls to a scheduling app. Volunteers will create an account and sign up for shifts in the app. Our two volunteer coordinators will manage it. Volunteers who don't use smartphones will still have a way to sign up [confirm].\n\nSTAKEHOLDER MAP\n- Volunteer coordinators \u00b7 High \u00b7 How the app works, what they manage, and how to support volunteers who need help\n- Program staff who rely on volunteers \u00b7 Medium \u00b7 How they'll see who's coming, and the switch-over date\n- Volunteers who use smartphones \u00b7 High \u00b7 When to create an account, how to sign up, and who to ask for help\n- Volunteers who don't use smartphones \u00b7 High \u00b7 How they'll sign up without the app, and that they're still welcome\n- Board \u00b7 Low \u00b7 A short update that scheduling is changing (check)\n- Clients \u00b7 Low \u00b7 Nothing, unless a shift goes unfilled during the switch-over (check)\n\nLIKELY QUESTIONS\n- Coordinators: Do we still take calls? Who handles volunteers who can't use the app? Will we get training?\n- Program staff: How will I know who's coming to my shift? What happens if the app is down?\n- Volunteers with smartphones: Do I have to download something? What happens to my regular shift?\n- Volunteers without smartphones: Can I still call to sign up? Will someone help me?\n\nWHO HEARS FIRST\n1. The two volunteer coordinators, in person (Day 1)\n2. Program staff who rely on volunteers, at a staff meeting (within the first week)\n3. Volunteers without smartphones, a call from their coordinator (before the general announcement)\n4. All other volunteers, from their coordinators (within two weeks of Day 1)\n5. Board, a short update (any time before launch)\n\nCOMMS PLAN\n- Coordinators: you, in person. Cover why the change is happening, the timeline, the training, and how to handle volunteers who can't use the app.\n- Program staff: you, at a staff meeting. Cover the switch-over date, how they'll see who's scheduled, and who to contact if something goes wrong.\n- Volunteers without smartphones: their coordinator, by phone. Cover how they'll keep signing up, that nothing changes about their role, and who to call.\n- All other volunteers: their coordinator, by email with a follow-up at their next shift. Cover when to create an account, how to sign up, where to get help, and that their regular shift stays the same [confirm].\n- Board: you, by email or at the next meeting. Cover the change and the launch date.\n\nCHECK BEFORE USING\n- How volunteers without smartphones will sign up after the switch\n- Whether regular shifts move into the app as they are\n- The launch date, and whether the spreadsheet stays in use for a while\n- Whether the coordinators' job duties change enough to need HR input\n- Whether any volunteers need the sign-up steps in a language other than English\n\nWould you like me to draft any of these messages?"};
+var runBtn=$("#runDemo"), out=$("#demoOut");
+function showDemo(){var pick=$('input[name="demo"]:checked').value;out.textContent=DEMO_OUT[pick];}
+runBtn.addEventListener("click",showDemo);
+$$('input[name="demo"]').forEach(function(r){r.addEventListener("change",function(){if(out.dataset.shown)showDemo();});});
+runBtn.addEventListener("click",function(){out.dataset.shown="1";});
+
+/* ---------- M1 what did you notice: compare with our list ---------- */
+$("#noticeBtn").addEventListener("click",function(){var text=($("#m1notice").value||"").trim(),msg=$("#noticeMsg"),list=$("#noticeList");
+  if(text.length<15){msg.textContent="Write a sentence or two about what you noticed first.";return;}
+  msg.textContent="";list.open=true;list.scrollIntoView({behavior:"smooth",block:"start"});list.querySelector("summary").focus();});
+
+/* ---------- M3 carry-over + prompt ---------- */
+function v(k,fb){return (S[k]&&S[k].trim())?S[k].trim():fb;}
+function renderCarry(){$("#carryChange").textContent=v("c0","You haven't written this yet. Go to Module 2, Step 2.");
+  $("#carryPeople").textContent=peopleText()||"You haven't checked any groups yet. Go to Module 2, Step 1.";
+  $("#carryRules").textContent=(rulesText()||"You haven't written any rules yet. Go to Module 2, Step 4.")+(v("uniq","")?"\n\nWhat's unique: "+v("uniq",""):"");
+  var p=PROMPT_TEMPLATE.replace("{{change}}",v("c0","(I didn't answer this)")).replace("{{q1}}",v("c1","(I didn't answer this)")).replace("{{q2}}",v("c2","(I didn't answer this)")).replace("{{q3}}",v("c3","(I didn't answer this)")).replace("{{q4}}",v("c4","(I didn't answer this)")).replace("{{q5}}",v("c5","(I didn't answer this)")).replace("{{people}}",peopleText()||"(I didn't list any)")
+   .replace("{{rules}}",rulesText()||"(I didn't write any)").replace("{{unique}}",v("uniq","(nothing added)"));
+  $("#promptBox").textContent=p;
+  var F=[["c0","the change you led"],["c1","who was affected"],["c2","what changed for each group"],["c3","what people asked"],["c4","who told whom"],["c5","what you'd do differently"]];
+  var thin=F.filter(function(f){return v(f[0],"").split(/\s+/).filter(Boolean).length<4;}).map(function(f){return f[1];});
+  if(!peopleText())thin.unshift("your groups");if(!rulesText())thin.push("your rules");
+  var tn=$("#thinNote");if(thin.length>=3){tn.hidden=false;tn.innerHTML="<b>Your Module 2 answers are thin.</b> These are blank or only a few words: "+esc(thin.join(", "))+". Claude can only build from what you give it. <a href=\"#m2\">Add more in Module 2</a>, or go ahead and answer Claude's questions in the chat.";}else tn.hidden=true;}
+renderCarry();
+
+/* ---------- M3 fallback: make the zip from pasted SKILL.md ---------- */
+function version(){return "1.0";}
+function cleanSkill(t){t=(t||"").replace(/\r/g,"");var segs=t.split(/^\s*```.*$/m);if(segs.length>2){var hit=segs.filter(function(g,i){return i%2===1&&/^---\s*$/m.test(g)&&/^name:/m.test(g);});if(hit.length)t=hit[0];}var lines=t.split("\n").filter(function(l){return !/^\s*```/.test(l);});var i=lines.findIndex(function(l){return l.trim()==="---";});if(i<0)return null;
+  lines=lines.slice(i);var end=lines.indexOf("---",1);if(end<0)return null;
+  for(var k=1;k<end;k++){var m=/^description:\s*(.*)$/.exec(lines[k]);if(m){var d=m[1].trim();if(!/^".*"$/.test(d)){d=d.replace(/^'|'$/g,"");lines[k]="description: "+JSON.stringify(d);}}}
+  var head=lines.slice(1,end).join("\n");if(!/^name:/m.test(head)||!/^description:/m.test(head))return null;
+  return lines.join("\n").trim()+"\n";}
+function skillText(){return cleanSkill(S.skillPaste||"");}
+/* ---------- Module 4: check my file ---------- */
+$("#zipCheck").addEventListener("change",function(){var f=this.files&&this.files[0],out=$("#zipResult");out.innerHTML="";
+  function row(ok,t){var li=document.createElement("li");li.innerHTML='<b>'+(ok?"✓ Pass:":"✗ Fix:")+'</b> '+esc(t);out.appendChild(li);}
+  if(!f)return;if(typeof JSZip==="undefined"){row(false,"The checker didn't load. Try again in a moment.");return;}
+  JSZip.loadAsync(f).then(function(z){var names=Object.keys(z.files).filter(function(n){return !/^__MACOSX\//.test(n)&&!/(^|\/)\.DS_Store$/.test(n);});
+    var loose=names.filter(function(n){return /^skill\.md$/i.test(n);});
+    var tops={};names.forEach(function(n){var i=n.indexOf("/");if(i>0)tops[n.slice(0,i)]=1;});var folders=Object.keys(tops);
+    if(loose.length){row(false,"SKILL.md is loose in the .zip. Put it inside a folder named after your skill.");return;}
+    if(folders.length!==1){row(false,folders.length?"The .zip has "+folders.length+" folders at the top. It should have one.":"There's no folder in the .zip.");if(!folders.length)return;}
+    else row(true,"One folder at the top: "+folders[0]);
+    var md=names.filter(function(n){return n.split("/").length===2&&/\/skill\.md$/i.test(n);})[0];
+    if(!md){row(false,"No SKILL.md inside the folder.");return;}
+    row(true,"Found "+md);
+    return z.file(md).async("string").then(function(t){var L=t.replace(/\r/g,"").split("\n");
+      if((L[0]||"").trim()!=="---"){row(false,"SKILL.md should start with a line of three dashes (---).");return;}
+      var end=L.indexOf("---",1);if(end<0){row(false,"The header needs a closing line of three dashes (---).");return;}
+      var head=L.slice(1,end),get=function(k){var l=head.filter(function(x){return x.indexOf(k+":")===0;})[0];return l?l.slice(k.length+1).trim():null;};
+      var name=get("name"),desc=get("description");
+      if(!name)row(false,"The header needs a name: line.");
+      else{var nm=name.replace(/^["']|["']$/g,"");
+        if(!/^[a-z0-9-]+$/.test(nm)||nm.length>64)row(false,"The name \""+nm+"\" should use only lowercase letters, numbers, and hyphens, up to 64 characters.");else row(true,"Name: "+nm);
+        if(folders.length===1){if(folders[0]===nm)row(true,"The folder name matches the skill name.");else row(false,"The folder is \""+folders[0]+"\" but the skill name is \""+nm+"\". They need to match.");}}
+      if(!desc)row(false,"The header needs a description: line.");
+      else{var ds=desc.replace(/^"|"$/g,"").replace(/^'|'$/g,"");
+        if(ds.length>200)row(false,"The description is "+ds.length+" characters. Keep it to 200.");else row(true,"Description: "+ds.length+" of 200 characters");
+        if(!/^["']/.test(desc)&&/:\s/.test(desc))row(false,"The description has a colon but no quotes around it. Put double quotes around the whole description.");}});
+  }).catch(function(){row(false,"This file isn't a .zip, or it's damaged.");});});
+
+/* ---------- Module 5: grader ---------- */
+var FX={desc:"Description. In your build chat, ask Claude to rewrite the description so it names the task and the kinds of change you'd use it for.",
+ fmt:"Output format. Ask Claude to list all six sections, in order, with clear headings, in the skill's output format.",
+ guard:"Guardrails. Ask Claude to add a guardrail against what you saw.",
+ hr:"Guardrails. Ask Claude to name reduced hours, job loss, and changed roles as changes that need HR or legal review.",
+ people:"Who we usually tell. Check your groups in Module 2, then ask Claude to update that section of the skill.",
+ rules:"Rules. Sharpen the rule in Module 2, or ask Claude to add it to the skill word for word."};
+var GRADE=[["Did it use your skill?",[["u1","Claude used my skill without my naming it","desc"]]],
+ ["Are all six sections there?",[["s1","Change summary","fmt"],["s2","Stakeholder map","fmt"],["s3","Likely questions","fmt"],["s4","Who hears first","fmt"],["s5","Comms plan","fmt"],["s6","Check before using","fmt"]]],
+ ["Is it formatted well?",[["f1","The sections are in that order, each with a clear heading","fmt"],["f2","It's in plain language, with no jargon","guard"]]],
+ ["Did it follow your method?",[["m1","It included the groups I usually tell","people"],["m2","People hear in the order my rules say","rules"],["m3","It invented no names, dates, or facts","guard"],["m4","It flagged HR or legal review (this situation needs it, because staff lose hours)","hr"]]]];
+S.grade=S.grade||{};var GN=0;GRADE.forEach(function(g){GN+=g[1].length;});
+function renderGrader(){var box=$("#grader");box.innerHTML="";
+  GRADE.forEach(function(g){var sec=document.createElement("div");sec.className="ggroup";sec.innerHTML="<h3>"+esc(g[0])+"</h3>";
+    g[1].forEach(function(it){var id=it[0],f=document.createElement("fieldset");f.className="grow";
+      f.innerHTML='<legend>'+esc(it[1])+'</legend><span class="yn"><label><input type="radio" name="gr_'+id+'" value="y"> Yes</label><label><input type="radio" name="gr_'+id+'" value="n"> No</label></span><div class="fixhint" hidden><b>Fix:</b> '+esc(FX[it[2]])+'</div>';
+      sec.appendChild(f);var hint=f.querySelector(".fixhint");
+      $$("input",f).forEach(function(r){r.checked=S.grade[id]===r.value;r.addEventListener("change",function(){S.grade[id]=r.value;save();hint.hidden=r.value!=="n";gradeScore();});});
+      hint.hidden=S.grade[id]!=="n";});
+    box.appendChild(sec);});gradeScore();}
+function gradeItems(){var a=[];GRADE.forEach(function(g){g[1].forEach(function(it){a.push(it);});});return a;}
+function gradeScore(){var items=gradeItems(),ans=items.filter(function(it){return S.grade[it[0]];}),yes=ans.filter(function(it){return S.grade[it[0]]==="y";}),no=ans.length-yes.length;
+  $("#gradeScore").textContent=ans.length<GN?ans.length+" of "+GN+" answered":yes.length+" of "+GN+" Yes";
+  $("#gradeNote").textContent=ans.length<GN?"Answer every line to see your result.":(no?no+(no>1?" lines need":" line needs")+" a fix. The next page lists them.":"Every line passed. Your skill works. You can still use the next page to try a harder situation.");
+  renderFixList();}
+function renderFixList(){var box=$("#fixList");if(!box)return;var nos=gradeItems().filter(function(it){return S.grade[it[0]]==="n";});
+  if(!nos.length){box.innerHTML='<p style="margin:0">'+(Object.keys(S.grade).length?"Nothing got a No. Your skill passed. Skip to the test log, or run a second situation.":"You haven't graded an answer yet. <a href=\"#m4\">Go back to Part 1</a>.")+'</p>';return;}
+  var seen={};box.innerHTML='<ul style="margin:0;padding-left:20px;line-height:1.7">'+nos.map(function(it){return '<li style="margin-bottom:8px"><b>'+esc(it[1])+':</b> No. '+esc(FX[it[2]])+'</li>';}).join("")+'</ul>';}
+renderGrader();
+$("#logFromGrades").addEventListener("click",function(){var nos=gradeItems().filter(function(it){return S.grade[it[0]]==="n";});
+  if(!nos.length){$("#logMsg").textContent="No answers to add.";return;}
+  S.log=S.log.filter(function(r){return r.w||r.c;});var have={};S.log.forEach(function(r){have[r.w]=1;});var added=0;
+  nos.forEach(function(it){var w="No: "+it[1];if(!have[w]){S.log.push({w:w,c:"",r:"Not run yet"});added++;}});
+  if(!S.log.length)S.log.push({w:"",c:"",r:"Not run yet"});save();renderLog();$("#logMsg").textContent=added?"Added "+added+(added>1?" rows.":" row."):"Those are already in your log.";});
+
+/* ---------- reviewer unlock ---------- */
+$("#unlockAll").addEventListener("click",function(){S.reached=ORDER.length-1;save();renderHome();$("#unlockMsg").textContent="All modules are open. Choose any one from the course home.";});
+
+/* ---------- test log ---------- */
+S.log=S.log||[{w:"",c:"",r:"Not run yet"}];
+function renderLog(){var box=$("#logRows");box.innerHTML="";S.log.forEach(function(row,i){var d=document.createElement("div");d.className="cols";d.style.alignItems="flex-end";
+  d.innerHTML='<div><label class="fl" style="font-size:14px" for="lw'+i+'">What went wrong</label><input type="text" id="lw'+i+'"></div><div><label class="fl" style="font-size:14px" for="lc'+i+'">What I changed</label><input type="text" id="lc'+i+'"></div><div style="flex:0 1 180px"><label class="fl" style="font-size:14px" for="lr'+i+'">Retest</label><select id="lr'+i+'"><option>Passed</option><option>Still failing</option><option>Not run yet</option></select></div>';
+  box.appendChild(d);var w=d.querySelector("#lw"+i),c=d.querySelector("#lc"+i),r=d.querySelector("#lr"+i);w.value=row.w;c.value=row.c;r.value=row.r;
+  w.addEventListener("input",function(){row.w=w.value;save();});c.addEventListener("input",function(){row.c=c.value;save();});r.addEventListener("change",function(){row.r=r.value;save();});});}
+renderLog();$("#addRow").addEventListener("click",function(){S.log.push({w:"",c:"",r:"Not run yet"});save();renderLog();});
+
+/* ---------- downloads ---------- */
+function methodText(){return "# My change method\n\n## The groups I usually tell\n"+(peopleText()||"")+"\n\n## The change\n"+v("c0","")+"\n\n## Who was affected\n"+v("c1","")+"\n\n## What changed for each group\n"+v("c2","")+"\n\n## What people asked\n"+v("c3","")+"\n\n## Who told whom, and in what order\n"+v("c4","")+"\n\n## What I'd do differently\n"+v("c5","")+"\n\n## My rules\n"+rulesText()+"\n\n## What's unique about my organization\n"+v("uniq","")+"\n";}
+function logText(){var g=gradeItems().filter(function(it){return S.grade[it[0]];}).map(function(it){return "- "+it[1]+": "+(S.grade[it[0]]==="y"?"Yes":"No");}).join("\n");return "# Test log: change-planning\n\n"+(g?"## Grades\n"+g+"\n\n## Fixes\n":"")+S.log.map(function(r,i){return (i+1)+". What went wrong: "+(r.w||"-")+"\n   What I changed: "+(r.c||"-")+"\n   Retest: "+r.r;}).join("\n\n")+"\n";}
+function noteText(){return ($("#note").value||NOTE_DEFAULT)+"\n";}
+function saveFile(name,data,toastName){try{var blob=data instanceof Blob?data:new Blob([data],{type:/\.zip$/.test(name)?"application/zip":"text/markdown;charset=utf-8"});
+  var url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url);},2000);
+  toast(toastName,"Saved "+name+".");}catch(e){toast(toastName,"That download didn't work. Try again.");}return Promise.resolve();}
+function skillZip(){var z=new JSZip();z.folder("change-planning").file("SKILL.md",skillText());return z.generateAsync({type:"blob"});}
+$$("[data-dl]").forEach(function(b){b.addEventListener("click",function(){var k=b.dataset.dl;var tn=b.closest('[data-view="m5"]')?"m5":k;
+  if(k==="method")saveFile("my-change-method.md",methodText(),tn);
+  else if(k==="log")saveFile("test-log-v"+version()+".md",logText(),tn);
+  else if(k==="note")saveFile("handoff-note.md",noteText(),tn);
+  else if(k==="skill"){if(!skillText()){toast(tn,"This doesn't look like a whole skill file yet. Copy everything from the first line of three dashes (---) to the end.");return;}if(typeof JSZip==="undefined"){toast(tn,"The zip tool didn't load. Try again in a moment.");return;}skillZip().then(function(blob){saveFile("change-planning-v"+version()+".zip",blob,tn);});}});});
+
+/* ---------- clear ---------- */
+$("#clearAll").addEventListener("click",function(){$("#clearConfirm").hidden=false;});
+$("#clearNo").addEventListener("click",function(){$("#clearConfirm").hidden=true;});
+$("#clearYes").addEventListener("click",function(){S={};save();try{localStorage.removeItem(KEY);}catch(e){}location.hash="#home";location.reload();});
+
+/* ---------- feedback ---------- */
+$("#fbForm").addEventListener("submit",function(e){e.preventDefault();var f=this,msg=$("#fbMsg"),btn=f.querySelector('button[type="submit"]');
+  function pick(n){var r=f.querySelector('input[name="'+n+'"]:checked');return r?r.parentNode.textContent.trim():"";}
+  var body={_subject:"Course feedback: Change Management Skill Builder",source:"Change Management Skill Builder course",usefulness:pick("use"),finished:pick("fin"),stuck:$("#fb0").value,worked:$("#fb1").value,change:$("#fb2").value};
+  var em=$("#fb3").value.trim();if(em){body.email=em;body._replyto=em;}
+  if(!body.usefulness&&!body.finished&&!body.stuck.trim()&&!body.worked.trim()&&!body.change.trim()){msg.textContent="Answer at least one question before sending.";return;}
+  btn.disabled=true;msg.textContent="Sending...";
+  fetch("https://formspree.io/f/mrbrlydj",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(body)})
+   .then(function(r){if(!r.ok)throw new Error(r.status);f.querySelectorAll("fieldset,div:not(.toast)").forEach(function(x){x.hidden=true;});msg.textContent="Thank you. Your feedback was sent.";})
+   .catch(function(){btn.disabled=false;msg.textContent="That didn't send. Check your connection and try again.";});});
+
+show();
+})();
+</script>
+
+</html>
