@@ -47,8 +47,13 @@ Live tool (Kick It): https://jamesdrodgers.ai/swim/kick-it
 **Intro to Python Programming — Module 1, full course design package.** Built for first-year undergraduates who may be new to Python, new to U.S. academic culture, or learning in multilingual contexts. Applies backward design, Universal Design for Learning, and DEIJ-aware examples throughout, grounded in learner personas drawn from Bay Area tech workforce data. Includes 9 Canvas-native pages, 5 scaffolded assignments, a guided-practice Jupyter Notebook, and an AI-adaptive LTI assessment.
 Case study: https://jamesdrodgers.ai/Python_Portfolio_Snapshot.html
 
-**YMCA Aquatics Safety & Coaching Analytics.** James's current, ongoing role (April 2025-present, part-time) as Aquatics Instruction and Learning Designer at YMCA San Francisco. Spans staff in-service slide decks translating American Red Cross surveillance guidelines into scenario-based training, one-page skill references (e.g. lane management), public safety infographics (e.g. an infographic on hypoxic blackout, a drowning mechanism that's invisible and widely misunderstood), and a longitudinal performance-analytics system tracking 130+ competitive swimmers against national competency benchmarks. Also improved branch safety audit scores 15 percentage points in three months.
+**YMCA Aquatics Safety & Coaching Analytics.** Work from James's current, ongoing role at YMCA San Francisco, Presidio Branch (2025-present), where he is Lead Lifeguard, Masters Swim Coach, and Youth Swim Coach. Spans staff in-service slide decks translating American Red Cross surveillance guidelines into scenario-based training, one-page skill references (e.g. lane management), public safety infographics (e.g. an infographic on hypoxic blackout, a drowning mechanism that's invisible and widely misunderstood), and a longitudinal performance-analytics system tracking 130+ competitive swimmers against national competency benchmarks. His AI-augmented microlearning and Canvas module on water rescue, CPR, emergency oxygen, and AED procedures contributed to an increase in branch safety audit scores from 78% to 92%.
 Case study: https://jamesdrodgers.ai/ymca_aquatics_snapshot.html
+
+**Change Management Skill Builder.** A free, six-module course James designed and published, in which learners turn a change they have led into a Claude skill that builds a communication plan.
+Course: https://jamesdrodgers.ai/courses/change-skill-builder/
+
+**AI-Powered Portfolio (this site).** James designed and built jamesdrodgers.ai, including this AI chat assistant, using HTML, CSS, JavaScript, and the Anthropic API through a Netlify serverless function.
 
 **AI for Math Learning at Home.** A scaffolded Articulate Rise microlearning course helping non-technical parents use AI tools to support Common Core math at home, built with performance-based objectives and learner-autonomy principles.
 Course: https://share.articulate.com/rIyYmxR4avSUlAhzg5bea
@@ -60,32 +65,40 @@ I'm an instructional designer and learning systems strategist whose career has m
 How I approach the work: I start by understanding the conditions around the work — the people involved, how communication happens, the constraints teams operate under, and what's getting in the way of performance. That means listening before designing, asking questions before proposing solutions. I see AI as a practical tool that supports human judgment, creativity, and decision-making rather than replacing it — not automation for its own sake, but tools that make people better at what they already do. I'm most effective working closely with subject matter experts, stakeholders, and cross-functional teams, translating between what people know and what learners need.
 
 Education & credentials:
-- Bachelor of Music Education, Miami University, Minor in Special Education, Oxford OH, 2009
-- Master of Divinity, Church Divinity School of the Pacific / Graduate Theological Union, Berkeley CA, 2017
+- Certificate in Data Analytics, City College of San Francisco, expected 2027; coursework in data science foundations, SQL, and Python
 - Certificate in Generative AI Applications, Purdue University, 2025
-- Certificate in Data Analytics, City College of San Francisco, anticipated Spring 2027
-- Professional Scrum Master I (PSM I), Scrum.org, certified August 2026
+- Master of Divinity, Church Divinity School of the Pacific, Graduate Theological Union, 2017
+- Bachelor of Music, Music Education; Minor in Special Education, Miami University, 2009; magna cum laude, GPA 3.83
+- Professional Scrum Master I (PSM I), Scrum.org (2026)
+- Introduction to Responsible AI, Google Cloud (2024)
+- CPR, First Aid & Emergency Oxygen, American Red Cross (current through 2027)
+- EF SET English Certificate, C2 Proficient (2025)
 
-## Resume summary
+## Resume summary (current resume, also at https://jamesdrodgers.ai/resume)
 
-Instructional designer and learning systems strategist with 15 years of experience across healthcare, technology, adult education, K-12, and nonprofit organizations. Specializes in AI-augmented learning design, competency-based curriculum architecture, and performance-focused instructional systems. Combines deep classroom teaching experience, organizational leadership, and production-scale AI development — including hands-on model training and evaluation work at xAI — to build learning experiences that improve performance and scale.
+Headline: Training & Facilitation, Curriculum Development, Program Coordination.
 
-Design philosophy:
-- Plan backward from learning outcomes and organizational vision, not from available content.
-- Design for the highest levels of thinking while still closing the specific knowledge and skill gaps in front of you.
-- AI should extend a learner's judgment, not replace the need to build it.
+Trainer and educator with experience teaching technology skills, developing curriculum, and translating complex concepts into practical training for adult learners. Combines hands-on work in classroom teaching, workshop facilitation, AI literacy and technology training, and direct service with program coordination, curriculum development, and volunteer management. Builds supportive, client-centered learning experiences for diverse adults in nonprofit, education, and community settings.
 
-Core competencies:
-- Learning Design & Strategy: Learning Experience Design (LXD), Backward Design, Competency-Based Learning Architecture, Universal Design for Learning (UDL), Scenario-Based Learning, Performance Consulting, Human-Centered Learning Design, Kirkpatrick Model
-- AI & Technology: AI-Augmented Learning Design, Prompt Engineering, AI Tutor Development, AI Evaluation & Testing, Articulate 360 (Storyline & Rise), LMS/LTI
-- Strategy & Collaboration: Change Management for Learning Transformation, Cross-Functional Systems Thinking, Data-Informed Instructional Design, Learning Analytics, SME Collaboration
+Core skills: Workshop & Group Facilitation, Computer & AI Literacy Training, Curriculum Development, Program Coordination, Adult Learning, Client-Centered Support, Coaching & Mentoring, Service Coordination & Community Partnerships, Volunteer Recruitment & Supervision, Outreach & Engagement, Needs Assessment, Cultural Competency, Conflict Resolution, Interpersonal Communication, Microsoft Office Suite.
 
 Work experience (most recent first):
-- **AI Fellow & Subject Matter Expert, Handshake AI (Contract)** — June 2025-Present, San Francisco, CA. Designs original prompt sequences using Bloom's Taxonomy to assess AI model comprehension across multimodal inputs. Designed and applied evaluation frameworks across 4 agentic AI projects, assessing reasoning accuracy, safety alignment, and guardrail compliance. Conducted rubric-based assessment of agentic AI outputs in Python and Linux environments, maintaining 90%+ QA scores.
-- **Aquatics Instruction and Learning Designer, YMCA San Francisco** — April 2025-Present, part-time. Designed AI-augmented microlearning and multimedia continuing education covering water rescue, CPR, and oxygen administration, improving branch safety audit scores 15 percentage points in three months. Co-facilitates monthly instructor-led training for 15 aquatics staff. Built a longitudinal performance tracking system across 130 swimmers benchmarked against national standards.
-- **AI Human Data Specialist, xAI** — April 2024-April 2025, San Francisco, CA. Designed onboarding curriculum and content-knowledge training for 200+ annotators and team leads, sustaining 90%+ QA performance scores at scale. Applied AI evaluation and testing methods to assess and refine model outputs across text, audio, and visual modalities. Designed and delivered virtual instructor-led training in AI literacy for 50+ cross-disciplinary team members.
-- **Congregational Leader & Digital Learning Designer, The Episcopal Church** — January 2017-October 2023, Bexley OH / San Francisco CA. Developed a custom GPT for the Episcopal Diocese of Ohio, turning data across 85 congregations and 10,000 members into a planning intelligence tool supporting $20M in annual operating decisions. Delivered 6 digital blended learning courses for a 400-member congregation over two years of restricted in-person gathering, resulting in 15% growth in education attendance and a 90% approval rating. Led organizational development and strategic planning across a six-year tenure as Congregational Leader.
-- **Instructional Designer and Music Educator, North College Hill MS/HS** — June 2010-January 2014, Cincinnati OH. Designed and delivered quarterly STEAM professional development workshops for 40 faculty. Designed equity-centered curriculum that grew program enrollment from 30 to 75 students.
+- **Lead Lifeguard, Masters Swim Coach & Youth Swim Coach, YMCA San Francisco, Presidio Branch**, 2025-Present, San Francisco, CA. Coordinated the 2026 YMCA SF Aquatics Games in-service training for approximately 150 participants, managing scheduling, RSVPs, and staff communications, and worked with subject matter experts to develop rubrics and scenario-based assessments. Facilitates training for aquatics staff ages 18 to 60s with varied language, education, and career backgrounds. Designed AI-augmented microlearning and a Canvas module on water rescue, CPR, emergency oxygen, and AED procedures; contributed to an increase in branch safety audit scores from 78% to 92%. Coaches approximately 45 adult Masters swimmers and youth swimmers across age and ability levels, providing individual feedback and instruction.
+- **AI Fellow & Subject Matter Expert (Contract), Handshake AI**, 2025-Present, San Francisco, CA. Evaluates AI outputs for accuracy, safety, and guardrail compliance across coding, agentic, image, and music tasks.
+- **Instructional Designer (Contract), SpringboardAI**, 2025, San Francisco, CA. Developed Claude skills and practical learning materials that help nonprofit leaders build foundational AI skills while completing real work; one skill was selected for the SpringboardAI Learning Hub.
+- **AI Human Data Specialist / AI Tutor, xAI**, 2024-2025, San Francisco, CA. Created and delivered virtual AI-literacy training for 50+ team members and mentored individuals and small groups on foundational AI concepts; resources were added to the Team Lead Resource Library. Designed onboarding workflows and training resources for 200+ annotators and team leads. Evaluated and refined LLM outputs across text, audio, and visual modalities, contributing to Grok 2 and Grok 3.
+- **AI Consultant (Contract), Episcopal Diocese of Ohio**, 2023. Built a custom GPT to support planning across 85 congregations.
+- **Priest in Charge, St. Alban's Episcopal Church**, 2019-2023, Bexley, OH. Led a 400-member congregation and a staff of eight, providing pastoral care and one-on-one support. Taught foundational digital literacy sessions for older parishioners so they could access online Zoom services and classes during the pandemic. Led the transition to ACS Realm CRM and trained staff and lay leaders to use it. Recruited and supervised 100+ volunteers. Created hybrid learning on queer spirituality for 75 participants from 4 states. Wrote grants funding a partnership with the Columbus Early Learning Center, providing families with food and lunches during COVID shelter-in-place orders. Maintained giving records and prepared monthly, quarterly, and annual reports with leadership and the treasurer.
+- **Curate, St. Gregory of Nyssa Episcopal Church**, 2017-2019, San Francisco, CA. Conducted community outreach through the parish food pantry and connected parishioners to local Potrero Hill businesses, schools, and civic organizations.
+- **Chaplain Intern, Clinical Pastoral Education, Alta Bates**, 2016, Berkeley, CA. Provided spiritual care to multifaith, LGBTQ+, and ethnically diverse patients, working with medical teams and social workers to support stable housing and continuity of care for LGBTQ+ older adults.
+- **Music Educator, North College Hill Middle and High School**, 2010-2014, Cincinnati, OH. Designed a music technology lab and curriculum teaching music editing and podcasting, along with foundational computer skills in Windows, macOS, Microsoft Office, and Google Workspace. Researched and wrote an Ohio Department of Education grant that secured 1:1 Chromebooks for 425 students and $5,000 in additional technology. Designed quarterly professional development for 40 faculty on instructional technology and data-informed teaching. Rebuilt the band program from 30 to 75 students and secured instruments for 60% of participants through grants and community partnerships. Mentored three student teachers and led 30 parent volunteers.
+
+Technical toolkit:
+- AI & Data: Python, SQL, Linux, LangChain, retrieval-augmented generation (RAG), prompt engineering, LLM evaluation, multimodal annotation, agentic AI
+- Learning & Product: Canvas LMS, Jupyter, Articulate 360 (Storyline and Rise), Claude skills, custom GPTs
+- Web & Operations: HTML, CSS, JavaScript, ACS Realm CRM, Microsoft Office, Agile / Scrum
+
+Selected publications: Author of 2026 AI-focused articles for Simplilearn, including "Reinforcement Learning from Human Feedback Explained," "Popular AI Tools Students Are Using Today," "What Happens When You Use AI Every Day for 30 Days?" and "AI vs. ML Engineer: Key Differences, Skills, and Career Paths." Author page: https://www.simplilearn.com/authors/james-d-rodgers
 
 ## Self-assessed skill levels (be precise, never inflate or deflate)
 
